@@ -6,11 +6,6 @@ const apiJsonFile = process.env.FILE || path.join(__dirname, './example.json');
 const apiJson = JSON.parse(fs.readFileSync(apiJsonFile, 'utf8'));
 const port = process.env.PORT || 8000;
 
-
-
-
-
-
 let routesLoaded = 0;
 
 app.use((request, response, next) => {
@@ -32,8 +27,6 @@ app.use((request, response, next) => {
     next();
   }
 });
-
-console.log(apiJson);
 
 apiJson.forEach(value => {
   try {
