@@ -17,7 +17,8 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "docker": "sh ./scripts/docker.sh",
+    "docker:run": "docker run -i --rm -p 8080:8000 --name mock-api apidoc-mock",
+    "docker:build": "docker build -t apidoc-mock .",
     "serve": "node src/index.js",
     "test": "eslint ./src/",
     "build": "apidoc -i ./data -o ./docs",

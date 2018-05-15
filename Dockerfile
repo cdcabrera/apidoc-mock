@@ -1,24 +1,18 @@
 FROM node:8-alpine
 
-# Create app directory
-WORKDIR /usr/app
+WORKDIR /app
 
-# Install app dependencies
-COPY package.json /usr/app/
-COPY ./src/example.json /data/example.json
+COPY package.json /app/
+ADD ./data/example.js /data/example.js
+COPY . /app
 
 VOLUME /data
+VOLUME /docs
 
-RUN npm install --only=production
-
-# Bundle app source
-COPY . /usr/app
+RUN yarn --production --non-interactive --silent \
+    && yarn cache clean
 
 ENV PORT=8000
-ENV FILE=/data/example.json
 
-EXPOSE 8000
-
-CMD ["npm", "start"]
-
-USER node
+EXPOSE ${PORT}
+CMD ["yarn", "start"]
