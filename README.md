@@ -1,2 +1,5 @@
-# apidoc-mock
-Apidoc mock server
+# Apidoc Mock
+
+Use [apidoc](http://apidocjs.com/) comments to create a mock server.
+
+

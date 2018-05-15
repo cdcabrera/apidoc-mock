@@ -1,0 +1,7 @@
+.env.local
+*.log
+dist
+node_modules
+package-lock.json
+coverage
+.nyc*
