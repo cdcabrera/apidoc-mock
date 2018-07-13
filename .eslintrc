@@ -12,6 +12,9 @@
     "plugin:node/recommended",
     "plugin:prettier/recommended"
   ],
+  "parserOptions":{
+    "ecmaVersion": 2018
+  },
   "rules": {
     "one-var": ["warn", { "var": "never", "let": "never", "const": "never" }],
     "no-var": 1,
