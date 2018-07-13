@@ -80,5 +80,95 @@ From there you should be able to navigate to
     ```
     
    From there navigate to
-   - the docs, http://localhost:[YOUR PORT]/docs/
-   - the api, http://localhost:[YOUR PORT]/[PATH TO API ENDPOINT]
+   - the docs, `http://localhost:[YOUR PORT]/docs/`
+   - the api, `http://localhost:[YOUR PORT]/[PATH TO API ENDPOINT]`
+   
+   
+### More examples, and custom responses
+
+1. Get random responses from both `success` and  `error` examples with the `@apiMock {RandomResponse}` annotation
+    ```js
+      /**
+       * @api {get} /hello/world/
+       * @apiMock {RandomResponse}
+       * @apiSuccess {String} foo
+       * @apiSuccess {String} bar
+       * @apiSuccessExample {json} Success-Response:
+       *     HTTP/1.1 200 OK
+       *     {
+       *       "foo": "hello",
+       *       "bar": "world",
+       *     }
+       * @apiSuccessExample {json} Success-Response:
+       *     HTTP/1.1 200 OK
+       *     {
+       *       "lorem": "dolor",
+       *       "ipsum": "est",
+       *     }
+       * @apiError {String} bad
+       * @apiError {String} request
+       * @apiErrorExample {json} Error-Response:
+       *     HTTP/1.1 400 OK
+       *     {
+       *       "bad": "hello",
+       *       "request": "world",
+       *     }
+       */
+      const getExample = () => {};
+    ```
+    
+1. Get a random `success` response with the `@apiMock {RandomSuccess}` annotation. Or get a random `error` with the `@apiMock {RandomError}` annotation 
+    ```js
+      /**
+       * @api {get} /hello/world/
+       * @apiMock {RandomSuccess}
+       * @apiSuccess {String} foo
+       * @apiSuccess {String} bar
+       * @apiSuccessExample {json} Success-Response:
+       *     HTTP/1.1 200 OK
+       *     {
+       *       "foo": "hello",
+       *       "bar": "world",
+       *     }
+       * @apiSuccessExample {json} Success-Response:
+       *     HTTP/1.1 200 OK
+       *     {
+       *       "lorem": "dolor",
+       *       "ipsum": "est",
+       *     }
+       * @apiError {String} bad
+       * @apiError {String} request
+       * @apiErrorExample {json} Error-Response:
+       *     HTTP/1.1 400 OK
+       *     {
+       *       "bad": "hello",
+       *       "request": "world",
+       *     }
+       */
+      const getExample = () => {};
+    ```
+    
+1. Force a specific response status with the `@apiMock {ForceStatus} [STATUS GOES HERE]` annotation. If you use a status without a supporting example the response status is still forced, but with fallback content. 
+    ```js
+      /**
+       * @api {get} /hello/world/
+       * @apiMock {ForceStatus} 400
+       * @apiSuccess {String} foo
+       * @apiSuccess {String} bar
+       * @apiSuccessExample {json} Success-Response:
+       *     HTTP/1.1 200 OK
+       *     {
+       *       "foo": "hello",
+       *       "bar": "world",
+       *     }
+       * @apiError {String} bad
+       * @apiError {String} request
+       * @apiErrorExample {json} Error-Response:
+       *     HTTP/1.1 400 OK
+       *     {
+       *       "bad": "hello",
+       *       "request": "world",
+       *     }
+       */
+      const getExample = () => {};
+    ```

@@ -1,5 +1,6 @@
 /**
  * @api {get} /hello/world/
+ * @apiMock {RandomResponse}
  * @apiSuccess {String} foo
  * @apiSuccess {String} bar
  * @apiSuccessExample {json} Success-Response:
@@ -8,19 +9,40 @@
  *       "foo": "hello",
  *       "bar": "world",
  *     }
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 201 OK
+ *     {
+ *       "lorem": "dolor",
+ *       "ipsum": "est",
+ *     }
+ * @apiError {String} bad
+ * @apiError {String} request
+ * @apiErrorExample {json} Error-Response:
+ *     HTTP/1.1 400 OK
+ *     {
+ *       "bad": "hello",
+ *       "request": "world",
+ *     }
  */
 const getExample = () => {};
 
 /**
  * @api {post} /hello/world/
+ * @apiMock {RandomResponse}
  * @apiHeader {String} Authorization Authorization: Token AUTH_TOKEN
  * @apiSuccess {String} foo
  * @apiSuccess {String} bar
  * @apiSuccessExample {json} Success-Response:
- *     HTTP/1.1 200 OK
+ *     HTTP/1.1 201 OK
  *     {
  *       "foo": "hello",
- *       "bar": "world",
+ *       "bar": "world"
+ *     }
+ * @apiError {String} detail
+ * @apiErrorExample {json} Error-Response:
+ *     HTTP/1.1 401 Unauthorized
+ *     {
+ *       "detail": "Authentication credentials were not provided."
  *     }
  */
 const postExample = () => {};
@@ -34,7 +56,7 @@ const postExample = () => {};
  *     HTTP/1.1 200 OK
  *     {
  *       "foo": "hello",
- *       "bar": "world",
+ *       "bar": "world"
  *     }
  */
 const putExample = () => {};
@@ -48,7 +70,7 @@ const putExample = () => {};
  *     HTTP/1.1 200 OK
  *     {
  *       "foo": "hello",
- *       "bar": "world",
+ *       "bar": "world"
  *     }
  */
 const patchExample = () => {};
@@ -62,7 +84,7 @@ const patchExample = () => {};
  *     HTTP/1.1 200 OK
  *     {
  *       "foo": "hello",
- *       "bar": "world",
+ *       "bar": "world"
  *     }
  */
 const deleteExample = () => {};

@@ -1,6 +1,6 @@
 {
   "name": "apidoc-mock",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Creates a mock server from apiDoc comments.",
   "author": "cdcabrera",
   "private": true,
@@ -21,9 +21,10 @@
     "docker:build": "docker build -t apidoc-mock-test .",
     "serve": "node src/index.js",
     "test": "eslint ./src/",
-    "build": "apidoc -i ./data -o ./docs",
+    "build": "apidoc --parse-parsers apimock=./src/api_mock.js -i ./data -o ./docs",
     "build:serve": "npm run build && npm run serve",
-    "start": "nodemon --watch data npm run build:serve"
+    "start": "nodemon --watch data npm run build:serve",
+    "opts": "apidoc --help"
   },
   "apidoc": {
     "title": "Custom apiDocs",
@@ -33,18 +34,18 @@
   "dependencies": {
     "apidoc": "^0.17.6",
     "express": "^4.16.3",
-    "nodemon": "^1.17.4"
+    "nodemon": "^1.18.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
-    "eslint": "^4.19.1",
-    "eslint-config-esnext": "^2.0.0",
-    "eslint-config-node": "^2.0.0",
+    "eslint": "^5.1.0",
+    "eslint-config-esnext": "^3.0.0",
+    "eslint-config-node": "^3.0.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-babel": "^5.1.0",
-    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-prettier": "^2.6.0",
-    "prettier": "^1.12.1"
+    "eslint-plugin-prettier": "^2.6.2",
+    "prettier": "^1.13.7"
   }
 }
