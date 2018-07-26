@@ -1,6 +1,6 @@
 {
   "name": "apidoc-mock",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Creates a mock server from apiDoc comments.",
   "author": "cdcabrera",
   "private": true,
@@ -34,17 +34,17 @@
   "dependencies": {
     "apidoc": "^0.17.6",
     "express": "^4.16.3",
-    "nodemon": "^1.18.1"
+    "nodemon": "^1.18.3"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.3",
-    "eslint": "^5.1.0",
+    "babel-eslint": "^8.2.6",
+    "eslint": "^5.2.0",
     "eslint-config-esnext": "^3.0.0",
     "eslint-config-node": "^3.0.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-prettier": "^2.6.2",
     "prettier": "^1.13.7"
   }

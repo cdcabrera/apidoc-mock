@@ -17,6 +17,10 @@ Generate a "happy path" mock server from [apidoc](http://apidocjs.com/) `@apiSuc
 server is setup correctly you should be able update your code comments/annotations and have the mock(s) update with a 
 browser refresh.
 
+Apidoc Mock can also be found on Docker Hub...
+
+* [Docker Hub, cdcabrera/apidoc-mock](https://hub.docker.com/r/cdcabrera/apidoc-mock/)
+
 ### Basic example
 
 The base Docker image comes preloaded with a "hello/world" example, the basics
