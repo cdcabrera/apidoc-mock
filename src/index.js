@@ -167,15 +167,15 @@ class LoadApi {
     try {
       result = apidoc.createDoc(apiDocsConfig);
     } catch (e) {
-      console.error(`ApiDoc error...${e.message}`);
+      console.error(`ApiDoc error...\t${e.message}`);
     }
 
     if (result === false) {
-      console.error('ApiDoc error... exiting.');
+      console.error('ApiDoc error...\texiting.');
       return;
     }
 
-    console.info('ApiDoc finished... loading JSON');
+    console.info('ApiDoc finished...\tloading JSON');
     return JSON.parse(fs.readFileSync(apiJsonFile, 'utf8'));
   }
 
@@ -307,7 +307,6 @@ class LoadApi {
       try {
         const successExamples = (value.success && value.success.examples) || [];
         const errorExamples = (value.error && value.error.examples) || [];
-        const hasNoExamples = !successExamples.length && !errorExamples.length;
         const mockSettings = LoadApi.parseMockSettings(value);
         const successObjects = LoadApi.parseStatus(
           successExamples,
@@ -363,7 +362,7 @@ class LoadApi {
                       authExample.type
                     );
 
-                    console.info(`Response :${value.type}\t:${value.url}\t:401`);
+                    console.info(`Response :401 :${value.type}\t:${value.url}`);
 
                     response.append('WWW-Authenticate', 'Spoof response');
                     response.status(401);
@@ -376,7 +375,7 @@ class LoadApi {
             }
           }
 
-          console.info(`Response :${value.type}\t:${value.url}\t:${httpStatus}`);
+          console.info(`Response :${httpStatus} :${value.type}\t:${value.url}`);
 
           response.set('Content-Type', type);
           response.status(httpStatus);
@@ -384,20 +383,17 @@ class LoadApi {
         });
 
         routesLoaded += 1;
-        console.info(
-          `Loading "${value.type}" route ${value.url}... ${
-            hasNoExamples ? 'No examples found, using fallback response' : ''
-          }`
-        );
       } catch (e) {
         console.warn(e.message);
       }
     });
 
     if (routesLoaded) {
-      this.app.listen(port, () => console.info(`Mock server listening on port ${port}`));
+      this.app.listen(port, () =>
+        console.info(`JSON finished...\tloaded routes\nMock finished...\tforwarded port ${port}`)
+      );
     } else {
-      console.info(`Mock server waiting...`);
+      console.info(`Mock waiting...`);
     }
   }
 }
