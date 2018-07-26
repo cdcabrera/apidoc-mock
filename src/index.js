@@ -340,37 +340,43 @@ class LoadApi {
             );
           }
 
-          const httpStatus = example.status;
+          const httpStatus = example.status > 0 && example.status < 600 ? example.status : 500;
           const { content, type } = LoadApi.parseContentAndType(example.content, example.type);
 
           response.set('Cache-Control', 'no-cache');
 
-          if (value.header && value.header.fields.Header && value.header.fields.Header.length) {
-            for (let i = 0; i < value.header.fields.Header.length; i++) {
-              const headerValue = value.header.fields.Header[i];
+          if (httpStatus < 500) {
+            if (value.header && value.header.fields.Header && value.header.fields.Header.length) {
+              for (let i = 0; i < value.header.fields.Header.length; i++) {
+                const headerValue = value.header.fields.Header[i];
 
-              if (
-                !headerValue.optional &&
-                headerValue.field &&
-                /authorization/i.test(headerValue.field)
-              ) {
-                const authorization = request.get('authorization');
+                if (
+                  !headerValue.optional &&
+                  headerValue.field &&
+                  /authorization/i.test(headerValue.field)
+                ) {
+                  const authorization = request.get('authorization');
 
-                if (!authorization) {
-                  const authObj = LoadApi.parseContentAndType(
-                    authExample.content,
-                    authExample.type
-                  );
+                  if (!authorization) {
+                    const authObj = LoadApi.parseContentAndType(
+                      authExample.content,
+                      authExample.type
+                    );
 
-                  response.append('WWW-Authenticate', 'Spoof response');
-                  response.status(401);
-                  response.set('Content-Type', authObj.type);
-                  response.end(authObj.content || 'Authorization Required');
-                  return;
+                    console.info(`Response :${value.type}\t:${value.url}\t:401`);
+
+                    response.append('WWW-Authenticate', 'Spoof response');
+                    response.status(401);
+                    response.set('Content-Type', authObj.type);
+                    response.end(authObj.content || 'Authorization Required');
+                    return;
+                  }
                 }
               }
             }
           }
+
+          console.info(`Response :${value.type}\t:${value.url}\t:${httpStatus}`);
 
           response.set('Content-Type', type);
           response.status(httpStatus);
