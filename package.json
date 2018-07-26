@@ -1,6 +1,6 @@
 {
   "name": "apidoc-mock",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Creates a mock server from apiDoc comments.",
   "author": "cdcabrera",
   "private": true,
