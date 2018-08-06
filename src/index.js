@@ -78,24 +78,41 @@ class LoadApi {
     if (mockSettings.mock && mockSettings.mock.settings && mockSettings.mock.settings.length) {
       mockSettings.mock.settings.forEach(val => {
         const keys = Object.keys(val || {});
-        const key = keys[0] || null;
+        const key = keys[0] || '';
 
-        switch (key) {
-          case 'forceStatus':
+        switch (key.toLowerCase()) {
+          case 'delay':
+          case 'delayresponse':
+            settings.delay = parseInt(val[key], 10);
+
+            if (Number.isNaN(settings.delay)) {
+              settings.delay = 1000;
+            }
+
+            break;
+          case 'force':
+          case 'forcestatus':
+          case 'forcedstatus':
             settings.forceStatus = parseInt(val[key], 10);
+
+            if (Number.isNaN(settings.forceStatus)) {
+              settings.forceStatus = 200;
+            }
+
             break;
           case 'response':
             settings.response = 'response';
             break;
-          case 'randomResponse':
+          case 'random':
+          case 'randomresponse':
             settings.response = 'response';
             settings.reload = true;
             break;
-          case 'randomSuccess':
+          case 'randomsuccess':
             settings.response = 'success';
             settings.reload = true;
             break;
-          case 'randomError':
+          case 'randomerror':
             settings.response = 'error';
             settings.reload = true;
             break;
@@ -175,7 +192,7 @@ class LoadApi {
       return;
     }
 
-    console.info('ApiDoc finished...\tloading JSON');
+    console.info('ApiDoc finished...\tloading response');
     return JSON.parse(fs.readFileSync(apiJsonFile, 'utf8'));
   }
 
@@ -367,7 +384,16 @@ class LoadApi {
                     response.append('WWW-Authenticate', 'Spoof response');
                     response.status(401);
                     response.set('Content-Type', authObj.type);
-                    response.end(authObj.content || 'Authorization Required');
+
+                    if (mockSettings.delay > 0) {
+                      setTimeout(
+                        () => response.end(authObj.content || 'Authorization Required'),
+                        mockSettings.delay
+                      );
+                    } else {
+                      response.end(authObj.content || 'Authorization Required');
+                    }
+
                     return;
                   }
                 }
@@ -379,7 +405,12 @@ class LoadApi {
 
           response.set('Content-Type', type);
           response.status(httpStatus);
-          response.send(content);
+
+          if (mockSettings.delay > 0) {
+            setTimeout(() => response.send(content), mockSettings.delay);
+          } else {
+            response.send(content);
+          }
         });
 
         routesLoaded += 1;
@@ -390,7 +421,9 @@ class LoadApi {
 
     if (routesLoaded) {
       this.app.listen(port, () =>
-        console.info(`JSON finished...\tloaded routes\nMock finished...\tforwarded port ${port}`)
+        console.info(
+          `Response finished...\tloaded routes\nMock finished...\tforwarded port ${port}`
+        )
       );
     } else {
       console.info(`Mock waiting...`);

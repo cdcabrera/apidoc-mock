@@ -90,6 +90,13 @@ From there you should be able to navigate to
    
 ### More examples, and custom responses
 
+Apidoc Mock adds in a few different custom flags to help you identify or demonstrate API responses
+- @apiMock {Random|RandomResponse} - pull a random response from either success or error examples
+- @apiMock {RandomSuccess} - pull a random success from success examples
+- @apiMock {RandomError} - pull a random error from error examples
+- @apiMock {ForceStatus} [HTTP STATUS] - force a specific http status
+- @apiMock {DelayResponse} [MILLISECONDS] - force (in milliseconds) a delayed response
+
 1. Get random responses from both `success` and  `error` examples with the `@apiMock {RandomResponse}` annotation
     ```js
       /**
@@ -157,6 +164,31 @@ From there you should be able to navigate to
       /**
        * @api {get} /hello/world/
        * @apiMock {ForceStatus} 400
+       * @apiSuccess {String} foo
+       * @apiSuccess {String} bar
+       * @apiSuccessExample {json} Success-Response:
+       *     HTTP/1.1 200 OK
+       *     {
+       *       "foo": "hello",
+       *       "bar": "world",
+       *     }
+       * @apiError {String} bad
+       * @apiError {String} request
+       * @apiErrorExample {json} Error-Response:
+       *     HTTP/1.1 400 OK
+       *     {
+       *       "bad": "hello",
+       *       "request": "world",
+       *     }
+       */
+      const getExample = () => {};
+    ```
+
+1. Delay a response status with the `@apiMock {DelayResponse} [MILLISECONDS GO HERE]` annotation. 
+    ```js
+      /**
+       * @api {get} /hello/world/
+       * @apiMock {DelayResponse} 3000
        * @apiSuccess {String} foo
        * @apiSuccess {String} bar
        * @apiSuccessExample {json} Success-Response:
