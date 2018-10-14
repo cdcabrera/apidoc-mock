@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "env": {
     "node": true,
     "es6": true
@@ -16,27 +17,37 @@
     "ecmaVersion": 2018
   },
   "rules": {
-    "one-var": ["warn", { "var": "never", "let": "never", "const": "never" }],
-    "no-var": 1,
-    "comma-dangle": 1,
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "comma-dangle": 0,
+    "max-len": [
+      "error",
+      {
+        "code": 200,
+        "ignoreUrls": true
+      }
+    ],
     "no-plusplus": 0,
-    "prefer-const": 1,
     "padded-blocks": 0,
     "space-before-function-paren": 0,
-    "prefer-arrow-callback": 0,
-    "func-names": 0,
-    "prefer-destructuring": 0,
-    "no-undef": 0,
-    "no-multi-spaces": 0,
     "no-console": 0,
     "no-debugger": 1,
     "prettier/prettier": [
-      "warn",
+      "error",
       {
         "singleQuote": true,
         "printWidth": 100
       }
     ],
-    "quotes": [0, "single"]
+    "valid-jsdoc": [
+      1,
+      {
+        "requireParamDescription": false,
+        "requireReturnDescription": false,
+        "requireReturn": false
+      }
+    ]
   }
 }
