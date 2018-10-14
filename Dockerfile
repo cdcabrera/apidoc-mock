@@ -9,10 +9,10 @@ COPY . /app
 VOLUME /data
 VOLUME /docs
 
-RUN yarn --production --non-interactive --silent \
+RUN yarn --production --non-interactive \
     && yarn cache clean
 
 ENV PORT=8000
 
 EXPOSE ${PORT}
-CMD ["yarn", "start"]
+CMD ["yarn", "start:container"]

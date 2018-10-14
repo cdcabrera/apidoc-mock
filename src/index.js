@@ -21,10 +21,10 @@ class LoadApi {
   /**
    * Create a mock API server from ApiDoc.
    *
-   * @param apiDocsConfig {Object}
-   * @param apiJsonFile {String}
-   * @param port {Number}
-   * @param apiDocRoute {String}
+   * @param {object} apiDocsConfig
+   * @param {string} apiJsonFile
+   * @param {number} port
+   * @param {string} apiDocRoute
    */
   constructor({ apiDocsConfig, apiJsonFile, port, apiDocRoute }) {
     const apiJson = LoadApi.buildApiDocs(apiDocsConfig, apiJsonFile);
@@ -39,11 +39,11 @@ class LoadApi {
   /**
    * Set http status
    *
-   * @param examples {Array}
-   * @param response {String}
-   * @param type {String}
-   * @param url {String}
-   * @returns {Object}
+   * @param {array} examples
+   * @param {string} response
+   * @param {string} type
+   * @param {string} url
+   * @returns {object}
    */
   static parseStatus(examples = [], response = null, type = null, url = null) {
     return examples.map(val => {
@@ -69,8 +69,8 @@ class LoadApi {
   /**
    * Parse custom mock settings.
    *
-   * @param mockSettings {Array}
-   * @returns {Object}
+   * @param {array} mockSettings
+   * @returns {object}
    */
   static parseMockSettings(mockSettings = {}) {
     const settings = {};
@@ -126,8 +126,8 @@ class LoadApi {
   /**
    * Return passed mock mime type and parsed content
    *
-   * @param content {String}
-   * @param type {String}
+   * @param {string} content
+   * @param {string} type
    * @returns {{parsedContent: string, parsedType: string}}
    */
   static parseContentAndType(content = '', type = 'text') {
@@ -145,23 +145,14 @@ class LoadApi {
     switch (type) {
       case 'json':
         parsedType = 'application/json';
-
-        if (parsable) {
-          parsedContent = `{ ${content
-            .split('{')
-            .slice(1)
-            .join('{')}`;
-        }
         break;
       case 'xml':
       case 'html':
+      case 'csv':
         parsedType = `text/${type}`;
         break;
       case 'svg':
         parsedType = 'image/svg+xml';
-        break;
-      case 'csv':
-        parsedType = 'text/csv';
         break;
       default:
         parsedType = 'text/plain';
@@ -174,9 +165,9 @@ class LoadApi {
   /**
    * Compile/build ApiDoc documentation.
    *
-   * @param apiDocsConfig {Object}
-   * @param apiJsonFile {String}
-   * @returns {Object}
+   * @param {object} apiDocsConfig
+   * @param {string} apiJsonFile
+   * @returns {object}
    */
   static buildApiDocs(apiDocsConfig = {}, apiJsonFile = null) {
     let result;
@@ -199,10 +190,10 @@ class LoadApi {
   /**
    * Return forced response, or a general example.
    *
-   * @param mockSettings {Object}
-   * @param exampleObjects {Array}
-   * @param successObjects {Array}
-   * @param errorObjects {Array}
+   * @param {object} mockSettings
+   * @param {array} exampleObjects
+   * @param {array} successObjects
+   * @param {array} errorObjects
    * @returns {{type: string, status: number, content: string}}
    */
   static exampleResponse(mockSettings, exampleObjects, successObjects, errorObjects) {
@@ -269,7 +260,7 @@ class LoadApi {
   /**
    * Return a 401 specific example.
    *
-   * @param errorObjects {Array}
+   * @param {array} errorObjects
    * @returns {{type: string, status: number, content: string}}
    */
   static parseAuthExample(errorObjects = []) {
@@ -285,7 +276,7 @@ class LoadApi {
   /**
    * Open request headers up. Parse OPTIONS or continue
    *
-   * @param apiDocRoute {String}
+   * @param {string} apiDocRoute
    */
   setupResponse(apiDocRoute) {
     this.app.use(`/${apiDocRoute}`, express.static(apiDocRoute));
@@ -314,8 +305,8 @@ class LoadApi {
   /**
    * Setup API response.
    *
-   * @param apiJson {Array}
-   * @param port {Number}
+   * @param {array} apiJson
+   * @param {number} port
    */
   setupApi(apiJson = [], port = 8000) {
     let routesLoaded = 0;
