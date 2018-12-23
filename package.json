@@ -24,6 +24,7 @@
     "test": "eslint ./src/",
     "build": "apidoc --parse-parsers apimock=./src/api_mock.js -i ./data -o ./docs",
     "build:serve": "npm run build && npm run serve",
+    "release": "standard-version",
     "start": "nodemon --watch data --watch src npm run build:serve",
     "start:container": "nodemon --watch data npm run build:serve",
     "opts": "apidoc --help"
@@ -34,20 +35,21 @@
     "description": "API documentation with apiDoc."
   },
   "dependencies": {
-    "apidoc": "^0.17.6",
+    "apidoc": "^0.17.7",
     "express": "^4.16.4",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.9"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.7.0",
+    "eslint": "^5.11.0",
     "eslint-config-esnext": "^4.0.0",
     "eslint-config-node": "^4.0.0",
-    "eslint-config-prettier": "^3.1.0",
-    "eslint-plugin-babel": "^5.2.1",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-prettier": "^3.0.0",
-    "prettier": "^1.14.3"
+    "prettier": "^1.15.3",
+    "standard-version": "^4.4.0"
   }
 }
