@@ -9,8 +9,8 @@ const parse = (content, source, defaultGroup) => {
 
   const keyValue = content.split('}');
 
-  let key = (keyValue[0] || '').replace(/({|^\s+|\s+$)/, '');
-  const value = (keyValue[1] || '').replace(/(^\s+|\s+$)/, '');
+  let key = (keyValue[0] || '').replace(/{/, '').trim();
+  const value = (keyValue[1] || '').trim();
 
   key = key.replace(/(?:^\w|[A-Z]|\b\w)/g, (letter, index) => {
     return index === 0 ? letter.toLowerCase() : letter.toUpperCase();

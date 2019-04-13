@@ -1,14 +1,20 @@
 # Apidoc Mock
+[![Build Status](https://travis-ci.org/cdcabrera/apidoc-mock.svg?branch=master)](https://travis-ci.org/cdcabrera/apidoc-mock)
+[![codecov](https://codecov.io/gh/cdcabrera/apidoc-mock/branch/master/graph/badge.svg)](https://codecov.io/gh/cdcabrera/apidoc-mock)
+[![License](https://img.shields.io/github/license/cdcabrera/apidoc-mock.svg)](https://github.com/cdcabrera/apidoc-mock/blob/master/LICENSE)
 
-Use [apidoc](http://apidocjs.com/) comments to create a mock server. Quick handy way to generate
-a mock server response.
+Tired of overthinking mock solutions, use [apidoc](http://apidocjs.com/) styled comments on your local files to create a
+mock NodeJS server. 
+
+You can serve up exactly what you need. Everything from a 200 status, to forcing a random custom status. You can even force
+a delay to see how your codebase will handle loading scenarios with a balls slow API response.
 
 ## Requirements
 The basic requirements:
- * [Docker](https://docs.docker.com/engine/installation/)
- * Optionally your system could be running 
-    - [NodeJS version 8+](https://nodejs.org/), (the examples are based off NodeJS)
-    - [Yarn 1.5+](https://yarnpkg.com), otherwise NPM should be adequate.
+ * [NodeJS version 10+](https://nodejs.org/)
+ * Optionally your system could be running
+    - [Yarn 1.13+](https://yarnpkg.com), otherwise NPM should be adequate.
+    - [Docker](https://docs.docker.com/engine/installation/)
  
 
 ## Use
@@ -17,11 +23,51 @@ Generate a "happy path" mock server from [apidoc](http://apidocjs.com/) `@apiSuc
 server is setup correctly you should be able update your code comments/annotations and have the mock(s) update with a 
 browser refresh.
 
+### CLI
+
+NPM install...
+
+  ```shell
+    $ npm i apidock-mock
+  ```
+  
+or Yarn
+
+  ```shell
+    $ yarn add apidock-mock
+  ```
+
+#### Usage
+```
+  $ mock --help
+  Create a mock server from apiDoc comments.
+  
+  Usage: mock [options]
+  
+  Options:
+    -d, --docs     Output directory used to compile apidocs   [default: "./.docs"]
+    -p, --port     Set mock port                                   [default: 8000]
+    -w, --watch    Watch single, or multiple directories       [default: "./data"]
+    -h, --help     Show help                                             [boolean]
+    -v, --version  Show version number                                   [boolean]
+```
+
+#### Example
+  If you have a project, you could setup a NPM script to do the following
+
+  ```shell
+    $ mock -p 5000 -w src/yourDirectory -w src/anotherDirectory
+  ```
+  
+  Then follow the guide for [apidoc](http://apidocjs.com/). From there run the NPM script, and open [localhost:5000/[PATH TO API ENDPOINT]](http://localhost:5000/).
+
+### Or roll with a Docker setup
+
 Apidoc Mock can also be found on Docker Hub...
 
 * [Docker Hub, cdcabrera/apidoc-mock](https://hub.docker.com/r/cdcabrera/apidoc-mock/)
 
-### Basic example
+#### Example
 
 The base Docker image comes preloaded with a "hello/world" example, the basics
 
@@ -68,22 +114,40 @@ From there you should be able to navigate to
       const postExample = () => {};
     ```
 
-1. Next, make sure Docker is running, and pull in the Docker image, you can use a set of NPM scripts in `package.json`
+1. Next
+   #### Using a NPM script setup
+   Setup your NPM scripts
+   ```js
+     "scripts": {
+       "mock": "mock -p 5000 -w [PATH TO YOUR JS FILES] -w [ANOTHER PATH TO YOUR JS FILES]"
+     }
+   ```
+   
+   Then, run your script
+   
+    ```shell
+      $ npm run mock
+    ```
+
+   #### Or if you're using a Docker setup
+   Make sure Docker is running, and pull in the Docker image. Setup something like...
+    
     ```js
       "scripts": {
         "mock:setup": "docker pull cdcabrera/apidoc-mock",
         "mock:run": "docker stop mock-api-test; docker run -i --rm -p [YOUR PORT]:8000 -v \"$(pwd)[PATH TO YOUR JS FILES]:/app/data\" --name mock-api-test cdcabrera/apidoc-mock"
       }
     ```
-   You'll need to pick a port like... `-p 8000:8000` and a directory path to pull the apiDoc code comments/annotations from like... `-v \"$(pwd)/src:/app/data\"`.
+   You'll need to pick a port like... `-p 8000:8000` and a directory path to pull the apiDoc code comments/annotations from... `-v \"$(pwd)/src:/app/data\"`.
+   
+   Then, run your scripts
 
-1. Next run the scripts
-    ```shell
-      $ npm run mock:setup
-      $ npm run mock:run
-    ```
-    
-   From there navigate to
+   ```shell
+     $ npm run mock:setup
+     $ npm run mock:run
+   ```
+
+1. Finally, navigate to
    - the docs, `http://localhost:[YOUR PORT]/docs/`
    - the api, `http://localhost:[YOUR PORT]/[PATH TO API ENDPOINT]`
    
@@ -208,3 +272,6 @@ Apidoc Mock adds in a few different custom flags to help you identify or demonst
        */
       const getExample = () => {};
     ```
+
+## Contributing
+Contributing? Guidelines can be found here [CONTRIBUTING.md](./CONTRIBUTING.md).

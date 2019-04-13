@@ -1,430 +1,99 @@
-const path = require('path');
 const fs = require('fs');
-const apidoc = require('apidoc');
+const path = require('path');
 const express = require('express');
-
-const apiDocsConfig = {
-  src: path.join(__dirname, '../data'),
-  dest: path.join(__dirname, '../docs'),
-  parsers: {
-    apimock: path.join(__dirname, 'api_mock.js')
-  }
-};
-const apiJsonFile = path.join(__dirname, '../docs/api_data.json');
-const port = process.env.PORT || 8000;
-const apiDocRoute = 'docs';
+const { logger } = require('./logger/configLogger');
+const { buildDocs } = require('./docs/buildDocs');
+const { buildRequestHeaders, buildResponse } = require('./api/buildApi');
+const cache = { app: null, server: null };
 
 /**
- * Class LoadApi
+ * Build documentation
+ *
+ * @param {(string|string[])} dataPath
+ * @param {string} docsPath
+ * @returns {{}|*}
  */
-class LoadApi {
-  /**
-   * Create a mock API server from ApiDoc.
-   *
-   * @param {object} apiDocsConfig
-   * @param {string} apiJsonFile
-   * @param {number} port
-   * @param {string} apiDocRoute
-   */
-  constructor({ apiDocsConfig, apiJsonFile, port, apiDocRoute }) {
-    const apiJson = LoadApi.buildApiDocs(apiDocsConfig, apiJsonFile);
+const setupDocs = (dataPath = '', docsPath = '') => {
+  const cwd = process.cwd();
+  const dest = (docsPath && path.join(cwd, docsPath)) || null;
 
-    if (apiJson) {
-      this.app = express();
-      this.setupResponse(apiDocRoute);
-      this.setupApi(apiJson, port);
-    }
+  const src = ((Array.isArray(dataPath) && dataPath) || (dataPath && [dataPath]) || [])
+    .map(val => path.join(cwd, val))
+    .filter(val => (fs.existsSync(val) && val) || false);
+
+  if (!src.length || !dest) {
+    return null;
   }
 
-  /**
-   * Set http status
-   *
-   * @param {array} examples
-   * @param {string} response
-   * @param {string} type
-   * @param {string} url
-   * @returns {object}
-   */
-  static parseStatus(examples = [], response = null, type = null, url = null) {
-    return examples.map(val => {
-      const status = parseInt(val.content.split(/\s/)[1], 10) || 200;
-      const route = type && url ? `, mismatch for "${type}" route ${url}` : '';
+  const apiDocsConfig = {
+    src,
+    dest,
+    parsers: {
+      apimock: path.join(__dirname, './docs/configDocs.js')
+    }
+  };
 
-      // ToDo: ApiDoc currently has no "information" or "redirect" distinction, consider plugin
-      if (response === 'success' && status >= 400) {
-        console.warn(`Success example given with status of ${status}${route}`);
-      }
+  const apiJsonFile = path.join(cwd, docsPath, 'api_data.json');
+  const apiJson = buildDocs({ apiDocsConfig, apiJsonFile });
 
-      if (response === 'error' && status < 400) {
-        console.warn(`Error example given with status of ${status}${route}`);
-      }
+  return (Array.isArray(apiJson) && apiJson) || null;
+};
 
-      return {
-        status,
-        ...val
-      };
-    });
+/**
+ * Build response
+ *
+ * @param {array} apiJson
+ * @param {number} port
+ * @returns {*}
+ */
+const setupResponse = (apiJson = [], port) => {
+  const { routesLoaded, appResponses } = buildResponse(apiJson);
+  let server = null;
+
+  appResponses.forEach(response => {
+    cache.app[response.type](response.url, response.callback);
+  });
+
+  if (routesLoaded) {
+    server = cache.app.listen(port, () => logger.info(`listening\t:${port}`));
+  } else {
+    logger.info('waiting');
   }
 
-  /**
-   * Parse custom mock settings.
-   *
-   * @param {array} mockSettings
-   * @returns {object}
-   */
-  static parseMockSettings(mockSettings = {}) {
-    const settings = {};
+  return server;
+};
 
-    if (mockSettings.mock && mockSettings.mock.settings && mockSettings.mock.settings.length) {
-      mockSettings.mock.settings.forEach(val => {
-        const keys = Object.keys(val || {});
-        const key = keys[0] || '';
+/**
+ * ApiDocMock
+ *
+ * @param {number} port
+ * @param {(string|string[])} dataPath
+ * @param {string} docsPath
+ * @returns {*}
+ */
+const apiDocMock = ({ port = 8000, dataPath, docsPath = '.docs' }) => {
+  const apiJson = setupDocs(dataPath, docsPath);
+  let server = null;
 
-        switch (key.toLowerCase()) {
-          case 'delay':
-          case 'delayresponse':
-            settings.delay = parseInt(val[key], 10);
+  if (apiJson) {
+    cache.app = express();
+    cache.app.use(`/docs`, express.static(docsPath));
+    cache.app.use(buildRequestHeaders);
 
-            if (Number.isNaN(settings.delay)) {
-              settings.delay = 1000;
-            }
-
-            break;
-          case 'force':
-          case 'forcestatus':
-          case 'forcedstatus':
-            settings.forceStatus = parseInt(val[key], 10);
-
-            if (Number.isNaN(settings.forceStatus)) {
-              settings.forceStatus = 200;
-            }
-
-            break;
-          case 'response':
-            settings.response = 'response';
-            break;
-          case 'random':
-          case 'randomresponse':
-            settings.response = 'response';
-            settings.reload = true;
-            break;
-          case 'randomsuccess':
-            settings.response = 'success';
-            settings.reload = true;
-            break;
-          case 'randomerror':
-            settings.response = 'error';
-            settings.reload = true;
-            break;
-        }
-      });
+    if (cache.server && cache.server.close) {
+      cache.server.close();
     }
 
-    return settings;
+    cache.server = server = setupResponse(apiJson, port);
   }
 
-  /**
-   * Return passed mock mime type and parsed content
-   *
-   * @param {string} content
-   * @param {string} type
-   * @returns {{parsedContent: string, parsedType: string}}
-   */
-  static parseContentAndType(content = '', type = 'text') {
-    const parsable = /^HTTP/.test(content);
-    let parsedContent = content;
-    let parsedType;
+  if (server === null) {
+    logger.error(`Error, confirm settings:\nport=${port}\nwatch=${dataPath}\ndocs=${docsPath}`);
 
-    if (parsable) {
-      parsedContent = content
-        .split(/\n/)
-        .slice(1)
-        .join('\n');
-    }
-
-    switch (type) {
-      case 'json':
-        parsedType = 'application/json';
-        break;
-      case 'xml':
-      case 'html':
-      case 'csv':
-        parsedType = `text/${type}`;
-        break;
-      case 'svg':
-        parsedType = 'image/svg+xml';
-        break;
-      default:
-        parsedType = 'text/plain';
-        break;
-    }
-
-    return { content: parsedContent, type: parsedType };
+    throw new Error('Server failed to load');
   }
 
-  /**
-   * Compile/build ApiDoc documentation.
-   *
-   * @param {object} apiDocsConfig
-   * @param {string} apiJsonFile
-   * @returns {object}
-   */
-  static buildApiDocs(apiDocsConfig = {}, apiJsonFile = null) {
-    let result;
+  return server;
+};
 
-    try {
-      result = apidoc.createDoc(apiDocsConfig);
-    } catch (e) {
-      console.error(`ApiDoc error...\t${e.message}`);
-    }
-
-    if (result === false) {
-      console.error('ApiDoc error...\texiting.');
-      return;
-    }
-
-    console.info('ApiDoc finished...\tloading response');
-    return JSON.parse(fs.readFileSync(apiJsonFile, 'utf8'));
-  }
-
-  /**
-   * Return forced response, or a general example.
-   *
-   * @param {object} mockSettings
-   * @param {array} exampleObjects
-   * @param {array} successObjects
-   * @param {array} errorObjects
-   * @returns {{type: string, status: number, content: string}}
-   */
-  static exampleResponse(mockSettings, exampleObjects, successObjects, errorObjects) {
-    let example;
-    let tempObjects;
-
-    switch (mockSettings.response) {
-      case 'response':
-        tempObjects = exampleObjects;
-        break;
-      case 'error':
-        tempObjects = errorObjects;
-        break;
-      case 'success':
-      default:
-        tempObjects = successObjects;
-        break;
-    }
-
-    if (/\d/.test(mockSettings.forceStatus)) {
-      example = exampleObjects.filter(val => {
-        if (val.status === mockSettings.forceStatus) {
-          return true;
-        }
-      });
-
-      if (example.length) {
-        example = example[Math.floor(Math.random() * example.length)];
-      } else {
-        example = {
-          type: 'text',
-          status: mockSettings.forceStatus,
-          content: `Missing example for ${mockSettings.forceStatus} status`
-        };
-      }
-    } else if (tempObjects) {
-      example = tempObjects[Math.floor(Math.random() * tempObjects.length)];
-    }
-
-    if (!example) {
-      switch (mockSettings.response) {
-        case 'error':
-          example = {
-            type: 'text',
-            status: 404,
-            content: 'Error'
-          };
-          break;
-        case 'response':
-        case 'success':
-        default:
-          example = {
-            type: 'text',
-            status: 200,
-            content: 'Success'
-          };
-          break;
-      }
-    }
-
-    return example;
-  }
-
-  /**
-   * Return a 401 specific example.
-   *
-   * @param {array} errorObjects
-   * @returns {{type: string, status: number, content: string}}
-   */
-  static parseAuthExample(errorObjects = []) {
-    const authExample = errorObjects.filter(val => {
-      if (val.status === 401) {
-        return true;
-      }
-    });
-
-    return (authExample && authExample[Math.floor(Math.random() * authExample.length)]) || {};
-  }
-
-  /**
-   * Open request headers up. Parse OPTIONS or continue
-   *
-   * @param {string} apiDocRoute
-   */
-  setupResponse(apiDocRoute) {
-    this.app.use(`/${apiDocRoute}`, express.static(apiDocRoute));
-
-    this.app.use((request, response, next) => {
-      const hasOrigin = request.headers.origin != null;
-
-      response.set('Access-Control-Allow-Origin', hasOrigin ? request.headers.origin : '*');
-      response.set('Access-Control-Allow-Credentials', !hasOrigin);
-      response.set('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS, PATCH');
-
-      const requestHeaders = request.headers['access-control-request-headers'];
-
-      if (requestHeaders != null) {
-        response.set('Access-Control-Allow-Headers', requestHeaders);
-      }
-
-      if (request.method === 'OPTIONS') {
-        response.end();
-      } else {
-        next();
-      }
-    });
-  }
-
-  /**
-   * Setup API response.
-   *
-   * @param {array} apiJson
-   * @param {number} port
-   */
-  setupApi(apiJson = [], port = 8000) {
-    let routesLoaded = 0;
-
-    apiJson.forEach(value => {
-      try {
-        const successExamples = (value.success && value.success.examples) || [];
-        const errorExamples = (value.error && value.error.examples) || [];
-        const mockSettings = LoadApi.parseMockSettings(value);
-        const successObjects = LoadApi.parseStatus(
-          successExamples,
-          'success',
-          value.type,
-          value.url
-        );
-        const errorObjects = LoadApi.parseStatus(errorExamples, 'error', value.type, value.url);
-        const authExample = LoadApi.parseAuthExample(errorObjects);
-        const exampleObjects = successObjects.concat(errorObjects);
-
-        let example;
-
-        if (!mockSettings.reload) {
-          example = LoadApi.exampleResponse(
-            mockSettings,
-            exampleObjects,
-            successObjects,
-            errorObjects
-          );
-        }
-
-        this.app[value.type](value.url, (request, response) => {
-          if (mockSettings.reload) {
-            example = LoadApi.exampleResponse(
-              mockSettings,
-              exampleObjects,
-              successObjects,
-              errorObjects
-            );
-          }
-
-          const httpStatus = example.status > 0 && example.status < 600 ? example.status : 500;
-          const { content, type } = LoadApi.parseContentAndType(example.content, example.type);
-
-          response.set('Cache-Control', 'no-cache');
-
-          if (httpStatus < 500) {
-            if (value.header && value.header.fields.Header && value.header.fields.Header.length) {
-              for (let i = 0; i < value.header.fields.Header.length; i++) {
-                const headerValue = value.header.fields.Header[i];
-
-                if (
-                  !headerValue.optional &&
-                  headerValue.field &&
-                  /authorization/i.test(headerValue.field)
-                ) {
-                  const authorization = request.get('authorization');
-
-                  if (!authorization) {
-                    const authObj = LoadApi.parseContentAndType(
-                      authExample.content,
-                      authExample.type
-                    );
-
-                    console.info(`Response :401 :${value.type}\t:${value.url}`);
-
-                    response.append('WWW-Authenticate', 'Spoof response');
-                    response.status(401);
-                    response.set('Content-Type', authObj.type);
-
-                    if (mockSettings.delay > 0) {
-                      setTimeout(
-                        () => response.end(authObj.content || 'Authorization Required'),
-                        mockSettings.delay
-                      );
-                    } else {
-                      response.end(authObj.content || 'Authorization Required');
-                    }
-
-                    return;
-                  }
-                }
-              }
-            }
-          }
-
-          console.info(`Response :${httpStatus} :${value.type}\t:${value.url}`);
-
-          response.set('Content-Type', type);
-          response.status(httpStatus);
-
-          if (mockSettings.delay > 0) {
-            setTimeout(() => response.send(content), mockSettings.delay);
-          } else {
-            response.send(content);
-          }
-        });
-
-        routesLoaded += 1;
-      } catch (e) {
-        console.warn(e.message);
-      }
-    });
-
-    if (routesLoaded) {
-      this.app.listen(port, () =>
-        console.info(
-          `Response finished...\tloaded routes\nMock finished...\tforwarded port ${port}`
-        )
-      );
-    } else {
-      console.info(`Mock waiting...`);
-    }
-  }
-}
-
-new LoadApi({
-  apiDocsConfig,
-  apiJsonFile,
-  port,
-  apiDocRoute
-});
+module.exports = { apiDocMock, setupDocs, setupResponse };
