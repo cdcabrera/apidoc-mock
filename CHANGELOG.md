@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.0.0](https://github.com/cdcabrera/apidoc-mock/compare/v2.0.1...v3.0.0) (2019-04-14)
+
+
+### Code Refactoring
+
+* **npm package:** cli restructure ([#15](https://github.com/cdcabrera/apidoc-mock/issues/15)) ([df33695](https://github.com/cdcabrera/apidoc-mock/commit/df33695))
+
+
+### BREAKING CHANGES
+
+* **npm package:** npm packaging, cli
+
+* build, update tooling for editor, ci, testing
+* build, readme cli additions, contributing
+* build, github request templates
+* cli, added bin script
+* docker, cmd script updated towards cli
+* tests, breakout ecma class for testing
+
+
+
 <a name="2.0.1"></a>
 # 2.0.1 (2018-10-14)
 
