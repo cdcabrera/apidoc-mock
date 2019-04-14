@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.1](https://github.com/cdcabrera/apidoc-mock/compare/v3.0.0...v3.0.1) (2019-04-14)
+
+
+### Bug Fixes
+
+* **build, readme:** relax engine requirement, gitignore docs ([#16](https://github.com/cdcabrera/apidoc-mock/issues/16)) ([84c51f1](https://github.com/cdcabrera/apidoc-mock/commit/84c51f1))
+
+
+
 # [3.0.0](https://github.com/cdcabrera/apidoc-mock/compare/v2.0.1...v3.0.0) (2019-04-14)
 
 
