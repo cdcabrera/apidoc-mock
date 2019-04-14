@@ -60,6 +60,8 @@ or Yarn
   ```
   
   Then follow the guide for [apidoc](http://apidocjs.com/). From there run the NPM script, and open [localhost:5000/[PATH TO API ENDPOINT]](http://localhost:5000/).
+  
+  It's recommended you make sure to `.gitignore` the `.docs` directory that gets generated for `apidocs`. 
 
 ### Or roll with a Docker setup
 
@@ -116,14 +118,16 @@ From there you should be able to navigate to
 
 1. Next
    #### Using a NPM script setup
-   Setup your NPM scripts
+   Then, make sure to `.gitignore` the `.docs` directory that gets generated for `apidocs`.
+   
+   Then, setup your NPM scripts
    ```js
      "scripts": {
        "mock": "mock -p 5000 -w [PATH TO YOUR JS FILES] -w [ANOTHER PATH TO YOUR JS FILES]"
      }
    ```
    
-   Then, run your script
+   And then run your script
    
     ```shell
       $ npm run mock
