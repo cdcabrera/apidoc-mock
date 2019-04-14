@@ -1,8 +1,22 @@
-.env.local
-*.log
-dist
+# dependencies
 node_modules
 package-lock.json
+.yarn-integrity
+
+# coverage
+lib-cov
 coverage
 .nyc*
-docs
+*.lcov
+
+# logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+api-debug*
+
+# misc
+.env
+.docs

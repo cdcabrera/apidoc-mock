@@ -1,15 +1,18 @@
 {
   "parser": "babel-eslint",
   "env": {
-    "node": true,
-    "es6": true
+    "es6": true,
+    "jest": true,
+    "node": true
   },
   "plugins": [
+    "jest",
     "node",
     "prettier"
   ],
   "extends": [
     "eslint:recommended",
+    "plugin:jest/recommended",
     "plugin:node/recommended",
     "plugin:prettier/recommended"
   ],
@@ -25,15 +28,17 @@
     "max-len": [
       "error",
       {
-        "code": 200,
+        "code": 240,
         "ignoreUrls": true
       }
     ],
-    "no-plusplus": 0,
-    "padded-blocks": 0,
-    "space-before-function-paren": 0,
     "no-console": 0,
     "no-debugger": 1,
+    "no-plusplus": 0,
+    "node/no-unsupported-features/es-syntax": 1,
+    "node/shebang": 0,
+    "node/no-unpublished-bin": 0,
+    "padded-blocks": 0,
     "prettier/prettier": [
       "error",
       {
@@ -41,6 +46,7 @@
         "printWidth": 100
       }
     ],
+    "space-before-function-paren": 0,
     "valid-jsdoc": [
       1,
       {
