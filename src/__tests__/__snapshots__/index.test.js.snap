@@ -1,3 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ApiDocMock should create a predictable docs output: setupDocs 1`] = `
+Object {
+  "error": "{\\"examples\\":[{\\"title\\":\\"Error-Response:\\",\\"content\\":\\"HTTP/1.1 400 OK\\\\n{\\\\n  error: test\\\\n}\\",\\"type\\":\\"json\\"}]}",
+  "success": "{\\"examples\\":[{\\"title\\":\\"Success-Response:\\",\\"content\\":\\"HTTP/1.1 200 OK\\\\n{\\\\n  success: test\\\\n}\\",\\"type\\":\\"json\\"}]}",
+  "type": "get",
+  "url": "/hello/world/",
+}
+`;
+
 exports[`ApiDocMock should throw an error during testing: error 1`] = `[Error: Server failed to load]`;
