@@ -30,7 +30,8 @@ const setupDocs = (dataPath = '', docsPath = '') => {
     dest,
     parsers: {
       apimock: path.join(__dirname, './docs/configDocs.js')
-    }
+    },
+    silent: process.env.NODE_ENV === 'test'
   };
 
   const apiJsonFile = path.join(cwd, docsPath, 'api_data.json');

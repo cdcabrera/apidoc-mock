@@ -20,3 +20,4 @@ api-debug*
 # misc
 .env
 .docs
+.fixtures
