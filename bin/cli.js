@@ -37,13 +37,17 @@ const start = () =>
     docsPath: docs
   });
 
-start();
+if (process.env.NODE_ENV === 'test') {
+  process.stdout.write(JSON.stringify({ port, watch, docs }));
+} else {
+  start();
 
-if (watch && watch.length) {
-  nodeWatch(watch, (event, name) => {
-    if (event === 'update') {
-      logger.info(`updated\t:${name}`);
-      start();
-    }
-  });
+  if (watch && watch.length) {
+    nodeWatch(watch, (event, name) => {
+      if (event === 'update') {
+        logger.info(`updated\t:${name}`);
+        start();
+      }
+    });
+  }
 }

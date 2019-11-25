@@ -28,6 +28,8 @@
     "test:ci": "export CI=true; jest --collectCoverage",
     "test:clearCache": "jest --clearCache",
     "test:dev": "eslint ./src; jest --watch",
+    "test:integration": "jest --roots=./tests",
+    "test:integration-dev": "jest --roots=./tests --watchAll",
     "test:lint": "eslint ./src"
   },
   "jest": {
