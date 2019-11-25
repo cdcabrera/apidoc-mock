@@ -17,6 +17,8 @@ Array [
   "",
   "./.docs/api_data.js",
   "./.docs/api_data.json",
+  "./.docs/api_definition.js",
+  "./.docs/api_definition.json",
   "./.docs/api_project.js",
   "./.docs/api_project.json",
   "./.docs/css/style.css",
@@ -120,5 +122,3 @@ Array [
   "./.docs/vendor/webfontloader.js",
 ]
 `;
-
-exports[`ApiDocMock should throw an error during testing: error 1`] = `[Error: Server failed to load]`;
