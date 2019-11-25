@@ -1,6 +1,16 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [3.0.2](https://github.com/cdcabrera/apidoc-mock/compare/v3.0.1...v3.0.2) (2019-11-25)
+
+
+### Bug Fixes
+
+* **build:** cli options behaving predictably ([9ee27b0](https://github.com/cdcabrera/apidoc-mock/commit/9ee27b012e23e76c16af1f3c610ccfcb932b320b))
+* **build:** expand integration like tests for apidoc output ([e9b2861](https://github.com/cdcabrera/apidoc-mock/commit/e9b2861ddc419f9051da2c259b5c0f648797cca9))
+* **build:** npm packages ([97c4b96](https://github.com/cdcabrera/apidoc-mock/commit/97c4b96ec3deec9493e02b79d1a1254eb1de8157))
+* **build:** package, travis, and testing updates ([#22](https://github.com/cdcabrera/apidoc-mock/issues/22)) ([cfc14f1](https://github.com/cdcabrera/apidoc-mock/commit/cfc14f1e72394b4cffbb38e30d796af935fc7bb8))
 
 ## [3.0.1](https://github.com/cdcabrera/apidoc-mock/compare/v3.0.0...v3.0.1) (2019-04-14)
 
