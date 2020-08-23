@@ -44,10 +44,6 @@ describe('ApiDocMock', () => {
   });
 
   it('should throw an error during testing', () => {
-    try {
-      apiDocMock({});
-    } catch (e) {
-      expect(e).toMatchSnapshot('error');
-    }
+    expect(() => apiDocMock({})).toThrowErrorMatchingSnapshot('error');
   });
 });

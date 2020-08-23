@@ -9,4 +9,4 @@ Object {
 }
 `;
 
-exports[`ApiDocMock should throw an error during testing: error 1`] = `[Error: Server failed to load]`;
+exports[`ApiDocMock should throw an error during testing: error 1`] = `"Server failed to load"`;
