@@ -54,7 +54,7 @@ jobs:
         if: ${{ success() && contains(matrix.node-version, env.COV_NODE_VER) }}
         uses: codecov/codecov-action@v1
         with:
-          file: ./coverage/clover.xml
+          directory: ./coverage/
       - name: Confirm integration
         if: ${{ success() }}
         uses: actions/github-script@v2
