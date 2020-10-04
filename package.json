@@ -58,7 +58,7 @@
     "express": "^4.17.1",
     "node-watch": "^0.6.4",
     "winston": "^3.3.3",
-    "yargs": "^15.4.1"
+    "yargs": "^16.0.3"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
