@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.3](https://github.com/cdcabrera/apidoc-mock/compare/v3.0.2...v3.0.3) (2020-10-04)
+
+
+### Bug Fixes
+
+* **build:** npm packages ([#27](https://github.com/cdcabrera/apidoc-mock/issues/27)) ([7ed0429](https://github.com/cdcabrera/apidoc-mock/commit/7ed042982c8759360ac3b476505a21bd6f7ac74e))
+
 ### [3.0.2](https://github.com/cdcabrera/apidoc-mock/compare/v3.0.1...v3.0.2) (2019-11-25)
 
 
