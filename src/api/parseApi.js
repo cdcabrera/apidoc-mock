@@ -181,10 +181,7 @@ const parseContentAndType = (content = '', type = 'text') => {
   let parsedType;
 
   if (parsable) {
-    parsedContent = content
-      .split(/\n/)
-      .slice(1)
-      .join('\n');
+    parsedContent = content.split(/\n/).slice(1).join('\n');
   }
 
   switch (type) {

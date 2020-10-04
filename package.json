@@ -27,7 +27,7 @@
     "test": "run-s -l test:lint test:ci",
     "test:ci": "export CI=true; jest --collectCoverage",
     "test:clearCache": "jest --clearCache",
-    "test:dev": "eslint ./src; jest --watch",
+    "test:dev": "rm -rf ./.docs; eslint ./src; jest --watch",
     "test:integration": "jest --roots=./tests",
     "test:integration-dev": "jest --roots=./tests --watchAll",
     "test:lint": "eslint ./src ./bin"
@@ -56,27 +56,27 @@
     "description": "API documentation with apiDoc."
   },
   "dependencies": {
-    "apidoc": "^0.18.0",
+    "apidoc": "^0.25.0",
     "express": "^4.17.1",
-    "node-watch": "^0.6.3",
-    "winston": "^3.2.1",
-    "yargs": "^15.0.2"
+    "node-watch": "^0.6.4",
+    "winston": "^3.3.3",
+    "yargs": "^16.0.3"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.7.0",
-    "eslint-config-esnext": "^4.0.0",
-    "eslint-config-node": "^4.0.0",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-babel": "^5.3.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^23.0.4",
-    "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "jest": "^24.9.0",
-    "nodemon": "^2.0.1",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.10.0",
+    "eslint-config-esnext": "^4.1.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.0.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
-    "prettier": "^1.19.1",
-    "standard-version": "^7.0.1"
+    "prettier": "^2.1.2",
+    "standard-version": "^9.0.0"
   }
 }
