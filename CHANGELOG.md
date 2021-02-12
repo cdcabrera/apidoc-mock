@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.4](https://github.com/cdcabrera/apidoc-mock/compare/v3.0.3...v3.0.4) (2021-02-12)
+
+
+### Maintenance
+
+* **build:** docker node update ([#33](https://github.com/cdcabrera/apidoc-mock/issues/33)) ([aac8d98](https://github.com/cdcabrera/apidoc-mock/commit/aac8d987481d1427f802c0f0093d770dc73db3c7))
+* **build:** npm packages, changelog ([#31](https://github.com/cdcabrera/apidoc-mock/issues/31)) ([6705bc3](https://github.com/cdcabrera/apidoc-mock/commit/6705bc36294370558c39c67dfab5280296d6af9c))
+* **build,docs:** GitHub workflows, badge ([#31](https://github.com/cdcabrera/apidoc-mock/issues/31)) ([f577e33](https://github.com/cdcabrera/apidoc-mock/commit/f577e33871bff7e05abcfb0f96ccd5f05c2b3ccf))
+
 ### [3.0.3](https://github.com/cdcabrera/apidoc-mock/compare/v3.0.2...v3.0.3) (2020-10-04)
 
 
