@@ -66,6 +66,10 @@
       {
         "type": "perf",
         "section": "Performance Improvements"
+      },
+      {
+        "type": "chore",
+        "section": "Maintenance"
       }
     ]
   },
