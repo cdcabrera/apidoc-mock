@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/cdcabrera/apidoc-mock/compare/v3.0.4...v4.0.0) (2021-05-11)
+
+
+### Bug Fixes
+
+* **build:** npm packages ([#35](https://github.com/cdcabrera/apidoc-mock/issues/35)) ([743954a](https://github.com/cdcabrera/apidoc-mock/commit/743954a953a8170fbd21e27c2eeedcbcfc1c1a0e))
+
+
+### Maintenance
+
+* **build:** activate dependabot ([#35](https://github.com/cdcabrera/apidoc-mock/issues/35)) ([1833d02](https://github.com/cdcabrera/apidoc-mock/commit/1833d02fcd592cea891384199a663154c152a6a9))
+
 ### [3.0.4](https://github.com/cdcabrera/apidoc-mock/compare/v3.0.3...v3.0.4) (2021-02-12)
 
 
