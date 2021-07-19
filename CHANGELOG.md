@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/cdcabrera/apidoc-mock/compare/v4.0.0...v4.0.1) (2021-07-19)
+
+
+### Maintenance
+
+* **build:** actions, node 16  ([#38](https://github.com/cdcabrera/apidoc-mock/issues/38)) ([d9cccb4](https://github.com/cdcabrera/apidoc-mock/commit/d9cccb4da9f4ad0a175682497a89f4ce7a21ae4f))
+
 ## [4.0.0](https://github.com/cdcabrera/apidoc-mock/compare/v3.0.4...v4.0.0) (2021-05-11)
 
 
