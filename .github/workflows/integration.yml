@@ -52,7 +52,7 @@ jobs:
             }
       - name: Code coverage
         if: ${{ success() && contains(matrix.node-version, env.COV_NODE_VERSION) }}
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v2.0.2
       - name: Confirm integration
         if: ${{ success() }}
         uses: actions/github-script@v4.0.2
