@@ -87,7 +87,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.30.0",
+    "eslint": "^7.32.0",
     "eslint-config-esnext": "^4.1.0",
     "eslint-config-node": "^4.1.0",
     "eslint-config-prettier": "^8.3.0",
