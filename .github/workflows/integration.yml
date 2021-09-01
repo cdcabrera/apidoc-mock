@@ -41,7 +41,7 @@ jobs:
         if: ${{ steps.modules-cache.outputs.cache-hit != 'true' }}
         run: yarn install
       - name: Lint and test
-        uses: actions/github-script@v4.0.2
+        uses: actions/github-script@v4.1
         with:
           script: |
             const { execSync } = require('child_process');
@@ -55,7 +55,7 @@ jobs:
         uses: codecov/codecov-action@v2.0.2
       - name: Confirm integration
         if: ${{ success() }}
-        uses: actions/github-script@v4.0.2
+        uses: actions/github-script@v4.1
         with:
           script: |
             const { execSync } = require('child_process');
