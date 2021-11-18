@@ -81,9 +81,9 @@
   "dependencies": {
     "apidoc": "^0.27.1",
     "express": "^4.17.1",
-    "node-watch": "^0.7.1",
+    "node-watch": "^0.7.2",
     "winston": "^3.3.3",
-    "yargs": "^17.0.1"
+    "yargs": "^17.2.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
