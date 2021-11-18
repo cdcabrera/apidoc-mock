@@ -1260,15 +1260,15 @@ apidoc-core@^0.15.0:
     lodash "^4.17.20"
     semver "~7.3.2"
 
-apidoc@^0.27.1:
-  version "0.27.1"
-  resolved "https://registry.yarnpkg.com/apidoc/-/apidoc-0.27.1.tgz#2931dca6bb80a49154eb8375f6e49942f0d17ec8"
-  integrity sha512-CqbsmM1ew7LC2Lg2USaSWPxdtsIp7wb3dzR2DKHYvVSo+dYIY3K7oBsup5bpi6D1OkthTUxXvWvcrDyv7lPcnw==
+apidoc@^0.29.0:
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/apidoc/-/apidoc-0.29.0.tgz#1374fa111edb00d523782ccea169e77526c19fc6"
+  integrity sha512-W6feryyFjYydpjhJI/v/l7AwQLZPULOCXzO3eu6DtTaVtnIQD0WgT/a9ZqBYUMGnkUmpLUedEd5xU/GH6FPloA==
   dependencies:
     apidoc-core "^0.15.0"
     commander "^2.20.0"
     fs-extra "^9.0.1"
-    handlebars "^4.7.6"
+    handlebars "^4.7.7"
     lodash "^4.17.20"
     markdown-it "^11.0.0"
     nodemon "^2.0.4"
@@ -3400,6 +3400,18 @@ handlebars@^4.7.6:
   version "4.7.6"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.6.tgz#d4c05c1baf90e9945f77aa68a7a219aa4a7df74e"
   integrity sha512-1f2BACcBfiwAfStCKZNrUCgqNZkGsAT7UM3kkYtXuLo0KnaVfjKOyf7PRzB6++aK9STyT1Pd2ZCPe3EGOXleXA==
+  dependencies:
+    minimist "^1.2.5"
+    neo-async "^2.6.0"
+    source-map "^0.6.1"
+    wordwrap "^1.0.0"
+  optionalDependencies:
+    uglify-js "^3.1.4"
+
+handlebars@^4.7.7:
+  version "4.7.7"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.7.tgz#9ce33416aad02dbd6c8fafa8240d5d98004945a1"
+  integrity sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==
   dependencies:
     minimist "^1.2.5"
     neo-async "^2.6.0"
