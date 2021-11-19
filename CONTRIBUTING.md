@@ -9,7 +9,7 @@ commit messaging follow the format
 
 ### Build Requirements
 To setup your work environment you'll need to use
- * [NodeJS version 12+](https://nodejs.org/)
+ * [NodeJS version 14+](https://nodejs.org/)
  * [Yarn 1.22+](https://yarnpkg.com)
  * And if you plan on making container contributions you may want to setup
     - [Docker](https://docs.docker.com/engine/installation/) or
