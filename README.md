@@ -1,6 +1,7 @@
 # Apidoc Mock
 [![Build Status](https://github.com/cdcabrera/apidoc-mock/workflows/Build/badge.svg?branch=master)](https://github.com/cdcabrera/apidoc-mock/actions?query=workflow%3ABuild)
 [![codecov](https://codecov.io/gh/cdcabrera/apidoc-mock/branch/master/graph/badge.svg)](https://codecov.io/gh/cdcabrera/apidoc-mock)
+[![Docker Repository on Quay](https://quay.io/repository/cdcabrera/apidoc-mock/status "Docker Repository on Quay")](https://quay.io/repository/cdcabrera/apidoc-mock)
 [![License](https://img.shields.io/github/license/cdcabrera/apidoc-mock.svg)](https://github.com/cdcabrera/apidoc-mock/blob/master/LICENSE)
 
 Tired of overthinking mock solutions, use [apidoc](http://apidocjs.com/) styled comments on your local files to create a
@@ -15,6 +16,7 @@ The basic requirements:
  * Optionally your system could be running
     - [Yarn 1.22+](https://yarnpkg.com), otherwise NPM should be adequate.
     - [Docker](https://docs.docker.com/engine/installation/)
+    - [Podman](https://github.com/containers/podman), Homebrew can be used for the install `$ brew install podman`, [Easy setup directions here](https://marcusnoble.co.uk/2021-09-01-migrating-from-docker-to-podman/)
  
 
 ## Use
@@ -63,20 +65,19 @@ or Yarn
   
   It's recommended you make sure to `.gitignore` the `.docs` directory that gets generated for `apidocs`. 
 
-### Or roll with a Docker setup
+### Or roll with a container setup
 
-Apidoc Mock can also be found on Docker Hub...
+Apidoc Mock can be found on Quay.io ...
 
-* [Docker Hub, cdcabrera/apidoc-mock](https://hub.docker.com/r/cdcabrera/apidoc-mock/)
+* [Quay.io, cdcabrera/apidoc-mock](https://quay.io/repository/cdcabrera/apidoc-mock)
 
 #### Example
 
-The base Docker image comes preloaded with a "hello/world" example, the basics
+The base Quay image comes preloaded with a "hello/world" example, the basics
 
   ```shell
-    $ docker pull cdcabrera/apidoc-mock
     $ docker stop mock-api-test
-    $ docker run -i --rm -p 8000:8000 --name mock-api-test cdcabrera/apidoc-mock
+    $ docker run -d --rm -p 8000:8000 --name mock-api-test quay.io/cdcabrera/apidoc-mock && docker ps
   ```
   
 From there you should be able to navigate to
@@ -96,7 +97,7 @@ From there you should be able to navigate to
        *     HTTP/1.1 200 OK
        *     {
        *       "foo": "hello",
-       *       "bar": "world",
+       *       "bar": "world"
        *     }
        */
       const getExample = () => {};
@@ -110,7 +111,7 @@ From there you should be able to navigate to
        *     HTTP/1.1 200 OK
        *     {
        *       "foo": "hello",
-       *       "bar": "world",
+       *       "bar": "world"
        *     }
        */
       const postExample = () => {};
@@ -176,13 +177,13 @@ Apidoc Mock adds in a few different custom flags to help you identify or demonst
        *     HTTP/1.1 200 OK
        *     {
        *       "foo": "hello",
-       *       "bar": "world",
+       *       "bar": "world"
        *     }
        * @apiSuccessExample {json} Success-Response:
        *     HTTP/1.1 200 OK
        *     {
        *       "lorem": "dolor",
-       *       "ipsum": "est",
+       *       "ipsum": "est"
        *     }
        * @apiError {String} bad
        * @apiError {String} request
@@ -190,7 +191,7 @@ Apidoc Mock adds in a few different custom flags to help you identify or demonst
        *     HTTP/1.1 400 OK
        *     {
        *       "bad": "hello",
-       *       "request": "world",
+       *       "request": "world"
        *     }
        */
       const getExample = () => {};
@@ -207,13 +208,13 @@ Apidoc Mock adds in a few different custom flags to help you identify or demonst
        *     HTTP/1.1 200 OK
        *     {
        *       "foo": "hello",
-       *       "bar": "world",
+       *       "bar": "world"
        *     }
        * @apiSuccessExample {json} Success-Response:
        *     HTTP/1.1 200 OK
        *     {
        *       "lorem": "dolor",
-       *       "ipsum": "est",
+       *       "ipsum": "est"
        *     }
        * @apiError {String} bad
        * @apiError {String} request
@@ -221,7 +222,7 @@ Apidoc Mock adds in a few different custom flags to help you identify or demonst
        *     HTTP/1.1 400 OK
        *     {
        *       "bad": "hello",
-       *       "request": "world",
+       *       "request": "world"
        *     }
        */
       const getExample = () => {};
@@ -238,7 +239,7 @@ Apidoc Mock adds in a few different custom flags to help you identify or demonst
        *     HTTP/1.1 200 OK
        *     {
        *       "foo": "hello",
-       *       "bar": "world",
+       *       "bar": "world"
        *     }
        * @apiError {String} bad
        * @apiError {String} request
@@ -246,7 +247,7 @@ Apidoc Mock adds in a few different custom flags to help you identify or demonst
        *     HTTP/1.1 400 OK
        *     {
        *       "bad": "hello",
-       *       "request": "world",
+       *       "request": "world"
        *     }
        */
       const getExample = () => {};
@@ -263,7 +264,7 @@ Apidoc Mock adds in a few different custom flags to help you identify or demonst
        *     HTTP/1.1 200 OK
        *     {
        *       "foo": "hello",
-       *       "bar": "world",
+       *       "bar": "world"
        *     }
        * @apiError {String} bad
        * @apiError {String} request
@@ -271,7 +272,7 @@ Apidoc Mock adds in a few different custom flags to help you identify or demonst
        *     HTTP/1.1 400 OK
        *     {
        *       "bad": "hello",
-       *       "request": "world",
+       *       "request": "world"
        *     }
        */
       const getExample = () => {};

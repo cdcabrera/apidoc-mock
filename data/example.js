@@ -7,13 +7,13 @@
  *     HTTP/1.1 200 OK
  *     {
  *       "foo": "hello",
- *       "bar": "world",
+ *       "bar": "world"
  *     }
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 201 OK
  *     {
  *       "lorem": "dolor",
- *       "ipsum": "est",
+ *       "ipsum": "est"
  *     }
  * @apiError {String} bad
  * @apiError {String} request
@@ -21,7 +21,7 @@
  *     HTTP/1.1 400 OK
  *     {
  *       "bad": "hello",
- *       "request": "world",
+ *       "request": "world"
  *     }
  */
 const getExample = () => {};
