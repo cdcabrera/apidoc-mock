@@ -134,13 +134,12 @@ From there you should be able to navigate to
       $ npm run mock
     ```
 
-   #### Or if you're using a Docker setup
-   Make sure Docker is running, and pull in the Docker image. Setup something like...
+   #### Or if you're using a container setup
+   Make sure Docker, or Podman, is running, and pull in the Quay.io image. Setup something like...
     
     ```js
       "scripts": {
-        "mock:setup": "docker pull cdcabrera/apidoc-mock",
-        "mock:run": "docker stop mock-api-test; docker run -i --rm -p [YOUR PORT]:8000 -v \"$(pwd)[PATH TO YOUR JS FILES]:/app/data\" --name mock-api-test cdcabrera/apidoc-mock"
+        "mock:run": "docker stop mock-api-test; docker run -i --rm -p [YOUR PORT]:8000 -v \"$(pwd)[PATH TO YOUR JS FILES]:/app/data\" --name mock-api-test quay.io/cdcabrera/apidoc-mock"
       }
     ```
    You'll need to pick a port like... `-p 8000:8000` and a directory path to pull the apiDoc code comments/annotations from... `-v \"$(pwd)/src:/app/data\"`.
