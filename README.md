@@ -12,7 +12,7 @@ a delay to see how your codebase will handle loading scenarios with a balls slow
 
 ## Requirements
 The basic requirements:
- * [NodeJS version 12+](https://nodejs.org/)
+ * [NodeJS version 14+](https://nodejs.org/)
  * Optionally your system could be running
     - [Yarn 1.22+](https://yarnpkg.com), otherwise NPM should be adequate.
     - [Docker](https://docs.docker.com/engine/installation/)
