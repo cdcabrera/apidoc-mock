@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.2](https://github.com/cdcabrera/apidoc-mock/compare/v4.0.1...v4.0.2) (2021-11-19)
+
+
+### Maintenance
+
+* **build:** npm packages ([#81](https://github.com/cdcabrera/apidoc-mock/issues/81)) ([ba46694](https://github.com/cdcabrera/apidoc-mock/commit/ba46694e5ab7c508abd4cc63a3936ada0ca8836f))
+* **build:** npm updates ([#82](https://github.com/cdcabrera/apidoc-mock/issues/82)) ([64776c2](https://github.com/cdcabrera/apidoc-mock/commit/64776c226d57a112f1010bc7ce3c2eb9b44da8bc))
+* **docs:** docker refs ([#85](https://github.com/cdcabrera/apidoc-mock/issues/85)) ([63d0211](https://github.com/cdcabrera/apidoc-mock/commit/63d021139876656fa9f75a87272a3698631288e5))
+* **docs,example:** readme and example json clean up ([#84](https://github.com/cdcabrera/apidoc-mock/issues/84)) ([0c5dce0](https://github.com/cdcabrera/apidoc-mock/commit/0c5dce0a77dd6cbae60344ba6d14e19797ebe178))
+
 ### [4.0.1](https://github.com/cdcabrera/apidoc-mock/compare/v4.0.0...v4.0.1) (2021-07-19)
 
 
