@@ -18,6 +18,7 @@
     "mock": "./bin/cli.js"
   },
   "scripts": {
+    "build:deps": "ncu --doctor -u --doctorInstall \"yarn\" --doctorTest \"yarn test:deps\" --reject \"apidoc\"",
     "docker:build": "docker build -t apidoc-mock-test .",
     "docker:run": "docker stop mock-api-test; docker run -i --rm -p 5000:8000 -v \"$(pwd)/data:/app/data\" --name mock-api-test apidoc-mock-test",
     "docker:stop": "docker stop mock-api-test",
@@ -27,6 +28,7 @@
     "test": "run-s -l test:lint test:ci",
     "test:ci": "export CI=true; jest --collectCoverage",
     "test:clearCache": "jest --clearCache",
+    "test:deps": "rm -rf ./.docs; run-s test",
     "test:dev": "rm -rf ./.docs; eslint ./src; jest --watch",
     "test:integration": "jest --roots=./tests",
     "test:integration-dev": "jest --roots=./tests --watchAll",
@@ -102,6 +104,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
+    "npm-check-updates": "^12.5.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
     "standard-version": "^9.3.2"
