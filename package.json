@@ -83,7 +83,7 @@
     "description": "API documentation with apiDoc."
   },
   "dependencies": {
-    "apidoc": "^0.29.0",
+    "apidoc": "^0.51.0",
     "express": "^4.17.2",
     "node-watch": "^0.7.2",
     "winston": "^3.6.0",
