@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.3](https://github.com/cdcabrera/apidoc-mock/compare/v4.0.2...v4.0.3) (2022-05-03)
+
+
+### Bug Fixes
+
+* **build:** npm packages ([#111](https://github.com/cdcabrera/apidoc-mock/issues/111)) ([fa67334](https://github.com/cdcabrera/apidoc-mock/commit/fa6733472d22f81059bdecbc3851d0e15a1c84a7))
+
+
+### Build Updates
+
+* **deps:** aggregated checks, updates ([#118](https://github.com/cdcabrera/apidoc-mock/issues/118)) ([23fe487](https://github.com/cdcabrera/apidoc-mock/commit/23fe4871eefa62272fc7a836284156f1686b850a))
+* **deps:** bump actions/cache from 2 to 3 ([#127](https://github.com/cdcabrera/apidoc-mock/issues/127)) ([13189bc](https://github.com/cdcabrera/apidoc-mock/commit/13189bca2fcf7fc8d2d564120c33bbbb88f3b820))
+* **deps:** bump actions/checkout from 2 to 3 ([#120](https://github.com/cdcabrera/apidoc-mock/issues/120)) ([55fce5b](https://github.com/cdcabrera/apidoc-mock/commit/55fce5b67755f1aea1c28c32c60c632c16b06854))
+* **deps:** bump actions/github-script from 5 to 6 ([#113](https://github.com/cdcabrera/apidoc-mock/issues/113)) ([14b26bc](https://github.com/cdcabrera/apidoc-mock/commit/14b26bcdf3ae3d4942037efe53e20ad7eca24550))
+* **deps:** bump actions/setup-node from 2.4.1 to 2.5.0 ([#87](https://github.com/cdcabrera/apidoc-mock/issues/87)) ([50e6e05](https://github.com/cdcabrera/apidoc-mock/commit/50e6e05a68c138a922fd59aeed3ec2a14bee375c))
+* **deps:** bump actions/setup-node from 2.5.0 to 2.5.1 ([#97](https://github.com/cdcabrera/apidoc-mock/issues/97)) ([fdae9ea](https://github.com/cdcabrera/apidoc-mock/commit/fdae9eaf458302f1986b96142e8569f183a1437e))
+* **deps:** bump actions/setup-node from 2.5.1 to 3 ([#112](https://github.com/cdcabrera/apidoc-mock/issues/112)) ([344ba04](https://github.com/cdcabrera/apidoc-mock/commit/344ba04f85b9fc875fc4cd424f84dc93793620a8))
+* **deps:** bump codecov/codecov-action from 2.1.0 to 3.1.0 ([#137](https://github.com/cdcabrera/apidoc-mock/issues/137)) ([898d32f](https://github.com/cdcabrera/apidoc-mock/commit/898d32f27408f72bff765ae8fd1dba16ae7b0ed8))
+* **deps:** bump express from 4.17.1 to 4.17.2 ([#100](https://github.com/cdcabrera/apidoc-mock/issues/100)) ([8518ded](https://github.com/cdcabrera/apidoc-mock/commit/8518ded3a41885b32489af732155cdaa34f57a56))
+* **nodejs:** remove node 12 support ([#86](https://github.com/cdcabrera/apidoc-mock/issues/86)) ([3d9cc4f](https://github.com/cdcabrera/apidoc-mock/commit/3d9cc4f77a9758db8eecde3aca9c1975bce7cedc))
+
 ### [4.0.2](https://github.com/cdcabrera/apidoc-mock/compare/v4.0.1...v4.0.2) (2021-11-19)
 
 
