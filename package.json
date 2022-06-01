@@ -92,7 +92,7 @@
     "yargs": "^17.4.1"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.17.0",
+    "@babel/eslint-parser": "^7.18.2",
     "eslint": "^8.14.0",
     "eslint-config-esnext": "^4.1.0",
     "eslint-config-node": "^4.1.0",
