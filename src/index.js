@@ -43,7 +43,7 @@ const setupDocs = (dataPath = '', docsPath = '') => {
 /**
  * Build response
  *
- * @param {array} apiJson
+ * @param {Array} apiJson
  * @param {number} port
  * @returns {*}
  */
@@ -67,9 +67,10 @@ const setupResponse = (apiJson = [], port) => {
 /**
  * ApiDocMock
  *
- * @param {number} port
- * @param {(string|string[])} dataPath
- * @param {string} docsPath
+ * @param {object} params
+ * @param {number} params.port
+ * @param {(string|string[])} params.dataPath
+ * @param {string} params.docsPath
  * @returns {*}
  */
 const apiDocMock = ({ port = 8000, dataPath, docsPath = '.docs' }) => {

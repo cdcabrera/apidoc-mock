@@ -5,8 +5,9 @@ const { logger } = require('../logger/configLogger');
 /**
  * Compile/build ApiDoc documentation.
  *
- * @param {object} apiDocsConfig
- * @param {string} apiJsonFile
+ * @param {object} params
+ * @param {object} params.apiDocsConfig
+ * @param {string} params.apiJsonFile
  * @returns {object}
  */
 const buildDocs = ({ apiDocsConfig = null, apiJsonFile = null }) => {

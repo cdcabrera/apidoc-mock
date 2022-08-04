@@ -1,8 +1,8 @@
 /**
  * @api {get} /hello/world/
  * @apiMock {RandomResponse}
- * @apiSuccess {String} foo
- * @apiSuccess {String} bar
+ * @apiSuccess {string} foo
+ * @apiSuccess {string} bar
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  *     {
@@ -15,8 +15,8 @@
  *       "lorem": "dolor",
  *       "ipsum": "est"
  *     }
- * @apiError {String} bad
- * @apiError {String} request
+ * @apiError {string} bad
+ * @apiError {string} request
  * @apiErrorExample {json} Error-Response:
  *     HTTP/1.1 400 OK
  *     {
@@ -29,16 +29,16 @@ const getExample = () => {};
 /**
  * @api {post} /hello/world/
  * @apiMock {RandomResponse}
- * @apiHeader {String} Authorization Authorization: Token AUTH_TOKEN
- * @apiSuccess {String} foo
- * @apiSuccess {String} bar
+ * @apiHeader {string} Authorization Authorization: Token AUTH_TOKEN
+ * @apiSuccess {string} foo
+ * @apiSuccess {string} bar
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 201 OK
  *     {
  *       "foo": "hello",
  *       "bar": "world"
  *     }
- * @apiError {String} detail
+ * @apiError {string} detail
  * @apiErrorExample {json} Error-Response:
  *     HTTP/1.1 401 Unauthorized
  *     {
@@ -49,9 +49,9 @@ const postExample = () => {};
 
 /**
  * @api {put} /hello/world/
- * @apiHeader {String} Authorization Authorization: Token AUTH_TOKEN
- * @apiSuccess {String} foo
- * @apiSuccess {String} bar
+ * @apiHeader {string} Authorization Authorization: Token AUTH_TOKEN
+ * @apiSuccess {string} foo
+ * @apiSuccess {string} bar
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  *     {
@@ -63,9 +63,9 @@ const putExample = () => {};
 
 /**
  * @api {patch} /hello/world/
- * @apiHeader {String} Authorization Authorization: Token AUTH_TOKEN
- * @apiSuccess {String} foo
- * @apiSuccess {String} bar
+ * @apiHeader {string} Authorization Authorization: Token AUTH_TOKEN
+ * @apiSuccess {string} foo
+ * @apiSuccess {string} bar
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  *     {
@@ -77,9 +77,9 @@ const patchExample = () => {};
 
 /**
  * @api {delete} /hello/world/
- * @apiHeader {String} Authorization Authorization: Token AUTH_TOKEN
- * @apiSuccess {String} foo
- * @apiSuccess {String} bar
+ * @apiHeader {string} Authorization Authorization: Token AUTH_TOKEN
+ * @apiSuccess {string} foo
+ * @apiSuccess {string} bar
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  *     {

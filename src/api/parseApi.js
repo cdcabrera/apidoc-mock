@@ -4,9 +4,9 @@ const { logger } = require('../logger/configLogger');
  * Return forced response, or a general example.
  *
  * @param {object} mockSettings
- * @param {array} exampleObjects
- * @param {array} successObjects
- * @param {array} errorObjects
+ * @param {Array} exampleObjects
+ * @param {Array} successObjects
+ * @param {Array} errorObjects
  * @returns {{type: string, status: number, content: string}}
  */
 const exampleResponse = (mockSettings, exampleObjects, successObjects, errorObjects) => {
@@ -73,7 +73,7 @@ const exampleResponse = (mockSettings, exampleObjects, successObjects, errorObje
 /**
  * Return a 401 specific example.
  *
- * @param {array} errorObjects
+ * @param {Array} errorObjects
  * @returns {{type: string, status: number, content: string}}
  */
 const parseAuthExample = (errorObjects = []) => {
@@ -85,7 +85,8 @@ const parseAuthExample = (errorObjects = []) => {
 /**
  * Parse custom mock settings.
  *
- * @param {Object} mock
+ * @param {object} params
+ * @param {object} params.mock
  * @returns {object}
  */
 const parseCustomMockSettings = ({ mock = null }) => {
@@ -142,7 +143,7 @@ const parseCustomMockSettings = ({ mock = null }) => {
 /**
  * Set http status
  *
- * @param {array} examples
+ * @param {Array} examples
  * @param {string} response
  * @param {string} type
  * @param {string} path
