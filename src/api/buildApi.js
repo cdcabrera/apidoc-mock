@@ -12,7 +12,7 @@ const {
  *
  * @param {object} request
  * @param {object} response
- * @param {function} next
+ * @param {Function} next
  */
 const buildRequestHeaders = (request, response, next) => {
   const hasOrigin = request.headers.origin != null;
@@ -37,8 +37,8 @@ const buildRequestHeaders = (request, response, next) => {
 /**
  * Build API response
  *
- * @param {array} apiJson
- * @returns {{app:array, routesLoaded: boolean}}
+ * @param {Array} apiJson
+ * @returns {{app:Array, routesLoaded: boolean}}
  */
 const buildResponse = (apiJson = []) => {
   const appResponses = [];

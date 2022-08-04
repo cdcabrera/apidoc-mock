@@ -32,7 +32,7 @@
     "test:dev": "rm -rf ./.docs; eslint ./src; jest --watch",
     "test:integration": "jest --roots=./tests",
     "test:integration-dev": "jest --roots=./tests --watchAll",
-    "test:lint": "eslint ./src ./bin"
+    "test:lint": "eslint ./src ./bin ./data"
   },
   "jest": {
     "roots": [
@@ -92,14 +92,12 @@
     "yargs": "^17.5.1"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.18.9",
     "eslint": "^8.21.0",
-    "eslint-config-esnext": "^4.1.0",
-    "eslint-config-node": "^4.1.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-babel": "^5.3.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^26.7.0",
+    "eslint-plugin-jsdoc": "^39.3.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "jest": "^28.1.3",

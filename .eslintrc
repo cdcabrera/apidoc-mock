@@ -1,23 +1,24 @@
 {
-  "parser": "@babel/eslint-parser",
   "env": {
-    "es6": true,
+    "es2020": true,
     "jest": true,
     "node": true
   },
   "plugins": [
     "jest",
+    "jsdoc",
     "node",
     "prettier"
   ],
   "extends": [
     "eslint:recommended",
+    "plugin:jsdoc/recommended",
     "plugin:jest/recommended",
     "plugin:node/recommended",
     "plugin:prettier/recommended"
   ],
   "parserOptions":{
-    "ecmaVersion": 2018
+    "ecmaVersion": 2020
   },
   "rules": {
     "arrow-parens": [
@@ -25,6 +26,40 @@
       "as-needed"
     ],
     "comma-dangle": 0,
+    "jsdoc/check-tag-names": [
+      2,
+      {
+        "definedTags": [
+          "api",
+          "apiDescription",
+          "apiHeader",
+          "apiSuccess",
+          "apiSuccessExample",
+          "apiError",
+          "apiErrorExample",
+          "apiMock",
+          "apiParam"
+        ]
+      }
+    ],
+    "jsdoc/no-undefined-types": [
+      1,
+      {
+        "definedTypes": [
+          "delete",
+          "get",
+          "html",
+          "json",
+          "patch",
+          "post",
+          "put",
+          "RandomResponse"
+        ]
+      }
+    ],
+    "jsdoc/require-param-description": 0,
+    "jsdoc/require-property-description": 0,
+    "jsdoc/require-returns-description": 0,
     "max-len": [
       "error",
       {
