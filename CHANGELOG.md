@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.4](https://github.com/cdcabrera/apidoc-mock/compare/v4.0.3...v4.0.4) (2022-08-04)
+
+
+### Bug Fixes
+
+* **build:** eslint, jsdoc updates ([#163](https://github.com/cdcabrera/apidoc-mock/issues/163)) ([dd20d53](https://github.com/cdcabrera/apidoc-mock/commit/dd20d537b5e94a651f5a7ceb965033ae90df18d2))
+
+
+### Build Updates
+
+* **deps-dev:** bump nodemon from 2.0.16 to 2.0.19 ([#155](https://github.com/cdcabrera/apidoc-mock/issues/155)) ([c51981a](https://github.com/cdcabrera/apidoc-mock/commit/c51981aa711028b1c87a7e3f97dd265eda42d973))
+* **deps-dev:** bump standard-version from 9.3.2 to 9.5.0 ([#145](https://github.com/cdcabrera/apidoc-mock/issues/145)) ([7286515](https://github.com/cdcabrera/apidoc-mock/commit/7286515f50b4afa6f5fcaa96aa27aeb8e1e11f66))
+
+
+### Maintenance
+
+* **build:** npm packages ([#139](https://github.com/cdcabrera/apidoc-mock/issues/139)) ([6f0f55d](https://github.com/cdcabrera/apidoc-mock/commit/6f0f55d324d8e62204eeca859c8f4b1fc3226824))
+* **build:** npm packages ([#163](https://github.com/cdcabrera/apidoc-mock/issues/163)) ([e5c456e](https://github.com/cdcabrera/apidoc-mock/commit/e5c456eaf5f093954610fa4aff781d406631b1e2))
+
 ### [4.0.3](https://github.com/cdcabrera/apidoc-mock/compare/v4.0.2...v4.0.3) (2022-05-03)
 
 
