@@ -44,13 +44,14 @@ const buildResponse = (apiJson = []) => {
   const appResponses = [];
   let routesLoaded = 0;
 
-  apiJson.forEach(value => {
+  apiJson.forEach((value = {}) => {
+    const { error = {}, header, success = {}, type, url } = value;
     try {
-      const successExamples = (value.success && value.success.examples) || [];
-      const errorExamples = (value.error && value.error.examples) || [];
+      const successExamples = success?.examples || [];
+      const errorExamples = error?.examples || [];
       const mockSettings = parseCustomMockSettings(value);
-      const successObjects = parseStatus(successExamples, 'success', value.type, value.url);
-      const errorObjects = parseStatus(errorExamples, 'error', value.type, value.url);
+      const successObjects = parseStatus(successExamples, 'success', type, url);
+      const errorObjects = parseStatus(errorExamples, 'error', type, url);
       const authExample = parseAuthExample(errorObjects);
       const exampleObjects = successObjects.concat(errorObjects);
 
@@ -61,8 +62,8 @@ const buildResponse = (apiJson = []) => {
       }
 
       appResponses.push({
-        type: value.type,
-        url: value.url,
+        type,
+        url,
         callback: (request, response) => {
           if (mockSettings.reload) {
             example = exampleResponse(mockSettings, exampleObjects, successObjects, errorObjects);
@@ -73,51 +74,45 @@ const buildResponse = (apiJson = []) => {
 
           response.set('Cache-Control', 'no-cache');
 
-          if (httpStatus < 500) {
-            if (value.header && value.header.fields.Header && value.header.fields.Header.length) {
-              for (let i = 0; i < value.header.fields.Header.length; i++) {
-                const headerValue = value.header.fields.Header[i];
+          if (httpStatus < 500 && Array.isArray(header?.fields?.Header)) {
+            header?.fields?.Header?.forEach(headerValue => {
+              if (
+                !headerValue.optional &&
+                headerValue.field &&
+                /authorization/i.test(headerValue.field)
+              ) {
+                const authorization = request.get('authorization');
 
-                if (
-                  !headerValue.optional &&
-                  headerValue.field &&
-                  /authorization/i.test(headerValue.field)
-                ) {
-                  const authorization = request.get('authorization');
+                if (!authorization) {
+                  const authObj = parseContentAndType(authExample.content, authExample.type);
 
-                  if (!authorization) {
-                    const authObj = parseContentAndType(authExample.content, authExample.type);
+                  response.append('WWW-Authenticate', 'Spoof response');
+                  response.status(401);
+                  response.set('Content-Type', authObj.type);
 
-                    response.append('WWW-Authenticate', 'Spoof response');
-                    response.status(401);
-                    response.set('Content-Type', authObj.type);
-
-                    if (mockSettings.delay > 0) {
-                      logger.info(`waiting\t:401 :${value.type} :${value.url}`);
-                    }
-
-                    setTimeout(() => {
-                      logger.info(`response\t:401 :${value.type} :${value.url}`);
-
-                      response.end(authObj.content || 'Authorization Required');
-                    }, mockSettings.delay || 0);
-
-                    return;
+                  if (mockSettings.delay > 0) {
+                    logger.info(`waiting\t:401 :${type} :${url}`);
                   }
+
+                  setTimeout(() => {
+                    logger.info(`response\t:401 :${type} :${url}`);
+
+                    response.end(authObj.content || 'Authorization Required');
+                  }, mockSettings.delay || 0);
                 }
               }
-            }
+            });
           }
 
           response.set('Content-Type', type);
           response.status(httpStatus);
 
           if (mockSettings.delay > 0) {
-            logger.info(`waiting\t:${httpStatus} :${value.type} :${value.url}`);
+            logger.info(`waiting\t:${httpStatus} :${type} :${url}`);
           }
 
           setTimeout(() => {
-            logger.info(`response\t:${httpStatus} :${value.type} :${value.url}`);
+            logger.info(`response\t:${httpStatus} :${type} :${url}`);
 
             response.send(content);
           }, mockSettings.delay || 0);
