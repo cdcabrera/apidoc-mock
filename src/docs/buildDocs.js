@@ -10,7 +10,7 @@ const { logger } = require('../logger/configLogger');
  * @param {string} params.apiJsonFile
  * @returns {object}
  */
-const buildDocs = ({ apiDocsConfig = null, apiJsonFile = null }) => {
+const buildDocs = ({ apiDocsConfig = null, apiJsonFile = null } = {}) => {
   let result;
 
   if (apiDocsConfig) {
