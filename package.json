@@ -1,6 +1,6 @@
 {
   "name": "apidoc-mock",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "Create a mock server from apiDoc comments.",
   "author": "cdcabrera",
   "license": "MIT",
@@ -50,7 +50,9 @@
       "src/**/*.js",
       "!src/logger/*"
     ],
-    "setupFilesAfterEnv": ["<rootDir>jest.setupTests.js"]
+    "setupFilesAfterEnv": [
+      "<rootDir>jest.setupTests.js"
+    ]
   },
   "standard-version": {
     "types": [

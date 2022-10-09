@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.5](https://github.com/cdcabrera/apidoc-mock/compare/v4.0.4...v4.0.5) (2022-10-09)
+
+
+### Bug Fixes
+
+* **build:** npm packages ([#178](https://github.com/cdcabrera/apidoc-mock/issues/178)) ([6135832](https://github.com/cdcabrera/apidoc-mock/commit/613583218390443c39caab0636dc059fc721549c))
+
+
+### Build Updates
+
+* **deps:** bump codecov/codecov-action from 3.1.0 to 3.1.1 ([#169](https://github.com/cdcabrera/apidoc-mock/issues/169)) ([fe7d39c](https://github.com/cdcabrera/apidoc-mock/commit/fe7d39cdfcee604d8328d0256f5ec9925024807b))
+
 ### [4.0.4](https://github.com/cdcabrera/apidoc-mock/compare/v4.0.3...v4.0.4) (2022-08-04)
 
 
