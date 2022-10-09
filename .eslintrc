@@ -17,6 +17,10 @@
     "plugin:node/recommended",
     "plugin:prettier/recommended"
   ],
+  "globals": {
+    "__basedir": "readonly",
+    "generateFixture": "readonly"
+  },
   "parserOptions":{
     "ecmaVersion": 2020
   },

@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BuildApi should build a response with specific properties: buildResponse 1`] = `
-Object {
-  "appResponses": Array [
-    Object {
+{
+  "appResponses": [
+    {
       "callback": [Function],
       "type": "get",
       "url": "/hello/world/",
@@ -14,7 +14,7 @@ Object {
 `;
 
 exports[`BuildApi should build specific headers: buildRequestHeaders.request.headers 1`] = `
-Object {
+{
   "Access-Control-Allow-Credentials": true,
   "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, HEAD, OPTIONS, PATCH",
   "Access-Control-Allow-Origin": "*",
@@ -22,7 +22,7 @@ Object {
 `;
 
 exports[`BuildApi should build specific headers: buildRequestHeaders.request.preflight 1`] = `
-Object {
+{
   "Access-Control-Allow-Credentials": true,
   "Access-Control-Allow-Headers": "x-test-header",
   "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, HEAD, OPTIONS, PATCH",

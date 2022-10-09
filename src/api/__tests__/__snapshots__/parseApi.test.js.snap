@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ParseApi return a 401 specific example: parseAuthExample 1`] = `
-Object {
+{
   "content": "HTTP/1.1 401 Unauthorized
 {
-  \\"detail\\": \\"Authentication credentials were not provided.\\"
+  "detail": "Authentication credentials were not provided."
 }",
   "status": 401,
   "title": "Error-Response:",
@@ -13,7 +13,7 @@ Object {
 `;
 
 exports[`ParseApi should force a response, or a general example: exampleResponse.fallback 1`] = `
-Object {
+{
   "content": "Success",
   "status": 200,
   "type": "text",
@@ -21,19 +21,19 @@ Object {
 `;
 
 exports[`ParseApi should force a response, or a general example: exampleResponse.forcedStatus.200 1`] = `
-Object {
+{
   "status": 200,
 }
 `;
 
 exports[`ParseApi should force a response, or a general example: exampleResponse.forcedStatus.400 1`] = `
-Object {
+{
   "status": 400,
 }
 `;
 
 exports[`ParseApi should parse custom mock api settings: parseCustomMockSettings 1`] = `
-Object {
+{
   "delay": 2000,
   "forceStatus": 401,
   "reload": true,
@@ -42,38 +42,38 @@ Object {
 `;
 
 exports[`ParseApi should parse malformed mock api settings and provide fallbacks: parseCustomMockSettings.delayResponse.malformed 1`] = `
-Object {
+{
   "delay": 1000,
 }
 `;
 
 exports[`ParseApi should parse malformed mock api settings and provide fallbacks: parseCustomMockSettings.forceStatus.malformed 1`] = `
-Object {
+{
   "forceStatus": 200,
 }
 `;
 
 exports[`ParseApi should parse random mock api settings: parseCustomMockSettings.randomError 1`] = `
-Object {
+{
   "reload": true,
   "response": "error",
 }
 `;
 
 exports[`ParseApi should parse random mock api settings: parseCustomMockSettings.randomSuccess 1`] = `
-Object {
+{
   "reload": true,
   "response": "success",
 }
 `;
 
 exports[`ParseApi should parse type and status examples: parseStatus.success.delete 1`] = `
-Array [
-  Object {
+[
+  {
     "content": "HTTP/1.1 200 OK
 {
-  \\"foo\\": \\"hello\\",
-  \\"bar\\": \\"world\\"
+  "foo": "hello",
+  "bar": "world"
 }",
     "status": 200,
     "title": "Success-Response:",
@@ -83,12 +83,12 @@ Array [
 `;
 
 exports[`ParseApi should parse type and status examples: parseStatus.success.get 1`] = `
-Array [
-  Object {
+[
+  {
     "content": "HTTP/1.1 200 OK
 {
-  \\"foo\\": \\"hello\\",
-  \\"bar\\": \\"world\\"
+  "foo": "hello",
+  "bar": "world"
 }",
     "status": 200,
     "title": "Success-Response:",
@@ -98,20 +98,20 @@ Array [
 `;
 
 exports[`ParseApi should return a mock mime type and parsed content: parseContentAndType 1`] = `
-Object {
+{
   "content": "{
-  \\"foo\\": \\"hello\\",
-  \\"bar\\": \\"world\\"
+  "foo": "hello",
+  "bar": "world"
 }",
   "type": "application/json",
 }
 `;
 
 exports[`ParseApi should return a mock mime type and parsed content: parseContentAndType.fallback 1`] = `
-Object {
+{
   "content": "{
-  \\"foo\\": \\"hello\\",
-  \\"bar\\": \\"world\\"
+  "foo": "hello",
+  "bar": "world"
 }",
   "type": "text/plain",
 }
