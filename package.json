@@ -22,7 +22,7 @@
     "docker:build": "docker build -t apidoc-mock-test .",
     "docker:run": "docker stop mock-api-test; docker run -i --rm -p 5000:8000 -v \"$(pwd)/data:/app/data\" --name mock-api-test apidoc-mock-test",
     "docker:stop": "docker stop mock-api-test",
-    "release": "standard-version",
+    "release": "changelog",
     "start": "./bin/cli.js -w ./data",
     "start:dev": "nodemon --watch data --watch src './bin/cli.js -w ./data'",
     "test": "run-s -l test:lint test:ci",
@@ -54,34 +54,6 @@
       "<rootDir>jest.setupTests.js"
     ]
   },
-  "standard-version": {
-    "types": [
-      {
-        "type": "feat",
-        "section": "Features"
-      },
-      {
-        "type": "fix",
-        "section": "Bug Fixes"
-      },
-      {
-        "type": "refactor",
-        "section": "Code Refactoring"
-      },
-      {
-        "type": "perf",
-        "section": "Performance Improvements"
-      },
-      {
-        "type": "build",
-        "section": "Build Updates"
-      },
-      {
-        "type": "chore",
-        "section": "Maintenance"
-      }
-    ]
-  },
   "apidoc": {
     "title": "Custom apiDocs",
     "name": "apiDocs",
@@ -95,6 +67,7 @@
     "yargs": "^17.6.0"
   },
   "devDependencies": {
+    "changelog-light": "^0.2.1",
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-babel": "^5.3.1",
@@ -107,8 +80,7 @@
     "nodemon": "^2.0.20",
     "npm-check-updates": "^16.3.9",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.7.1",
-    "standard-version": "^9.5.0"
+    "prettier": "^2.7.1"
   },
   "resolutions": {
     "**/eslint": "6.8.0"
