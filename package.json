@@ -60,7 +60,7 @@
     "description": "API documentation with apiDoc."
   },
   "dependencies": {
-    "apidoc": "^0.29.0",
+    "apidoc": "^0.53.1",
     "express": "^4.18.2",
     "node-watch": "^0.7.3",
     "winston": "^3.8.2",
