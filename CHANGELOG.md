@@ -2,7 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
-### [4.0.5](https://github.com/cdcabrera/apidoc-mock/compare/v4.0.4...v4.0.5) (2022-10-09)
+
+## [4.0.6](https://github.com/cdcabrera/apidoc-mock/compare/1f64114b597da92f303f8bbb55b6d25574ccacee...1779e2183a83ac140454b59a424f964d67e1f9e7) (2022-11-05)
+
+### Chores
+* **build** npm updates  ([#191](https://github.com/cdcabrera/apidoc-mock/pull/191)) ([1779e21](https://github.com/cdcabrera/apidoc-mock/commit/1779e2183a83ac140454b59a424f964d67e1f9e7))
+
+### Builds
+* **deps-dev** move to changelog-light  ([c1331fb](https://github.com/cdcabrera/apidoc-mock/commit/c1331fb4706ea092c4be02a6a24315dc48de0535))
+
+## [4.0.5](https://github.com/cdcabrera/apidoc-mock/compare/v4.0.4...v4.0.5) (2022-10-09)
 
 
 ### Bug Fixes
