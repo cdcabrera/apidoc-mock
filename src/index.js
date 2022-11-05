@@ -73,7 +73,7 @@ const setupResponse = (apiJson = [], port) => {
  * @param {string} params.docsPath
  * @returns {*}
  */
-const apiDocMock = ({ port = 8000, dataPath, docsPath = '.docs' }) => {
+const apiDocMock = ({ port = 8000, dataPath, docsPath = '.docs' } = {}) => {
   const apiJson = setupDocs(dataPath, docsPath);
   let server = null;
 

@@ -89,53 +89,51 @@ const parseAuthExample = (errorObjects = []) => {
  * @param {object} params.mock
  * @returns {object}
  */
-const parseCustomMockSettings = ({ mock = null }) => {
+const parseCustomMockSettings = ({ mock = null } = {}) => {
   const settings = {};
 
-  if (mock && mock.settings && mock.settings.length) {
-    mock.settings.forEach(val => {
-      const keys = Object.keys(val);
-      const key = keys[0] || '';
+  mock?.settings?.forEach(val => {
+    const keys = Object.keys(val);
+    const key = keys[0] || '';
 
-      switch (key.toLowerCase()) {
-        case 'delay':
-        case 'delayresponse':
-          settings.delay = Number.parseInt(val[key], 10);
+    switch (key.toLowerCase()) {
+      case 'delay':
+      case 'delayresponse':
+        settings.delay = Number.parseInt(val[key], 10);
 
-          if (Number.isNaN(settings.delay)) {
-            settings.delay = 1000;
-          }
+        if (Number.isNaN(settings.delay)) {
+          settings.delay = 1000;
+        }
 
-          break;
-        case 'force':
-        case 'forcestatus':
-        case 'forcedstatus':
-          settings.forceStatus = Number.parseInt(val[key], 10);
+        break;
+      case 'force':
+      case 'forcestatus':
+      case 'forcedstatus':
+        settings.forceStatus = Number.parseInt(val[key], 10);
 
-          if (Number.isNaN(settings.forceStatus)) {
-            settings.forceStatus = 200;
-          }
+        if (Number.isNaN(settings.forceStatus)) {
+          settings.forceStatus = 200;
+        }
 
-          break;
-        case 'response':
-          settings.response = 'response';
-          break;
-        case 'random':
-        case 'randomresponse':
-          settings.response = 'response';
-          settings.reload = true;
-          break;
-        case 'randomsuccess':
-          settings.response = 'success';
-          settings.reload = true;
-          break;
-        case 'randomerror':
-          settings.response = 'error';
-          settings.reload = true;
-          break;
-      }
-    });
-  }
+        break;
+      case 'response':
+        settings.response = 'response';
+        break;
+      case 'random':
+      case 'randomresponse':
+        settings.response = 'response';
+        settings.reload = true;
+        break;
+      case 'randomsuccess':
+        settings.response = 'success';
+        settings.reload = true;
+        break;
+      case 'randomerror':
+        settings.response = 'error';
+        settings.reload = true;
+        break;
+    }
+  });
 
   return settings;
 };
