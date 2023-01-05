@@ -3,7 +3,24 @@
 All notable changes to this project will be documented in this file.
 
 
-## [4.0.6](https://github.com/cdcabrera/apidoc-mock/compare/1f64114b597da92f303f8bbb55b6d25574ccacee...1779e2183a83ac140454b59a424f964d67e1f9e7) (2022-11-05)
+
+## [4.0.7](https://github.com/cdcabrera/apidoc-mock/compare/4cb87ab9c6400b8946c3a063f0de1d494675b80c...6cd550af6653ff85af1a462e2335f63da52da566) (2023-01-05)
+
+### Code Refactoring
+* **build,parseApi** minor syntax updates  ([#190](https://github.com/cdcabrera/apidoc-mock/pull/190)) ([331b0a0](https://github.com/cdcabrera/apidoc-mock/commit/331b0a066dd3d8b7aaf24a592941f9a11f0a1af6))
+
+### Builds
+* **deps-dev** bump eslint from 8.26.0 to 8.31.0  ([#205](https://github.com/cdcabrera/apidoc-mock/pull/205)) ([6cd550a](https://github.com/cdcabrera/apidoc-mock/commit/6cd550af6653ff85af1a462e2335f63da52da566))
+* **deps-dev** eslint-plugin-jest from 27.1.6 to 27.2.0  ([#203](https://github.com/cdcabrera/apidoc-mock/pull/203)) ([ae96f0e](https://github.com/cdcabrera/apidoc-mock/commit/ae96f0e33a339857a6ecf56d9253e8902c83c09b))
+* **deps-dev** npm-check-updates from 16.6.0 to 16.6.2  ([#206](https://github.com/cdcabrera/apidoc-mock/pull/206)) ([623a530](https://github.com/cdcabrera/apidoc-mock/commit/623a5309ca918b63d10ae7a4cba9f6fca18e663f))
+* **deps-dev** changelog-light from 0.2.2 to 0.2.3  ([#204](https://github.com/cdcabrera/apidoc-mock/pull/204)) ([58321a9](https://github.com/cdcabrera/apidoc-mock/commit/58321a9cc3c25b543a2c9f4c2059a375a989946c))
+* **deps-dev** npm-check-updates from 16.3.16 to 16.6.0  ([#201](https://github.com/cdcabrera/apidoc-mock/pull/201)) ([4b622f9](https://github.com/cdcabrera/apidoc-mock/commit/4b622f9753d8b3e1344347ee3fef8007bcdcafac))
+* **deps-dev** bump prettier from 2.7.1 to 2.8.1  ([#199](https://github.com/cdcabrera/apidoc-mock/pull/199)) ([2253fe8](https://github.com/cdcabrera/apidoc-mock/commit/2253fe83aac4e27fa72f7b08cbab2689fd4d368a))
+* **deps-dev** bump jest from 29.2.2 to 29.3.1  ([#194](https://github.com/cdcabrera/apidoc-mock/pull/194)) ([d6dc629](https://github.com/cdcabrera/apidoc-mock/commit/d6dc629867d603edf77fc06364e423f2eae08724))
+* **deps-dev** eslint-plugin-jest from 27.1.4 to 27.1.6  ([#195](https://github.com/cdcabrera/apidoc-mock/pull/195)) ([9bf0cdb](https://github.com/cdcabrera/apidoc-mock/commit/9bf0cdb0cf2342a4118fc931d60345006f9851f9))
+* **deps-dev** eslint-plugin-jsdoc from 39.6.2 to 39.6.4  ([#196](https://github.com/cdcabrera/apidoc-mock/pull/196)) ([77bf5b6](https://github.com/cdcabrera/apidoc-mock/commit/77bf5b6c6c904bee2bfee480ed1c30aeb808b559))
+
+##  [4.0.6](https://github.com/cdcabrera/apidoc-mock/compare/1f64114b597da92f303f8bbb55b6d25574ccacee...1779e2183a83ac140454b59a424f964d67e1f9e7) (2022-11-05)
 
 ### Chores
 * **build** npm updates  ([#191](https://github.com/cdcabrera/apidoc-mock/pull/191)) ([1779e21](https://github.com/cdcabrera/apidoc-mock/commit/1779e2183a83ac140454b59a424f964d67e1f9e7))
