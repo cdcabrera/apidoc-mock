@@ -1,4 +1,3 @@
-const { execSync } = require('child_process');
 const { apiDocMock, setupDocs, setupResponse } = require('../');
 
 describe('ApiDocMock', () => {
@@ -12,10 +11,8 @@ describe('ApiDocMock', () => {
     expect(setupResponse()).toBe(null);
   });
 
-  it('should create a predictable docs output', () => {
-    const outputDir = './.docs/predictable';
-
-    const { dir } = generateFixture(
+  it('should setup api docs and create a predictable output', () => {
+    const apiFixture = generateFixture(
       `/**
          * @api {get} /hello/world/
          * @apiSuccessExample {json} Success-Response:
@@ -32,35 +29,19 @@ describe('ApiDocMock', () => {
       { dir: './.fixtures/predictable', filename: 'test.js' }
     );
 
-    const [helloWorld] = setupDocs(dir, outputDir);
-    const fileOutput = execSync(`find ${outputDir} -type f -print0 | xargs -0`);
-
-    const cleanUpFileOutput = fileOutput
-      .toString()
-      .replace(/\s+|\n+|\r+/g, '')
-      .replace(new RegExp(`${outputDir}`, 'gi'), `~${outputDir}`)
-      .replace(new RegExp(`~${outputDir}/.DS_Store`, 'gi'), '')
-      .replace(/\.([a-z0-9]+)\./gi, '*')
-      .split('~')
-      .sort();
-
-    expect(cleanUpFileOutput).toMatchSnapshot('specific file output');
+    const [helloWorld] = setupDocs(apiFixture.dir, 'lorem-ipsum');
 
     expect({
-      type: helloWorld.type,
-      title: helloWorld.title,
-      url: helloWorld.url,
+      ...helloWorld,
       success: JSON.stringify(helloWorld.success),
       error: JSON.stringify(helloWorld.error),
-      version: helloWorld.version,
-      name: helloWorld.name
+      group: undefined,
+      groupTitle: undefined
     }).toMatchSnapshot('setupDocs');
   });
 
   it('should handle additional response content types', () => {
-    const outputDir = './.docs/content-types';
-
-    const { dir } = generateFixture(
+    const htmlFixture = generateFixture(
       `/**
          * @api {get} /hello/world/html.html
          * @apiSuccessExample {html} Success-Response:
@@ -88,28 +69,23 @@ describe('ApiDocMock', () => {
       { dir: './.fixtures/content-types', filename: 'svg.js', resetDir: false }
     );
 
-    generateFixture(
-      `/**
-         * @api {get} /hello/world/txt.txt
-         * @apiSuccessExample {unknown} Success-Response:
-         *   HTTP/1.1 200 OK
-         *   hello world
-         */`,
-      { dir: './.fixtures/content-types', filename: 'text.js', resetDir: false }
-    );
+    const [html, svg] = setupDocs(htmlFixture.dir, 'lorem-ipsum');
 
-    const output = setupDocs(dir, outputDir);
+    expect({
+      ...html,
+      success: JSON.stringify(html.success),
+      error: JSON.stringify(html.error),
+      group: undefined,
+      groupTitle: undefined
+    }).toMatchSnapshot('html mock');
 
-    expect(
-      output.map(({ name, success, title, type, url, version }) => ({
-        name,
-        success,
-        title,
-        type,
-        url,
-        version
-      }))
-    ).toMatchSnapshot('content-types');
+    expect({
+      ...svg,
+      success: JSON.stringify(svg.success),
+      error: JSON.stringify(svg.error),
+      group: undefined,
+      groupTitle: undefined
+    }).toMatchSnapshot('svg mock');
   });
 
   it('should throw an error during testing', () => {

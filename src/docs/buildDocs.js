@@ -1,4 +1,3 @@
-const fs = require('fs');
 const apidoc = require('apidoc');
 const { logger } = require('../logger/configLogger');
 
@@ -7,28 +6,18 @@ const { logger } = require('../logger/configLogger');
  *
  * @param {object} params
  * @param {object} params.apiDocsConfig
- * @param {string} params.apiJsonFile
  * @returns {object}
  */
-const buildDocs = ({ apiDocsConfig = null, apiJsonFile = null } = {}) => {
-  let result;
-
+const buildDocs = ({ apiDocsConfig = null } = {}) => {
   if (apiDocsConfig) {
     try {
-      result = apidoc.createDoc(apiDocsConfig);
+      const { data } = apidoc.createDoc(apiDocsConfig);
+      const updatedResult = JSON.parse(data);
+      logger.info('buildDocs.read.apiJsonFile');
+      return updatedResult;
     } catch (e) {
       logger.error(`buildDocs.apiDoc.createDoc[${e.message}]`);
     }
-  }
-
-  if (!result) {
-    logger.error('buildDocs.apiDoc.createDoc.noResult');
-    return {};
-  }
-
-  if (apiJsonFile) {
-    logger.info('buildDocs.read.apiJsonFile');
-    return JSON.parse(fs.readFileSync(apiJsonFile, 'utf8'));
   }
 
   return {};

@@ -36,13 +36,14 @@
         "definedTags": [
           "api",
           "apiDescription",
-          "apiHeader",
-          "apiSuccess",
-          "apiSuccessExample",
           "apiError",
           "apiErrorExample",
+          "apiGroup",
+          "apiHeader",
           "apiMock",
-          "apiParam"
+          "apiParam",
+          "apiSuccess",
+          "apiSuccessExample"
         ]
       }
     ],
