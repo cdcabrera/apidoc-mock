@@ -4,9 +4,13 @@ const nodeWatch = require('node-watch');
 const yargs = require('yargs');
 const packageJson = require('../package');
 const { logger } = require('../src/logger/configLogger');
-const { apiDocMock } = require('../src');
+const { apiDocMock, OPTIONS } = require('../src');
 
-const { port, watch, docs } = yargs
+const {
+  port,
+  watch: dataPath,
+  docs: docsPath
+} = yargs
   .usage('Create a mock server from apiDoc comments.\n\nUsage: mock [options]')
   .help('help')
   .alias('h', 'help')
@@ -30,20 +34,29 @@ const { port, watch, docs } = yargs
     requiresArg: true
   }).argv;
 
+OPTIONS._set = {
+  port,
+  dataPath,
+  docsPath
+};
+
 const start = () =>
   apiDocMock({
     port: (/^\d+$/g.test(port) && port) || undefined,
-    dataPath: watch,
-    docsPath: docs
+    dataPath,
+    docsPath
   });
 
+/**
+ * If testing stop here, otherwise continue.
+ */
 if (process.env.NODE_ENV === 'test') {
-  process.stdout.write(JSON.stringify({ port, watch, docs }));
+  process.stdout.write(JSON.stringify({ ...OPTIONS, contextPath: undefined }));
 } else {
   start();
 
-  if (watch && watch.length) {
-    nodeWatch(watch, (event, name) => {
+  if (dataPath?.length) {
+    nodeWatch(dataPath, (event, name) => {
       if (event === 'update') {
         logger.info(`updated\t:${name}`);
         start();

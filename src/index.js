@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const { OPTIONS } = require('./global');
 const { logger } = require('./logger/configLogger');
 const { buildDocs } = require('./docs/buildDocs');
 const { buildRequestHeaders, buildResponse } = require('./api/buildApi');
@@ -9,16 +10,17 @@ const cache = { app: null, server: null };
 /**
  * Build documentation
  *
- * @param {(string|string[])} dataPath
- * @param {string} docsPath
- * @returns {{}|*}
+ * @param {object} options
+ * @param {string} options.contextPath
+ * @param {string|string[]} options.dataPath
+ * @param {string} options.docsPath
+ * @returns {*|{}|null}
  */
-const setupDocs = (dataPath = '', docsPath = '') => {
-  const cwd = process.cwd();
-  const dest = (docsPath && path.join(cwd, docsPath)) || null;
+const setupDocs = ({ contextPath, dataPath, docsPath } = OPTIONS) => {
+  const dest = (contextPath && docsPath && path.join(contextPath, docsPath)) || null;
 
   const src = ((Array.isArray(dataPath) && dataPath) || (dataPath && [dataPath]) || [])
-    .map(val => path.join(cwd, val))
+    .map(val => contextPath && path.join(contextPath, val))
     .filter(val => (fs.existsSync(val) && val) || false);
 
   if (!src.length || !dest) {
@@ -44,10 +46,11 @@ const setupDocs = (dataPath = '', docsPath = '') => {
  * Build response
  *
  * @param {Array} apiJson
- * @param {number} port
+ * @param {object} options
+ * @param {number} options.port
  * @returns {*}
  */
-const setupResponse = (apiJson = [], port) => {
+const setupResponse = (apiJson = [], { port } = OPTIONS) => {
   const { routesLoaded, appResponses } = buildResponse(apiJson);
   let server = null;
 
@@ -67,14 +70,14 @@ const setupResponse = (apiJson = [], port) => {
 /**
  * ApiDocMock
  *
- * @param {object} params
- * @param {number} params.port
- * @param {(string|string[])} params.dataPath
- * @param {string} params.docsPath
+ * @param {object} options
+ * @param {number} options.port
+ * @param {string|string[]} options.dataPath
+ * @param {string} options.docsPath
  * @returns {*}
  */
-const apiDocMock = ({ port = 8000, dataPath, docsPath = '.docs' } = {}) => {
-  const apiJson = setupDocs(dataPath, docsPath);
+const apiDocMock = ({ port, dataPath, docsPath } = OPTIONS) => {
+  const apiJson = setupDocs();
   let server = null;
 
   if (apiJson) {
@@ -86,16 +89,15 @@ const apiDocMock = ({ port = 8000, dataPath, docsPath = '.docs' } = {}) => {
       cache.server.close();
     }
 
-    cache.server = server = setupResponse(apiJson, port);
+    cache.server = server = setupResponse(apiJson);
   }
 
   if (server === null) {
     logger.error(`Error, confirm settings:\nport=${port}\nwatch=${dataPath}\ndocs=${docsPath}`);
-
     throw new Error('Server failed to load');
   }
 
   return server;
 };
 
-module.exports = { apiDocMock, setupDocs, setupResponse };
+module.exports = { apiDocMock, setupDocs, setupResponse, OPTIONS };
