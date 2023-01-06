@@ -1,5 +1,5 @@
 # Apidoc Mock
-[![Build Status](https://github.com/cdcabrera/apidoc-mock/workflows/Build/badge.svg?branch=master)](https://github.com/cdcabrera/apidoc-mock/actions?query=workflow%3ABuild)
+[![Build Status](https://github.com/cdcabrera/apidoc-mock/workflows/Build/badge.svg?branch=main)](https://github.com/cdcabrera/apidoc-mock/actions?query=workflow%3ABuild)
 [![codecov](https://codecov.io/gh/cdcabrera/apidoc-mock/branch/master/graph/badge.svg)](https://codecov.io/gh/cdcabrera/apidoc-mock)
 [![Docker Repository on Quay](https://quay.io/repository/cdcabrera/apidoc-mock/status "Docker Repository on Quay")](https://quay.io/repository/cdcabrera/apidoc-mock)
 [![License](https://img.shields.io/github/license/cdcabrera/apidoc-mock.svg)](https://github.com/cdcabrera/apidoc-mock/blob/master/LICENSE)

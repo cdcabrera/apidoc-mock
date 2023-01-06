@@ -1,34 +1,24 @@
 name: Build
 on:
   push:
-    branches: [ master, main ]
+    branches: [ main ]
   pull_request:
-    branches: [ master, main, build, development ]
 env:
-  COV_NODE_VERSION: 14
+  COV_NODE_VERSION: 16
 
 jobs:
   Integration-checks:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Set Node.js packages yarn cache directory
-        id: yarn-cache-dir
-        run: echo ::set-output name=CACHE_DIR::$(yarn cache dir)
-      - name: Node.js yarn cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.yarn-cache-dir.outputs.CACHE_DIR }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn
+          cache: yarn
       - name: Node.js modules cache
         uses: actions/cache@v3
         id: modules-cache
@@ -41,26 +31,10 @@ jobs:
         if: ${{ steps.modules-cache.outputs.cache-hit != 'true' }}
         run: yarn install
       - name: Lint and test
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const { execSync } = require('child_process');
-            try {
-              console.log(`${execSync('yarn test', { stdio: 'pipe' })}`);
-            } catch ({ stdout, stderr }) {
-              core.setFailed(`${stdout}\n${stderr}`);
-            }
+        run: yarn test
       - name: Code coverage
         if: ${{ success() && contains(matrix.node-version, env.COV_NODE_VERSION) }}
         uses: codecov/codecov-action@v3.1.1
       - name: Confirm integration
         if: ${{ success() }}
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const { execSync } = require('child_process');
-            try {
-              console.log(`${execSync('yarn test:integration', { stdio: 'pipe' })}`);
-            } catch ({ stdout, stderr }) {
-              core.setFailed(`${stdout}\n${stderr}`);
-            }
+        run: yarn test:integration
