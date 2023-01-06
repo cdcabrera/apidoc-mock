@@ -25,14 +25,17 @@
     "release": "changelog",
     "start": "./bin/cli.js -w ./data",
     "start:dev": "nodemon --watch data --watch src './bin/cli.js -w ./data'",
-    "test": "run-s -l test:lint test:ci",
+    "test": "run-s -l test:lint test:spell* test:ci",
     "test:ci": "export CI=true; jest --collectCoverage",
     "test:clearCache": "jest --clearCache",
     "test:deps": "rm -rf ./.docs; run-s test",
-    "test:dev": "rm -rf ./.docs; eslint ./src; jest --watch",
+    "test:dev": "rm -rf ./.docs; eslint ./src; run-s test:spell test:local",
     "test:integration": "jest --roots=./tests",
     "test:integration-dev": "jest --roots=./tests --watchAll",
-    "test:lint": "eslint ./src ./bin ./data"
+    "test:lint": "eslint ./src ./bin ./data",
+    "test:local": "jest --watch",
+    "test:spell-docs": "cspell ./README.md ./CONTRIBUTING.md --config ./cspell.config.json",
+    "test:spell": "cspell './src/**/*.js' './tests/**/*.js' --config ./cspell.config.json"
   },
   "jest": {
     "roots": [
@@ -68,6 +71,7 @@
   },
   "devDependencies": {
     "changelog-light": "^0.2.3",
+    "cspell": "^6.18.1",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-babel": "^5.3.1",
