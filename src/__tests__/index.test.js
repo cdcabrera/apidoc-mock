@@ -1,4 +1,5 @@
 const { apiDocMock, setupDocs, setupResponse } = require('../');
+const { OPTIONS } = require('../global');
 
 describe('ApiDocMock', () => {
   it('should have specific defined properties', () => {
@@ -29,7 +30,7 @@ describe('ApiDocMock', () => {
       { dir: './.fixtures/predictable', filename: 'test.js' }
     );
 
-    const [helloWorld] = setupDocs(apiFixture.dir, 'lorem-ipsum');
+    const [helloWorld] = setupDocs({ ...OPTIONS, watchPath: [apiFixture.dir], docsPath: 'lorem-ipsum' });
 
     expect({
       ...helloWorld,
@@ -69,7 +70,7 @@ describe('ApiDocMock', () => {
       { dir: './.fixtures/content-types', filename: 'svg.js', resetDir: false }
     );
 
-    const [html, svg] = setupDocs(htmlFixture.dir, 'lorem-ipsum');
+    const [html, svg] = setupDocs({ ...OPTIONS, watchPath: [htmlFixture.dir], docsPath: 'lorem-ipsum' });
 
     expect({
       ...html,
