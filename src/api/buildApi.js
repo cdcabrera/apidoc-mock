@@ -76,11 +76,7 @@ const buildResponse = (apiJson = []) => {
 
           if (httpStatus < 500 && Array.isArray(header?.fields?.Header)) {
             header?.fields?.Header?.forEach(headerValue => {
-              if (
-                !headerValue.optional &&
-                headerValue.field &&
-                /authorization/i.test(headerValue.field)
-              ) {
+              if (!headerValue.optional && headerValue.field && /authorization/i.test(headerValue.field)) {
                 const authorization = request.get('authorization');
 
                 if (!authorization) {
