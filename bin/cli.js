@@ -1,12 +1,17 @@
 #!/usr/bin/env node
 
+const { join } = require('path');
+const { existsSync } = require('fs');
 const nodeWatch = require('node-watch');
 const yargs = require('yargs');
 const packageJson = require('../package');
 const { logger } = require('../src/logger/configLogger');
-const { apiDocMock } = require('../src');
+const { apiDocMock, OPTIONS } = require('../src');
 
-const { port, silent, watch, docs } = yargs
+/**
+ * Setup yargs
+ */
+const { docs, port, silent, watch } = yargs
   .usage('Create a mock server from apiDoc comments.\n\nUsage: mock [options]')
   .help('help')
   .alias('h', 'help')
@@ -16,13 +21,15 @@ const { port, silent, watch, docs } = yargs
     alias: 'docs',
     default: './.docs',
     describe: 'Output directory used to compile apidocs',
-    requiresArg: true
+    requiresArg: true,
+    type: 'string'
   })
   .option('p', {
     alias: 'port',
     default: 8000,
     describe: 'Set mock port',
-    requiresArg: true
+    requiresArg: true,
+    type: 'number'
   })
   .option('s', {
     alias: 'silent',
@@ -30,30 +37,44 @@ const { port, silent, watch, docs } = yargs
     describe: "Silence apiDoc's output warnings, errors",
     type: 'boolean'
   })
-  .option('w', {
-    alias: 'watch',
+  .option('watch', {
+    alias: 'w',
     describe: 'Watch single, or multiple directories',
-    requiresArg: true
+    requiresArg: true,
+    type: 'array',
+    coerce: args => args.flat()
   }).argv;
 
-const start = () =>
-  apiDocMock({
-    port: (/^\d+$/g.test(port) && port) || undefined,
-    dataPath: watch,
-    docsPath: docs,
-    silent
-  });
+/**
+ * Set global OPTIONS
+ *
+ * @type {{silent, docsPath: string, port: number, watchPath: string[]}}
+ * @private
+ */
+OPTIONS._set = {
+  port,
+  silent,
+  watchPath: function () {
+    return watch?.map(val => join(this.contextPath || '', val))?.filter(val => (existsSync(val) && val) || false) || [];
+  },
+  docsPath: function () {
+    return join(this.contextPath || '', docs);
+  }
+};
 
+/**
+ * If testing stop here, otherwise continue.
+ */
 if (process.env.NODE_ENV === 'test') {
-  process.stdout.write(JSON.stringify({ port, watch, docs }));
+  process.stdout.write(JSON.stringify({ docs, port, silent, watch }));
 } else {
-  start();
+  apiDocMock();
 
-  if (watch && watch.length) {
-    nodeWatch(watch, (event, name) => {
+  if (OPTIONS?.watchPath?.length) {
+    nodeWatch(OPTIONS?.watchPath, (event, name) => {
       if (event === 'update') {
         logger.info(`updated\t:${name}`);
-        start();
+        apiDocMock();
       }
     });
   }

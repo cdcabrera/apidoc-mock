@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CLI should use custom options: custom 1`] = `"{"port":9000,"watch":["lorem","ipsum"],"docs":"dolorDocs"}"`;
+exports[`CLI should use custom options: custom 1`] = `"{"docs":"dolorDocs","port":9000,"silent":true,"watch":["lorem","ipsum"]}"`;
 
-exports[`CLI should use default options: defaults 1`] = `"{"port":8000,"docs":"./.docs"}"`;
+exports[`CLI should use default options: defaults 1`] = `"{"docs":"./.docs","port":8000,"silent":true}"`;

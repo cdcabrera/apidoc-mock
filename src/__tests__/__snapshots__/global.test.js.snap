@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Global should return specific properties: specific properties 1`] = `
+[
+  "contextPath",
+  "OPTIONS",
+]
+`;
+
+exports[`Global should set a one-time mutable OPTIONS object: immutable 1`] = `
+{
+  "OPTIONS": {
+    "apiDocBaseConfig": {
+      "dest": undefined,
+      "dryRun": true,
+      "parsers": {
+        "apimock": "/customParser.js",
+      },
+      "silent": true,
+      "src": undefined,
+    },
+    "contextPath": "/",
+    "dolor": "magna",
+    "lorem": "ipsum",
+    "sit": "function test /",
+  },
+  "isFrozen": true,
+}
+`;
