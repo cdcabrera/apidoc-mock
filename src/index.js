@@ -1,46 +1,9 @@
-const fs = require('fs');
-const path = require('path');
 const express = require('express');
 const { OPTIONS } = require('./global');
 const { logger } = require('./logger/configLogger');
 const { buildDocs } = require('./docs/buildDocs');
 const { buildRequestHeaders, buildResponse } = require('./api/buildApi');
 const cache = { app: null, server: null };
-
-/**
- * Build documentation
- *
- * @param {object} options
- * @param {string} options.contextPath
- * @param {string|string[]} options.dataPath
- * @param {string} options.docsPath
- * @returns {*|{}|null}
- */
-const setupDocs = ({ contextPath, dataPath, docsPath } = OPTIONS) => {
-  const dest = (contextPath && docsPath && path.join(contextPath, docsPath)) || null;
-
-  const src = ((Array.isArray(dataPath) && dataPath) || (dataPath && [dataPath]) || [])
-    .map(val => contextPath && path.join(contextPath, val))
-    .filter(val => (fs.existsSync(val) && val) || false);
-
-  if (!src.length || !dest) {
-    return null;
-  }
-
-  const apiDocsConfig = {
-    src,
-    dest,
-    parsers: {
-      apimock: path.join(__dirname, './docs/configDocs.js')
-    },
-    dryRun: process.env.NODE_ENV === 'test',
-    silent: process.env.NODE_ENV === 'test'
-  };
-
-  const apiJson = buildDocs({ apiDocsConfig });
-
-  return (Array.isArray(apiJson) && apiJson) || null;
-};
 
 /**
  * Build response
@@ -77,7 +40,7 @@ const setupResponse = (apiJson = [], { port } = OPTIONS) => {
  * @returns {*}
  */
 const apiDocMock = ({ port, dataPath, docsPath } = OPTIONS) => {
-  const apiJson = setupDocs();
+  const apiJson = buildDocs();
   let server = null;
 
   if (apiJson) {
@@ -100,4 +63,4 @@ const apiDocMock = ({ port, dataPath, docsPath } = OPTIONS) => {
   return server;
 };
 
-module.exports = { apiDocMock, setupDocs, setupResponse, OPTIONS };
+module.exports = { apiDocMock, logger, OPTIONS, setupResponse };

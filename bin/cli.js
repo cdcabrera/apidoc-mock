@@ -3,8 +3,7 @@
 const nodeWatch = require('node-watch');
 const yargs = require('yargs');
 const packageJson = require('../package');
-const { logger } = require('../src/logger/configLogger');
-const { apiDocMock, OPTIONS } = require('../src');
+const { apiDocMock, logger, OPTIONS } = require('../src');
 
 const {
   port,
