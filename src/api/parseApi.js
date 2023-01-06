@@ -27,11 +27,7 @@ const exampleResponse = (mockSettings, exampleObjects, successObjects, errorObje
   }
 
   if (/\d/.test(mockSettings.forceStatus)) {
-    example = exampleObjects.filter(val => {
-      if (val.status === mockSettings.forceStatus) {
-        return true;
-      }
-    });
+    example = exampleObjects.filter(val => val.status === mockSettings.forceStatus);
 
     if (example.length) {
       example = example[Math.floor(Math.random() * example.length)];

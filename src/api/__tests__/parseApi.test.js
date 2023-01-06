@@ -25,23 +25,23 @@ describe('ParseApi', () => {
     const successObjects = [];
     const errorObjects = [];
 
-    expect(
-      exampleResponse(mockSettings, exampleObjects, successObjects, errorObjects)
-    ).toMatchSnapshot('exampleResponse.forcedStatus.200');
+    expect(exampleResponse(mockSettings, exampleObjects, successObjects, errorObjects)).toMatchSnapshot(
+      'exampleResponse.forcedStatus.200'
+    );
 
     mockSettings.forceStatus = 400;
 
-    expect(
-      exampleResponse(mockSettings, exampleObjects, successObjects, errorObjects)
-    ).toMatchSnapshot('exampleResponse.forcedStatus.400');
+    expect(exampleResponse(mockSettings, exampleObjects, successObjects, errorObjects)).toMatchSnapshot(
+      'exampleResponse.forcedStatus.400'
+    );
 
     mockSettings.forceStatus = null;
     mockSettings.response = 'success';
     exampleObjects = [];
 
-    expect(
-      exampleResponse(mockSettings, exampleObjects, successObjects, errorObjects)
-    ).toMatchSnapshot('exampleResponse.fallback');
+    expect(exampleResponse(mockSettings, exampleObjects, successObjects, errorObjects)).toMatchSnapshot(
+      'exampleResponse.fallback'
+    );
   });
 
   it('return a 401 specific example', () => {
@@ -55,8 +55,7 @@ describe('ParseApi', () => {
       {
         status: 401,
         title: 'Error-Response:',
-        content:
-          'HTTP/1.1 401 Unauthorized\n{\n  "detail": "Authentication credentials were not provided."\n}',
+        content: 'HTTP/1.1 401 Unauthorized\n{\n  "detail": "Authentication credentials were not provided."\n}',
         type: 'json'
       }
     ];
@@ -95,16 +94,12 @@ describe('ParseApi', () => {
       }
     };
 
-    expect(parseCustomMockSettings(randomSettings)).toMatchSnapshot(
-      'parseCustomMockSettings.delayResponse.malformed'
-    );
+    expect(parseCustomMockSettings(randomSettings)).toMatchSnapshot('parseCustomMockSettings.delayResponse.malformed');
 
     delete randomSettings.mock.settings[0].delayResponse;
     randomSettings.mock.settings[0].forceStatus = 'ipsum';
 
-    expect(parseCustomMockSettings(randomSettings)).toMatchSnapshot(
-      'parseCustomMockSettings.forceStatus.malformed'
-    );
+    expect(parseCustomMockSettings(randomSettings)).toMatchSnapshot('parseCustomMockSettings.forceStatus.malformed');
   });
 
   it('should parse random mock api settings', () => {
@@ -118,16 +113,12 @@ describe('ParseApi', () => {
       }
     };
 
-    expect(parseCustomMockSettings(randomSettings)).toMatchSnapshot(
-      'parseCustomMockSettings.randomSuccess'
-    );
+    expect(parseCustomMockSettings(randomSettings)).toMatchSnapshot('parseCustomMockSettings.randomSuccess');
 
     delete randomSettings.mock.settings[0].randomSuccess;
     randomSettings.mock.settings[0].randomError = '';
 
-    expect(parseCustomMockSettings(randomSettings)).toMatchSnapshot(
-      'parseCustomMockSettings.randomError'
-    );
+    expect(parseCustomMockSettings(randomSettings)).toMatchSnapshot('parseCustomMockSettings.randomError');
   });
 
   it('should parse type and status examples', () => {
@@ -155,9 +146,7 @@ describe('ParseApi', () => {
     const response = 'success';
     const path = '/hello/world/';
 
-    expect(parseStatus(example, response, 'post', path)).toMatchSnapshot(
-      'parseStatus.success.delete'
-    );
+    expect(parseStatus(example, response, 'post', path)).toMatchSnapshot('parseStatus.success.delete');
     expect(parseStatus(example, response, 'get', path)).toMatchSnapshot('parseStatus.success.get');
   });
 
