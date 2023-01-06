@@ -1,8 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ApiDocMock should create a predictable docs output: setupDocs 1`] = `
+exports[`ApiDocMock should handle additional response content types: html mock 1`] = `
+{
+  "error": undefined,
+  "filename": "html.js",
+  "group": undefined,
+  "groupTitle": undefined,
+  "name": "GetHelloWorldHtmlHtml",
+  "success": "{"examples":[{"title":"Success-Response:","content":"HTTP/1.1 200 OK\\n<!DOCTYPE html>\\n<html>\\n  <head>hello</head>\\n  <body>world</body>\\n</html>","type":"html"}]}",
+  "title": "",
+  "type": "get",
+  "url": "/hello/world/html.html",
+  "version": "0.0.0",
+}
+`;
+
+exports[`ApiDocMock should handle additional response content types: svg mock 1`] = `
+{
+  "error": undefined,
+  "filename": "svg.js",
+  "group": undefined,
+  "groupTitle": undefined,
+  "name": "GetHelloWorldSvgSvg",
+  "success": "{"examples":[{"title":"Success-Response:","content":"HTTP/1.1 200 OK\\n<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>\\n<!DOCTYPE svg PUBLIC \\"-//W3C//DTD SVG 1.1//EN\\" \\"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\\">\\n<svg version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" x=\\"0px\\" y=\\"0px\\" width=\\"10px\\" height=\\"10px\\" viewBox=\\"0 0 10 10\\">\\n<g/>\\n</svg>","type":"svg"}]}",
+  "title": "",
+  "type": "get",
+  "url": "/hello/world/svg.svg",
+  "version": "0.0.0",
+}
+`;
+
+exports[`ApiDocMock should setup api docs and create a predictable output: setupDocs 1`] = `
 {
   "error": "{"examples":[{"title":"Error-Response:","content":"HTTP/1.1 400 OK\\n{\\n  \\"error\\": \\"test\\"\\n}","type":"json"}]}",
+  "filename": "test.js",
+  "group": undefined,
+  "groupTitle": undefined,
   "name": "GetHelloWorld",
   "success": "{"examples":[{"title":"Success-Response:","content":"HTTP/1.1 200 OK\\n{\\n  \\"success\\": \\"test\\"\\n}","type":"json"}]}",
   "title": "",
@@ -10,130 +43,6 @@ exports[`ApiDocMock should create a predictable docs output: setupDocs 1`] = `
   "url": "/hello/world/",
   "version": "0.0.0",
 }
-`;
-
-exports[`ApiDocMock should create a predictable docs output: specific file output 1`] = `
-[
-  "",
-  "./.docs/predictable/api_data.js",
-  "./.docs/predictable/api_data.json",
-  "./.docs/predictable/api_definition.js",
-  "./.docs/predictable/api_definition.json",
-  "./.docs/predictable/api_project.js",
-  "./.docs/predictable/api_project.json",
-  "./.docs/predictable/css/style.css",
-  "./.docs/predictable/fonts/glyphicons-halflings-regular.eot",
-  "./.docs/predictable/fonts/glyphicons-halflings-regular.svg",
-  "./.docs/predictable/fonts/glyphicons-halflings-regular.ttf",
-  "./.docs/predictable/fonts/glyphicons-halflings-regular.woff",
-  "./.docs/predictable/fonts/glyphicons-halflings-regular.woff2",
-  "./.docs/predictable/img/android-chrome-192x192.png",
-  "./.docs/predictable/img/android-chrome-512x512.png",
-  "./.docs/predictable/img/apple-touch-icon.png",
-  "./.docs/predictable/img/favicon-16x16.png",
-  "./.docs/predictable/img/favicon-32x32.png",
-  "./.docs/predictable/img/favicon.ico",
-  "./.docs/predictable/index.html",
-  "./.docs/predictable/locales/ca.js",
-  "./.docs/predictable/locales/cs.js",
-  "./.docs/predictable/locales/de.js",
-  "./.docs/predictable/locales/es.js",
-  "./.docs/predictable/locales/fr.js",
-  "./.docs/predictable/locales/it.js",
-  "./.docs/predictable/locales/locale.js",
-  "./.docs/predictable/locales/nl.js",
-  "./.docs/predictable/locales/pl.js",
-  "./.docs/predictable/locales/pt_br.js",
-  "./.docs/predictable/locales/ro.js",
-  "./.docs/predictable/locales/ru.js",
-  "./.docs/predictable/locales/tr.js",
-  "./.docs/predictable/locales/vi.js",
-  "./.docs/predictable/locales/zh.js",
-  "./.docs/predictable/locales/zh_cn.js",
-  "./.docs/predictable/main.js",
-  "./.docs/predictable/utils/handlebars_helper.js",
-  "./.docs/predictable/utils/send_sample_request.js",
-  "./.docs/predictable/utils/send_sample_request_utils.js",
-  "./.docs/predictable/vendor/bootstrap*css",
-  "./.docs/predictable/vendor/bootstrap*js",
-  "./.docs/predictable/vendor/diff_match_patch*js",
-  "./.docs/predictable/vendor/handlebars*js",
-  "./.docs/predictable/vendor/jquery*js",
-  "./.docs/predictable/vendor/list*js",
-  "./.docs/predictable/vendor/lodash*min.js",
-  "./.docs/predictable/vendor/path-to-regexp/LICENSE",
-  "./.docs/predictable/vendor/path-to-regexp/index.js",
-  "./.docs/predictable/vendor/polyfill.js",
-  "./.docs/predictable/vendor/prism.css",
-  "./.docs/predictable/vendor/prism.js",
-  "./.docs/predictable/vendor/require*js",
-  "./.docs/predictable/vendor/semver*js",
-  "./.docs/predictable/vendor/webfontloader.js",
-]
-`;
-
-exports[`ApiDocMock should handle additional response content types: content-types 1`] = `
-[
-  {
-    "name": "GetHelloWorldHtmlHtml",
-    "success": {
-      "examples": [
-        {
-          "content": "HTTP/1.1 200 OK
-<!DOCTYPE html>
-<html>
-  <head>hello</head>
-  <body>world</body>
-</html>",
-          "title": "Success-Response:",
-          "type": "html",
-        },
-      ],
-    },
-    "title": "",
-    "type": "get",
-    "url": "/hello/world/html.html",
-    "version": "0.0.0",
-  },
-  {
-    "name": "GetHelloWorldSvgSvg",
-    "success": {
-      "examples": [
-        {
-          "content": "HTTP/1.1 200 OK
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="10px" height="10px" viewBox="0 0 10 10">
-<g/>
-</svg>",
-          "title": "Success-Response:",
-          "type": "svg",
-        },
-      ],
-    },
-    "title": "",
-    "type": "get",
-    "url": "/hello/world/svg.svg",
-    "version": "0.0.0",
-  },
-  {
-    "name": "GetHelloWorldTxtTxt",
-    "success": {
-      "examples": [
-        {
-          "content": "HTTP/1.1 200 OK
-hello world",
-          "title": "Success-Response:",
-          "type": "unknown",
-        },
-      ],
-    },
-    "title": "",
-    "type": "get",
-    "url": "/hello/world/txt.txt",
-    "version": "0.0.0",
-  },
-]
 `;
 
 exports[`ApiDocMock should throw an error during testing: error 1`] = `"Server failed to load"`;

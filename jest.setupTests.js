@@ -18,7 +18,13 @@ global.__basedir = __dirname;
  */
 const generateFixture = (
   contents,
-  { dir = resolve(__dirname, '.fixtures'), ext = 'txt', encoding = 'utf8', filename, resetDir = true } = {}
+  {
+    dir = resolve(__dirname, '.fixtures'),
+    ext = 'txt',
+    encoding = 'utf8',
+    filename,
+    resetDir = true
+  } = {}
 ) => {
   const updatedFileName = filename || crypto.createHash('md5').update(contents).digest('hex');
   const file = extname(updatedFileName) ? updatedFileName : `${updatedFileName}.${ext}`;

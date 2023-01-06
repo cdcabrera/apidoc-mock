@@ -1,5 +1,6 @@
 /**
- * @api {get} /hello/world/
+ * @api {get} /hello/world/ Get
+ * @apiGroup Hello World
  * @apiMock {RandomResponse}
  * @apiSuccess {string} foo
  * @apiSuccess {string} bar
@@ -27,7 +28,8 @@
 const getExample = () => {};
 
 /**
- * @api {post} /hello/world/
+ * @api {post} /hello/world/ Post
+ * @apiGroup Hello World
  * @apiMock {RandomResponse}
  * @apiHeader {string} Authorization Authorization: Token AUTH_TOKEN
  * @apiSuccess {string} foo
@@ -48,7 +50,8 @@ const getExample = () => {};
 const postExample = () => {};
 
 /**
- * @api {put} /hello/world/
+ * @api {put} /hello/world/ Put
+ * @apiGroup Hello World
  * @apiHeader {string} Authorization Authorization: Token AUTH_TOKEN
  * @apiSuccess {string} foo
  * @apiSuccess {string} bar
@@ -62,7 +65,8 @@ const postExample = () => {};
 const putExample = () => {};
 
 /**
- * @api {patch} /hello/world/
+ * @api {patch} /hello/world/ Patch
+ * @apiGroup Hello World
  * @apiHeader {string} Authorization Authorization: Token AUTH_TOKEN
  * @apiSuccess {string} foo
  * @apiSuccess {string} bar
@@ -76,7 +80,8 @@ const putExample = () => {};
 const patchExample = () => {};
 
 /**
- * @api {delete} /hello/world/
+ * @api {delete} /hello/world/ Delete
+ * @apiGroup Hello World
  * @apiHeader {string} Authorization Authorization: Token AUTH_TOKEN
  * @apiSuccess {string} foo
  * @apiSuccess {string} bar

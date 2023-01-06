@@ -86,11 +86,14 @@ From there you should be able to navigate to
 
 
 ### Using within a project
+**Using ApiDocs**
+> The v0.5X.X+ range of ApiDocs, now, requires the description with its updated template (i.e. `@api {get} /hello/world/ [a description]`) if you want the docs to display. If you don't use that aspect of this package you can continue to leave it out. 
 
 1. Setup your API annotations first. `@apiSucceessExample` is the only apiDoc example currently implemented.
     ```js
       /**
-       * @api {get} /hello/world/
+       * @api {get} /hello/world/ Get
+       * @apiGroup Hello World
        * @apiSuccess {String} foo
        * @apiSuccess {String} bar
        * @apiSuccessExample {json} Success-Response:
@@ -103,7 +106,8 @@ From there you should be able to navigate to
       const getExample = () => {};
       
       /**
-       * @api {post} /hello/world/
+       * @api {post} /hello/world/ Post
+       * @apiGroup Hello World
        * @apiHeader {String} Authorization Authorization: Token AUTH_TOKEN
        * @apiSuccess {String} foo
        * @apiSuccess {String} bar
@@ -168,7 +172,8 @@ Apidoc Mock adds in a few different custom flags to help you identify or demonst
 1. Get random responses from both `success` and  `error` examples with the `@apiMock {RandomResponse}` annotation
     ```js
       /**
-       * @api {get} /hello/world/
+       * @api {get} /hello/world/ Get
+       * @apiGroup Hello World
        * @apiMock {RandomResponse}
        * @apiSuccess {String} foo
        * @apiSuccess {String} bar
@@ -199,7 +204,8 @@ Apidoc Mock adds in a few different custom flags to help you identify or demonst
 1. Get a random `success` response with the `@apiMock {RandomSuccess}` annotation. Or get a random `error` with the `@apiMock {RandomError}` annotation 
     ```js
       /**
-       * @api {get} /hello/world/
+       * @api {get} /hello/world/ Get
+       * @apiGroup Hello World
        * @apiMock {RandomSuccess}
        * @apiSuccess {String} foo
        * @apiSuccess {String} bar
@@ -230,7 +236,8 @@ Apidoc Mock adds in a few different custom flags to help you identify or demonst
 1. Force a specific response status with the `@apiMock {ForceStatus} [STATUS GOES HERE]` annotation. If you use a status without a supporting example the response status is still forced, but with fallback content. 
     ```js
       /**
-       * @api {get} /hello/world/
+       * @api {get} /hello/world/ Get
+       * @apiGroup Hello World
        * @apiMock {ForceStatus} 400
        * @apiSuccess {String} foo
        * @apiSuccess {String} bar
@@ -255,7 +262,8 @@ Apidoc Mock adds in a few different custom flags to help you identify or demonst
 1. Delay a response status with the `@apiMock {DelayResponse} [MILLISECONDS GO HERE]` annotation. 
     ```js
       /**
-       * @api {get} /hello/world/
+       * @api {get} /hello/world/ Get
+       * @apiGroup Hello World
        * @apiMock {DelayResponse} 3000
        * @apiSuccess {String} foo
        * @apiSuccess {String} bar

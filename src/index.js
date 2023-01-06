@@ -31,11 +31,11 @@ const setupDocs = (dataPath = '', docsPath = '') => {
     parsers: {
       apimock: path.join(__dirname, './docs/configDocs.js')
     },
+    dryRun: process.env.NODE_ENV === 'test',
     silent: process.env.NODE_ENV === 'test'
   };
 
-  const apiJsonFile = path.join(cwd, docsPath, 'api_data.json');
-  const apiJson = buildDocs({ apiDocsConfig, apiJsonFile });
+  const apiJson = buildDocs({ apiDocsConfig });
 
   return (Array.isArray(apiJson) && apiJson) || null;
 };
