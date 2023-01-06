@@ -21,7 +21,7 @@ The basic requirements:
 
 ## Use
 
-Generate a "happy path" mock server from [apidoc](http://apidocjs.com/) `@apiSucceessExample` annotations. Once the
+Generate a "happy path" mock server from [apidoc](http://apidocjs.com/) `@apiSuccessExample` annotations. Once the
 server is setup correctly you should be able update your code comments/annotations and have the mock(s) update with a 
 browser refresh.
 
@@ -30,13 +30,13 @@ browser refresh.
 NPM install...
 
   ```shell
-    $ npm i apidock-mock
+    $ npm i apidoc-mock
   ```
   
 or Yarn
 
   ```shell
-    $ yarn add apidock-mock
+    $ yarn add apidoc-mock
   ```
 
 #### Usage
@@ -89,7 +89,7 @@ From there you should be able to navigate to
 **Using ApiDocs**
 > The v0.5X.X+ range of ApiDocs, now, requires the description with its updated template (i.e. `@api {get} /hello/world/ [a description]`) if you want the docs to display. If you don't use that aspect of this package you can continue to leave it out. 
 
-1. Setup your API annotations first. `@apiSucceessExample` is the only apiDoc example currently implemented.
+1. Setup your API annotations first. `@apiSuccessExample` is the only apiDoc example currently implemented.
     ```js
       /**
        * @api {get} /hello/world/ Get
