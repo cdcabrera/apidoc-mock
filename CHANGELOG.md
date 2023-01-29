@@ -2,7 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.1.0](https://github.com/cdcabrera/apidoc-mock/compare/f1aaa6f2759ba785499900aa10c5c4485129e59c...a10103849009f0874255f9992b2056e58a66eec6) (2023-01-29)
 
+### Features
+* **cli** expose apidoc option, silent  ([#211](https://github.com/cdcabrera/apidoc-mock/pull/211)) ([c7a71bc](https://github.com/cdcabrera/apidoc-mock/commit/c7a71bc923645aab0ced24b912d2128022d54864))
+
+### Code Refactoring
+* **deps** apidoc update from 0.29.x to 0.5x.x  ([#207](https://github.com/cdcabrera/apidoc-mock/pull/207)) ([081e1c4](https://github.com/cdcabrera/apidoc-mock/commit/081e1c42ae58b6e2225a1fc852fd45c13e1a3f2c))
+
+### Chores
+* **build** npm packages  ([#212](https://github.com/cdcabrera/apidoc-mock/pull/212)) ([a101038](https://github.com/cdcabrera/apidoc-mock/commit/a10103849009f0874255f9992b2056e58a66eec6))
+
+### Builds
+* **actions** commit lint check update  ([a7c9446](https://github.com/cdcabrera/apidoc-mock/commit/a7c9446281505b48e172c97d08ec71744227dd33))
+* **eslint** config, adjust printWidth  ([746a3fd](https://github.com/cdcabrera/apidoc-mock/commit/746a3fdca88c4617c1b9767fa207da69cbbed879))
+* **package** apply keywords  ([38c703c](https://github.com/cdcabrera/apidoc-mock/commit/38c703c139f17ec40e3bb6ad02296d3f4d16125d))
+* **deps** rebuild yarn lock  ([38919b0](https://github.com/cdcabrera/apidoc-mock/commit/38919b0e1177572dc83b65ac24385a073acbcfa5))
+* **deps-dev** cspell package  ([3aaefe4](https://github.com/cdcabrera/apidoc-mock/commit/3aaefe4495ae960c4b723f1d8c6344d75616c5f8))
+* **docker** nodejs 16 move  ([9c1825d](https://github.com/cdcabrera/apidoc-mock/commit/9c1825d6a4da930a629124314486be7d6c2ec2f0))
+* **action,docs** update workflow, badge  ([#208](https://github.com/cdcabrera/apidoc-mock/pull/208)) ([2c40ca9](https://github.com/cdcabrera/apidoc-mock/commit/2c40ca9128a6715fb3abf346f9a80af4ad2e0587))
+
+### Bug Fixes
+* **cli** on update restart server  ([#210](https://github.com/cdcabrera/apidoc-mock/pull/210)) ([fdffaf2](https://github.com/cdcabrera/apidoc-mock/commit/fdffaf20f8a2b00802e55227b35d13155d64dfe7))
 
 ## [4.0.7](https://github.com/cdcabrera/apidoc-mock/compare/4cb87ab9c6400b8946c3a063f0de1d494675b80c...6cd550af6653ff85af1a462e2335f63da52da566) (2023-01-05)
 
