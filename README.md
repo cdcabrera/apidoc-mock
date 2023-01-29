@@ -49,6 +49,8 @@ or Yarn
   Options:
     -d, --docs     Output directory used to compile apidocs   [default: "./.docs"]
     -p, --port     Set mock port                                   [default: 8000]
+    -s, --silent   Silence apiDoc's output warnings, errors
+                                                         [boolean] [default: true]
     -w, --watch    Watch single, or multiple directories
     -h, --help     Show help                                             [boolean]
     -v, --version  Show version number                                   [boolean]
