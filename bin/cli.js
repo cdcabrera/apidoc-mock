@@ -6,7 +6,7 @@ const packageJson = require('../package');
 const { logger } = require('../src/logger/configLogger');
 const { apiDocMock } = require('../src');
 
-const { port, watch, docs } = yargs
+const { port, silent, watch, docs } = yargs
   .usage('Create a mock server from apiDoc comments.\n\nUsage: mock [options]')
   .help('help')
   .alias('h', 'help')
@@ -24,6 +24,12 @@ const { port, watch, docs } = yargs
     describe: 'Set mock port',
     requiresArg: true
   })
+  .option('s', {
+    alias: 'silent',
+    default: true,
+    describe: "Silence apiDoc's output warnings, errors",
+    type: 'boolean'
+  })
   .option('w', {
     alias: 'watch',
     describe: 'Watch single, or multiple directories',
@@ -34,7 +40,8 @@ const start = () =>
   apiDocMock({
     port: (/^\d+$/g.test(port) && port) || undefined,
     dataPath: watch,
-    docsPath: docs
+    docsPath: docs,
+    silent
   });
 
 if (process.env.NODE_ENV === 'test') {

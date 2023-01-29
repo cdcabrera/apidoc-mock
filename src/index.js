@@ -12,9 +12,10 @@ const cache = { app: null, httpTerminator: null };
  *
  * @param {(string|string[])} dataPath
  * @param {string} docsPath
+ * @param {boolean} silent
  * @returns {{}|*}
  */
-const setupDocs = (dataPath = '', docsPath = '') => {
+const setupDocs = (dataPath = '', docsPath = '', silent) => {
   const cwd = process.cwd();
   const dest = (docsPath && path.join(cwd, docsPath)) || null;
 
@@ -33,7 +34,7 @@ const setupDocs = (dataPath = '', docsPath = '') => {
       apimock: path.join(__dirname, './docs/configDocs.js')
     },
     dryRun: process.env.NODE_ENV === 'test',
-    silent: process.env.NODE_ENV === 'test'
+    silent: process.env.NODE_ENV === 'test' || silent
   };
 
   const apiJson = buildDocs({ apiDocsConfig });
@@ -75,10 +76,11 @@ const setupResponse = (apiJson = [], port) => {
  * @param {number} params.port
  * @param {(string|string[])} params.dataPath
  * @param {string} params.docsPath
+ * @param {boolean} params.silent
  * @returns {*}
  */
-const apiDocMock = async ({ port = 8000, dataPath, docsPath = '.docs' } = {}) => {
-  const apiJson = setupDocs(dataPath, docsPath);
+const apiDocMock = async ({ port = 8000, dataPath, docsPath = '.docs', silent } = {}) => {
+  const apiJson = setupDocs(dataPath, docsPath, silent);
   let httpTerminator = null;
 
   if (apiJson) {
