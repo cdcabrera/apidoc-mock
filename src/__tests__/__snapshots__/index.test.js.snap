@@ -44,5 +44,3 @@ exports[`ApiDocMock should setup api docs and create a predictable output: setup
   "version": "0.0.0",
 }
 `;
-
-exports[`ApiDocMock should throw an error during testing: error 1`] = `"Server failed to load"`;

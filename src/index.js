@@ -1,10 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const { createHttpTerminator } = require('http-terminator');
 const { logger } = require('./logger/configLogger');
 const { buildDocs } = require('./docs/buildDocs');
 const { buildRequestHeaders, buildResponse } = require('./api/buildApi');
-const cache = { app: null, server: null };
+const cache = { app: null, httpTerminator: null };
 
 /**
  * Build documentation
@@ -49,19 +50,22 @@ const setupDocs = (dataPath = '', docsPath = '') => {
  */
 const setupResponse = (apiJson = [], port) => {
   const { routesLoaded, appResponses } = buildResponse(apiJson);
-  let server = null;
+  let httpTerminator = null;
 
   appResponses.forEach(response => {
     cache.app[response.type](response.url, response.callback);
   });
 
   if (routesLoaded) {
-    server = cache.app.listen(port, () => logger.info(`listening\t:${port}`));
+    const server = cache.app.listen(port, () => logger.info(`listening\t:${port}`));
+    httpTerminator = createHttpTerminator({
+      server
+    });
   } else {
     logger.info('waiting');
   }
 
-  return server;
+  return httpTerminator;
 };
 
 /**
@@ -73,29 +77,27 @@ const setupResponse = (apiJson = [], port) => {
  * @param {string} params.docsPath
  * @returns {*}
  */
-const apiDocMock = ({ port = 8000, dataPath, docsPath = '.docs' } = {}) => {
+const apiDocMock = async ({ port = 8000, dataPath, docsPath = '.docs' } = {}) => {
   const apiJson = setupDocs(dataPath, docsPath);
-  let server = null;
+  let httpTerminator = null;
 
   if (apiJson) {
+    if (cache?.httpTerminator?.terminate) {
+      await cache.httpTerminator.terminate();
+    }
+
     cache.app = express();
     cache.app.use(`/docs`, express.static(docsPath));
     cache.app.use(buildRequestHeaders);
-
-    if (cache.server && cache.server.close) {
-      cache.server.close();
-    }
-
-    cache.server = server = setupResponse(apiJson, port);
+    cache.httpTerminator = httpTerminator = setupResponse(apiJson, port);
   }
 
-  if (server === null) {
+  if (httpTerminator === null) {
     logger.error(`Error, confirm settings:\nport=${port}\nwatch=${dataPath}\ndocs=${docsPath}`);
-
     throw new Error('Server failed to load');
   }
 
-  return server;
+  return httpTerminator;
 };
 
 module.exports = { apiDocMock, setupDocs, setupResponse };
