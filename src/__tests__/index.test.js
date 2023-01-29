@@ -88,7 +88,8 @@ describe('ApiDocMock', () => {
     }).toMatchSnapshot('svg mock');
   });
 
-  it('should throw an error during testing', () => {
-    expect(() => apiDocMock({})).toThrowErrorMatchingSnapshot('error');
+  it('should throw an error during testing', async () => {
+    const func = async () => apiDocMock();
+    await expect(func).rejects.toThrow('Server failed to load');
   });
 });
