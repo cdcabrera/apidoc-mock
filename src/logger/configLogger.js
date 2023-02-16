@@ -1,6 +1,11 @@
 const { createLogger, format, transports } = require('winston');
 const { colorize, combine, timestamp, printf } = format;
 
+/**
+ * Setup console logging, provide error, info, warn, etc.
+ *
+ * @type {{ error: Function, info: Function, warn: Function }}
+ */
 const configLogger = createLogger({
   format: combine(
     colorize(),

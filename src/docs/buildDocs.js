@@ -1,26 +1,39 @@
 const apidoc = require('apidoc');
 const { logger } = require('../logger/configLogger');
+const { OPTIONS } = require('../global');
 
 /**
- * Compile/build ApiDoc documentation.
+ * Build ApiDoc documentation.
  *
- * @param {object} params
- * @param {object} params.apiDocsConfig
- * @returns {object}
+ * @param {object} options
+ * @param {OPTIONS.apiDocBaseConfig} options.apiDocBaseConfig
+ * @param {string[]} options.watchPath
+ * @param {string} options.docsPath
+ * @param {string} options.silent
+ * @returns {*|{}|null}
  */
-const buildDocs = ({ apiDocsConfig = null } = {}) => {
-  if (apiDocsConfig) {
-    try {
-      const { data } = apidoc.createDoc(apiDocsConfig);
-      const updatedResult = JSON.parse(data);
-      logger.info('buildDocs.read.apiJsonFile');
-      return updatedResult;
-    } catch (e) {
-      logger.error(`buildDocs.apiDoc.createDoc[${e.message}]`);
-    }
+const setupDocs = ({ apiDocBaseConfig, watchPath: src, docsPath: dest, silent } = OPTIONS) => {
+  if ((!Array.isArray(src) && !src?.length) || !dest) {
+    return [];
   }
 
-  return {};
+  const apiDocsConfig = {
+    ...apiDocBaseConfig,
+    src,
+    dest,
+    silent: apiDocBaseConfig.silent || silent
+  };
+
+  try {
+    const { data } = apidoc.createDoc(apiDocsConfig);
+    const updatedResult = JSON.parse(data);
+    logger.info('buildDocs.read.apiJsonFile');
+    return updatedResult;
+  } catch (e) {
+    logger.error(`buildDocs.apiDoc.createDoc[${e.message}]`);
+  }
+
+  return [];
 };
 
-module.exports = { buildDocs };
+module.exports = { setupDocs };
