@@ -1,22 +1,30 @@
 /**
- * Configure Apidoc output. Filter custom "apiMock" related key/value
+ * Configure apiDocs output. Filter custom "apiMock" related key/value
  * pairs such as randomResponse, forceStatus, or delayResponse.
  */
 let group = '';
 
+/**
+ * apiDoc parsing extension, see apiDocs parsing for setup.
+ *
+ * @param {string} content
+ * @param {*} source
+ * @param {*} defaultGroup
+ * @returns {{}}
+ */
 const parse = (content, source, defaultGroup) => {
   group = defaultGroup || 'settings';
 
-  const keyValue = content.split('}');
+  const [tempKey = '', tempValue = ''] = content.split('}');
 
-  let key = (keyValue[0] || '').replace(/{/, '').trim();
-  const value = (keyValue[1] || '').trim();
+  const updatedKey = tempKey
+    ?.replace(/{/, '')
+    ?.trim()
+    ?.replace(/(?:^\w|[A-Z]|\b\w)/g, (letter, index) => {
+      return index === 0 ? letter.toLowerCase() : letter.toUpperCase();
+    });
 
-  key = key.replace(/(?:^\w|[A-Z]|\b\w)/g, (letter, index) => {
-    return index === 0 ? letter.toLowerCase() : letter.toUpperCase();
-  });
-
-  return { [key]: value };
+  return { [updatedKey]: tempValue?.trim() };
 };
 
 const getGroup = () => group;
