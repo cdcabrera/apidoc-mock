@@ -2,39 +2,12 @@ const express = require('express');
 const { createHttpTerminator } = require('http-terminator');
 const { OPTIONS } = require('./global');
 const { logger } = require('./logger/configLogger');
-const { buildDocs } = require('./docs/buildDocs');
+const { setupDocs } = require('./docs/buildDocs');
 const { buildRequestHeaders, buildResponse } = require('./api/buildApi');
-const cache = { app: null, httpTerminator: null };
+const CACHE = { app: null, httpTerminator: null };
 
 /**
- * Build documentation
- *
- * @param {object} options
- * @param {OPTIONS.apiDocBaseConfig} options.apiDocBaseConfig
- * @param {string|string[]} options.watchPath
- * @param {string} options.docsPath
- * @param {string} options.silent
- * @returns {*|{}|null}
- */
-const setupDocs = ({ apiDocBaseConfig, watchPath: src, docsPath: dest, silent } = OPTIONS) => {
-  if ((!Array.isArray(src) && !src?.length) || !dest) {
-    return [];
-  }
-
-  const apiJson = buildDocs({
-    apiDocsConfig: {
-      ...apiDocBaseConfig,
-      src,
-      dest,
-      silent: apiDocBaseConfig.silent || silent
-    }
-  });
-
-  return (Array.isArray(apiJson) && apiJson) || [];
-};
-
-/**
- * Build response
+ * Build api responses
  *
  * @param {Array} apiJson
  * @param {object} options
@@ -46,11 +19,11 @@ const setupResponse = (apiJson = [], { port } = OPTIONS) => {
   let httpTerminator = null;
 
   appResponses.forEach(response => {
-    cache.app[response.type](response.url, response.callback);
+    CACHE.app[response.type](response.url, response.callback);
   });
 
   if (routesLoaded) {
-    const server = cache.app.listen(port, () => logger.info(`listening\t:${port}`));
+    const server = CACHE.app.listen(port, () => logger.info(`listening\t:${port}`));
     httpTerminator = createHttpTerminator({
       server
     });
@@ -75,14 +48,14 @@ const apiDocMock = async ({ port, watchPath, docsPath } = OPTIONS) => {
   let httpTerminator = null;
 
   if (apiJson.length) {
-    if (cache?.httpTerminator?.terminate) {
-      await cache.httpTerminator.terminate();
+    if (CACHE?.httpTerminator?.terminate) {
+      await CACHE.httpTerminator.terminate();
     }
 
-    cache.app = express();
-    cache.app.use(`/docs`, express.static(docsPath));
-    cache.app.use(buildRequestHeaders);
-    cache.httpTerminator = httpTerminator = setupResponse(apiJson);
+    CACHE.app = express();
+    CACHE.app.use(`/docs`, express.static(docsPath));
+    CACHE.app.use(buildRequestHeaders);
+    CACHE.httpTerminator = httpTerminator = setupResponse(apiJson);
   }
 
   if (httpTerminator === null) {
