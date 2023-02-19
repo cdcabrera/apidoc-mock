@@ -1,7 +1,10 @@
 /**
- * @api {get} /hello/world/ Get
+ * @api {get} /pet/:petId Get
  * @apiGroup Hello World
- * @apiMock {RandomResponse}
+ * @apiMock {OpenApi} Generate ./data/petStoreOpenApi.yml
+ * @apiMock {OpenApi} ./data/jsonSchemaFake.js
+ * @apiMock {OpenApi} 15000
+ * @apiMock {RandomError}
  * @apiSuccess {string} foo
  * @apiSuccess {string} bar
  * @apiSuccessExample {json} Success-Response:
