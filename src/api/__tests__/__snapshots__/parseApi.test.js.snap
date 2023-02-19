@@ -44,17 +44,25 @@ exports[`ParseApi should parse custom mock api settings: parseCustomMockSettings
 exports[`ParseApi should parse malformed mock api settings and provide fallbacks: parseCustomMockSettings.delayResponse.malformed 1`] = `
 {
   "delay": 1000,
+  "forceStatus": undefined,
+  "reload": undefined,
+  "response": undefined,
 }
 `;
 
 exports[`ParseApi should parse malformed mock api settings and provide fallbacks: parseCustomMockSettings.forceStatus.malformed 1`] = `
 {
+  "delay": undefined,
   "forceStatus": 200,
+  "reload": undefined,
+  "response": undefined,
 }
 `;
 
 exports[`ParseApi should parse random mock api settings: parseCustomMockSettings.randomError 1`] = `
 {
+  "delay": undefined,
+  "forceStatus": undefined,
   "reload": true,
   "response": "error",
 }
@@ -62,6 +70,8 @@ exports[`ParseApi should parse random mock api settings: parseCustomMockSettings
 
 exports[`ParseApi should parse random mock api settings: parseCustomMockSettings.randomSuccess 1`] = `
 {
+  "delay": undefined,
+  "forceStatus": undefined,
   "reload": true,
   "response": "success",
 }
@@ -103,7 +113,7 @@ exports[`ParseApi should return a mock mime type and parsed content: parseConten
   "foo": "hello",
   "bar": "world"
 }",
-  "type": "application/json",
+  "contentType": "application/json",
 }
 `;
 
@@ -113,6 +123,17 @@ exports[`ParseApi should return a mock mime type and parsed content: parseConten
   "foo": "hello",
   "bar": "world"
 }",
-  "type": "text/plain",
+  "contentType": "text/plain",
 }
+`;
+
+exports[`ParseApi should return specific properties: specific properties 1`] = `
+[
+  "exampleResponse",
+  "getExampleResponse",
+  "parseAuthExample",
+  "parseCustomMockSettings",
+  "parseStatus",
+  "parseContentAndType",
+]
 `;

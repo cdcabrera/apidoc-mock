@@ -1,8 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Global should minimally generate a consistent hash: hash, object and primitive values 1`] = `
+{
+  "valueArray": "0e8e2b3096e6aee20e3cd10b7788ce3d72502061",
+  "valueArrayConfirmSort": true,
+  "valueArraySort": "3c7765817d3c04f1104093994b6db4371672d3f7",
+  "valueBoolFalse": "c0338288abd30f72cd65dad83833448f345f78fa",
+  "valueBoolTrue": "d991ef01679b350a728c665383abb257cfeca53a",
+  "valueFloat": "ba0abc40d5bc3a257ecf9396e3b2525d7fff76c9",
+  "valueInt": "17dada6f0f5fe358d94f7b0849d17fc8b4c5ce1f",
+  "valueNull": "f7fd41b8a32014e6ccd665899be623c6d5c99d43",
+  "valueObject": "5a7036ff63f04efcc11d6b68eb97a4b9989d1a45",
+  "valueObjectConfirm": true,
+  "valueObjectConfirmSort": false,
+  "valueSet": "86838cc5365d6e9d59fb005d2353dde173712a8a",
+  "valueSetConfirmSort": true,
+  "valueSymbol": "bf21a9e8fbc5a3846fb05b4fa0859e0917b2202f",
+  "valueSymbolUndefined": true,
+  "valueUndefined": "bf21a9e8fbc5a3846fb05b4fa0859e0917b2202f",
+}
+`;
+
 exports[`Global should return specific properties: specific properties 1`] = `
 [
   "contextPath",
+  "generateHash",
+  "memo",
   "OPTIONS",
 ]
 `;

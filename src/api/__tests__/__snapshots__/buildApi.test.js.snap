@@ -13,6 +13,22 @@ exports[`BuildApi should build a response with specific properties: buildRespons
 }
 `;
 
+exports[`BuildApi should build a response with specific properties: buildResponse callback 1`] = `
+[
+  [
+    "Cache-Control",
+    "no-cache",
+  ],
+  [
+    200,
+  ],
+  [
+    "Content-Type",
+    "text/plain",
+  ],
+]
+`;
+
 exports[`BuildApi should build specific headers: buildRequestHeaders.request.headers 1`] = `
 {
   "Access-Control-Allow-Credentials": true,

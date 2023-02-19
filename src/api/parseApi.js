@@ -1,4 +1,5 @@
 const { logger } = require('../logger/configLogger');
+const { memo } = require('../global');
 
 /**
  * Return forced response, or a general example.
@@ -72,80 +73,81 @@ const exampleResponse = (mockSettings, exampleObjects, successObjects, errorObje
  * @param {Array} errorObjects
  * @returns {{type: string, status: number, content: string}}
  */
-const parseAuthExample = (errorObjects = []) => {
+const parseAuthExample = memo((errorObjects = []) => {
   const authExample = errorObjects.filter(val => val.status === 401);
 
   return (authExample && authExample[Math.floor(Math.random() * authExample.length)]) || {};
-};
+});
 
 /**
  * Parse custom mock settings.
  *
  * @param {object} params
- * @param {object} params.mock
- * @returns {object}
+ * @param {Array} params.settings
+ * @returns {{forceStatus: (number|undefined), delay: (number|undefined), reload: (number|undefined),
+ *     response: (number|undefined)}}
  */
-const parseCustomMockSettings = ({ mock = null } = {}) => {
-  const settings = {};
+const parseCustomMockSettings = memo(({ settings = [] } = {}) => {
+  const updatedSettings = { delay: undefined, forceStatus: undefined, response: undefined, reload: undefined };
 
-  mock?.settings?.forEach(val => {
-    const keys = Object.keys(val);
-    const key = keys[0] || '';
+  settings?.forEach(val => {
+    const [key = '', value] = Object.entries(val)?.[0] || [];
 
     switch (key.toLowerCase()) {
       case 'delay':
       case 'delayresponse':
-        settings.delay = Number.parseInt(val[key], 10);
+        updatedSettings.delay = Number.parseInt(value, 10);
 
-        if (Number.isNaN(settings.delay)) {
-          settings.delay = 1000;
+        if (Number.isNaN(updatedSettings.delay)) {
+          updatedSettings.delay = 1000;
         }
 
         break;
       case 'force':
       case 'forcestatus':
       case 'forcedstatus':
-        settings.forceStatus = Number.parseInt(val[key], 10);
+        updatedSettings.forceStatus = Number.parseInt(value, 10);
 
-        if (Number.isNaN(settings.forceStatus)) {
-          settings.forceStatus = 200;
+        if (Number.isNaN(updatedSettings.forceStatus)) {
+          updatedSettings.forceStatus = 200;
         }
 
         break;
       case 'response':
-        settings.response = 'response';
+        updatedSettings.response = 'response';
         break;
       case 'random':
       case 'randomresponse':
-        settings.response = 'response';
-        settings.reload = true;
+        updatedSettings.response = 'response';
+        updatedSettings.reload = true;
         break;
       case 'randomsuccess':
-        settings.response = 'success';
-        settings.reload = true;
+        updatedSettings.response = 'success';
+        updatedSettings.reload = true;
         break;
       case 'randomerror':
-        settings.response = 'error';
-        settings.reload = true;
+        updatedSettings.response = 'error';
+        updatedSettings.reload = true;
         break;
     }
   });
 
-  return settings;
-};
+  return updatedSettings;
+});
 
 /**
  * Set http status
  *
- * @param {Array} examples
- * @param {string} response
- * @param {string} type
- * @param {string} path
+ * @param {object} params
+ * @param {Array} params.examples
+ * @param {string} params.response
+ * @param {string} params.type
+ * @param {string} params.path
  * @returns {object}
  */
-const parseStatus = (examples = [], response = null, type = null, path = null) =>
-  examples.map(val => {
-    const status = Number.parseInt(val.content.split(/\s/)[1], 10) || 200;
+const parseStatus = memo(({ examples = [], response = null, type = null, path = null } = {}) =>
+  (examples || []).map(example => {
+    const status = Number.parseInt(example?.content?.split(/\s/)?.[1], 10) || 200;
     const route = type && path ? `mismatch for "${type}" route ${path}` : '';
 
     // ToDo: ApiDoc currently has no "information" or "redirect" distinction, consider plugin
@@ -159,48 +161,78 @@ const parseStatus = (examples = [], response = null, type = null, path = null) =
 
     return {
       status,
-      ...val
+      ...example
     };
-  });
+  })
+);
 
 /**
  * Return passed mock mime type and parsed content
  *
- * @param {string} content
- * @param {string} type
- * @returns {{parsedContent: string, parsedType: string}}
+ * @param {object} params
+ * @param {string} params.content
+ * @param {string} params.type
+ * @returns {{content: string, contentType: string}}
  */
-const parseContentAndType = (content = '', type = 'text') => {
-  const parsable = /^HTTP/.test(content);
-  let parsedContent = content;
-  let parsedType;
+const parseContentAndType = memo(({ content = '', type = 'text' } = {}) => {
+  let updatedContent = content;
+  let updatedType;
 
-  if (parsable) {
-    parsedContent = content.split(/\n/).slice(1).join('\n');
+  if (/^HTTP/.test(content)) {
+    updatedContent = content.split(/\n/).slice(1).join('\n');
   }
 
   switch (type) {
     case 'json':
-      parsedType = 'application/json';
+      updatedType = 'application/json';
       break;
     case 'xml':
     case 'html':
     case 'csv':
-      parsedType = `text/${type}`;
+      updatedType = `text/${type}`;
       break;
     case 'svg':
-      parsedType = 'image/svg+xml';
+      updatedType = 'image/svg+xml';
       break;
     default:
-      parsedType = 'text/plain';
+      updatedType = 'text/plain';
       break;
   }
 
-  return { content: parsedContent, type: parsedType };
+  return {
+    content: updatedContent,
+    contentType: updatedType
+  };
+});
+
+/**
+ * Aggregate possible responses, return an example based on available configuration.
+ *
+ * @param {object} params
+ * @param {object} params.mockSettings
+ * @param {Array} params.successExamples
+ * @param {Array} params.errorExamples
+ * @param {string} params.type
+ * @param {string} params.url
+ * @returns {{authExample: {content: *, type: *}, example: {content: *, type: *}}}
+ */
+const getExampleResponse = ({ mockSettings, successExamples = [], errorExamples = [], type, url } = {}) => {
+  const successObjects = parseStatus({ examples: successExamples, response: 'success', type, url });
+  const errorObjects = parseStatus({ examples: errorExamples, response: 'error', type, url });
+  const exampleObjects = successObjects.concat(errorObjects);
+
+  const authExample = parseAuthExample(errorObjects);
+  const example = exampleResponse(mockSettings, exampleObjects, successObjects, errorObjects);
+
+  return {
+    authExample,
+    example
+  };
 };
 
 module.exports = {
   exampleResponse,
+  getExampleResponse,
   parseAuthExample,
   parseCustomMockSettings,
   parseStatus,
