@@ -1,4 +1,47 @@
 const { join } = require('path');
+const crypto = require('crypto');
+
+/**
+ * Generate a consistent hash from content.
+ *
+ * @param {Array|object|*} content
+ * @returns {string}
+ */
+const generateHash = content =>
+  crypto
+    .createHash('sha1')
+    .update(JSON.stringify({ value: content }))
+    .digest('hex');
+
+/**
+ * Simple memoize, cache based arguments with adjustable limit.
+ *
+ * @param {Function} func
+ * @param {object} options
+ * @param {number} options.cacheLimit
+ * @returns {Function}
+ */
+const memo = (func, { cacheLimit = 3 } = {}) => {
+  const ized = function () {
+    const cache = [];
+
+    return (...args) => {
+      const key = generateHash(args);
+      const keyIndex = cache.indexOf(key);
+
+      if (keyIndex < 0) {
+        const result = func.apply(null, args);
+        cache.unshift(key, result);
+        cache.length = cacheLimit * 2;
+        return cache[1];
+      }
+
+      return cache[keyIndex + 1];
+    };
+  };
+
+  return ized();
+};
 
 /**
  * Set context path
@@ -45,4 +88,4 @@ const OPTIONS = {
   }
 };
 
-module.exports = { contextPath, OPTIONS };
+module.exports = { contextPath, generateHash, memo, OPTIONS };

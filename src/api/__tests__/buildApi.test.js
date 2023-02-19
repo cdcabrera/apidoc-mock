@@ -35,6 +35,22 @@ describe('BuildApi', () => {
       }
     ];
 
-    expect(buildResponse(mockApiResponse)).toMatchSnapshot('buildResponse');
+    const results = buildResponse(mockApiResponse);
+    expect(results).toMatchSnapshot('buildResponse');
+
+    const { appResponses } = results;
+    const callback = appResponses[0].callback;
+    const mockResponse = jest.fn();
+
+    callback(
+      {},
+      {
+        send: mockResponse,
+        set: mockResponse,
+        status: mockResponse
+      }
+    );
+
+    expect(mockResponse.mock.calls).toMatchSnapshot('buildResponse callback');
   });
 });

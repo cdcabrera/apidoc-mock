@@ -24,6 +24,12 @@
  *       "bad": "hello",
  *       "request": "world"
  *     }
+ * @apiError {string} detail
+ * @apiErrorExample {json} Error-Response:
+ *     HTTP/1.1 401 Unauthorized
+ *     {
+ *       "detail": "Authentication credentials were not provided."
+ *     }
  */
 const getExample = () => {};
 

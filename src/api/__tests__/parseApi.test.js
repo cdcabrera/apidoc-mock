@@ -1,18 +1,9 @@
-const {
-  exampleResponse,
-  parseAuthExample,
-  parseCustomMockSettings,
-  parseContentAndType,
-  parseStatus
-} = require('../parseApi');
+const parseApi = require('../parseApi');
+const { exampleResponse, parseAuthExample, parseCustomMockSettings, parseContentAndType, parseStatus } = parseApi;
 
 describe('ParseApi', () => {
-  it('should have specific defined properties', () => {
-    expect(exampleResponse).toBeDefined();
-    expect(parseAuthExample).toBeDefined();
-    expect(parseCustomMockSettings).toBeDefined();
-    expect(parseContentAndType).toBeDefined();
-    expect(parseStatus).toBeDefined();
+  it('should return specific properties', () => {
+    expect(Object.keys(parseApi)).toMatchSnapshot('specific properties');
   });
 
   it('should force a response, or a general example', () => {
@@ -39,7 +30,7 @@ describe('ParseApi', () => {
     mockSettings.response = 'success';
     exampleObjects = [];
 
-    expect(exampleResponse(mockSettings, exampleObjects, successObjects, errorObjects)).toMatchSnapshot(
+    expect(exampleResponse({ mockSettings, exampleObjects, successObjects, errorObjects })).toMatchSnapshot(
       'exampleResponse.fallback'
     );
   });
@@ -65,19 +56,17 @@ describe('ParseApi', () => {
 
   it('should parse custom mock api settings', () => {
     const customSettings = {
-      mock: {
-        settings: [
-          {
-            randomResponse: ''
-          },
-          {
-            delayResponse: 2000
-          },
-          {
-            forceStatus: 401
-          }
-        ]
-      }
+      settings: [
+        {
+          randomResponse: ''
+        },
+        {
+          delayResponse: 2000
+        },
+        {
+          forceStatus: 401
+        }
+      ]
     };
 
     expect(parseCustomMockSettings(customSettings)).toMatchSnapshot('parseCustomMockSettings');
@@ -85,44 +74,40 @@ describe('ParseApi', () => {
 
   it('should parse malformed mock api settings and provide fallbacks', () => {
     const randomSettings = {
-      mock: {
-        settings: [
-          {
-            delayResponse: 'lorem'
-          }
-        ]
-      }
+      settings: [
+        {
+          delayResponse: 'lorem'
+        }
+      ]
     };
 
     expect(parseCustomMockSettings(randomSettings)).toMatchSnapshot('parseCustomMockSettings.delayResponse.malformed');
 
-    delete randomSettings.mock.settings[0].delayResponse;
-    randomSettings.mock.settings[0].forceStatus = 'ipsum';
+    delete randomSettings.settings[0].delayResponse;
+    randomSettings.settings[0].forceStatus = 'ipsum';
 
     expect(parseCustomMockSettings(randomSettings)).toMatchSnapshot('parseCustomMockSettings.forceStatus.malformed');
   });
 
   it('should parse random mock api settings', () => {
     const randomSettings = {
-      mock: {
-        settings: [
-          {
-            randomSuccess: ''
-          }
-        ]
-      }
+      settings: [
+        {
+          randomSuccess: ''
+        }
+      ]
     };
 
     expect(parseCustomMockSettings(randomSettings)).toMatchSnapshot('parseCustomMockSettings.randomSuccess');
 
-    delete randomSettings.mock.settings[0].randomSuccess;
-    randomSettings.mock.settings[0].randomError = '';
+    delete randomSettings.settings[0].randomSuccess;
+    randomSettings.settings[0].randomError = '';
 
     expect(parseCustomMockSettings(randomSettings)).toMatchSnapshot('parseCustomMockSettings.randomError');
   });
 
   it('should parse type and status examples', () => {
-    const example = [
+    const examples = [
       {
         title: 'Success-Response:',
         content: 'HTTP/1.1 200 OK\n{\n  "foo": "hello",\n  "bar": "world"\n}',
@@ -146,15 +131,15 @@ describe('ParseApi', () => {
     const response = 'success';
     const path = '/hello/world/';
 
-    expect(parseStatus(example, response, 'post', path)).toMatchSnapshot('parseStatus.success.delete');
-    expect(parseStatus(example, response, 'get', path)).toMatchSnapshot('parseStatus.success.get');
+    expect(parseStatus({ examples, response, type: 'post', path })).toMatchSnapshot('parseStatus.success.delete');
+    expect(parseStatus({ examples, response, type: 'get', path })).toMatchSnapshot('parseStatus.success.get');
   });
 
   it('should return a mock mime type and parsed content', () => {
     const content = 'HTTP/1.1 200 OK\n{\n  "foo": "hello",\n  "bar": "world"\n}';
     const type = 'json';
 
-    expect(parseContentAndType(content, type)).toMatchSnapshot('parseContentAndType');
-    expect(parseContentAndType(content)).toMatchSnapshot('parseContentAndType.fallback');
+    expect(parseContentAndType({ content, type })).toMatchSnapshot('parseContentAndType');
+    expect(parseContentAndType({ content })).toMatchSnapshot('parseContentAndType.fallback');
   });
 });
