@@ -82,7 +82,7 @@
   },
   "devDependencies": {
     "changelog-light": "^0.3.0",
-    "cspell": "^6.19.2",
+    "cspell": "^6.27.0",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-babel": "^5.3.1",
