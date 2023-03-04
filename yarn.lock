@@ -1915,14 +1915,14 @@ chalk@^5.0.1, chalk@^5.2.0:
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.2.0.tgz#249623b7d66869c673699fb66d65723e54dfcfb3"
   integrity sha512-ree3Gqw/nazQAPuJJEy+avdl7QfZMcUvmHIKgEZkGL+xOBzRvup5Hxo6LHuMceSxOabuJLJm5Yp/92R9eMmMvA==
 
-changelog-light@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/changelog-light/-/changelog-light-0.3.0.tgz#dd833ff914baa59f0f3caae139addd5d4ce84beb"
-  integrity sha512-tuZ/MMyC678ud62+V9M7+xXxvT5R8E2868xofWHhoSMICk4JF0u1ZCsOtgGDTQgUtnMUjoz1cmfuWzhxCFPrKg==
+changelog-light@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/changelog-light/-/changelog-light-0.3.1.tgz#b627db5ac19dd9260c5097067cd8a6602cb4001a"
+  integrity sha512-3+vobpuaOxm+InmhFcQOaUs8xiGfDx3vUFVkAM2XyiA3sSrDDaMvWcS92kJezDurHrTEFENOZUa2unIkEgerkg==
   dependencies:
     conventional-commit-types "^3.0.0"
     semver "^7.3.8"
-    yargs "^17.6.2"
+    yargs "^17.7.1"
 
 char-regex@^1.0.2:
   version "1.0.2"
@@ -6908,10 +6908,10 @@ yargs-parser@^21.1.1:
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.1.1.tgz#9096bceebf990d21bb31fa9516e0ede294a77d35"
   integrity sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==
 
-yargs@^17.3.1, yargs@^17.6.2:
-  version "17.6.2"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.6.2.tgz#2e23f2944e976339a1ee00f18c77fedee8332541"
-  integrity sha512-1/9UrdHjDZc0eOU0HxOHoS78C69UD3JRMvzlJ7S79S2nTaWRA/whGCTV8o9e/N/1Va9YIV7Q4sOxD8VV4pCWOw==
+yargs@^17.3.1, yargs@^17.6.2, yargs@^17.7.1:
+  version "17.7.1"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.7.1.tgz#34a77645201d1a8fc5213ace787c220eabbd0967"
+  integrity sha512-cwiTb08Xuv5fqF4AovYacTFNxk62th7LKJ6BL9IGUpTJrWoU7/7WdQGTP2SjKf1dUNBGzDd28p/Yfs/GI6JrLw==
   dependencies:
     cliui "^8.0.1"
     escalade "^3.1.1"
