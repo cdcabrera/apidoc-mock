@@ -123,9 +123,11 @@ const parsePaths = (
 /**
  * Parse local, remote, swagger/openapi docs then return a listing of file output references, and content.
  *
- * @param {Array<{ source: string, output: string }>|string} files
+ * @param {object} params
+ * @param {string} params.file
  * @param {object} options CLI options
  * @param {string} options.contextPath
+ * @param {string} options.expireSpec
  * @param {object} settings
  * @param {Function} settings.generateHash
  * @param {string} settings.parseMethod
@@ -133,19 +135,23 @@ const parsePaths = (
  * @returns {Promise<{files: Array<{id: string, output: (string|undefined), source: string, content: object}>, paths: {}}>}
  */
 const parseYmlJson = async (
-  { file, cacheExpire = 1800000 } = {},
-  { contextPath } = OPTIONS,
+  { file } = {},
+  { contextPath, expireSpec } = OPTIONS,
   {
     generateHash: generateAliasHash = generateHash,
     parseMethod = 'dereference',
     getResponseCache: getAliasResponseCache = getResponseCache
   } = {}
 ) => {
-  const responseCache = getAliasResponseCache(cacheExpire);
-  const cachedResponse = responseCache.get(file);
+  const isRemoteFile = joinUrl(file);
   let updatedSourceFilePath = file;
+  let responseCache;
+  let cachedResponse;
 
-  if (!joinUrl(updatedSourceFilePath)) {
+  if (isRemoteFile) {
+    responseCache = getAliasResponseCache(expireSpec);
+    cachedResponse = responseCache.get(file);
+  } else {
     updatedSourceFilePath = join(contextPath, updatedSourceFilePath);
   }
 
@@ -171,11 +177,14 @@ const parseYmlJson = async (
     logger.warn(
       `parse-spec\t:output "${(sourceFile?.length && sourceFile) || updatedSourceFilePath || 'JSON'}", ${e.message}`
     );
+
     const response = {
       files: [],
       paths: {}
     };
-    responseCache.set(file, response);
+    if (isRemoteFile) {
+      responseCache.set(file, response);
+    }
     return response;
   }
 
@@ -196,13 +205,16 @@ const parseYmlJson = async (
     });
   });
 
-  logger.info(`parse-spec\t:success :"${sourceFile}" :expire ${cacheExpire} ms`);
+  logger.info(`parse-spec\t:success :"${sourceFile}" ${(isRemoteFile && `:expire ${expireSpec} ms`) || ''}`);
   const response = {
     files: Object.values(uniqueResponses),
     paths: updatedPaths
   };
 
-  responseCache.set(file, response);
+  if (isRemoteFile) {
+    responseCache.set(file, response);
+  }
+
   return response;
 };
 

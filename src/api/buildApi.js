@@ -18,8 +18,8 @@ const getCustomMockSettings = memo(({ settings = [], url } = {}) => {
     response: undefined,
     reload: undefined,
     spec: undefined,
-    specExpire: undefined,
-    specExtend: undefined
+    specExtend: undefined,
+    specRefresh: undefined
   };
 
   // console.log('>>>>> SETTINGS', url);
@@ -61,11 +61,11 @@ const getCustomMockSettings = memo(({ settings = [], url } = {}) => {
           updatedSettings.specExtend = updatedDesc;
         }
 
-        if (/cache|expire/.test(updatedLabel) && updatedDesc) {
-          updatedSettings.specExpire = Number.parseInt(updatedDesc, 10);
+        if (/refresh/.test(updatedLabel) && updatedDesc) {
+          updatedSettings.specRefresh = Number.parseInt(updatedDesc, 10);
 
-          if (Number.isNaN(updatedSettings.specExpire)) {
-            updatedSettings.specExpire = undefined;
+          if (Number.isNaN(updatedSettings.specRefresh)) {
+            updatedSettings.specRefresh = undefined;
           }
         }
 
@@ -158,7 +158,6 @@ const getContentAndType = memo(({ content = '', contentType = 'text' } = {}) => 
  * @returns {{authExample: {content: *, type: *}, example: {content: *, type: *}}}
  */
 const getExampleResponse = async ({ mockSettings, successExamples = [], errorExamples = [], type, url } = {}) => {
-  console.log('>>>>>>>>>>>>>>>>>>>> getExampleResponse', mockSettings.specExpire);
   if (mockSettings.spec) {
     const { isMissing, ...specExamples } = await exampleSchemaResponse({ mockSettings, type, url });
 
@@ -185,7 +184,7 @@ const buildResponse = (apiJson = []) => {
       const mockSettings = getCustomMockSettings({ settings: mock?.settings, url });
       const memoGetExampleResponse = memo(getExampleResponse, {
         cacheLimit: mockSettings?.reload ? 0 : 25,
-        expire: mockSettings?.specExpire
+        expire: mockSettings?.specRefresh
       });
 
       appResponses.push({

@@ -17,6 +17,7 @@ const setResponseExtension = () => {
   });
 
   jsonSchemaFaker.define('format', (value, schema) => {
+    const minValue = Number.parseInt(schema?.minimum, 10) || 0;
     let randomDate;
     if (/^date/i.test(value)) {
       randomDate = new Date(Date.now() - Math.floor(Math.random() * 30000000000));
@@ -29,10 +30,10 @@ const setResponseExtension = () => {
         return randomDate.toISOString();
       case 'float':
       case 'double':
-        return chance.floating({ min: 0, max: 100000, fixed: 4 });
+        return chance.floating({ min: minValue, max: 100000, fixed: 4 });
       case 'int32':
       case 'int64':
-        return chance.integer({ min: 0, max: 100000 });
+        return chance.integer({ min: minValue, max: 100000 });
     }
 
     return schema;
@@ -82,7 +83,7 @@ const parseSpecResponses = ({ requestBody = {}, responses = {} } = {}) => {
       /json/i.test(contentType)
     );
     requestBodyJsonResponses.forEach(([, { schema: jsonSchema } = {}]) => {
-      updatedResponses.json.push({ status: 'default', schema: jsonSchema });
+      updatedResponses.json.push({ status: 'default', schema: jsonSchema?.properties || jsonSchema });
     });
   }
 
@@ -92,7 +93,7 @@ const parseSpecResponses = ({ requestBody = {}, responses = {} } = {}) => {
     if (contentJsonResponses.length) {
       contentJsonResponses.forEach(([, responseObj]) => {
         const { schema: jsonSchema = {} } = responseObj || {};
-        updatedResponses.json.push({ status, schema: jsonSchema });
+        updatedResponses.json.push({ status, schema: jsonSchema?.properties || jsonSchema });
       });
 
       const hasEntry = updatedResponses.json.find(({ status: existingStatus }) => existingStatus === status);
@@ -113,11 +114,11 @@ const parseSpecResponses = ({ requestBody = {}, responses = {} } = {}) => {
  * @param {object} params.schema
  * @param {number|string} params.status
  * @param {string} params.extend
- * @returns {Promise<{contest: undefined, contentType: string, status: *}>}
+ * @returns {Promise<{content: undefined, contentType: string, status: *}>}
  */
 const exampleResponse = async ({ schema: valueObj, status: httpStatus, extend: extendFile } = {}) => {
   const example = {
-    contest: undefined,
+    content: undefined,
     contentType: 'application/json',
     status: httpStatus
   };
@@ -128,8 +129,6 @@ const exampleResponse = async ({ schema: valueObj, status: httpStatus, extend: e
     const { schema } = jsonResponses.find(({ status }) => Number.parseInt(status, 10) === updatedHttpStatus) || {};
 
     if (schema) {
-      console.log('>>>>>> EXTEND', extendFile);
-
       try {
         if (extendFile) {
           await setResponseExtensionFile({ file: extendFile });
@@ -155,10 +154,10 @@ const exampleResponse = async ({ schema: valueObj, status: httpStatus, extend: e
  * @param {object} params.mockSettings
  * @param {string} params.type
  * @param {string} params.url
- * @returns {Promise<{authExample: {}, isMissing: boolean, example: {contest: undefined, contentType: string, status: *}}>}
+ * @returns {Promise<{authExample: {}, isMissing: boolean, example: {content: undefined, contentType: string, status: *}}>}
  */
 const exampleSchemaResponse = async ({ mockSettings, type, url } = {}) => {
-  const { paths } = await parseYmlJson({ file: mockSettings.spec, cacheExpire: mockSettings.specExpire });
+  const { paths } = await parseYmlJson({ file: mockSettings.spec });
   const { examplePaths } = await parsePaths({
     paths,
     mockPath: [{ path: url, type }]
@@ -194,7 +193,7 @@ const exampleSchemaResponse = async ({ mockSettings, type, url } = {}) => {
     }
   }
 
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>> USE AVAIL status', updatedStatus);
+  // console.log('>>>>>>>>>>>>>>>>>>>>>>>>>> USE AVAIL status', updatedStatus);
 
   const example = await exampleResponse({
     schema: examplePaths?.[url]?.[type],
