@@ -32,51 +32,6 @@ exports[`ParseApi should force a response, or a general example: exampleResponse
 }
 `;
 
-exports[`ParseApi should parse custom mock api settings: parseCustomMockSettings 1`] = `
-{
-  "delay": 2000,
-  "forceStatus": 401,
-  "reload": true,
-  "response": "response",
-}
-`;
-
-exports[`ParseApi should parse malformed mock api settings and provide fallbacks: parseCustomMockSettings.delayResponse.malformed 1`] = `
-{
-  "delay": 1000,
-  "forceStatus": undefined,
-  "reload": undefined,
-  "response": undefined,
-}
-`;
-
-exports[`ParseApi should parse malformed mock api settings and provide fallbacks: parseCustomMockSettings.forceStatus.malformed 1`] = `
-{
-  "delay": undefined,
-  "forceStatus": 200,
-  "reload": undefined,
-  "response": undefined,
-}
-`;
-
-exports[`ParseApi should parse random mock api settings: parseCustomMockSettings.randomError 1`] = `
-{
-  "delay": undefined,
-  "forceStatus": undefined,
-  "reload": true,
-  "response": "error",
-}
-`;
-
-exports[`ParseApi should parse random mock api settings: parseCustomMockSettings.randomSuccess 1`] = `
-{
-  "delay": undefined,
-  "forceStatus": undefined,
-  "reload": true,
-  "response": "success",
-}
-`;
-
 exports[`ParseApi should parse type and status examples: parseStatus.success.delete 1`] = `
 [
   {
@@ -107,33 +62,11 @@ exports[`ParseApi should parse type and status examples: parseStatus.success.get
 ]
 `;
 
-exports[`ParseApi should return a mock mime type and parsed content: parseContentAndType 1`] = `
-{
-  "content": "{
-  "foo": "hello",
-  "bar": "world"
-}",
-  "contentType": "application/json",
-}
-`;
-
-exports[`ParseApi should return a mock mime type and parsed content: parseContentAndType.fallback 1`] = `
-{
-  "content": "{
-  "foo": "hello",
-  "bar": "world"
-}",
-  "contentType": "text/plain",
-}
-`;
-
 exports[`ParseApi should return specific properties: specific properties 1`] = `
 [
+  "exampleApiDocResponse",
   "exampleResponse",
-  "getExampleResponse",
   "parseAuthExample",
-  "parseCustomMockSettings",
   "parseStatus",
-  "parseContentAndType",
 ]
 `;

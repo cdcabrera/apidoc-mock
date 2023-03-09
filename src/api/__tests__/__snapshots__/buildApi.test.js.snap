@@ -46,3 +46,99 @@ exports[`BuildApi should build specific headers: buildRequestHeaders.request.pre
   "access-control-request-headers": "x-test-header",
 }
 `;
+
+exports[`BuildApi should parse custom mock api settings: parseCustomMockSettings 1`] = `
+{
+  "delay": 2000,
+  "forceStatus": 401,
+  "reload": true,
+  "response": "response",
+}
+`;
+
+exports[`BuildApi should parse malformed mock api settings and provide fallbacks: parseCustomMockSettings.delayResponse.malformed 1`] = `
+{
+  "delay": 1000,
+  "forceStatus": undefined,
+  "reload": undefined,
+  "response": undefined,
+}
+`;
+
+exports[`BuildApi should parse malformed mock api settings and provide fallbacks: parseCustomMockSettings.forceStatus.malformed 1`] = `
+{
+  "delay": undefined,
+  "forceStatus": 200,
+  "reload": undefined,
+  "response": undefined,
+}
+`;
+
+exports[`BuildApi should parse random mock api settings: parseCustomMockSettings.randomError 1`] = `
+{
+  "delay": undefined,
+  "forceStatus": undefined,
+  "reload": true,
+  "response": "error",
+}
+`;
+
+exports[`BuildApi should parse random mock api settings: parseCustomMockSettings.randomSuccess 1`] = `
+{
+  "delay": undefined,
+  "forceStatus": undefined,
+  "reload": true,
+  "response": "success",
+}
+`;
+
+exports[`BuildApi should return a mock mime type and parsed content: parseContentAndType 1`] = `
+{
+  "content": ""{\\n  \\"foo\\": \\"hello\\",\\n  \\"bar\\": \\"world\\"\\n}"",
+  "contentType": "application/json",
+}
+`;
+
+exports[`BuildApi should return a mock mime type and parsed content: parseContentAndType.fallback 1`] = `
+{
+  "content": "{
+  "foo": "hello",
+  "bar": "world"
+}",
+  "contentType": "text/plain",
+}
+`;
+
+exports[`BuildApi should return a mock mime type and parsed content: parseContentAndType.passthrough 1`] = `
+{
+  "content": "{
+  "foo": "hello",
+  "bar": "world"
+}",
+  "contentType": "lorem/ipsum",
+}
+`;
+
+exports[`BuildApi should return a mock mime type and parsed content: parseContentAndType.svg 1`] = `
+{
+  "content": "<lorem><ipsum dolor="sit" /></lorem>",
+  "contentType": "image/svg+xml",
+}
+`;
+
+exports[`BuildApi should return a mock mime type and parsed content: parseContentAndType.xml 1`] = `
+{
+  "content": "<lorem><ipsum dolor="sit" /></lorem>",
+  "contentType": "text/xml",
+}
+`;
+
+exports[`BuildApi should return specific properties: specific properties 1`] = `
+[
+  "buildResponse",
+  "buildRequestHeaders",
+  "getContentAndType",
+  "getCustomMockSettings",
+  "getExampleResponse",
+]
+`;
