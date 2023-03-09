@@ -23,6 +23,12 @@
   "engines": {
     "node": ">=14.0.0"
   },
+  "files": [
+    "data/*",
+    "src/**/*.js",
+    "!src/**/.*/**",
+    "!src/**/*test*"
+  ],
   "bin": {
     "mock": "./bin/cli.js"
   },

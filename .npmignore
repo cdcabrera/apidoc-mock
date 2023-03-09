@@ -7,4 +7,3 @@ src/**/*test.js
 src/**/*.archive
 !LICENSE
 !README.md
-!CHANGELOG.md
