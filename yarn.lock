@@ -1556,10 +1556,10 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-apidoc@^0.53.1:
-  version "0.53.1"
-  resolved "https://registry.yarnpkg.com/apidoc/-/apidoc-0.53.1.tgz#07355426cd25fb4cfd49fb847898650a5d062d08"
-  integrity sha512-ijiLtIVEzTMdF29B/QzkvR4weMatgcElMsYKP1asszrImWYwzlZ9x0ZMLTXZrCe7GVMtkGSwQdugdLTZMZ+lww==
+apidoc@^0.54.0:
+  version "0.54.0"
+  resolved "https://registry.yarnpkg.com/apidoc/-/apidoc-0.54.0.tgz#b30d3c46ef451ed4fe024c18a7ffbda978bf5fd5"
+  integrity sha512-VCOdwkAaFK7bDLbiAiFKqX8SVlAnk7sQCXDARwshBQpVRqRGDNY993kAMPkWmSD1RCVBDMFIOgOfOR9mcISNZQ==
   dependencies:
     bootstrap "3.4.1"
     commander "^8.3.0"
