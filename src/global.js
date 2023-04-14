@@ -30,6 +30,29 @@ const generateHash = content =>
 const isPromise = obj => /^\[object (Promise|Async|AsyncFunction)]/.test(Object.prototype.toString.call(obj));
 
 /**
+ * Join url path, can also be used as confirmation.
+ *
+ * @param {string} base
+ * @param {Array} args
+ * @returns {undefined|*}
+ */
+const joinUrl = (base, ...args) => {
+  let updatedUrl;
+
+  try {
+    if (args.length) {
+      updatedUrl = new URL(join(...args), base);
+    } else {
+      updatedUrl = new URL(base);
+    }
+  } catch (e) {
+    return undefined;
+  }
+
+  return updatedUrl;
+};
+
+/**
  * Simple argument based memoize with adjustable limit, and extendable cache expire.
  * Expiration expands until a pause in use happens. Also allows for promises
  * and promise-like functions. For promises and promise-like functions it's the
@@ -136,4 +159,4 @@ const OPTIONS = {
   }
 };
 
-module.exports = { contextPath, generateHash, memo, OPTIONS };
+module.exports = { contextPath, generateHash, joinUrl, memo, OPTIONS };

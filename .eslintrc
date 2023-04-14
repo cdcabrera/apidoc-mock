@@ -57,7 +57,10 @@
           "patch",
           "post",
           "put",
-          "RandomResponse"
+          "Generate",
+          "OpenApi",
+          "RandomResponse",
+          "Swagger"
         ]
       }
     ],

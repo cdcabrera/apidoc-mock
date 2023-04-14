@@ -11,7 +11,13 @@ const { apiDocMock, OPTIONS } = require('../src');
 /**
  * Setup yargs
  */
-const { docs, port, silent, watch } = yargs
+const {
+  docs,
+  'expire-spec': expireSpec,
+  port,
+  silent,
+  watch
+} = yargs
   .usage('Create a mock server from apiDoc comments.\n\nUsage: mock [options]')
   .help('help')
   .alias('h', 'help')
@@ -23,6 +29,12 @@ const { docs, port, silent, watch } = yargs
     describe: 'Output directory used to compile apidocs',
     requiresArg: true,
     type: 'string'
+  })
+  .option('expire-spec', {
+    default: 600000,
+    describe:
+      'Millisecond fallback used for expiring remote OpenApi, or Swagger, files to avoid hammering remote resources. Does NOT affect local referenced files, and can be masked if an extended "refresh" timeout is greater.',
+    type: 'number'
   })
   .option('p', {
     alias: 'port',
@@ -48,10 +60,11 @@ const { docs, port, silent, watch } = yargs
 /**
  * Set global OPTIONS
  *
- * @type {{silent, docsPath: string, port: number, watchPath: string[]}}
+ * @type {{silent, docsPath: string, expireSpec: number, port: number, watchPath: string[]}}
  * @private
  */
 OPTIONS._set = {
+  expireSpec,
   port,
   silent,
   watchPath: function () {

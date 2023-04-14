@@ -1,5 +1,6 @@
 const { logger } = require('../logger/configLogger');
 const { exampleApiDocResponse } = require('./parseApi');
+const { exampleSchemaResponse } = require('./parseSpec');
 const { memo } = require('../global');
 
 /**
@@ -10,16 +11,25 @@ const { memo } = require('../global');
  * @returns {{forceStatus: (number|undefined), delay: (number|undefined), reload: (number|undefined),
  *     response: (number|undefined)}}
  */
-const getCustomMockSettings = memo(({ settings = [] } = {}) => {
+const getCustomMockSettings = memo(({ settings = [], url } = {}) => {
   const updatedSettings = {
     delay: undefined,
     forceStatus: undefined,
     response: undefined,
-    reload: undefined
+    reload: undefined,
+    spec: undefined,
+    specExtend: undefined,
+    specRefresh: undefined
   };
+
+  // console.log('>>>>> SETTINGS', url);
+  // have to parse url params :something to fire reload... otherwise user could just type randomsuccess, etc
 
   settings?.forEach(val => {
     const [key = '', value] = Object.entries(val)?.[0] || [];
+    const [label, ...description] = value.trim().split(' ');
+    const updatedLabel = label?.toLowerCase();
+    const updatedDesc = description?.join(' ');
 
     switch (key.toLowerCase()) {
       case 'delay':
@@ -38,6 +48,25 @@ const getCustomMockSettings = memo(({ settings = [] } = {}) => {
 
         if (Number.isNaN(updatedSettings.forceStatus)) {
           updatedSettings.forceStatus = 200;
+        }
+
+        break;
+      case 'openapi':
+      case 'swagger':
+        if (/generate/.test(updatedLabel) && updatedDesc?.length) {
+          updatedSettings.spec = updatedDesc;
+        }
+
+        if (/extend/.test(updatedLabel) && updatedDesc?.length) {
+          updatedSettings.specExtend = updatedDesc;
+        }
+
+        if (/refresh/.test(updatedLabel) && updatedDesc) {
+          updatedSettings.specRefresh = Number.parseInt(updatedDesc, 10);
+
+          if (Number.isNaN(updatedSettings.specRefresh)) {
+            updatedSettings.specRefresh = undefined;
+          }
         }
 
         break;
@@ -118,6 +147,7 @@ const getContentAndType = memo(({ content = '', contentType = 'text' } = {}) => 
 
 /**
  * Aggregate possible responses, return an example based on available configuration.
+ * Always fallback towards ApiDoc responses.
  *
  * @param {object} params
  * @param {object} params.mockSettings
@@ -127,8 +157,17 @@ const getContentAndType = memo(({ content = '', contentType = 'text' } = {}) => 
  * @param {string} params.url
  * @returns {{authExample: {content: *, type: *}, example: {content: *, type: *}}}
  */
-const getExampleResponse = async ({ mockSettings, successExamples = [], errorExamples = [], type, url } = {}) =>
-  exampleApiDocResponse({ mockSettings, successExamples, errorExamples, type, url });
+const getExampleResponse = async ({ mockSettings, successExamples = [], errorExamples = [], type, url } = {}) => {
+  if (mockSettings.spec) {
+    const { isMissing, ...specExamples } = await exampleSchemaResponse({ mockSettings, type, url });
+
+    if (isMissing === false) {
+      return specExamples;
+    }
+  }
+
+  return exampleApiDocResponse({ mockSettings, successExamples, errorExamples, type, url });
+};
 
 /**
  * Build API response
@@ -144,7 +183,8 @@ const buildResponse = (apiJson = []) => {
     try {
       const mockSettings = getCustomMockSettings({ settings: mock?.settings, url });
       const memoGetExampleResponse = memo(getExampleResponse, {
-        cacheLimit: mockSettings?.reload ? 0 : 25
+        cacheLimit: mockSettings?.reload ? 0 : 25,
+        expire: mockSettings?.specRefresh
       });
 
       appResponses.push({
