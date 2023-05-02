@@ -14,7 +14,7 @@ a delay to see how your codebase will handle loading scenarios with a balls slow
 The basic requirements:
  * [NodeJS version 16+](https://nodejs.org/)
  * Optionally your system could be running
-    - [Yarn 1.22+](https://yarnpkg.com), otherwise NPM should be adequate.
+    - [Yarn](https://yarnpkg.com), otherwise NPM should be adequate.
     - [Docker](https://docs.docker.com/engine/installation/)
     - [Podman](https://github.com/containers/podman), Homebrew can be used for the install `$ brew install podman`, [Easy setup directions here](https://marcusnoble.co.uk/2021-09-01-migrating-from-docker-to-podman/)
  
@@ -22,7 +22,7 @@ The basic requirements:
 ## Use
 
 Generate a "happy path" mock server from [apidoc](http://apidocjs.com/) `@apiSuccessExample` annotations. Once the
-server is setup correctly you should be able update your code comments/annotations and have the mock(s) update with a 
+server is set up correctly you should be able to update your code comments/annotations and have the mock(s) update with a 
 browser refresh.
 
 ### CLI
