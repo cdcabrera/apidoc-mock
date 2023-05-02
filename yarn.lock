@@ -1556,17 +1556,17 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-apidoc@^0.53.1:
-  version "0.53.1"
-  resolved "https://registry.yarnpkg.com/apidoc/-/apidoc-0.53.1.tgz#07355426cd25fb4cfd49fb847898650a5d062d08"
-  integrity sha512-ijiLtIVEzTMdF29B/QzkvR4weMatgcElMsYKP1asszrImWYwzlZ9x0ZMLTXZrCe7GVMtkGSwQdugdLTZMZ+lww==
+apidoc@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/apidoc/-/apidoc-1.0.2.tgz#61d3da040884ec97a7b681d5a8e92b78b51e1387"
+  integrity sha512-rrK+rqoBIL0F23rx/HJEmTgcAXWcnTD3pP+hFWdcJtJ2hg5CCxMO8cxLfofwiamDyUff47gF39AzqFMxk8/1wg==
   dependencies:
     bootstrap "3.4.1"
-    commander "^8.3.0"
+    commander "^10.0.0"
     diff-match-patch "^1.0.5"
     esbuild-loader "^2.16.0"
-    expose-loader "^3.1.0"
-    fs-extra "^10.0.0"
+    expose-loader "^4.0.0"
+    fs-extra "^11.0.0"
     glob "^7.2.0"
     handlebars "^4.7.7"
     iconv-lite "^0.6.3"
@@ -1576,7 +1576,7 @@ apidoc@^0.53.1:
     markdown-it "^12.2.0"
     nodemon "^2.0.15"
     prismjs "^1.25.0"
-    semver "^7.3.5"
+    semver "^7.5.0"
     style-loader "^3.3.1"
     webpack "^5.64.2"
     webpack-cli "^4.9.1"
@@ -2133,11 +2133,6 @@ commander@^7.0.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
   integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
-
-commander@^8.3.0:
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-8.3.0.tgz#4837ea1b2da67b9c616a67afbb0fafee567bca66"
-  integrity sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==
 
 comment-json@^4.2.3:
   version "4.2.3"
@@ -3118,10 +3113,10 @@ expect@^29.5.0:
     jest-message-util "^29.5.0"
     jest-util "^29.5.0"
 
-expose-loader@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/expose-loader/-/expose-loader-3.1.0.tgz#7a0bdecb345b921ca238a8c4715a4ea7e227213f"
-  integrity sha512-2RExSo0yJiqP+xiUue13jQa2IHE8kLDzTI7b6kn+vUlBVvlzNSiLDzo4e5Pp5J039usvTUnxZ8sUOhv0Kg15NA==
+expose-loader@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/expose-loader/-/expose-loader-4.1.0.tgz#9c6d55d24e3ac0e5d50ee5dc7930d564fc475d48"
+  integrity sha512-oLAesnzerwDGGADzBMnu0LPqqnlVz6e2V9lTa+/4X6VeW9W93x/nJpw05WBrcIdbqXm/EdnEQpiVDFFiQXuNfg==
 
 express@^4.18.2:
   version "4.18.2"
@@ -3330,10 +3325,10 @@ fresh@0.5.2:
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==
 
-fs-extra@^10.0.0:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-10.1.0.tgz#02873cfbc4084dde127eaa5f9905eef2325d1abf"
-  integrity sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==
+fs-extra@^11.0.0:
+  version "11.1.1"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.1.1.tgz#da69f7c39f3b002378b0954bb6ae7efdc0876e2d"
+  integrity sha512-MGIE4HOvQCeUCzmlHs0vXpih4ysz4wg9qiSAu6cd42lVwPbTM1TjV7RusoyQqMmk/95gdQZX72u+YW+c3eEpFQ==
   dependencies:
     graceful-fs "^4.2.0"
     jsonfile "^6.0.1"
