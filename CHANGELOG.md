@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.3.0](https://github.com/cdcabrera/apidoc-mock/compare/71eff1411709012a163c953b3b2a80abdc274f42...9832ef834479fa05f81b99a95889bd8ca6c76b09) (2023-05-02)
+
+### Code Refactoring
+* **build,parseApi** group funcs, memoize  ([#228](https://github.com/cdcabrera/apidoc-mock/pull/228)) ([7fc30f9](https://github.com/cdcabrera/apidoc-mock/commit/7fc30f9650123c853844b63adbf163c130651d3f))
+
+### Builds
+* **deps-dev** npm-check-updates from 16.10.8 to 16.10.9  ([#246](https://github.com/cdcabrera/apidoc-mock/pull/246)) ([9832ef8](https://github.com/cdcabrera/apidoc-mock/commit/9832ef834479fa05f81b99a95889bd8ca6c76b09))
+* **deps-dev** bump eslint from 8.38.0 to 8.39.0  ([#244](https://github.com/cdcabrera/apidoc-mock/pull/244)) ([1e1c8a0](https://github.com/cdcabrera/apidoc-mock/commit/1e1c8a02cf539e4a031d140abe4dd9880c032957))
+* **deps-dev** bump prettier from 2.8.7 to 2.8.8  ([#243](https://github.com/cdcabrera/apidoc-mock/pull/243)) ([16d9e59](https://github.com/cdcabrera/apidoc-mock/commit/16d9e59bad98f0c450231528a19189e9479c4bde))
+* **deps** bump yargs from 17.7.1 to 17.7.2  ([#242](https://github.com/cdcabrera/apidoc-mock/pull/242)) ([f17136d](https://github.com/cdcabrera/apidoc-mock/commit/f17136dcb33c07e16ebc9afa2fdce07d4e9b5d48))
+* **deps-dev** changelog-light from 0.3.1 to 0.4.0  ([#241](https://github.com/cdcabrera/apidoc-mock/pull/241)) ([3be54a9](https://github.com/cdcabrera/apidoc-mock/commit/3be54a991d28acc7954dd8d0123eb346a23a500c))
+* **deps** codecov/codecov-action from 3.1.1 to 3.1.3  ([#239](https://github.com/cdcabrera/apidoc-mock/pull/239)) ([c8a2e34](https://github.com/cdcabrera/apidoc-mock/commit/c8a2e34158c7637b88b715ca640652765018f136))
+* **deps-dev** npm-check-updates from 16.7.10 to 16.10.8  ([#238](https://github.com/cdcabrera/apidoc-mock/pull/238)) ([d65184c](https://github.com/cdcabrera/apidoc-mock/commit/d65184c89ac56eec15c3c6c4a1d6d4c8470f1eb3))
+* **deps-dev** eslint-plugin-jsdoc from 40.0.1 to 41.1.1  ([#236](https://github.com/cdcabrera/apidoc-mock/pull/236)) ([0afc298](https://github.com/cdcabrera/apidoc-mock/commit/0afc2985e8af7278bfef0a0d4504c6b9f2995def))
+* **deps-dev** eslint-config-prettier from 8.7.0 to 8.8.0  ([#234](https://github.com/cdcabrera/apidoc-mock/pull/234)) ([9c1f176](https://github.com/cdcabrera/apidoc-mock/commit/9c1f1760a3660b4d44a4d530139332600fbe55b6))
+* **deps-dev** bump eslint from 8.35.0 to 8.38.0  ([#237](https://github.com/cdcabrera/apidoc-mock/pull/237)) ([739890e](https://github.com/cdcabrera/apidoc-mock/commit/739890ee37c7a73258790efe00fb3cee1e33124b))
+* **deps-dev** bump prettier from 2.8.4 to 2.8.7  ([#231](https://github.com/cdcabrera/apidoc-mock/pull/231)) ([1f3ec8a](https://github.com/cdcabrera/apidoc-mock/commit/1f3ec8a80a10b944d60c2af21b59e4ace32e57eb))
+* **deps-dev** bump nodemon from 2.0.21 to 2.0.22  ([#233](https://github.com/cdcabrera/apidoc-mock/pull/233)) ([3a2e47b](https://github.com/cdcabrera/apidoc-mock/commit/3a2e47b3fd090a24e02fc4f7268ac51e038a60a6))
+* **deps-dev** bump cspell from 6.28.0 to 6.31.1  ([#232](https://github.com/cdcabrera/apidoc-mock/pull/232)) ([ab1bbae](https://github.com/cdcabrera/apidoc-mock/commit/ab1bbae69ae8ec32dd36b79aadaf0410ca48483a))
+* **deps** npm updates  ([#227](https://github.com/cdcabrera/apidoc-mock/pull/227)) ([71d5fce](https://github.com/cdcabrera/apidoc-mock/commit/71d5fcee90f81cd5bc7769385bcbdfe9ed46fde5))
+* **package** adjust included files  ([#227](https://github.com/cdcabrera/apidoc-mock/pull/227)) ([fb58278](https://github.com/cdcabrera/apidoc-mock/commit/fb582789950a068ab7b11a0b87b53d647c7d12f9))
+
 ## [4.2.0](https://github.com/cdcabrera/apidoc-mock/compare/897401936dce8d16fb80996d375f5c024d5df836...6ce5f3b287d4ef93f411a3542eec24774bac7708) (2023-03-08)
 
 ### Code Refactoring
