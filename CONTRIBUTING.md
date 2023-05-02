@@ -8,9 +8,9 @@ commit messaging follow the format
   ```
 
 ### Build Requirements
-To setup your work environment you'll need to use
- * [NodeJS version 16+](https://nodejs.org/)
- * [Yarn 1.22+](https://yarnpkg.com)
+To set up your work environment you'll need to use
+ * [NodeJS](https://nodejs.org/)
+ * [Yarn](https://yarnpkg.com)
  * And if you plan on making container contributions you may want to setup
     - [Docker](https://docs.docker.com/engine/installation/) or
     - [Podman](https://github.com/containers/podman), Homebrew can be used for the install `$ brew install podman`, [Easy setup directions here](https://marcusnoble.co.uk/2021-09-01-migrating-from-docker-to-podman/)
