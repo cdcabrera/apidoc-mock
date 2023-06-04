@@ -87,7 +87,7 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "changelog-light": "^0.4.0",
+    "changelog-light": "^0.4.1",
     "cspell": "^6.31.1",
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
