@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.4.0](https://github.com/cdcabrera/apidoc-mock/compare/fc595b3122f91ae023a00f4c998e9cf3db15918b...fa3859a69a7d74888424cae9f67b6417234895a0) (2023-06-26)
+
+
+### Builds
+* **deps-dev** npm updates  ([#258](https://github.com/cdcabrera/apidoc-mock/pull/258)) ([fa3859a](https://github.com/cdcabrera/apidoc-mock/commit/fa3859a69a7d74888424cae9f67b6417234895a0))
+* **deps** bump apidoc from 0.53.1 to 1.0.3  ([#257](https://github.com/cdcabrera/apidoc-mock/pull/257)) ([f0e66d7](https://github.com/cdcabrera/apidoc-mock/commit/f0e66d7635198c1b0db8300721386807723e2482))
+* **deps** bump winston from 3.8.2 to 3.9.0  ([#250](https://github.com/cdcabrera/apidoc-mock/pull/250)) ([9a948aa](https://github.com/cdcabrera/apidoc-mock/commit/9a948aa8a1777a4eb6f491799e532013c5687fc0))
+* **deps-dev** eslint-plugin-jsdoc from 43.1.1 to 46.2.1  ([#255](https://github.com/cdcabrera/apidoc-mock/pull/255)) ([709a454](https://github.com/cdcabrera/apidoc-mock/commit/709a4545bf8beb338d745bf59cc893b5004790db))
+* **deps-dev** bump eslint from 8.39.0 to 8.42.0  ([#256](https://github.com/cdcabrera/apidoc-mock/pull/256)) ([cc60108](https://github.com/cdcabrera/apidoc-mock/commit/cc6010878106e4acfed66483cdb70bfa8f59bd58))
+* **deps-dev** npm-check-updates from 16.10.9 to 16.10.12  ([#251](https://github.com/cdcabrera/apidoc-mock/pull/251)) ([fbe5ffb](https://github.com/cdcabrera/apidoc-mock/commit/fbe5ffbe80d4d8f78037c39f52933664ee3b6dc2))
+* **deps-dev** changelog-light from 0.4.0 to 0.4.1  ([#254](https://github.com/cdcabrera/apidoc-mock/pull/254)) ([fc1320e](https://github.com/cdcabrera/apidoc-mock/commit/fc1320e1ef61f669b1ce99c2bf3d9fa693b934a8))
+* **deps** codecov/codecov-action from 3.1.3 to 3.1.4  ([#249](https://github.com/cdcabrera/apidoc-mock/pull/249)) ([b118cad](https://github.com/cdcabrera/apidoc-mock/commit/b118cad476fd62527fae6e517a5d1cc6a12220f8))
+* **nodejs** expand 20 checks  ([#248](https://github.com/cdcabrera/apidoc-mock/pull/248)) ([c11a980](https://github.com/cdcabrera/apidoc-mock/commit/c11a9809ab8b4fb75184da8a5934ca2c5f23442b))
+* **deps-dev** eslint-plugin-jsdoc from 41.1.1 to 43.1.1  ([#240](https://github.com/cdcabrera/apidoc-mock/pull/240)) ([9da464b](https://github.com/cdcabrera/apidoc-mock/commit/9da464b2026c5e51e13393a7a3360eef9d79344d))
+* **nodejs** remove 14 support  ([#247](https://github.com/cdcabrera/apidoc-mock/pull/247)) ([26dc5af](https://github.com/cdcabrera/apidoc-mock/commit/26dc5afe49e824a3b7981c51f6048593c5084e0c))
+
 ## [4.3.0](https://github.com/cdcabrera/apidoc-mock/compare/71eff1411709012a163c953b3b2a80abdc274f42...9832ef834479fa05f81b99a95889bd8ca6c76b09) (2023-05-02)
 
 ### Code Refactoring
