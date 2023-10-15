@@ -64,6 +64,15 @@
     "jsdoc/require-param-description": 0,
     "jsdoc/require-property-description": 0,
     "jsdoc/require-returns-description": 0,
+    "jsdoc/tag-lines": [
+      "warn",
+      "always",
+      {
+        "count": 0,
+        "applyToEndTag": false,
+        "startLines": 1
+      }
+    ],
     "consistent-return": 1,
     "max-len": [
       "error",
