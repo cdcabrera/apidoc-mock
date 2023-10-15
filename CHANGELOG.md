@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.4.2](https://github.com/cdcabrera/apidoc-mock/compare/faa42a15450f3b54605f654a1e0bd9c6f3a94435...ebd0ea4f6432441cc4a2a06bf142952bcfcfd7f0) (2023-10-15)
+
+
+### Builds
+* **eslint** config jsdoc  ([#292](https://github.com/cdcabrera/apidoc-mock/pull/292)) ([ebd0ea4](https://github.com/cdcabrera/apidoc-mock/commit/ebd0ea4f6432441cc4a2a06bf142952bcfcfd7f0))
+* **deps-dev** npm-check-updates from 16.10.18 to 16.14.6  ([#291](https://github.com/cdcabrera/apidoc-mock/pull/291)) ([058dffe](https://github.com/cdcabrera/apidoc-mock/commit/058dffed313b79bce8c92706ad7482bf9125f71c))
+* **deps-dev** bump jest from 29.6.4 to 29.7.0  ([#288](https://github.com/cdcabrera/apidoc-mock/pull/288)) ([4a6a0db](https://github.com/cdcabrera/apidoc-mock/commit/4a6a0dba6f3c0ba953870bdae0bf67826b3ba34b))
+* **deps-dev** eslint-plugin-jsdoc from 46.5.1 to 46.8.2  ([#287](https://github.com/cdcabrera/apidoc-mock/pull/287)) ([a80bbb4](https://github.com/cdcabrera/apidoc-mock/commit/a80bbb4c566d3d6531032b917932e13c85902a2b))
+* **deps-dev** eslint-plugin-jest from 27.2.3 to 27.4.2  ([#286](https://github.com/cdcabrera/apidoc-mock/pull/286)) ([424c4cb](https://github.com/cdcabrera/apidoc-mock/commit/424c4cb57b8fc0319574f91c3c33128954147e70))
+* **deps-dev** eslint from 8.49.0 to 8.50.0  ([#289](https://github.com/cdcabrera/apidoc-mock/pull/289)) ([db1e075](https://github.com/cdcabrera/apidoc-mock/commit/db1e0750169ce15303ec4fede870e7b92f3ed062))
+* **deps-dev** changelog-light from 0.5.0 to 0.5.1  ([#285](https://github.com/cdcabrera/apidoc-mock/pull/285)) ([6f7cc66](https://github.com/cdcabrera/apidoc-mock/commit/6f7cc66ee1c9087c4f2cc961cbda83536194dd12))
+* **deps-dev** bump cspell from 6.31.3 to 7.3.7  ([#284](https://github.com/cdcabrera/apidoc-mock/pull/284)) ([40dd26d](https://github.com/cdcabrera/apidoc-mock/commit/40dd26da64533f1aa1a234f343b83b8056a82813))
+* **deps** bump actions/checkout from 3 to 4  ([#283](https://github.com/cdcabrera/apidoc-mock/pull/283)) ([4aaa07d](https://github.com/cdcabrera/apidoc-mock/commit/4aaa07d30401cdd4847825748eb58c0f3147609d))
+
 ## [4.4.1](https://github.com/cdcabrera/apidoc-mock/compare/af79a505a9a0f2f75d50ad74d564b98444e29238...71de0cb47bad42e845e4eda2a06e9601b4c37788) (2023-09-09)
 
 
