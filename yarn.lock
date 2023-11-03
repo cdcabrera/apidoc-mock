@@ -2124,10 +2124,10 @@ chalk@^5.0.1, chalk@^5.2.0, chalk@^5.3.0:
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.3.0.tgz#67c20a7ebef70e7f3970a01f90fa210cb6860385"
   integrity sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==
 
-changelog-light@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/changelog-light/-/changelog-light-0.5.1.tgz#f5dff5ed10960e028a85a62c67be10729a899332"
-  integrity sha512-5ZfhOUqmI9z3df5Aq7U2E8M+Dr+YIZnbPZ9makjpV6Lv3qTjUMRqvLQqLQHuQydQV0s31dThqzS2VbW9vTEjHg==
+changelog-light@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/changelog-light/-/changelog-light-0.6.0.tgz#a88eb4f4dc597c4b3e744e52af87d94c46095c32"
+  integrity sha512-FRJLqIyBlLXrckmeMmwI02vBcD7/6F4/OQI+W88w+DKdiIXTd99rSQefrVdRleBlxXUXnOlWM/pn98U2w3lWNw==
   dependencies:
     conventional-commit-types "^3.0.0"
     semver "^7.5.4"
