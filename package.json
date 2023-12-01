@@ -88,7 +88,7 @@
   },
   "devDependencies": {
     "changelog-light": "^0.6.0",
-    "cspell": "^7.3.8",
+    "cspell": "^8.0.0",
     "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-babel": "^5.3.1",
