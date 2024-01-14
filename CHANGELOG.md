@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.4.3](https://github.com/cdcabrera/apidoc-mock/compare/ee0ac936a5f1cc752b581bd3a4734e71ff7bd396...f8f53c6cbae21175b3cbd3d52dfa17f2b2f2f3ef) (2024-01-14)
+
+
+### Builds
+* **deps** npm updates  ([f8f53c6](https://github.com/cdcabrera/apidoc-mock/commit/f8f53c6cbae21175b3cbd3d52dfa17f2b2f2f3ef))
+* **deps** bump actions/github-script from 6 to 7 ([#301](https://github.com/cdcabrera/apidoc-mock/pull/301)) ([d39f0d3](https://github.com/cdcabrera/apidoc-mock/commit/d39f0d3e964c83a43e01552d571b72266a67f9ad))
+* **deps-dev** eslint-plugin-jest from 27.4.2 to 27.6.0 ([#293](https://github.com/cdcabrera/apidoc-mock/pull/293)) ([0036262](https://github.com/cdcabrera/apidoc-mock/commit/0036262dac851dd1264a222c1811a6ab55111706))
+* **deps-dev** eslint-plugin-import from 2.28.1 to 2.29.0 ([#295](https://github.com/cdcabrera/apidoc-mock/pull/295)) ([a2bca31](https://github.com/cdcabrera/apidoc-mock/commit/a2bca31f98f37d747e622b15d7c33eb143a42d88))
+* **deps-dev** eslint-plugin-prettier from 5.0.0 to 5.0.1 ([#297](https://github.com/cdcabrera/apidoc-mock/pull/297)) ([352b884](https://github.com/cdcabrera/apidoc-mock/commit/352b88441b17151220f0390bbc74b7c162ea3fd2))
+* **deps-dev** bump cspell from 7.3.7 to 7.3.8 ([#298](https://github.com/cdcabrera/apidoc-mock/pull/298)) ([dfed8a0](https://github.com/cdcabrera/apidoc-mock/commit/dfed8a0b432381b6e51c49ba15a2d9c02352b237))
+* **deps-dev** changelog-light from 0.5.1 to 0.6.0 ([#299](https://github.com/cdcabrera/apidoc-mock/pull/299)) ([91df098](https://github.com/cdcabrera/apidoc-mock/commit/91df098078cc9b4cf2b178fcf806faef2e567c18))
+* **deps** bump actions/setup-node from 3 to 4 ([#300](https://github.com/cdcabrera/apidoc-mock/pull/300)) ([70bb489](https://github.com/cdcabrera/apidoc-mock/commit/70bb489239e2e1423fc29865ebb49b6452e9928c))
+
 ## [4.4.2](https://github.com/cdcabrera/apidoc-mock/compare/faa42a15450f3b54605f654a1e0bd9c6f3a94435...ebd0ea4f6432441cc4a2a06bf142952bcfcfd7f0) (2023-10-15)
 
 
