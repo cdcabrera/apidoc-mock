@@ -11,11 +11,12 @@
 ### Coverage and basic unit test check
 1. update the NPM packages with `$ yarn`
 1. `$ yarn test`
+-->
+<!--
 ### Interactive unit test check
 1. update the NPM packages with `$ yarn`
 1. `$ yarn test:dev`
 -->
-...
 
 ## Example
 <!-- Append a demo/screenshot/animated gif, or a link to the aforementioned, of the cli output -->
