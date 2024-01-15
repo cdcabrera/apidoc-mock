@@ -1,6 +1,6 @@
-const { logger } = require('../logger/configLogger');
-const { exampleApiDocResponse } = require('./parseApi');
-const { memo } = require('../global');
+const { logger } = require('./logger');
+const { exampleApiDocResponse } = require('./apidocParse');
+const { memo } = require('./global');
 
 /**
  * Parse custom mock settings.

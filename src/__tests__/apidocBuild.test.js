@@ -1,7 +1,7 @@
-const { setupDocs } = require('../buildDocs');
-const { OPTIONS } = require('../../global');
+const { setupDocs } = require('../apidocBuild');
+const { OPTIONS } = require('../global');
 
-describe('BuildDocs', () => {
+describe('apidocBuild', () => {
   it('should have specific defined properties', () => {
     expect(setupDocs()).toBeDefined();
   });

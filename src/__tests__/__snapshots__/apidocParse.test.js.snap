@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ParseApi return a 401 specific example: parseAuthExample 1`] = `
+exports[`apidocParse return a 401 specific example: parseAuthExample 1`] = `
 {
   "content": "HTTP/1.1 401 Unauthorized
 {
@@ -12,7 +12,7 @@ exports[`ParseApi return a 401 specific example: parseAuthExample 1`] = `
 }
 `;
 
-exports[`ParseApi should force a response, or a general example: exampleResponse.fallback 1`] = `
+exports[`apidocParse should force a response, or a general example: exampleResponse.fallback 1`] = `
 {
   "content": "Success",
   "status": 200,
@@ -20,19 +20,19 @@ exports[`ParseApi should force a response, or a general example: exampleResponse
 }
 `;
 
-exports[`ParseApi should force a response, or a general example: exampleResponse.forcedStatus.200 1`] = `
+exports[`apidocParse should force a response, or a general example: exampleResponse.forcedStatus.200 1`] = `
 {
   "status": 200,
 }
 `;
 
-exports[`ParseApi should force a response, or a general example: exampleResponse.forcedStatus.400 1`] = `
+exports[`apidocParse should force a response, or a general example: exampleResponse.forcedStatus.400 1`] = `
 {
   "status": 400,
 }
 `;
 
-exports[`ParseApi should parse type and status examples: parseStatus.success.delete 1`] = `
+exports[`apidocParse should parse type and status examples: parseStatus.success.delete 1`] = `
 [
   {
     "content": "HTTP/1.1 200 OK
@@ -47,7 +47,7 @@ exports[`ParseApi should parse type and status examples: parseStatus.success.del
 ]
 `;
 
-exports[`ParseApi should parse type and status examples: parseStatus.success.get 1`] = `
+exports[`apidocParse should parse type and status examples: parseStatus.success.get 1`] = `
 [
   {
     "content": "HTTP/1.1 200 OK
@@ -62,7 +62,7 @@ exports[`ParseApi should parse type and status examples: parseStatus.success.get
 ]
 `;
 
-exports[`ParseApi should return specific properties: specific properties 1`] = `
+exports[`apidocParse should return specific properties: specific properties 1`] = `
 [
   "exampleApiDocResponse",
   "exampleResponse",

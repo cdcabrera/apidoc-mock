@@ -110,7 +110,7 @@ const apiDocBaseConfig = {
   dryRun: process.env.NODE_ENV === 'test',
   silent: process.env.NODE_ENV === 'test',
   parsers: {
-    apimock: join(__dirname, './docs/configDocs.js')
+    apimock: join(__dirname, './apidocConfig.js')
   }
 };
 

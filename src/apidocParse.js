@@ -1,5 +1,5 @@
-const { logger } = require('../logger/configLogger');
-const { memo } = require('../global');
+const { logger } = require('./logger');
+const { memo } = require('./global');
 
 /**
  * Return a 401 specific example.

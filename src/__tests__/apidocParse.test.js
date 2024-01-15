@@ -1,9 +1,9 @@
-const parseApi = require('../parseApi');
-const { exampleResponse, parseAuthExample, parseStatus } = parseApi;
+const apidocParse = require('../apidocParse');
+const { exampleResponse, parseAuthExample, parseStatus } = apidocParse;
 
-describe('ParseApi', () => {
+describe('apidocParse', () => {
   it('should return specific properties', () => {
-    expect(Object.keys(parseApi)).toMatchSnapshot('specific properties');
+    expect(Object.keys(apidocParse)).toMatchSnapshot('specific properties');
   });
 
   it('should force a response, or a general example', () => {

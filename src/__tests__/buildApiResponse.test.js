@@ -1,9 +1,9 @@
-const buildApi = require('../buildApi');
-const { buildRequestHeaders, buildResponse, getContentAndType, getCustomMockSettings } = buildApi;
+const buildApiResponse = require('../buildApiResponse');
+const { buildRequestHeaders, buildResponse, getContentAndType, getCustomMockSettings } = buildApiResponse;
 
-describe('BuildApi', () => {
+describe('buildApiResponse', () => {
   it('should return specific properties', () => {
-    expect(Object.keys(buildApi)).toMatchSnapshot('specific properties');
+    expect(Object.keys(buildApiResponse)).toMatchSnapshot('specific properties');
   });
 
   it('should build specific headers', () => {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BuildApi should build a response with specific properties: buildResponse 1`] = `
+exports[`buildApiResponse should build a response with specific properties: buildResponse 1`] = `
 {
   "appResponses": [
     {
@@ -13,7 +13,7 @@ exports[`BuildApi should build a response with specific properties: buildRespons
 }
 `;
 
-exports[`BuildApi should build a response with specific properties: buildResponse callback 1`] = `
+exports[`buildApiResponse should build a response with specific properties: buildResponse callback 1`] = `
 [
   [
     "Cache-Control",
@@ -29,7 +29,7 @@ exports[`BuildApi should build a response with specific properties: buildRespons
 ]
 `;
 
-exports[`BuildApi should build specific headers: buildRequestHeaders.request.headers 1`] = `
+exports[`buildApiResponse should build specific headers: buildRequestHeaders.request.headers 1`] = `
 {
   "Access-Control-Allow-Credentials": true,
   "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, HEAD, OPTIONS, PATCH",
@@ -37,7 +37,7 @@ exports[`BuildApi should build specific headers: buildRequestHeaders.request.hea
 }
 `;
 
-exports[`BuildApi should build specific headers: buildRequestHeaders.request.preflight 1`] = `
+exports[`buildApiResponse should build specific headers: buildRequestHeaders.request.preflight 1`] = `
 {
   "Access-Control-Allow-Credentials": true,
   "Access-Control-Allow-Headers": "x-test-header",
@@ -47,7 +47,7 @@ exports[`BuildApi should build specific headers: buildRequestHeaders.request.pre
 }
 `;
 
-exports[`BuildApi should parse custom mock api settings: parseCustomMockSettings 1`] = `
+exports[`buildApiResponse should parse custom mock api settings: parseCustomMockSettings 1`] = `
 {
   "delay": 2000,
   "forceStatus": 401,
@@ -56,7 +56,7 @@ exports[`BuildApi should parse custom mock api settings: parseCustomMockSettings
 }
 `;
 
-exports[`BuildApi should parse malformed mock api settings and provide fallbacks: parseCustomMockSettings.delayResponse.malformed 1`] = `
+exports[`buildApiResponse should parse malformed mock api settings and provide fallbacks: parseCustomMockSettings.delayResponse.malformed 1`] = `
 {
   "delay": 1000,
   "forceStatus": undefined,
@@ -65,7 +65,7 @@ exports[`BuildApi should parse malformed mock api settings and provide fallbacks
 }
 `;
 
-exports[`BuildApi should parse malformed mock api settings and provide fallbacks: parseCustomMockSettings.forceStatus.malformed 1`] = `
+exports[`buildApiResponse should parse malformed mock api settings and provide fallbacks: parseCustomMockSettings.forceStatus.malformed 1`] = `
 {
   "delay": undefined,
   "forceStatus": 200,
@@ -74,7 +74,7 @@ exports[`BuildApi should parse malformed mock api settings and provide fallbacks
 }
 `;
 
-exports[`BuildApi should parse random mock api settings: parseCustomMockSettings.randomError 1`] = `
+exports[`buildApiResponse should parse random mock api settings: parseCustomMockSettings.randomError 1`] = `
 {
   "delay": undefined,
   "forceStatus": undefined,
@@ -83,7 +83,7 @@ exports[`BuildApi should parse random mock api settings: parseCustomMockSettings
 }
 `;
 
-exports[`BuildApi should parse random mock api settings: parseCustomMockSettings.randomSuccess 1`] = `
+exports[`buildApiResponse should parse random mock api settings: parseCustomMockSettings.randomSuccess 1`] = `
 {
   "delay": undefined,
   "forceStatus": undefined,
@@ -92,14 +92,14 @@ exports[`BuildApi should parse random mock api settings: parseCustomMockSettings
 }
 `;
 
-exports[`BuildApi should return a mock mime type and parsed content: parseContentAndType 1`] = `
+exports[`buildApiResponse should return a mock mime type and parsed content: parseContentAndType 1`] = `
 {
   "content": ""{\\n  \\"foo\\": \\"hello\\",\\n  \\"bar\\": \\"world\\"\\n}"",
   "contentType": "application/json",
 }
 `;
 
-exports[`BuildApi should return a mock mime type and parsed content: parseContentAndType.fallback 1`] = `
+exports[`buildApiResponse should return a mock mime type and parsed content: parseContentAndType.fallback 1`] = `
 {
   "content": "{
   "foo": "hello",
@@ -109,7 +109,7 @@ exports[`BuildApi should return a mock mime type and parsed content: parseConten
 }
 `;
 
-exports[`BuildApi should return a mock mime type and parsed content: parseContentAndType.passthrough 1`] = `
+exports[`buildApiResponse should return a mock mime type and parsed content: parseContentAndType.passthrough 1`] = `
 {
   "content": "{
   "foo": "hello",
@@ -119,21 +119,21 @@ exports[`BuildApi should return a mock mime type and parsed content: parseConten
 }
 `;
 
-exports[`BuildApi should return a mock mime type and parsed content: parseContentAndType.svg 1`] = `
+exports[`buildApiResponse should return a mock mime type and parsed content: parseContentAndType.svg 1`] = `
 {
   "content": "<lorem><ipsum dolor="sit" /></lorem>",
   "contentType": "image/svg+xml",
 }
 `;
 
-exports[`BuildApi should return a mock mime type and parsed content: parseContentAndType.xml 1`] = `
+exports[`buildApiResponse should return a mock mime type and parsed content: parseContentAndType.xml 1`] = `
 {
   "content": "<lorem><ipsum dolor="sit" /></lorem>",
   "contentType": "text/xml",
 }
 `;
 
-exports[`BuildApi should return specific properties: specific properties 1`] = `
+exports[`buildApiResponse should return specific properties: specific properties 1`] = `
 [
   "buildResponse",
   "buildRequestHeaders",
