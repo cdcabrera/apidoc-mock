@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ConfigDocs should parse custom settings and return an object 1`] = `
-{
-  "delayResponse": "3000",
-}
-`;

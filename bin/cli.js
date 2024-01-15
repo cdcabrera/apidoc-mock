@@ -5,7 +5,7 @@ const { existsSync } = require('fs');
 const nodeWatch = require('node-watch');
 const yargs = require('yargs');
 const packageJson = require('../package');
-const { logger } = require('../src/logger/configLogger');
+const { logger } = require('../src/logger');
 const { apiDocMock, OPTIONS } = require('../src');
 
 /**

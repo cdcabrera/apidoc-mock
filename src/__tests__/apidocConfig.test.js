@@ -1,6 +1,6 @@
-const { parse, path, getGroup, method } = require('../configDocs');
+const { parse, path, getGroup, method } = require('../apidocConfig');
 
-describe('ConfigDocs', () => {
+describe('apidocConfig', () => {
   it('should have specific defined properties', () => {
     expect(parse).toBeDefined();
     expect(path).toBeDefined();

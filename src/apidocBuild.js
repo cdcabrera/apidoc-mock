@@ -1,6 +1,6 @@
 const apidoc = require('apidoc');
-const { logger } = require('../logger/configLogger');
-const { OPTIONS } = require('../global');
+const { logger } = require('./logger');
+const { OPTIONS } = require('./global');
 
 /**
  * Build ApiDoc documentation.
@@ -27,10 +27,10 @@ const setupDocs = ({ apiDocBaseConfig, watchPath: src, docsPath: dest, silent } 
   try {
     const { data } = apidoc.createDoc(apiDocsConfig);
     const updatedResult = JSON.parse(data);
-    logger.info('buildDocs.read.apiJsonFile');
+    logger.info('apidocBuild.read.apiJsonFile');
     return updatedResult;
   } catch (e) {
-    logger.error(`buildDocs.apiDoc.createDoc[${e.message}]`);
+    logger.error(`apidocBuild.apiDoc.createDoc[${e.message}]`);
   }
 
   return [];

@@ -6,7 +6,7 @@ const { colorize, combine, timestamp, printf } = format;
  *
  * @type {{ error: Function, info: Function, warn: Function }}
  */
-const configLogger = createLogger({
+const logger = createLogger({
   format: combine(
     colorize(),
     timestamp({
@@ -18,4 +18,4 @@ const configLogger = createLogger({
   silent: process.env.NODE_ENV === 'test'
 });
 
-module.exports = { logger: configLogger };
+module.exports = { logger };

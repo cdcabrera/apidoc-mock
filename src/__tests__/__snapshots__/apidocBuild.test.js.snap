@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BuildDocs should fail a build gracefully: fail 1`] = `[]`;
+exports[`apidocBuild should fail a build gracefully: fail 1`] = `[]`;
 
-exports[`BuildDocs should handle additional response content types: html mock 1`] = `
+exports[`apidocBuild should handle additional response content types: html mock 1`] = `
 {
   "error": undefined,
   "filename": "html.js",
@@ -17,7 +17,7 @@ exports[`BuildDocs should handle additional response content types: html mock 1`
 }
 `;
 
-exports[`BuildDocs should handle additional response content types: svg mock 1`] = `
+exports[`apidocBuild should handle additional response content types: svg mock 1`] = `
 {
   "error": undefined,
   "filename": "svg.js",
@@ -32,7 +32,7 @@ exports[`BuildDocs should handle additional response content types: svg mock 1`]
 }
 `;
 
-exports[`BuildDocs should setup api docs and create a predictable output: setupDocs 1`] = `
+exports[`apidocBuild should setup api docs and create a predictable output: setupDocs 1`] = `
 {
   "error": "{"examples":[{"title":"Error-Response:","content":"HTTP/1.1 400 OK\\n{\\n  \\"error\\": \\"test\\"\\n}","type":"json"}]}",
   "filename": "test.js",

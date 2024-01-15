@@ -1,9 +1,9 @@
 const express = require('express');
 const { createHttpTerminator } = require('http-terminator');
 const { OPTIONS } = require('./global');
-const { logger } = require('./logger/configLogger');
-const { setupDocs } = require('./docs/buildDocs');
-const { buildRequestHeaders, buildResponse } = require('./api/buildApi');
+const { logger } = require('./logger');
+const { setupDocs } = require('./apidocBuild');
+const { buildRequestHeaders, buildResponse } = require('./buildApiResponse');
 const CACHE = { app: null, httpTerminator: null };
 
 /**
