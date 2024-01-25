@@ -68,10 +68,10 @@ const getCustomMockSettings = memo(({ settings = [] } = {}) => {
  *
  * @param {object} params
  * @param {string} params.content
- * @param {string} params.contentType
+ * @param {string} params.type
  * @returns {{content: string, contentType: string}}
  */
-const getContentAndType = memo(({ content = '', contentType = 'text' } = {}) => {
+const getContentAndType = memo(({ content = '', type: contentType } = {}) => {
   let updatedContent = content;
   let updatedType;
 
@@ -79,14 +79,10 @@ const getContentAndType = memo(({ content = '', contentType = 'text' } = {}) => 
     updatedContent = content.split(/\n/).slice(1).join('\n');
   }
 
-  if (new RegExp('json', 'i').test(contentType)) {
-    updatedContent = JSON.stringify(updatedContent, null, 2);
-  }
-
   /**
    * Ignore content types that already contain a `/`
    */
-  if (contentType.split('/').length > 1) {
+  if (contentType?.split('/').length > 1) {
     return {
       content: updatedContent,
       contentType
@@ -94,17 +90,21 @@ const getContentAndType = memo(({ content = '', contentType = 'text' } = {}) => 
   }
 
   switch (contentType) {
+    case 'zip':
+    case 'gzip':
     case 'json':
-      updatedType = 'application/json';
+      updatedType = `application/${contentType}`;
       break;
     case 'xml':
     case 'html':
     case 'csv':
+    case 'css':
       updatedType = `text/${contentType}`;
       break;
     case 'svg':
       updatedType = 'image/svg+xml';
       break;
+    case 'txt':
     default:
       updatedType = 'text/plain';
       break;
