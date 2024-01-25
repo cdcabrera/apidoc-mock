@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.5.0](https://github.com/cdcabrera/apidoc-mock/compare/200a6399cca07b2a1ea8cd3504b4a2e39f7a1954...ce29a701d63575b60c1939bd297a044f298d1db6) (2024-01-25)
+
+
+### Code Refactoring
+* **cli** flatten file arch ([#316](https://github.com/cdcabrera/apidoc-mock/pull/316)) ([dc0e158](https://github.com/cdcabrera/apidoc-mock/commit/dc0e15820bba7f516bde55d1cfb0cd7f5f52543b))
+
+### Builds
+* **template** pr testing copy ([#317](https://github.com/cdcabrera/apidoc-mock/pull/317)) ([4467f24](https://github.com/cdcabrera/apidoc-mock/commit/4467f24c8f66ee91dc0a97f2a7ea2dd7f71b925d))
+* **actions** commit syntax parser ([#317](https://github.com/cdcabrera/apidoc-mock/pull/317)) ([f0e1a88](https://github.com/cdcabrera/apidoc-mock/commit/f0e1a88a4ee81786923af3d6404c614bfb432b7c))
+* **docker** nodejs 18 move ([#316](https://github.com/cdcabrera/apidoc-mock/pull/316)) ([b4e7dbc](https://github.com/cdcabrera/apidoc-mock/commit/b4e7dbc2d43e1701f02c22836098e66226636c6b))
+
+### Bug Fixes
+* **buildApiResponse** pass correct response types ([#318](https://github.com/cdcabrera/apidoc-mock/pull/318)) ([ce29a70](https://github.com/cdcabrera/apidoc-mock/commit/ce29a701d63575b60c1939bd297a044f298d1db6))
+
 ## [4.4.3](https://github.com/cdcabrera/apidoc-mock/compare/ee0ac936a5f1cc752b581bd3a4734e71ff7bd396...f8f53c6cbae21175b3cbd3d52dfa17f2b2f2f3ef) (2024-01-14)
 
 
