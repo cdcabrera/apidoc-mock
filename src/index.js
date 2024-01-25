@@ -63,7 +63,11 @@ const apiDocMock = async ({ port, watchPath, docsPath } = OPTIONS) => {
     throw new Error('Server failed to load');
   }
 
-  return httpTerminator;
+  return {
+    apiJson,
+    CACHE,
+    httpTerminator
+  };
 };
 
 module.exports = { apiDocMock, setupDocs, setupResponse, OPTIONS };

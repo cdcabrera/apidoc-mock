@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApiDocMock should generate an api response from annotations: apiDocMock, parsed 1`] = `
+{
+  "CACHE": {
+    "app": {
+      "delete": [MockFunction],
+      "get": [MockFunction] {
+        "calls": [
+          [
+            "/hello/world/",
+            [Function],
+          ],
+        ],
+        "results": [
+          {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+      "listen": [MockFunction] {
+        "calls": [
+          [
+            undefined,
+            [Function],
+          ],
+        ],
+        "results": [
+          {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+      "patch": [MockFunction],
+      "post": [MockFunction],
+      "put": [MockFunction],
+      "use": [MockFunction] {
+        "calls": [
+          [
+            "/docs",
+            undefined,
+          ],
+          [
+            [Function],
+          ],
+        ],
+        "results": [
+          {
+            "type": "return",
+            "value": undefined,
+          },
+          {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+    },
+    "httpTerminator": {
+      "terminate": [Function],
+    },
+  },
+  "apiJson": "[
+  {
+    "errorExamples": [
+      {
+        "title": "Error-Response:",
+        "content": "HTTP/1.1 400 OK\\n{\\n  \\"error\\": \\"test\\"\\n}",
+        "type": "json"
+      }
+    ],
+    "successExamples": [
+      {
+        "title": "Success-Response:",
+        "content": "HTTP/1.1 200 OK\\n{\\n  \\"success\\": \\"test\\"\\n}",
+        "type": "json"
+      }
+    ]
+  }
+]",
+  "httpTerminator": {
+    "terminate": [Function],
+  },
+}
+`;
