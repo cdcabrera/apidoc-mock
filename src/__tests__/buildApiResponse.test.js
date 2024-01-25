@@ -31,7 +31,25 @@ describe('buildApiResponse', () => {
     const mockApiResponse = [
       {
         type: 'get',
-        url: '/hello/world/'
+        url: '/hello/world/',
+        success: {
+          examples: [
+            {
+              title: 'Success-Response:',
+              content: 'HTTP/1.1 200 OK\n{\n  "foo": "hello",\n  "bar": "world"\n}',
+              type: 'json'
+            }
+          ]
+        },
+        error: {
+          examples: [
+            {
+              title: 'Error-Response:',
+              content: 'HTTP/1.1 400 Bad Request\n{\n  "detail": "Bad request."\n}',
+              type: 'json'
+            }
+          ]
+        }
       }
     ];
 
@@ -58,15 +76,15 @@ describe('buildApiResponse', () => {
     const objContent = 'HTTP/1.1 200 OK\n{\n  "foo": "hello",\n  "bar": "world"\n}';
     const contentType = 'json';
 
-    expect(getContentAndType({ content: objContent, contentType })).toMatchSnapshot('parseContentAndType');
+    expect(getContentAndType({ content: objContent, type: contentType })).toMatchSnapshot('parseContentAndType');
     expect(getContentAndType({ content: objContent })).toMatchSnapshot('parseContentAndType.fallback');
-    expect(getContentAndType({ content: objContent, contentType: 'lorem/ipsum' })).toMatchSnapshot(
+    expect(getContentAndType({ content: objContent, type: 'lorem/ipsum' })).toMatchSnapshot(
       'parseContentAndType.passthrough'
     );
 
     const xmlContent = `<lorem><ipsum dolor="sit" /></lorem>`;
-    expect(getContentAndType({ content: xmlContent, contentType: 'xml' })).toMatchSnapshot('parseContentAndType.xml');
-    expect(getContentAndType({ content: xmlContent, contentType: 'svg' })).toMatchSnapshot('parseContentAndType.svg');
+    expect(getContentAndType({ content: xmlContent, type: 'xml' })).toMatchSnapshot('parseContentAndType.xml');
+    expect(getContentAndType({ content: xmlContent, type: 'svg' })).toMatchSnapshot('parseContentAndType.svg');
   });
 
   it('should parse custom mock api settings', () => {

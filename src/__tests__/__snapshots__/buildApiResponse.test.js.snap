@@ -24,7 +24,7 @@ exports[`buildApiResponse should build a response with specific properties: buil
   ],
   [
     "Content-Type",
-    "text/plain",
+    "application/json",
   ],
 ]
 `;
@@ -94,7 +94,10 @@ exports[`buildApiResponse should parse random mock api settings: parseCustomMock
 
 exports[`buildApiResponse should return a mock mime type and parsed content: parseContentAndType 1`] = `
 {
-  "content": ""{\\n  \\"foo\\": \\"hello\\",\\n  \\"bar\\": \\"world\\"\\n}"",
+  "content": "{
+  "foo": "hello",
+  "bar": "world"
+}",
   "contentType": "application/json",
 }
 `;
