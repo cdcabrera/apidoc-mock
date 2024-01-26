@@ -71,7 +71,7 @@ Since `apidoc-mock` now runs locally we consider our `Dockerfile` to be less of 
 
 We no longer support an `apidoc-mock` image hosted on [`dockerhub`](https://hub.docker.com/r/cdcabrera/apidoc-mock) or
 [`Quay.io`](https://quay.io/repository/cdcabrera/apidoc-mock) which means you will either have to build your own container
-image or use one of the existing older versions of `apidoc-mcok` still being hosted.
+image or use one of the existing older versions of `apidoc-mock` still being hosted.
 
 > Docker has a [beginner breakdown for image build and container run guide](https://docs.docker.com/get-started/)
 
