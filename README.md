@@ -1,7 +1,6 @@
 # Apidoc Mock
 [![Build Status](https://github.com/cdcabrera/apidoc-mock/workflows/Build/badge.svg?branch=main)](https://github.com/cdcabrera/apidoc-mock/actions?query=workflow%3ABuild)
 [![codecov](https://codecov.io/gh/cdcabrera/apidoc-mock/branch/master/graph/badge.svg)](https://codecov.io/gh/cdcabrera/apidoc-mock)
-[![Docker Repository on Quay](https://quay.io/repository/cdcabrera/apidoc-mock/status "Docker Repository on Quay")](https://quay.io/repository/cdcabrera/apidoc-mock)
 [![License](https://img.shields.io/github/license/cdcabrera/apidoc-mock.svg)](https://github.com/cdcabrera/apidoc-mock/blob/master/LICENSE)
 
 Tired of overthinking mock solutions, use [apidoc](http://apidocjs.com/) styled comments on your local files to create a
@@ -16,7 +15,7 @@ The basic requirements:
  * Optionally your system could be running
     - [Yarn](https://yarnpkg.com), otherwise NPM should be adequate.
     - [Docker](https://docs.docker.com/engine/installation/)
-    - [Podman](https://github.com/containers/podman), Homebrew can be used for the install `$ brew install podman`, [Easy setup directions here](https://marcusnoble.co.uk/2021-09-01-migrating-from-docker-to-podman/)
+    - [podman](https://github.com/containers/podman) or [podman desktop](https://podman-desktop.io/)
  
 
 ## Use
@@ -67,24 +66,37 @@ or Yarn
   
   It's recommended you make sure to `.gitignore` the `.docs` directory that gets generated for `apidocs`. 
 
-### Or roll with a container setup
+### Or roll with a container setup, maybe?
+Since `apidoc-mock` now runs locally we consider our `Dockerfile` to be less of a focus and now in maintenance mode.
 
-Apidoc Mock can be found on Quay.io ...
+We no longer support an `apidoc-mock` image hosted on [`dockerhub`](https://hub.docker.com/r/cdcabrera/apidoc-mock) or
+[`Quay.io`](https://quay.io/repository/cdcabrera/apidoc-mock) which means you will either have to build your own container
+image or use one of the existing older versions of `apidoc-mock` still being hosted.
 
-* [Quay.io, cdcabrera/apidoc-mock](https://quay.io/repository/cdcabrera/apidoc-mock)
+> Docker has a [beginner breakdown for image build and container run guide](https://docs.docker.com/get-started/)
 
-#### Example
+#### Setup and example
+The `apidoc-mock` image comes preloaded with a "hello/world" example...
 
-The base Quay image comes preloaded with a "hello/world" example, the basics
+1. First, download the repository
+1. Confirm `Docker`, or an aliased version of `podman`, is running
+1. Next, open a terminal up and `$ cd` into the local repository
+1. Then, build the image
+    ```shell
+      $ docker build -t apidoc-mock .
+    ```
+1. Then, run the container
+    ```shell
+      $ docker run -d --rm -p 8000:8000 --name mock-api apidoc-mock && docker ps
+    ```
+1. Finally, you should be able to navigate to
+   - the docs, http://localhost:8000/docs/
+   - the example api, http://localhost:8000/hello/world/
 
-  ```shell
-    $ docker stop mock-api-test
-    $ docker run -d --rm -p 8000:8000 --name mock-api-test quay.io/cdcabrera/apidoc-mock && docker ps
-  ```
-  
-From there you should be able to navigate to
-- the docs, http://localhost:8000/docs/
-- the example api, http://localhost:8000/hello/world/
+   To stop everything type...
+    ```shell
+      $ docker stop mock-api
+    ```
 
 
 ### Using within a project
@@ -141,11 +153,12 @@ From there you should be able to navigate to
     ```
 
    #### Or if you're using a container setup
-   Make sure Docker, or Podman, is running, and pull in the Quay.io image. Setup something like...
+   Make sure `Docker`, or `podman`, is running, and you've created a local image from the repository called `apidoc-mock`. After that setup is something like...
     
     ```js
       "scripts": {
-        "mock:run": "docker stop mock-api-test; docker run -i --rm -p [YOUR PORT]:8000 -v \"$(pwd)[PATH TO YOUR JS FILES]:/app/data\" --name mock-api-test quay.io/cdcabrera/apidoc-mock"
+        "mock:run": "docker stop mock-api-test; docker run -i --rm -p [YOUR PORT]:8000 -v \"$(pwd)[PATH TO YOUR JS FILES]:/app/data\" --name mock-api-test apidoc-mock",
+        "mock:stop": "docker stop mock-api-test"
       }
     ```
    You'll need to pick a port like... `-p 8000:8000` and a directory path to pull the apiDoc code comments/annotations from... `-v \"$(pwd)/src:/app/data\"`.
