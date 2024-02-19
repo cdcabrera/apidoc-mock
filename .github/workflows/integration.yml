@@ -3,8 +3,6 @@ on:
   push:
     branches: [ main ]
   pull_request:
-env:
-  COV_NODE_VERSION: 18
 
 jobs:
   Integration-checks:
@@ -32,9 +30,6 @@ jobs:
         run: yarn install
       - name: Lint and test
         run: yarn test
-      - name: Code coverage
-        if: ${{ success() && contains(matrix.node-version, env.COV_NODE_VERSION) }}
-        uses: codecov/codecov-action@v3.1.4
       - name: Confirm integration
         if: ${{ success() }}
         run: yarn test:integration
