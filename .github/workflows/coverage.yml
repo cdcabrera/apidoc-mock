@@ -1,0 +1,56 @@
+name: Coverage report
+on:
+  push:
+    branches: [ main ]
+  # allow manual workflow dispatch from actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  Deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.output.page_url }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Coverage node version
+        node-version: [ 18.x ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v4
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+      - name: Node.js modules cache
+        uses: actions/cache@v4
+        id: modules-cache
+        with:
+          path: ${{ github.workspace }}/node_modules
+          key: ${{ runner.os }}-${{ matrix.node-version }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.node-version }}-modules
+      - name: Install Node.js packages
+        if: ${{ steps.modules-cache.outputs.cache-hit != 'true' }}
+        run: yarn install
+      - name: Setup coverage report
+        run: yarn test:coverage
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './coverage/lcov-report'
+      - name: Deploy to pages
+        id: deployment
+        uses: actions/deploy-pages@v4
