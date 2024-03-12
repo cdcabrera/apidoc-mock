@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.6.0](https://github.com/cdcabrera/apidoc-mock/compare/90470e28550a5576025745a5071be23f9a829d16...cf50f80bdbd71e9d3380b0cd80fea45691bcace7) (2024-03-12)
+
+
+### Documentation
+* **docker** maintenance mode support ([#320](https://github.com/cdcabrera/apidoc-mock/pull/320)) ([ff008f4](https://github.com/cdcabrera/apidoc-mock/commit/ff008f4b664636b67be570a9036c6dd2dd985882))
+
+### Builds
+* **deps** 2 npm updates ([#343](https://github.com/cdcabrera/apidoc-mock/pull/343)) ([cf50f80](https://github.com/cdcabrera/apidoc-mock/commit/cf50f80bdbd71e9d3380b0cd80fea45691bcace7))
+* **deps-dev** 5 npm updates ([#342](https://github.com/cdcabrera/apidoc-mock/pull/342)) ([4f96985](https://github.com/cdcabrera/apidoc-mock/commit/4f96985d432f36474b492c9f81b932ee0bac63d3))
+* **deps** dependabot groups ([#340](https://github.com/cdcabrera/apidoc-mock/pull/340)) ([2a5e6ff](https://github.com/cdcabrera/apidoc-mock/commit/2a5e6ff3312933d9ae73dfd68a87d2f566313a41))
+* **coverage** move from codecov to pages ([#331](https://github.com/cdcabrera/apidoc-mock/pull/331)) ([c4e2a0c](https://github.com/cdcabrera/apidoc-mock/commit/c4e2a0cbbd1977cb20785d548eda8c8e6bab937a))
+* **deps-dev** prettier from 3.2.1 to 3.2.5 ([#330](https://github.com/cdcabrera/apidoc-mock/pull/330)) ([ee7d560](https://github.com/cdcabrera/apidoc-mock/commit/ee7d560b39247e796906a1e333d2873c3d5180b6))
+* **deps-dev** nodemon from 3.0.2 to 3.0.3 ([#323](https://github.com/cdcabrera/apidoc-mock/pull/323)) ([75f4028](https://github.com/cdcabrera/apidoc-mock/commit/75f402862a835287877b2995985f13dc6bed7658))
+* **deps-dev** changelog-light from 0.6.1 to 1.0.0 ([#321](https://github.com/cdcabrera/apidoc-mock/pull/321)) ([5e43400](https://github.com/cdcabrera/apidoc-mock/commit/5e434006a1ee8417f775606c5e952711243e673e))
+* **deps-dev** npm-check-updates from 16.14.12 to 16.14.14 ([#324](https://github.com/cdcabrera/apidoc-mock/pull/324)) ([504d700](https://github.com/cdcabrera/apidoc-mock/commit/504d7006b5e8edaf95f25390073c34456afbd99d))
+* **deps** bump actions/cache from 3 to 4 ([#327](https://github.com/cdcabrera/apidoc-mock/pull/327)) ([603ea0b](https://github.com/cdcabrera/apidoc-mock/commit/603ea0b2c78b4f2530e19756b36dd193ab66d3ec))
+
 ## [4.5.0](https://github.com/cdcabrera/apidoc-mock/compare/200a6399cca07b2a1ea8cd3504b4a2e39f7a1954...ce29a701d63575b60c1939bd297a044f298d1db6) (2024-01-25)
 
 
