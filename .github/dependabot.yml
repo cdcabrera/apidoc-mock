@@ -5,13 +5,26 @@ updates:
     schedule:
       interval: monthly
       day: monday
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     target-branch: "main"
     versioning-strategy: increase
     allow:
       - dependency-type: direct
+    ignore:
+      - dependency-name: "apidoc"
     labels:
       - "build"
+    groups:
+      dev-dependencies:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
+      dependencies:
+        dependency-type: "production"
+        update-types:
+          - "minor"
+          - "patch"
 
   - package-ecosystem: github-actions
     directory: /
