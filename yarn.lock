@@ -1319,6 +1319,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.18.tgz#8dfb97f0da23c2293e554c5a50d61ef134d7697f"
   integrity sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==
 
+"@types/semver-utils@^1.1.1":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@types/semver-utils/-/semver-utils-1.1.3.tgz#f78233e6613e53626844112422845f0f13b573fb"
+  integrity sha512-T+YwkslhsM+CeuhYUxyAjWm7mJ5am/K10UX40RuA6k6Lc7eGtq8iY2xOzy7Vq0GOqhl/xZl5l2FwURZMTPTUww==
+
 "@types/semver@^7.3.12":
   version "7.3.13"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.3.13.tgz#da4bfd73f49bd541d28920ab0e2bf0ee80f71c91"
@@ -2124,13 +2129,13 @@ chalk@^5.0.1, chalk@^5.2.0, chalk@^5.3.0:
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.3.0.tgz#67c20a7ebef70e7f3970a01f90fa210cb6860385"
   integrity sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==
 
-changelog-light@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/changelog-light/-/changelog-light-1.0.1.tgz#98892d455983ce6f2565c524cd0f4d2ecc4ae71d"
-  integrity sha512-oTupVE8WteZnwivtrsoV2cXvr0Gm/15xlFXpsEY89Wz2XhW90j5Vtu/CILEAwYab6N1XaBgr067NOsqsPdXn8g==
+changelog-light@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/changelog-light/-/changelog-light-1.1.2.tgz#27280ffd721b25323270f52dcb19b1e2bc9bd941"
+  integrity sha512-5AO7XEXCX/uD1IFG2sNPR0te1q+e9Ar0Bts4tXDlzdV0cQyBpdG8IMkUQBJbMdcDhpM9HqaVGNAP6fyIs6sLMA==
   dependencies:
     conventional-commit-types "^3.0.0"
-    semver "^7.5.4"
+    semver "^7.6.0"
     yargs "^17.7.2"
 
 char-regex@^1.0.2:
@@ -5561,11 +5566,12 @@ npm-bundled@^3.0.0:
   dependencies:
     npm-normalize-package-bin "^3.0.0"
 
-npm-check-updates@^16.14.15:
-  version "16.14.15"
-  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-16.14.15.tgz#2126328d1fecc08f70b6e88da433bd5dfa0f9af0"
-  integrity sha512-WH0wJ9j6CP7Azl+LLCxWAYqroT2IX02kRIzgK/fg0rPpMbETgHITWBdOPtrv521xmA3JMgeNsQ62zvVtS/nCmQ==
+npm-check-updates@^16.14.18:
+  version "16.14.18"
+  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-16.14.18.tgz#d87501e5eebf305196caa4edb7137b56937ec99c"
+  integrity sha512-9iaRe9ohx9ykdbLjPRIYcq1A0RkrPYUx9HmQK1JIXhfxtJCNE/+497H9Z4PGH6GWRALbz5KF+1iZoySK2uSEpQ==
   dependencies:
+    "@types/semver-utils" "^1.1.1"
     chalk "^5.3.0"
     cli-table3 "^0.6.3"
     commander "^10.0.1"
@@ -6463,10 +6469,10 @@ semver@^6.0.0, semver@^6.1.0, semver@^6.3.0, semver@^6.3.1:
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.1.tgz#556d2ef8689146e46dcea4bfdd095f3434dffcb4"
   integrity sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==
 
-semver@^7.0.0, semver@^7.1.1, semver@^7.3.5, semver@^7.3.7, semver@^7.5.0, semver@^7.5.3, semver@^7.5.4:
-  version "7.5.4"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.4.tgz#483986ec4ed38e1c6c48c34894a9182dbff68a6e"
-  integrity sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==
+semver@^7.0.0, semver@^7.1.1, semver@^7.3.5, semver@^7.3.7, semver@^7.5.0, semver@^7.5.3, semver@^7.5.4, semver@^7.6.0:
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.6.0.tgz#1a46a4db4bffcccd97b743b5005c8325f23d4e2d"
+  integrity sha512-EnwXhrlwXMk9gKu5/flx5sv/an57AkRplG3hTK68W7FRDN+k+OWBj65M7719OkA82XLBxrcX0KSHj+X5COhOVg==
   dependencies:
     lru-cache "^6.0.0"
 
