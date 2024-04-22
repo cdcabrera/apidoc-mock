@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.7.0](https://github.com/cdcabrera/apidoc-mock/compare/deb7394620f1c1af49a546088bdc523aa9413c09...7203d9cfb59130ac196d47ed2bb62af209a37087) (2024-04-22)
+
+
+### Documentation
+*  replace yarn with npm ([#352](https://github.com/cdcabrera/apidoc-mock/pull/352)) ([fd9c49b](https://github.com/cdcabrera/apidoc-mock/commit/fd9c49b55ceb503c05901e9bd355d7bd7e6e09ac))
+
+### Chores
+* **config** remove unused codecov ([#350](https://github.com/cdcabrera/apidoc-mock/pull/350)) ([1e4eedc](https://github.com/cdcabrera/apidoc-mock/commit/1e4eedcb6f7798838ee87678004de3bccfde3aae))
+
+### Builds
+* **deps-dev** changelog-light from 1.1.2 to 1.2.0 ([#354](https://github.com/cdcabrera/apidoc-mock/pull/354)) ([7203d9c](https://github.com/cdcabrera/apidoc-mock/commit/7203d9cfb59130ac196d47ed2bb62af209a37087))
+*  migrate checks to nodejs 20 ([#353](https://github.com/cdcabrera/apidoc-mock/pull/353)) ([d032665](https://github.com/cdcabrera/apidoc-mock/commit/d0326655704cbcc49816cd14f6610ae3eb28da1a))
+* **npm** move from yarn to npm ([#351](https://github.com/cdcabrera/apidoc-mock/pull/351)) ([6903d5c](https://github.com/cdcabrera/apidoc-mock/commit/6903d5c381847d0a612fa1afe2e244b581a5f67b))
+* **deps** bump group with 2 updates ([#346](https://github.com/cdcabrera/apidoc-mock/pull/346)) ([9956360](https://github.com/cdcabrera/apidoc-mock/commit/99563604e207666ef2d95210dc85399dc7462209))
+* **deps-dev** bump group with 2 updates ([#345](https://github.com/cdcabrera/apidoc-mock/pull/345)) ([2e91976](https://github.com/cdcabrera/apidoc-mock/commit/2e91976729373e73452902fa35e20594753cecd2))
+* **deps** bump actions/configure-pages from 4 to 5 ([#349](https://github.com/cdcabrera/apidoc-mock/pull/349)) ([b1b9596](https://github.com/cdcabrera/apidoc-mock/commit/b1b9596b156f86991fd62d542688f0af403a8b16))
+
 ## [4.6.0](https://github.com/cdcabrera/apidoc-mock/compare/90470e28550a5576025745a5071be23f9a829d16...cf50f80bdbd71e9d3380b0cd80fea45691bcace7) (2024-03-12)
 
 
