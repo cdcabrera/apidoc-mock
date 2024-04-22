@@ -12,7 +12,7 @@
 
   printf "${YELLOW}Reset existing build dependencies...${NOCOLOR}"
   rm -rf -- ./node_modules
-  yarn install
+  npm install
 
   printf $BLUE
   echo "Confirm and update build dependencies..."
