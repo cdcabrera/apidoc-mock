@@ -13,7 +13,6 @@ a delay to see how your codebase will handle loading scenarios with a balls slow
 The basic requirements:
  * [NodeJS version 16+](https://nodejs.org/)
  * Optionally your system could be running
-    - [Yarn](https://yarnpkg.com), otherwise NPM should be adequate.
     - [Docker](https://docs.docker.com/engine/installation/)
     - [podman](https://github.com/containers/podman) or [podman desktop](https://podman-desktop.io/)
  
@@ -30,12 +29,6 @@ NPM install...
 
   ```shell
     $ npm i apidoc-mock
-  ```
-  
-or Yarn
-
-  ```shell
-    $ yarn add apidoc-mock
   ```
 
 #### Usage
