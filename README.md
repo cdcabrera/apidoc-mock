@@ -11,7 +11,7 @@ a delay to see how your codebase will handle loading scenarios with a balls slow
 
 ## Requirements
 The basic requirements:
- * [NodeJS version 16+](https://nodejs.org/)
+ * [NodeJS version 18+](https://nodejs.org/)
  * Optionally your system could be running
     - [Docker](https://docs.docker.com/engine/installation/)
     - [podman](https://github.com/containers/podman) or [podman desktop](https://podman-desktop.io/)
