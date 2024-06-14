@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.0.0](https://github.com/cdcabrera/apidoc-mock/compare/befa0b66b2cf8be8b3d9d3a574a3a54b9b4e6432...ae8a87ec612d4d291e2f83edff407620e57a8289) (2024-06-14)
+⚠ BREAKING CHANGES
+
+### Builds
+* **deps-dev** bump group with 2 updates ([#366](https://github.com/cdcabrera/apidoc-mock/pull/366)) ([ae8a87e](https://github.com/cdcabrera/apidoc-mock/commit/ae8a87ec612d4d291e2f83edff407620e57a8289))
+* **deps-dev** eslint-plugin-jest from 27.9.0 to 28.5.0 ([#360](https://github.com/cdcabrera/apidoc-mock/pull/360)) ([07932cc](https://github.com/cdcabrera/apidoc-mock/commit/07932cce32bc8e76055a0a239f90d25f865333ef))
+* **deps-dev** eslint-plugin-jsdoc from 47.0.2 to 48.2.6 ([#364](https://github.com/cdcabrera/apidoc-mock/pull/364)) ([b87f5d8](https://github.com/cdcabrera/apidoc-mock/commit/b87f5d80d5ccf334d6df1860f43145b0354ff7af))
+* **deps-dev** bump cspell from 7.3.9 to 8.8.3 ([#365](https://github.com/cdcabrera/apidoc-mock/pull/365)) ([de7d9c6](https://github.com/cdcabrera/apidoc-mock/commit/de7d9c62dcd3f16488f5b6a0bc6829e9ac10446a))
+* ⚠ **nodejs** remove 16 support ([#363](https://github.com/cdcabrera/apidoc-mock/pull/363)) ([4b0a06f](https://github.com/cdcabrera/apidoc-mock/commit/4b0a06f7dde437308b40fd82f208838167c5a4a7))
+* **deps-dev** npm-check-updates from 16.14.18 to 16.14.20 ([#355](https://github.com/cdcabrera/apidoc-mock/pull/355)) ([419d81e](https://github.com/cdcabrera/apidoc-mock/commit/419d81e3036e1aa35874457c6fc1ba2c8125c0ed))
+
 ## [4.7.0](https://github.com/cdcabrera/apidoc-mock/compare/deb7394620f1c1af49a546088bdc523aa9413c09...7203d9cfb59130ac196d47ed2bb62af209a37087) (2024-04-22)
 
 
