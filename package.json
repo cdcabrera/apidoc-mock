@@ -81,11 +81,11 @@
     "description": "API documentation with apiDoc."
   },
   "dependencies": {
-    "apidoc": "^1.0.3",
+    "apidoc": "1.2.0",
     "express": "^4.19.2",
     "http-terminator": "^3.2.0",
     "node-watch": "^0.7.4",
-    "winston": "^3.13.0",
+    "winston": "^3.13.1",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
