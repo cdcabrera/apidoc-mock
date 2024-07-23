@@ -1,17 +1,13 @@
-const { apiDocMock, setupResponse } = require('../');
+const { apiDocMock } = require('../');
 
-describe('ApiDocMock', () => {
-  it('should have specific defined properties', () => {
-    expect(apiDocMock).toBeDefined();
-    expect(setupResponse).toBeDefined();
+describe('apiDocMock', () => {
+  it('should return specific properties', () => {
+    expect(apiDocMock).toMatchSnapshot('specific properties');
   });
 
-  it('should have support functions that fail gracefully', () => {
-    expect(setupResponse()).toBe(null);
-  });
-
-  it('should throw an error during testing', async () => {
-    const func = async () => apiDocMock();
-    await expect(func).rejects.toThrow('Server failed to load');
+  it('should attempt to run the server', () => {
+    const mockFunction = jest.fn();
+    apiDocMock({ setServer: mockFunction });
+    expect(mockFunction).toHaveBeenCalledTimes(1);
   });
 });

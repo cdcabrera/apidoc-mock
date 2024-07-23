@@ -1,0 +1,687 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`comments should attempt to generate a basic api spec: generated spec 1`] = `
+{
+  "basic": [
+    {
+      "errorExamples": [
+        {
+          "content": "{ "DolorSit": "mock response value" }",
+          "status": 400,
+          "type": "application/json",
+        },
+      ],
+      "mockSettings": {
+        "forceStatus": 500,
+      },
+      "requestHeaders": {
+        "Authorization": "Dolor sit token",
+        "Hello": "world",
+      },
+      "responseHeaders": {
+        "Mock-response-header": "lorem-ipsum",
+      },
+      "successExamples": [
+        {
+          "content": "{ "DolorSit": "mock response value" }",
+          "status": 200,
+          "type": "application/json",
+        },
+      ],
+      "type": "post",
+      "url": "/dolor/sit",
+    },
+  ],
+  "default": [],
+  "missingPath": [],
+}
+`;
+
+exports[`comments should attempt to generate a basic api spec: missing api path 1`] = `
+[
+  [
+    "file-parse	:missing mock path after "@api" comment in ./lorem-ipsum.txt",
+  ],
+]
+`;
+
+exports[`comments should attempt to generate an api: no files 1`] = `
+{
+  "default": [],
+  "filesNoLength": [],
+}
+`;
+
+exports[`comments should attempt to read files and get comments: read files 1`] = `
+{
+  "basic": [
+    {
+      "file": ".fixtures/comments/test.txt",
+      "tags": [
+        [
+          {
+            "description": "",
+            "name": "/hello/world/",
+            "optional": false,
+            "problems": [],
+            "source": [
+              {
+                "number": 1,
+                "source": "         * @api {get} /hello/world/",
+                "tokens": {
+                  "delimiter": "*",
+                  "description": "",
+                  "end": "",
+                  "lineEnd": "",
+                  "name": "/hello/world/",
+                  "postDelimiter": " ",
+                  "postName": "",
+                  "postTag": " ",
+                  "postType": " ",
+                  "start": "         ",
+                  "tag": "@api",
+                  "type": "{get}",
+                },
+              },
+            ],
+            "tag": "api",
+            "type": "get",
+          },
+          {
+            "description": "HTTP/1.1 200 OK { "success": "test" }",
+            "name": "Success-Response:",
+            "optional": false,
+            "problems": [],
+            "source": [
+              {
+                "number": 2,
+                "source": "         * @apiSuccessExample {json} Success-Response:",
+                "tokens": {
+                  "delimiter": "*",
+                  "description": "",
+                  "end": "",
+                  "lineEnd": "",
+                  "name": "Success-Response:",
+                  "postDelimiter": " ",
+                  "postName": "",
+                  "postTag": " ",
+                  "postType": " ",
+                  "start": "         ",
+                  "tag": "@apiSuccessExample",
+                  "type": "{json}",
+                },
+              },
+              {
+                "number": 3,
+                "source": "         *     HTTP/1.1 200 OK",
+                "tokens": {
+                  "delimiter": "*",
+                  "description": "HTTP/1.1 200 OK",
+                  "end": "",
+                  "lineEnd": "",
+                  "name": "",
+                  "postDelimiter": "     ",
+                  "postName": "",
+                  "postTag": "",
+                  "postType": "",
+                  "start": "         ",
+                  "tag": "",
+                  "type": "",
+                },
+              },
+              {
+                "number": 4,
+                "source": "         *     {",
+                "tokens": {
+                  "delimiter": "*",
+                  "description": "{",
+                  "end": "",
+                  "lineEnd": "",
+                  "name": "",
+                  "postDelimiter": "     ",
+                  "postName": "",
+                  "postTag": "",
+                  "postType": "",
+                  "start": "         ",
+                  "tag": "",
+                  "type": "",
+                },
+              },
+              {
+                "number": 5,
+                "source": "         *       "success": "test"",
+                "tokens": {
+                  "delimiter": "*",
+                  "description": ""success": "test"",
+                  "end": "",
+                  "lineEnd": "",
+                  "name": "",
+                  "postDelimiter": "       ",
+                  "postName": "",
+                  "postTag": "",
+                  "postType": "",
+                  "start": "         ",
+                  "tag": "",
+                  "type": "",
+                },
+              },
+              {
+                "number": 6,
+                "source": "         *     }",
+                "tokens": {
+                  "delimiter": "*",
+                  "description": "}",
+                  "end": "",
+                  "lineEnd": "",
+                  "name": "",
+                  "postDelimiter": "     ",
+                  "postName": "",
+                  "postTag": "",
+                  "postType": "",
+                  "start": "         ",
+                  "tag": "",
+                  "type": "",
+                },
+              },
+            ],
+            "tag": "apiSuccessExample",
+            "type": "json",
+          },
+          {
+            "description": "HTTP/1.1 400 OK { "error": "test" }",
+            "name": "Error-Response:",
+            "optional": false,
+            "problems": [],
+            "source": [
+              {
+                "number": 7,
+                "source": "         * @apiErrorExample {json} Error-Response:",
+                "tokens": {
+                  "delimiter": "*",
+                  "description": "",
+                  "end": "",
+                  "lineEnd": "",
+                  "name": "Error-Response:",
+                  "postDelimiter": " ",
+                  "postName": "",
+                  "postTag": " ",
+                  "postType": " ",
+                  "start": "         ",
+                  "tag": "@apiErrorExample",
+                  "type": "{json}",
+                },
+              },
+              {
+                "number": 8,
+                "source": "         *     HTTP/1.1 400 OK",
+                "tokens": {
+                  "delimiter": "*",
+                  "description": "HTTP/1.1 400 OK",
+                  "end": "",
+                  "lineEnd": "",
+                  "name": "",
+                  "postDelimiter": "     ",
+                  "postName": "",
+                  "postTag": "",
+                  "postType": "",
+                  "start": "         ",
+                  "tag": "",
+                  "type": "",
+                },
+              },
+              {
+                "number": 9,
+                "source": "         *     {",
+                "tokens": {
+                  "delimiter": "*",
+                  "description": "{",
+                  "end": "",
+                  "lineEnd": "",
+                  "name": "",
+                  "postDelimiter": "     ",
+                  "postName": "",
+                  "postTag": "",
+                  "postType": "",
+                  "start": "         ",
+                  "tag": "",
+                  "type": "",
+                },
+              },
+              {
+                "number": 10,
+                "source": "         *       "error": "test"",
+                "tokens": {
+                  "delimiter": "*",
+                  "description": ""error": "test"",
+                  "end": "",
+                  "lineEnd": "",
+                  "name": "",
+                  "postDelimiter": "       ",
+                  "postName": "",
+                  "postTag": "",
+                  "postType": "",
+                  "start": "         ",
+                  "tag": "",
+                  "type": "",
+                },
+              },
+              {
+                "number": 11,
+                "source": "         *     }",
+                "tokens": {
+                  "delimiter": "*",
+                  "description": "}",
+                  "end": "",
+                  "lineEnd": "",
+                  "name": "",
+                  "postDelimiter": "     ",
+                  "postName": "",
+                  "postTag": "",
+                  "postType": "",
+                  "start": "         ",
+                  "tag": "",
+                  "type": "",
+                },
+              },
+              {
+                "number": 12,
+                "source": "         */",
+                "tokens": {
+                  "delimiter": "",
+                  "description": "",
+                  "end": "*/",
+                  "lineEnd": "",
+                  "name": "",
+                  "postDelimiter": "",
+                  "postName": "",
+                  "postTag": "",
+                  "postType": "",
+                  "start": "         ",
+                  "tag": "",
+                  "type": "",
+                },
+              },
+            ],
+            "tag": "apiErrorExample",
+            "type": "json",
+          },
+        ],
+      ],
+    },
+  ],
+  "default": [],
+}
+`;
+
+exports[`comments should filter for ignored headers: filtered headers 1`] = `
+{
+  "basic": {
+    "dolor": "sit",
+  },
+  "default": undefined,
+}
+`;
+
+exports[`comments should normalize response behavior with mock settings: normalized 1`] = `
+{
+  "default": {},
+  "delayNumber": {
+    "delay": 500,
+  },
+  "forceNumber": {
+    "forceStatus": 418,
+  },
+  "random": {
+    "reload": true,
+    "response": "response",
+  },
+  "randomError": {
+    "reload": true,
+    "response": "error",
+  },
+  "randomSuccess": {
+    "reload": true,
+    "response": "success",
+  },
+  "response": {
+    "response": "response",
+  },
+}
+`;
+
+exports[`comments should parse a comment tag: api 1`] = `
+{
+  "basic": {
+    "type": "post",
+    "url": "/lorem/ipsum",
+  },
+  "default": {
+    "type": "get",
+    "url": "/lorem/ipsum",
+  },
+}
+`;
+
+exports[`comments should parse a comment tag: apiErrorExample 1`] = `
+{
+  "basic": {
+    "errorExample": {
+      "content": "{ "DolorSit": "mock response value" }",
+      "isSuccessExample": false,
+      "status": 400,
+      "type": "json",
+    },
+  },
+  "default": {
+    "errorExample": {
+      "content": undefined,
+      "isSuccessExample": false,
+      "status": undefined,
+      "type": "txt",
+    },
+  },
+  "withMissingStatus": {
+    "errorExample": {
+      "content": "{ "DolorSit": "mock response value" }",
+      "isSuccessExample": false,
+      "status": undefined,
+      "type": "json",
+    },
+  },
+}
+`;
+
+exports[`comments should parse a comment tag: apiHeader 1`] = `
+{
+  "basic": {
+    "headerExample": {
+      "content": {
+        "Lorem-Ipsum": "",
+      },
+      "type": undefined,
+    },
+  },
+  "default": {},
+  "withDescription": {
+    "headerExample": {
+      "content": {
+        "Lorem-Ipsum": "Dolor sit",
+      },
+      "type": undefined,
+    },
+  },
+  "withType": {
+    "headerExample": {
+      "content": {
+        "Lorem-Ipsum": "",
+      },
+      "type": "request",
+    },
+  },
+}
+`;
+
+exports[`comments should parse a comment tag: apiHeaderExample 1`] = `
+{
+  "basic": {
+    "headerExample": {
+      "content": "{ "DolorSit": "mock header value" }",
+      "type": "request",
+    },
+  },
+  "default": {
+    "headerExample": {
+      "content": undefined,
+      "type": undefined,
+    },
+  },
+  "withMalformedJSON": {
+    "headerExample": {
+      "content": "{ DolorSit: "mock header value", "lorem-ipsum": "mock header value" }",
+      "type": "response",
+    },
+  },
+  "withMissingSource": {
+    "headerExample": {
+      "content": "",
+      "type": "response",
+    },
+  },
+}
+`;
+
+exports[`comments should parse a comment tag: apiMock 1`] = `
+{
+  "basic": {
+    "mock": {
+      "force": 404,
+    },
+  },
+  "default": {},
+  "withName": {
+    "mock": {
+      "force": "lorem-ipsum",
+    },
+  },
+}
+`;
+
+exports[`comments should parse a comment tag: apiSuccessExample 1`] = `
+{
+  "basic": {
+    "successExample": {
+      "content": "{ "DolorSit": "mock response value" }",
+      "isSuccessExample": true,
+      "status": 200,
+      "type": "json",
+    },
+  },
+  "default": {
+    "successExample": {
+      "content": undefined,
+      "isSuccessExample": true,
+      "status": undefined,
+      "type": "txt",
+    },
+  },
+  "withMalformedSource": {
+    "successExample": {
+      "content": "",
+      "isSuccessExample": true,
+      "status": 200,
+      "type": "json",
+    },
+  },
+  "withMissingStatus": {
+    "successExample": {
+      "content": "{ "DolorSit": "mock response value" }",
+      "isSuccessExample": true,
+      "status": undefined,
+      "type": "json",
+    },
+  },
+}
+`;
+
+exports[`comments should parse a comment tag: empty 1`] = `
+{
+  "default": {},
+}
+`;
+
+exports[`comments should parse comment content, status, and type: content types 1`] = `
+[
+  {
+    "output": {
+      "content": "",
+      "status": 200,
+      "type": "application/zip",
+    },
+    "type": "zip",
+  },
+  {
+    "output": {
+      "content": "",
+      "status": 200,
+      "type": "application/gzip",
+    },
+    "type": "gzip",
+  },
+  {
+    "output": {
+      "content": "",
+      "status": 200,
+      "type": "application/json",
+    },
+    "type": "json",
+  },
+  {
+    "output": {
+      "content": "",
+      "status": 200,
+      "type": "text/xml",
+    },
+    "type": "xml",
+  },
+  {
+    "output": {
+      "content": "",
+      "status": 200,
+      "type": "text/html",
+    },
+    "type": "html",
+  },
+  {
+    "output": {
+      "content": "",
+      "status": 200,
+      "type": "text/csv",
+    },
+    "type": "csv",
+  },
+  {
+    "output": {
+      "content": "",
+      "status": 200,
+      "type": "text/css",
+    },
+    "type": "css",
+  },
+  {
+    "output": {
+      "content": "",
+      "status": 200,
+      "type": "image/svg+xml",
+    },
+    "type": "svg",
+  },
+  {
+    "output": {
+      "content": "",
+      "status": 200,
+      "type": "text/plain",
+    },
+    "type": "txt",
+  },
+  {
+    "output": {
+      "content": "",
+      "status": 200,
+      "type": "text/plain",
+    },
+    "type": "lorem",
+  },
+]
+`;
+
+exports[`comments should parse comment content, status, and type: mismatched status codes 1`] = `
+[
+  [
+    "file-parse	:400 :success :mismatched status and example, { "lorem": "ipsum",...",
+  ],
+  [
+    "file-parse	:200 :error :mismatched status and example, { "lorem": "ipsum",...",
+  ],
+]
+`;
+
+exports[`comments should parse comment content, status, and type: parsed content 1`] = `
+{
+  "basic": {
+    "content": "{ "bad": "request example" }",
+    "status": 400,
+    "type": "text/plain",
+  },
+  "default": {
+    "content": "",
+    "status": 200,
+    "type": "text/plain",
+  },
+  "existingContentType": {
+    "content": "{ lorem: "ipsum"}",
+    "status": 200,
+    "type": "application/lorem+ipsum",
+  },
+  "fallbackStatus": {
+    "content": "{ "lorem": "ipsum" }",
+    "status": 201,
+    "type": "text/plain",
+  },
+  "withErrorStatusAndSuccessExample": {
+    "content": "{ "lorem": "ipsum", "dolor": "sit", "hello": "world" }",
+    "status": 400,
+    "type": "text/plain",
+  },
+  "withSuccessStatusAndErrorExample": {
+    "content": "{ "lorem": "ipsum", "dolor": "sit", "hello": "world" }",
+    "status": 200,
+    "type": "text/plain",
+  },
+}
+`;
+
+exports[`comments should parse comment header examples: malformed string JSON 1`] = `
+[
+  [
+    "file-parse	:JSON :ignoring malformed "@apiHeaderExample" { dolor: "sit" }, Expected property name or '}' in JSON at position 2",
+  ],
+]
+`;
+
+exports[`comments should parse comment header examples: parsed headers 1`] = `
+{
+  "basic": {
+    "content": {
+      "dolor": "",
+    },
+    "type": "request",
+  },
+  "default": {
+    "content": undefined,
+    "type": undefined,
+  },
+  "malformedObjectJSON": {
+    "content": {
+      "dolor": "sit",
+    },
+    "type": undefined,
+  },
+  "malformedStringJSON": {
+    "content": undefined,
+    "type": undefined,
+  },
+}
+`;
+
+exports[`comments should return specific properties: specific properties 1`] = `
+{
+  "filterForIgnoredHeaders": [Function],
+  "generateApiSpec": [Function],
+  "getDocs": [Function],
+  "normalizeMockSettings": [Function],
+  "parseCommentContentStatusType": [Function],
+  "parseCommentHeaderExample": [Function],
+  "parseCommentTag": [Function],
+  "readFilesGetComments": [Function],
+}
+`;

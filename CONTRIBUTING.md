@@ -1,7 +1,7 @@
 # Contributing
 
 ## Commits
-For consistency we make use of [Conventional Commits](https://www.conventionalcommits.org). It's encouraged that 
+We make use of [Conventional Commits](https://www.conventionalcommits.org). It's encouraged that
 commit messaging follow the format
   ```
   <type>[optional scope]: <description>
@@ -9,16 +9,23 @@ commit messaging follow the format
 
 ### Build Requirements
 To set up your work environment you'll need to use
- * [NodeJS](https://nodejs.org/)
- * And if you plan on making container contributions you may want to setup
-    - [Docker](https://docs.docker.com/engine/installation/) or
-    - [Podman](https://github.com/containers/podman), Homebrew can be used for the install `$ brew install podman`, [Easy setup directions here](https://marcusnoble.co.uk/2021-09-01-migrating-from-docker-to-podman/)
+ * [Node.js](https://nodejs.org/)
+ * And if you plan on making container contributions you may want to set up
+   - [podman desktop](https://podman-desktop.io/)
+   - [Docker](https://docs.docker.com/engine/installation/)
     
-### Developing
+### Develop
 To start work
   ```shell
   $ npm install
   $ npm run start:dev
+  ```
+
+### Testing
+Jest is used for the unit test framework. To run unit tests during development open a terminal instance and run
+  ```shell
+  $ npm
+  $ npm run test:dev
   ```
 
 #### Testing during development
@@ -32,7 +39,7 @@ This should also let you update the code snapshots.
 ### Code Coverage
 The requirements for code coverage are currently maintained around the `60%` to `70%` mark.
 
-Updates that drop coverage below the current threshold should have their coverage expanded before being merged. 
+Updates that drop coverage below the current threshold should have their coverage expanded before being merged.
 
 Settings for coverage can be found in [package.json](./package.json)
 

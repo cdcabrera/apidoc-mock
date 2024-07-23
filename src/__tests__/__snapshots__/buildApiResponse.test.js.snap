@@ -1,147 +1,285 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`buildApiResponse should build a response with specific properties: buildResponse 1`] = `
-{
-  "appResponses": [
-    {
-      "callback": [Function],
-      "type": "get",
-      "url": "/hello/world/",
-    },
-  ],
-  "routesLoaded": true,
-}
-`;
-
-exports[`buildApiResponse should build a response with specific properties: buildResponse callback 1`] = `
+exports[`buildApiResponse should build responses based on examples: getResponseCallback 1`] = `
 [
   [
-    "Cache-Control",
-    "no-cache",
-  ],
-  [
-    200,
-  ],
-  [
-    "Content-Type",
-    "application/json",
+    {
+      "dolor": "sit",
+      "url": "lorem/ipsum",
+    },
   ],
 ]
 `;
 
-exports[`buildApiResponse should build specific headers: buildRequestHeaders.request.headers 1`] = `
+exports[`buildApiResponse should build responses based on examples: responses 1`] = `
 {
-  "Access-Control-Allow-Credentials": true,
-  "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, HEAD, OPTIONS, PATCH",
-  "Access-Control-Allow-Origin": "*",
+  "basic": [
+    {
+      "callback": [MockFunction],
+      "type": "get",
+      "url": "lorem/ipsum",
+    },
+  ],
+  "default": [],
 }
 `;
 
-exports[`buildApiResponse should build specific headers: buildRequestHeaders.request.preflight 1`] = `
+exports[`buildApiResponse should get an authorized example: authorized 1`] = `
 {
-  "Access-Control-Allow-Credentials": true,
-  "Access-Control-Allow-Headers": "x-test-header",
-  "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, HEAD, OPTIONS, PATCH",
-  "Access-Control-Allow-Origin": "*",
-  "access-control-request-headers": "x-test-header",
+  "default": {
+    "content": "Authorization Required",
+    "status": 401,
+    "type": "text/plain",
+  },
+  "filteredAndFound": {
+    "content": "lorem ipsum dolor sit amet",
+    "status": 401,
+    "type": "text/plain",
+  },
+  "filteredAndMissing": {
+    "content": "Authorization Required",
+    "status": 401,
+    "type": "text/plain",
+  },
 }
 `;
 
-exports[`buildApiResponse should parse custom mock api settings: parseCustomMockSettings 1`] = `
+exports[`buildApiResponse should get an example: example 1`] = `
 {
-  "delay": 2000,
-  "forceStatus": 401,
-  "reload": true,
-  "response": "response",
+  "default": {
+    "content": "Success",
+    "status": 200,
+    "type": "text/plain",
+  },
+  "mockErrorAndFilteredAndMissing": {
+    "content": "Error",
+    "status": 404,
+    "type": "text/plain",
+  },
+  "mockErrorAndFilteredError": {
+    "content": "lorem ipsum dolor sit amet",
+    "status": 400,
+    "type": "text/plain",
+  },
+  "mockForcedAndFilteredAndMissing": {
+    "content": "404 response",
+    "status": 404,
+    "type": "text/plain",
+  },
+  "mockForcedExcessiveStatusHigh": {
+    "content": "700 response",
+    "status": 500,
+    "type": "text/plain",
+  },
+  "mockForcedExcessiveStatusLow": {
+    "content": "-700 response",
+    "status": 500,
+    "type": "text/plain",
+  },
+  "mockResponseAndFilteredError": {
+    "content": "Success",
+    "status": 400,
+    "type": "text/plain",
+  },
+  "mockResponseAndFilteredSuccess": {
+    "content": "Success",
+    "status": 201,
+    "type": "text/plain",
+  },
+  "mockSuccessAndFilteredAndMissing": {
+    "content": "Success",
+    "status": 200,
+    "type": "text/plain",
+  },
+  "mockSuccessAndFilteredSuccess": {
+    "content": "lorem ipsum dolor sit amet",
+    "status": 201,
+    "type": "text/plain",
+  },
 }
 `;
 
-exports[`buildApiResponse should parse malformed mock api settings and provide fallbacks: parseCustomMockSettings.delayResponse.malformed 1`] = `
-{
-  "delay": 1000,
-  "forceStatus": undefined,
-  "reload": undefined,
-  "response": undefined,
-}
+exports[`buildApiResponse should process a request with mock settings and return a response: authorized response 1`] = `
+[
+  [
+    "status",
+    [
+      200,
+    ],
+  ],
+  [
+    "set",
+    [
+      "Cache-Control",
+      "mockGetHeader: cache-control",
+    ],
+  ],
+  [
+    "set",
+    [
+      "Content-Type",
+      "text/plain",
+    ],
+  ],
+  [
+    "send",
+    [
+      "Success",
+    ],
+  ],
+]
 `;
 
-exports[`buildApiResponse should parse malformed mock api settings and provide fallbacks: parseCustomMockSettings.forceStatus.malformed 1`] = `
-{
-  "delay": undefined,
-  "forceStatus": 200,
-  "reload": undefined,
-  "response": undefined,
-}
+exports[`buildApiResponse should process a request with mock settings and return a response: default response 1`] = `
+[
+  [
+    "status",
+    [
+      200,
+    ],
+  ],
+  [
+    "set",
+    [
+      "Cache-Control",
+      "no-cache",
+    ],
+  ],
+  [
+    "set",
+    [
+      "Content-Type",
+      "text/plain",
+    ],
+  ],
+  [
+    "send",
+    [
+      "Success",
+    ],
+  ],
+]
 `;
 
-exports[`buildApiResponse should parse random mock api settings: parseCustomMockSettings.randomError 1`] = `
-{
-  "delay": undefined,
-  "forceStatus": undefined,
-  "reload": true,
-  "response": "error",
-}
+exports[`buildApiResponse should process a request with mock settings and return a response: error response 1`] = `
+[
+  [
+    "status",
+    [
+      400,
+    ],
+  ],
+  [
+    "set",
+    [
+      "Cache-Control",
+      "no-cache",
+    ],
+  ],
+  [
+    "set",
+    [
+      "Content-Type",
+      "text/html",
+    ],
+  ],
+  [
+    "send",
+    [
+      "<html><body>lorem ipsum dolor sit</body></html>",
+    ],
+  ],
+]
 `;
 
-exports[`buildApiResponse should parse random mock api settings: parseCustomMockSettings.randomSuccess 1`] = `
-{
-  "delay": undefined,
-  "forceStatus": undefined,
-  "reload": true,
-  "response": "success",
-}
+exports[`buildApiResponse should process a request with mock settings and return a response: not authorized response 1`] = `
+[
+  [
+    "status",
+    [
+      200,
+    ],
+  ],
+  [
+    "set",
+    [
+      "Cache-Control",
+      "no-cache",
+    ],
+  ],
+  [
+    "set",
+    [
+      "Content-Type",
+      "text/plain",
+    ],
+  ],
+  [
+    "append",
+    [
+      "WWW-Authenticate",
+      "Spoof authentication",
+    ],
+  ],
+  [
+    "status",
+    [
+      401,
+    ],
+  ],
+  [
+    "set",
+    [
+      "Content-Type",
+      "text/plain",
+    ],
+  ],
+  [
+    "end",
+    [
+      "Authorization Required",
+    ],
+  ],
+]
 `;
 
-exports[`buildApiResponse should return a mock mime type and parsed content: parseContentAndType 1`] = `
-{
-  "content": "{
-  "foo": "hello",
-  "bar": "world"
-}",
-  "contentType": "application/json",
-}
-`;
-
-exports[`buildApiResponse should return a mock mime type and parsed content: parseContentAndType.fallback 1`] = `
-{
-  "content": "{
-  "foo": "hello",
-  "bar": "world"
-}",
-  "contentType": "text/plain",
-}
-`;
-
-exports[`buildApiResponse should return a mock mime type and parsed content: parseContentAndType.passthrough 1`] = `
-{
-  "content": "{
-  "foo": "hello",
-  "bar": "world"
-}",
-  "contentType": "lorem/ipsum",
-}
-`;
-
-exports[`buildApiResponse should return a mock mime type and parsed content: parseContentAndType.svg 1`] = `
-{
-  "content": "<lorem><ipsum dolor="sit" /></lorem>",
-  "contentType": "image/svg+xml",
-}
-`;
-
-exports[`buildApiResponse should return a mock mime type and parsed content: parseContentAndType.xml 1`] = `
-{
-  "content": "<lorem><ipsum dolor="sit" /></lorem>",
-  "contentType": "text/xml",
-}
+exports[`buildApiResponse should process a request with mock settings and return a response: success response 1`] = `
+[
+  [
+    "status",
+    [
+      201,
+    ],
+  ],
+  [
+    "set",
+    [
+      "Cache-Control",
+      "no-cache",
+    ],
+  ],
+  [
+    "set",
+    [
+      "Content-Type",
+      "text/html",
+    ],
+  ],
+  [
+    "send",
+    [
+      "<html><body>lorem ipsum dolor sit</body></html>",
+    ],
+  ],
+]
 `;
 
 exports[`buildApiResponse should return specific properties: specific properties 1`] = `
-[
-  "buildResponse",
-  "buildRequestHeaders",
-  "getContentAndType",
-  "getCustomMockSettings",
-  "getExampleResponse",
-]
+{
+  "buildResponses": [Function],
+  "getAuthExampleResponse": [Function],
+  "getExampleResponse": [Function],
+  "getMockResponseExample": [Function],
+  "getResponseCallback": [Function],
+}
 `;

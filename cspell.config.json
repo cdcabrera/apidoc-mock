@@ -1,11 +1,17 @@
 {
   "language": "en",
   "words": [
+    "amet",
     "apidoc",
     "apidocs",
+    "apierrorexample",
+    "apiheader",
+    "apiheaderexample",
     "apimock",
+    "apisuccessexample",
     "cdcabrera",
     "codecov",
+    "containerfile",
     "delayresponse",
     "dockerhub",
     "forcestatus",
