@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.0.2](https://github.com/cdcabrera/apidoc-mock/compare/4ca8885e32e09a2ef8e684f8ddf6e1847d857f0f...5835c6c00ea63dbbb4509d03d26196eea4623b2f) (2024-08-07)
+
+
+### Builds
+* **deps** add dependabot major groups ([#379](https://github.com/cdcabrera/apidoc-mock/pull/379)) ([5835c6c](https://github.com/cdcabrera/apidoc-mock/commit/5835c6c00ea63dbbb4509d03d26196eea4623b2f))
+* **deps-dev** bump group with 5 updates ([#378](https://github.com/cdcabrera/apidoc-mock/pull/378)) ([239f6f1](https://github.com/cdcabrera/apidoc-mock/commit/239f6f116687683e1c10b0c45a3277ecb2522ca7))
+*  minor package adjustments ([#377](https://github.com/cdcabrera/apidoc-mock/pull/377)) ([44c7ccd](https://github.com/cdcabrera/apidoc-mock/commit/44c7ccd69d1cbc1f82fe282b25f0293a0cb3127c))
+* **deps-dev** bump group with 2 updates ([#374](https://github.com/cdcabrera/apidoc-mock/pull/374)) ([41a7e43](https://github.com/cdcabrera/apidoc-mock/commit/41a7e433ddf0db803f2785c57238afd94c9abf16))
+
 ## [5.0.1](https://github.com/cdcabrera/apidoc-mock/compare/f3a90b7a3ba20af5bb6c888eb954c1076fd4d009...03e8e2f23b5f0c045b3d73d5813e75b8fcfc4e1a) (2024-07-23)
 
 
