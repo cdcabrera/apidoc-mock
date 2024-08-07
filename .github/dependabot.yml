@@ -15,16 +15,24 @@ updates:
     labels:
       - "build"
     groups:
-      dev-dependencies:
+      dev-deps:
         dependency-type: "development"
         update-types:
           - "minor"
           - "patch"
-      dependencies:
+      dev-deps-major:
+        dependency-type: "development"
+        update-types:
+          - "major"
+      deps:
         dependency-type: "production"
         update-types:
           - "minor"
           - "patch"
+      deps-major:
+        dependency-type: "production"
+        update-types:
+          - "major"
 
   - package-ecosystem: github-actions
     directory: /
