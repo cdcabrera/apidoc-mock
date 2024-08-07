@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cdcabrera/apidoc-mock"
+    "url": "git+https://github.com/cdcabrera/apidoc-mock.git"
   },
   "bugs": {
     "url": "https://github.com/cdcabrera/apidoc-mock/issues"
@@ -30,7 +30,7 @@
     "!src/**/*test*"
   ],
   "bin": {
-    "mock": "./bin/cli.js"
+    "mock": "bin/cli.js"
   },
   "scripts": {
     "build:deps": "bash ./scripts/dependencies.sh --doctor -u --doctorTest \"npm run test:deps\" --reject \"apidoc\"",
