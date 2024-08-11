@@ -24,7 +24,8 @@
     "ecmaVersion": 2022
   },
   "globals": {
-    "generateFixture": "readonly"
+    "generateFixture": "readonly",
+    "mockObjectProperty": "readonly"
   },
   "rules": {
     "arrow-parens": ["error", "as-needed"],
