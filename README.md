@@ -3,295 +3,164 @@
 [![coverage](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcdcabrera.github.io%2Fapidoc-mock%2Fsummary.json&query=%24.coverage.pct&suffix=%25&label=coverage&color=9F3FC0)](https://cdcabrera.github.io/apidoc-mock/)
 [![License](https://img.shields.io/github/license/cdcabrera/apidoc-mock.svg)](https://github.com/cdcabrera/apidoc-mock/blob/master/LICENSE)
 
-Tired of overthinking mock solutions, use [apidoc](http://apidocjs.com/) styled comments on your local files to create a
-mock NodeJS server. 
+Tired of overthinking mock solutions, use [apidoc-like](http://apidocjs.com/) styled comments on your local files to generate mock API responses using Node.js. 
 
-You can serve up exactly what you need. Everything from a 200 status, to forcing a random custom status. You can even force
-a delay to see how your codebase will handle loading scenarios with a balls slow API response.
+You can serve up exactly what you need. Everything from a `200` to a `418` status. You can even force a delay to see how your codebase will handle loading
+scenarios with a balls slow API response.
+
+> **Important!**
+>
+> The [apidoc NPM](https://www.npmjs.com/package/apidoc) has been retired... currently. To compensate for this we've moved the internal `apidoc-mock` parser
+> over to [comment-parser](https://www.npmjs.com/package/comment-parser).
+> 
+> The move to a new [comment-parser](https://www.npmjs.com/package/comment-parser) means more than a few things
+> 1. The use of `apidoc` generated and served documentation underneath the `/docs` path has been removed from `apidoc-mock`
+> 1. Comments that can be parsed are now limited to comment syntax that starts with `/**` and ends with `*/`. JS/TS works as normal, and technically C#, Go, Dart, Java, PHP all should continue functioning. Any support for other comment types given by `apidoc` no longer exists.
+> 1. Comment tags, such as `@api`, `@apiSuccessExample`, and `@apiMock` are still the same. No changes should be necessary. [The full list of available tags is here](./DOCS.md)
+> 1. Watching directories, and files, has moved to [glob](https://www.npmjs.com/package/glob) patterns. Any existing watches should still function as intended.
+> 1. You'll still be able to use the [apidoc NPM](https://www.npmjs.com/package/apidoc) parallel to `apidoc-mock` but you'll need to install, set up the server, and use it directly, or find a NPM that does it for you.
+>
+> After all this it's become apparent that the work used on `apidoc-mock` needs to evolve. Part one was moving over to different parser, `comment-parser`, part
+> two is going to be the creation of a sibling NPM. 
+> 
+> The ability to mock inline, as fast as you can create the example, is still a very useful tool for frontend development. It's always curious to see the ecosystem evolve...
 
 ## Requirements
 The basic requirements:
- * [NodeJS version 18+](https://nodejs.org/)
+ * [Node.js version 18+](https://nodejs.org/)
  * Optionally your system could be running
+    - [podman desktop](https://podman-desktop.io/)
     - [Docker](https://docs.docker.com/engine/installation/)
-    - [podman](https://github.com/containers/podman) or [podman desktop](https://podman-desktop.io/)
  
 
 ## Use
 
-Generate a "happy path" mock server from [apidoc](http://apidocjs.com/) `@apiSuccessExample` annotations. Once the
-server is set up correctly you should be able to update your code comments/annotations and have the mock(s) update with a 
-browser refresh.
-
-### CLI
+### Install the package
 
 NPM install...
 
   ```shell
-    $ npm i apidoc-mock
+    $ npm i apidoc-mock --save-dev
   ```
 
-#### Usage
+## How to use
+For in-depth usage of comment syntax see our [DOCS](./DOCS.md).
+
+### Basic CLI
 ```
   $ mock --help
-  Create a mock server from apiDoc comments.
+  Create a mock server from apiDoc like comments.
   
   Usage: mock [options]
   
   Options:
-    -d, --docs     Output directory used to compile apidocs   [default: "./.docs"]
-    -p, --port     Set mock port                                   [default: 8000]
-    -s, --silent   Silence apiDoc's output warnings, errors
-                                                         [boolean] [default: true]
-    -w, --watch    Watch single, or multiple directories
+    -p, --port     Set mock port                          [number] [default: 8000]
+    -w, --watch    Watch single, or multiple, files and extensions using glob
+                   patterns.                                               [array]
     -h, --help     Show help                                             [boolean]
     -v, --version  Show version number                                   [boolean]
 ```
 
-#### Example
-  If you have a project, you could setup a NPM script to do the following
+#### Use the CLI directly
 
-  ```shell
-    $ mock -p 5000 -w src/yourDirectory -w src/anotherDirectory
-  ```
-  
-  Then follow the guide for [apidoc](http://apidocjs.com/). From there run the NPM script, and open [localhost:5000/[PATH TO API ENDPOINT]](http://localhost:5000/).
-  
-  It's recommended you make sure to `.gitignore` the `.docs` directory that gets generated for `apidocs`. 
+1. Install `$ npm i apidoc-mock -g`, or depending on your permissions `$ sudo npm i apidoc-mock -g`
+1. Setup a `txt` file called `hello_world.txt` with the following content
+   ```
+   /**
+    * @api {get} /hello/world/
+    * @apiSuccessExample {json}
+    *     HTTP/1.1 200 OK
+    *     {
+    *       "foo": "hello",
+    *       "bar": "world"
+    *     }
+    */
+   ```
+1. Run the mocks directly
+   ```
+   $ mock --port 8000 --watch path_to_the_file/hello_world.txt
+   ```
+   > If you get a port warning error simply change the port number and try again.
+   > You'll also need to make sure the path in the next step opens at the new port.
+1. Open a browser at http://127.0.0.1:8000/hello/world and see your response
 
-### Or roll with a container setup, maybe?
-Since `apidoc-mock` now runs locally we consider our `Dockerfile` to be less of a focus and now in maintenance mode.
+#### Using within a JS project 
 
-We no longer support an `apidoc-mock` image hosted on [`dockerhub`](https://hub.docker.com/r/cdcabrera/apidoc-mock) or
-[`Quay.io`](https://quay.io/repository/cdcabrera/apidoc-mock) which means you will either have to build your own container
-image or use one of the existing older versions of `apidoc-mock` still being hosted.
+1. Install `$ npm i apidoc-mock --save-dev`
+1. Setup a `JS`, or `TS`, file called `helloWorld.js` with the following content
+   ```
+   /**
+    * @api {get} /hello/world/
+    * @apiSuccessExample {json}
+    *     HTTP/1.1 200 OK
+    *     {
+    *       "foo": "hello",
+    *       "bar": "world"
+    *     }
+    */
+   ```
+1. Create a NPM script
+   ```js
+   "scripts": {
+     "api": "mock --port 8000 --watch path_to_the_file/helloWorld.{js|ts}"
+   }
+   ```
+1. Run the NPM script `$ npm run api`
+   > If you get a port warning error simply change the port number in the script and try again.
+   > You'll also need to make sure the path in the next step opens at the new port.
+1. Open a browser at http://127.0.0.1:8000/hello/world and see your response
 
-> Docker has a [beginner breakdown for image build and container run guide](https://docs.docker.com/get-started/)
+#### Using as a container
+> We don't offer a current hosted image anymore, but you can use one of the legacy images from previous `apidoc-mock` versions on [`Quay.io`](https://quay.io/repository/cdcabrera/apidoc-mock)
+> or [`dockerhub`](https://hub.docker.com/r/cdcabrera/apidoc-mock), or build your own from the `Containerfile` provided in the repo.
+>
+> Using a legacy image obviously comes with limitations, and in some cases historical benefits, like restored [served apidoc](https://apidocjs.com/) functionality.
+> You'll need to review our [CHANGELOG.md](./CHANGELOG.md) for missing and available features by release version.  
 
-#### Setup and example
-The `apidoc-mock` image comes preloaded with a "hello/world" example...
+- [Podman Desktop has an installation break down](https://podman-desktop.io/docs/installation)
+- [Docker has an image build and container run guide](https://docs.docker.com/get-started/)
+
+##### Using Podman, Docker directly
+> The repo [Containerfile](./Containerfile) contains a volume you can use to reference local files to generate mocks via `apidoc-mock`.
+>
+> Watching files by a volume with `Docker` is pretty straight forward just use option `-v "[LOCAL_DIRECTORY_PATH]:/app/data"`.
+> For `podman` you can use the same `-v` option, however it can be a little tricky, especially on `macOS`, and lead to file
+> updates not refreshing the generated mocks from `apidoc-mock`.
 
 1. First, download the repository
-1. Confirm `Docker`, or an aliased version of `podman`, is running
-1. Next, open a terminal up and `$ cd` into the local repository
+   ```
+   $ git clone https://github.com/cdcabrera/apidoc-mock.git
+   ```
+   
+   or just use the ["code/Download zip"](https://github.com/cdcabrera/apidoc-mock) GitHub provides
+
+1. Confirm `Docker`, or `Podman`, is running
+1. Next, open a terminal up and `$ cd` into `apidoc-mock`
 1. Then, build the image
-    ```shell
-      $ docker build -t apidoc-mock .
-    ```
-1. Then, run the container
-    ```shell
-      $ docker run -d --rm -p 8000:8000 --name mock-api apidoc-mock && docker ps
-    ```
-1. Finally, you should be able to navigate to
-   - the docs, http://localhost:8000/docs/
-   - the example api, http://localhost:8000/hello/world/
-
-   To stop everything type...
-    ```shell
-      $ docker stop mock-api
-    ```
-
-
-### Using within a project
-**Using ApiDocs**
-> The v0.5X.X+ range of ApiDocs, now, requires the description with its updated template (i.e. `@api {get} /hello/world/ [a description]`) if you want the docs to display. If you don't use that aspect of this package you can continue to leave it out. 
-
-1. Setup your API annotations first. `@apiSuccessExample` is the only apiDoc example currently implemented.
-    ```js
-      /**
-       * @api {get} /hello/world/ Get
-       * @apiGroup Hello World
-       * @apiSuccess {String} foo
-       * @apiSuccess {String} bar
-       * @apiSuccessExample {json} Success-Response:
-       *     HTTP/1.1 200 OK
-       *     {
-       *       "foo": "hello",
-       *       "bar": "world"
-       *     }
-       */
-      const getExample = () => {};
-      
-      /**
-       * @api {post} /hello/world/ Post
-       * @apiGroup Hello World
-       * @apiHeader {String} Authorization Authorization: Token AUTH_TOKEN
-       * @apiSuccess {String} foo
-       * @apiSuccess {String} bar
-       * @apiSuccessExample {json} Success-Response:
-       *     HTTP/1.1 200 OK
-       *     {
-       *       "foo": "hello",
-       *       "bar": "world"
-       *     }
-       */
-      const postExample = () => {};
-    ```
-
-1. Next
-   #### Using a NPM script setup
-   Then, make sure to `.gitignore` the `.docs` directory that gets generated for `apidocs`.
-   
-   Then, setup your NPM scripts
-   ```js
-     "scripts": {
-       "mock": "mock -p 5000 -w [PATH TO YOUR JS FILES] -w [ANOTHER PATH TO YOUR JS FILES]"
-     }
-   ```
-   
-   And then run your script
-   
-    ```shell
-      $ npm run mock
-    ```
-
-   #### Or if you're using a container setup
-   Make sure `Docker`, or `podman`, is running, and you've created a local image from the repository called `apidoc-mock`. After that setup is something like...
-    
-    ```js
-      "scripts": {
-        "mock:run": "docker stop mock-api-test; docker run -i --rm -p [YOUR PORT]:8000 -v \"$(pwd)[PATH TO YOUR JS FILES]:/app/data\" --name mock-api-test apidoc-mock",
-        "mock:stop": "docker stop mock-api-test"
-      }
-    ```
-   You'll need to pick a port like... `-p 8000:8000` and a directory path to pull the apiDoc code comments/annotations from... `-v \"$(pwd)/src:/app/data\"`.
-   
-   Then, run your scripts
-
    ```shell
-     $ npm run mock:setup
-     $ npm run mock:run
+   $ podman build -t apidoc-mock .
    ```
-
-1. Finally, navigate to
-   - the docs, `http://localhost:[YOUR PORT]/docs/`
-   - the api, `http://localhost:[YOUR PORT]/[PATH TO API ENDPOINT]`
-   
-   
-### More examples, and custom responses
-
-Apidoc Mock adds in a few different custom flags to help you identify or demonstrate API responses
-- @apiMock {Random|RandomResponse} - pull a random response from either success or error examples
-- @apiMock {RandomSuccess} - pull a random success from success examples
-- @apiMock {RandomError} - pull a random error from error examples
-- @apiMock {ForceStatus} [HTTP STATUS] - force a specific http status
-- @apiMock {DelayResponse} [MILLISECONDS] - force (in milliseconds) a delayed response
-
-1. Get random responses from both `success` and  `error` examples with the `@apiMock {RandomResponse}` annotation
-    ```js
-      /**
-       * @api {get} /hello/world/ Get
-       * @apiGroup Hello World
-       * @apiMock {RandomResponse}
-       * @apiSuccess {String} foo
-       * @apiSuccess {String} bar
-       * @apiSuccessExample {json} Success-Response:
-       *     HTTP/1.1 200 OK
-       *     {
-       *       "foo": "hello",
-       *       "bar": "world"
-       *     }
-       * @apiSuccessExample {json} Success-Response:
-       *     HTTP/1.1 200 OK
-       *     {
-       *       "lorem": "dolor",
-       *       "ipsum": "est"
-       *     }
-       * @apiError {String} bad
-       * @apiError {String} request
-       * @apiErrorExample {json} Error-Response:
-       *     HTTP/1.1 400 OK
-       *     {
-       *       "bad": "hello",
-       *       "request": "world"
-       *     }
-       */
-      const getExample = () => {};
-    ```
-    
-1. Get a random `success` response with the `@apiMock {RandomSuccess}` annotation. Or get a random `error` with the `@apiMock {RandomError}` annotation 
-    ```js
-      /**
-       * @api {get} /hello/world/ Get
-       * @apiGroup Hello World
-       * @apiMock {RandomSuccess}
-       * @apiSuccess {String} foo
-       * @apiSuccess {String} bar
-       * @apiSuccessExample {json} Success-Response:
-       *     HTTP/1.1 200 OK
-       *     {
-       *       "foo": "hello",
-       *       "bar": "world"
-       *     }
-       * @apiSuccessExample {json} Success-Response:
-       *     HTTP/1.1 200 OK
-       *     {
-       *       "lorem": "dolor",
-       *       "ipsum": "est"
-       *     }
-       * @apiError {String} bad
-       * @apiError {String} request
-       * @apiErrorExample {json} Error-Response:
-       *     HTTP/1.1 400 OK
-       *     {
-       *       "bad": "hello",
-       *       "request": "world"
-       *     }
-       */
-      const getExample = () => {};
-    ```
-    
-1. Force a specific response status with the `@apiMock {ForceStatus} [STATUS GOES HERE]` annotation. If you use a status without a supporting example the response status is still forced, but with fallback content. 
-    ```js
-      /**
-       * @api {get} /hello/world/ Get
-       * @apiGroup Hello World
-       * @apiMock {ForceStatus} 400
-       * @apiSuccess {String} foo
-       * @apiSuccess {String} bar
-       * @apiSuccessExample {json} Success-Response:
-       *     HTTP/1.1 200 OK
-       *     {
-       *       "foo": "hello",
-       *       "bar": "world"
-       *     }
-       * @apiError {String} bad
-       * @apiError {String} request
-       * @apiErrorExample {json} Error-Response:
-       *     HTTP/1.1 400 OK
-       *     {
-       *       "bad": "hello",
-       *       "request": "world"
-       *     }
-       */
-      const getExample = () => {};
-    ```
-
-1. Delay a response status with the `@apiMock {DelayResponse} [MILLISECONDS GO HERE]` annotation. 
-    ```js
-      /**
-       * @api {get} /hello/world/ Get
-       * @apiGroup Hello World
-       * @apiMock {DelayResponse} 3000
-       * @apiSuccess {String} foo
-       * @apiSuccess {String} bar
-       * @apiSuccessExample {json} Success-Response:
-       *     HTTP/1.1 200 OK
-       *     {
-       *       "foo": "hello",
-       *       "bar": "world"
-       *     }
-       * @apiError {String} bad
-       * @apiError {String} request
-       * @apiErrorExample {json} Error-Response:
-       *     HTTP/1.1 400 OK
-       *     {
-       *       "bad": "hello",
-       *       "request": "world"
-       *     }
-       */
-      const getExample = () => {};
-    ```
+   or
+   ```shell
+   $ docker build --file Containerfile -t apidoc-mock .
+   ```
+1. Then, run the container
+   ```shell
+   $ podman run --rm -p 8000:8000 --tls-verify=false --name mock-api apidoc-mock
+   ```
+   or
+   ```shell
+   $ docker run --rm -p 8000:8000 --name mock-api apidoc-mock
+   ```
+1. Finally, you should be able to open the example api, http://127.0.0.1:8000/hello/world/demo
+   - To stop everything type...
+      ```shell
+      $ podman stop mock-api
+      ```
+      or
+      ```shell
+      $ docker stop mock-api
+      ```
 
 ## Contributing
 Contributing? Guidelines can be found here [CONTRIBUTING.md](./CONTRIBUTING.md).

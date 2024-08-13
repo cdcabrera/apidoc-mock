@@ -39,6 +39,7 @@
           "apiErrorExample",
           "apiGroup",
           "apiHeader",
+          "apiHeaderExample",
           "apiMock",
           "apiParam",
           "apiSuccess",
@@ -51,12 +52,15 @@
       {
         "definedTypes": [
           "delete",
+          "delay",
           "get",
           "html",
           "json",
           "patch",
           "post",
           "put",
+          "request",
+          "response",
           "RandomResponse"
         ]
       }
@@ -84,6 +88,7 @@
     "no-console": 0,
     "no-debugger": 1,
     "no-plusplus": 0,
+    "no-process-exit": 0,
     "no-unsafe-optional-chaining": 1,
     "no-var": 2,
     "node/no-unsupported-features/es-syntax": 1,

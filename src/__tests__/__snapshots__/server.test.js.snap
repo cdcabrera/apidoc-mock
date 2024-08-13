@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`logger should return specific properties: specific properties 1`] = `
+{
+  "setHeaders": [Function],
+  "setResponses": [Function],
+  "setServer": [Function],
+}
+`;
+
+exports[`logger should setHeaders: allow headers 1`] = `
+[
+  [
+    "Access-Control-Allow-Origin",
+    "*",
+  ],
+  [
+    "Access-Control-Allow-Credentials",
+    true,
+  ],
+  [
+    "Access-Control-Allow-Methods",
+    "GET, PUT, POST, DELETE, HEAD, OPTIONS, PATCH",
+  ],
+  [
+    "Access-Control-Allow-Headers",
+    "lorem ipsum",
+  ],
+  [],
+]
+`;
+
+exports[`logger should setHeaders: default headers 1`] = `
+[
+  [
+    "Access-Control-Allow-Origin",
+    "*",
+  ],
+  [
+    "Access-Control-Allow-Credentials",
+    true,
+  ],
+  [
+    "Access-Control-Allow-Methods",
+    "GET, PUT, POST, DELETE, HEAD, OPTIONS, PATCH",
+  ],
+  [],
+]
+`;
+
+exports[`logger should setHeaders: origin headers 1`] = `
+[
+  [
+    "Access-Control-Allow-Origin",
+    "dolor sit",
+  ],
+  [
+    "Access-Control-Allow-Credentials",
+    false,
+  ],
+  [
+    "Access-Control-Allow-Methods",
+    "GET, PUT, POST, DELETE, HEAD, OPTIONS, PATCH",
+  ],
+  [],
+]
+`;
+
+exports[`logger should setHeaders: request method 1`] = `
+[
+  [
+    "Access-Control-Allow-Origin",
+    "*",
+  ],
+  [
+    "Access-Control-Allow-Credentials",
+    true,
+  ],
+  [
+    "Access-Control-Allow-Methods",
+    "GET, PUT, POST, DELETE, HEAD, OPTIONS, PATCH",
+  ],
+  [],
+]
+`;
+
+exports[`logger should setResponse: basicServer 1`] = `
+{
+  "mock": [
+    [
+      "/lorem/ipsum",
+      [MockFunction],
+    ],
+    [
+      3000,
+      [Function],
+    ],
+  ],
+  "output": undefined,
+}
+`;
+
+exports[`logger should setResponse: default 1`] = `
+{
+  "mock": [
+    [
+      "waiting",
+    ],
+  ],
+  "output": undefined,
+}
+`;
+
+exports[`logger should setServer: default 1`] = `
+{
+  "mock": [
+    [
+      [Function],
+    ],
+    [
+      "Error, confirm settings:
+port=8000
+watch=./testFile.js",
+    ],
+  ],
+}
+`;

@@ -1,5 +1,40 @@
-const { join } = require('path');
 const crypto = require('crypto');
+
+/**
+ * A list of forbidden headers, https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_header_name
+ *
+ * @type {string[]}
+ */
+const forbiddenHeaders = [
+  'accept-charset',
+  'accept-encoding',
+  'access-control-request-headers',
+  'access-control-request-method',
+  'connection',
+  'content-length',
+  'cookie',
+  'date',
+  'dnt',
+  'expect',
+  'host',
+  'keep-alive',
+  'origin',
+  'permissions-policy',
+  'proxy-',
+  'sec-',
+  'te',
+  'trailer',
+  'transfer-encoding',
+  'upgrade',
+  'via'
+];
+
+/**
+ * A list of all ignored headers when generating mocks
+ *
+ * @type {string[]}
+ */
+const ignoredHeaders = [...forbiddenHeaders, 'access-control-'];
 
 /**
  * Set context path
@@ -7,7 +42,7 @@ const crypto = require('crypto');
  * @type {string}
  * @private
  */
-const contextPath = process.cwd();
+const contextPath = (process.env.NODE_ENV === 'test' && './') || process.cwd();
 
 /**
  * Simple consistent hash from content.
@@ -100,18 +135,27 @@ const memo = (func, { cacheLimit = 1, expire } = {}) => {
 };
 
 /**
- * Set a base config for apidocs, apply apidoc-mock custom comment parser.
+ * Basic string truncate.
  *
- * @type {{silent: boolean, dryRun: boolean, src: undefined, parsers: {apimock: string}, dest: undefined}}
+ * @param {string} str
+ * @param {object} settings
+ * @param {number} settings.limit
+ * @param {boolean} settings.isHard Use a hard truncate string cutoff. Not setting this defaults the behavior to whole word truncate.
+ * @param {string} settings.postFix
+ * @returns {string}
  */
-const apiDocBaseConfig = {
-  src: undefined,
-  dest: undefined,
-  dryRun: process.env.NODE_ENV === 'test',
-  silent: process.env.NODE_ENV === 'test',
-  parsers: {
-    apimock: join(__dirname, './apidocConfig.js')
+const truncate = (str, { limit, isHard = false, postFix = '...' } = {}) => {
+  if (str.length <= limit || typeof str !== 'string' || !/^[0-9]+$/g.test(limit)) {
+    return str;
   }
+
+  if (isHard) {
+    return `${str.slice(0, limit).trim()}${postFix}`.trim();
+  }
+
+  const nextSpace = str.lastIndexOf(' ', limit);
+  const updatedLimit = (nextSpace > 0 && nextSpace) || limit;
+  return `${str.substring(0, updatedLimit).replace(/^\s+|\s+$/g, '')}${postFix}`.trim();
 };
 
 /**
@@ -121,7 +165,6 @@ const apiDocBaseConfig = {
  */
 const OPTIONS = {
   contextPath,
-  apiDocBaseConfig,
   set _set(obj) {
     Object.entries(obj).forEach(([key, value]) => {
       if (typeof value === 'function') {
@@ -136,4 +179,4 @@ const OPTIONS = {
   }
 };
 
-module.exports = { contextPath, generateHash, memo, OPTIONS };
+module.exports = { contextPath, generateHash, memo, OPTIONS, forbiddenHeaders, ignoredHeaders, isPromise, truncate };

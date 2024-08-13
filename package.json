@@ -34,25 +34,25 @@
   },
   "scripts": {
     "build:deps": "bash ./scripts/dependencies.sh --doctor -u --doctorTest \"npm run test:deps\" --reject \"apidoc\"",
-    "docker:build": "docker build -t apidoc-mock-test .",
-    "docker:run": "docker stop mock-api-test; docker run -i --rm -p 5000:8000 -v \"$(pwd)/data:/app/data\" --name mock-api-test apidoc-mock-test",
-    "docker:stop": "docker stop mock-api-test",
+    "container:podman": "podman stop mock-api-test; podman build -t apidoc-mock-test .; podman run --rm -p 5000:8000 --tls-verify=false --name mock-api apidoc-mock-test",
+    "container:docker": "docker stop mock-api-test; docker build --file Containerfile -t apidoc-mock-test .; docker run --rm -p 5000:8000 -v \"$(pwd)/data:/app/data\" --name mock-api apidoc-mock-test",
     "release": "changelog",
-    "start": "./bin/cli.js -w ./data",
-    "start:dev": "nodemon --watch data --watch src './bin/cli.js -w ./data'",
+    "start": "./bin/cli.js -w ./data/**/*",
+    "start:dev": "export DEMO=http://127.0.0.1:8000/hello/world/demo; xdg-open $DEMO || open $DEMO; nodemon --watch data --watch src 'npm start'",
     "test": "run-s -l test:lint test:spell* test:ci",
     "test:ci": "export CI=true; jest --collectCoverage --coverageReporters=\"lcov\" --coverageReporters=\"json-summary\"",
     "test:clearCache": "jest --clearCache",
     "test:coverage": "run-s test:ci test:coverageSummary",
     "test:coverageSummary": "node ./scripts/actions.coverage.js",
     "test:deps": "rm -rf ./.docs; run-s test",
-    "test:dev": "rm -rf ./.docs; eslint ./src; run-s test:spell test:local",
+    "test:dev": "rm -rf ./.docs; eslint ./src; run-s test:spell test:watch",
     "test:integration": "jest --roots=./tests",
     "test:integration-dev": "jest --roots=./tests --watchAll",
     "test:lint": "eslint ./src ./bin ./data",
-    "test:local": "jest --watch",
+    "test:local": "jest --collectCoverage",
     "test:spell-docs": "cspell ./README.md ./CONTRIBUTING.md --config ./cspell.config.json",
-    "test:spell": "cspell './src/**/*.js' './tests/**/*.js' --config ./cspell.config.json"
+    "test:spell": "cspell './src/**/*.js' './tests/**/*.js' --config ./cspell.config.json",
+    "test:watch": "jest --watch"
   },
   "jest": {
     "roots": [
@@ -81,8 +81,9 @@
     "description": "API documentation with apiDoc."
   },
   "dependencies": {
-    "apidoc": "1.2.0",
+    "comment-parser": "^1.4.1",
     "express": "^4.19.2",
+    "glob": "^10.4.5",
     "http-terminator": "^3.2.0",
     "node-watch": "^0.7.4",
     "winston": "^3.13.1",

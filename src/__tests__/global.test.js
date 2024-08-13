@@ -1,8 +1,8 @@
 const global = require('../global');
 
-describe('Global', () => {
+describe('global', () => {
   it('should return specific properties', () => {
-    expect(Object.keys(global)).toMatchSnapshot('specific properties');
+    expect(global).toMatchSnapshot('specific properties');
   });
 
   it('should minimally generate a consistent hash', () => {
@@ -28,6 +28,12 @@ describe('Global', () => {
       valueBoolTrue: global.generateHash(true),
       valueBoolFalse: global.generateHash(false)
     }).toMatchSnapshot('hash, object and primitive values');
+  });
+
+  it('should determine a promise', () => {
+    expect(global.isPromise(Promise.resolve())).toBe(true);
+    expect(global.isPromise(async () => {})).toBe(true);
+    expect(global.isPromise(() => 'lorem')).toBe(false);
   });
 
   it('should memoize function return values', () => {
@@ -74,13 +80,16 @@ describe('Global', () => {
     await expect(async () => asyncMemoError('lorem ipsum')).rejects.toThrowErrorMatchingSnapshot('memoize async error');
   });
 
+  it('should truncate string values', async () => {
+    expect({
+      default: global.truncate('lorem ipsum dolor sit, amet', { limit: 20 }),
+      hardTruncate: global.truncate('lorem ipsum dolor sit, amet', { limit: 20, isHard: true }),
+      postFix: global.truncate('lorem ipsum dolor sit, amet', { limit: 20, postFix: '!!!' })
+    }).toMatchSnapshot('truncate');
+  });
+
   it('should set a one-time mutable OPTIONS object', () => {
     const { OPTIONS } = global;
-
-    // for testing set a consistent contextPath and parser
-    OPTIONS.contextPath = '/';
-    OPTIONS.apiDocBaseConfig.parsers.apimock = '/customParser.js';
-
     OPTIONS.lorem = 'et all';
     OPTIONS.dolor = 'magna';
     OPTIONS._set = {

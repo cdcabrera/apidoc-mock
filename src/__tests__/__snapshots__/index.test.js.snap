@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`apiDocMock should return specific properties: specific properties 1`] = `[Function]`;

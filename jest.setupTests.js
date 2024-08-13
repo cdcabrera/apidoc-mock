@@ -2,7 +2,7 @@ const { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } = require('
 const crypto = require('crypto');
 const { extname, join, resolve } = require('path');
 
-global.__basedir = __dirname;
+jest.mock('http-terminator');
 
 /**
  * Generate a fixture from string literals.

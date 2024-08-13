@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Global should memoize async function return values: memoize async error 1`] = `"lorem ipsum"`;
+exports[`global should memoize async function return values: memoize async error 1`] = `"lorem ipsum"`;
 
-exports[`Global should minimally generate a consistent hash: hash, object and primitive values 1`] = `
+exports[`global should minimally generate a consistent hash: hash, object and primitive values 1`] = `
 {
   "valueArray": "0e8e2b3096e6aee20e3cd10b7788ce3d72502061",
   "valueArrayConfirmSort": true,
@@ -23,32 +23,83 @@ exports[`Global should minimally generate a consistent hash: hash, object and pr
 }
 `;
 
-exports[`Global should return specific properties: specific properties 1`] = `
-[
-  "contextPath",
-  "generateHash",
-  "memo",
-  "OPTIONS",
-]
-`;
-
-exports[`Global should set a one-time mutable OPTIONS object: immutable 1`] = `
+exports[`global should return specific properties: specific properties 1`] = `
 {
   "OPTIONS": {
-    "apiDocBaseConfig": {
-      "dest": undefined,
-      "dryRun": true,
-      "parsers": {
-        "apimock": "/customParser.js",
-      },
-      "silent": true,
-      "src": undefined,
-    },
-    "contextPath": "/",
+    "_set": undefined,
+    "contextPath": "./",
+  },
+  "contextPath": "./",
+  "forbiddenHeaders": [
+    "accept-charset",
+    "accept-encoding",
+    "access-control-request-headers",
+    "access-control-request-method",
+    "connection",
+    "content-length",
+    "cookie",
+    "date",
+    "dnt",
+    "expect",
+    "host",
+    "keep-alive",
+    "origin",
+    "permissions-policy",
+    "proxy-",
+    "sec-",
+    "te",
+    "trailer",
+    "transfer-encoding",
+    "upgrade",
+    "via",
+  ],
+  "generateHash": [Function],
+  "ignoredHeaders": [
+    "accept-charset",
+    "accept-encoding",
+    "access-control-request-headers",
+    "access-control-request-method",
+    "connection",
+    "content-length",
+    "cookie",
+    "date",
+    "dnt",
+    "expect",
+    "host",
+    "keep-alive",
+    "origin",
+    "permissions-policy",
+    "proxy-",
+    "sec-",
+    "te",
+    "trailer",
+    "transfer-encoding",
+    "upgrade",
+    "via",
+    "access-control-",
+  ],
+  "isPromise": [Function],
+  "memo": [Function],
+  "truncate": [Function],
+}
+`;
+
+exports[`global should set a one-time mutable OPTIONS object: immutable 1`] = `
+{
+  "OPTIONS": {
+    "contextPath": "./",
     "dolor": "magna",
     "lorem": "ipsum",
-    "sit": "function test /",
+    "sit": "function test ./",
   },
   "isFrozen": true,
+}
+`;
+
+exports[`global should truncate string values: truncate 1`] = `
+{
+  "default": "lorem ipsum dolor...",
+  "hardTruncate": "lorem ipsum dolor si...",
+  "postFix": "lorem ipsum dolor!!!",
 }
 `;
