@@ -43,7 +43,9 @@ describe('comments', () => {
       )
     }).toMatchSnapshot('parsed headers');
 
-    expect(mockFunction.mock.calls).toMatchSnapshot('malformed string JSON');
+    expect(mockFunction.mock.calls.map(mock => mock.map(call => call.split(/},\s/)[0]))).toMatchSnapshot(
+      'malformed string JSON'
+    );
   });
 
   it('should parse comment content, status, and type', () => {

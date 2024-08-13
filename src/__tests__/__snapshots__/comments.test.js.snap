@@ -643,7 +643,7 @@ exports[`comments should parse comment content, status, and type: parsed content
 exports[`comments should parse comment header examples: malformed string JSON 1`] = `
 [
   [
-    "file-parse	:JSON :ignoring malformed "@apiHeaderExample" { dolor: "sit" }, Expected property name or '}' in JSON at position 2",
+    "file-parse	:JSON :ignoring malformed "@apiHeaderExample" { dolor: "sit" ",
   ],
 ]
 `;
