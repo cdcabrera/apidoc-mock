@@ -40,10 +40,9 @@ const setupResponse = (apiJson = [], { port } = OPTIONS) => {
  * @param {object} options
  * @param {number} options.port
  * @param {string|string[]} options.watchPath
- * @param {string} options.docsPath
  * @returns {*}
  */
-const apiDocMock = async ({ port, watchPath, docsPath } = OPTIONS) => {
+const apiDocMock = async ({ port, watchPath } = OPTIONS) => {
   const apiJson = setupDocs();
   let httpTerminator = null;
 
@@ -53,13 +52,12 @@ const apiDocMock = async ({ port, watchPath, docsPath } = OPTIONS) => {
     }
 
     CACHE.app = express();
-    CACHE.app.use(`/docs`, express.static(docsPath));
     CACHE.app.use(buildRequestHeaders);
     CACHE.httpTerminator = httpTerminator = setupResponse(apiJson);
   }
 
   if (httpTerminator === null) {
-    logger.error(`Error, confirm settings:\nport=${port}\nwatch=${watchPath}\ndocs=${docsPath}`);
+    logger.error(`Error, confirm settings:\nport=${port}\nwatch=${watchPath}`);
     throw new Error('Server failed to load');
   }
 

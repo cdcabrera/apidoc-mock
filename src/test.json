@@ -1,0 +1,335 @@
+[
+  {
+    "type": "delete",
+    "url": "/hello/world/",
+    "title": "Delete",
+    "group": "Hello_World",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Authorization",
+            "isArray": false,
+            "description": "<p>Authorization: Token AUTH_TOKEN</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "foo",
+            "isArray": false,
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "bar",
+            "isArray": false,
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"foo\": \"hello\",\n  \"bar\": \"world\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "example.js",
+    "groupTitle": "Hello_World",
+    "name": "DeleteHelloWorld"
+  },
+  {
+    "type": "get",
+    "url": "/hello/world/",
+    "title": "Get",
+    "group": "Hello_World",
+    "mock": {
+      "settings": [
+        {
+          "randomResponse": ""
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "foo",
+            "isArray": false,
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "bar",
+            "isArray": false,
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"foo\": \"hello\",\n  \"bar\": \"world\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 OK\n{\n  \"lorem\": \"dolor\",\n  \"ipsum\": \"est\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "string",
+            "optional": false,
+            "field": "bad",
+            "isArray": false,
+            "description": ""
+          },
+          {
+            "group": "Error 4xx",
+            "type": "string",
+            "optional": false,
+            "field": "request",
+            "isArray": false,
+            "description": ""
+          },
+          {
+            "group": "Error 4xx",
+            "type": "string",
+            "optional": false,
+            "field": "detail",
+            "isArray": false,
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 OK\n{\n  \"bad\": \"hello\",\n  \"request\": \"world\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 401 Unauthorized\n{\n  \"detail\": \"Authentication credentials were not provided.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "example.js",
+    "groupTitle": "Hello_World",
+    "name": "GetHelloWorld"
+  },
+  {
+    "type": "patch",
+    "url": "/hello/world/",
+    "title": "Patch",
+    "group": "Hello_World",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Authorization",
+            "isArray": false,
+            "description": "<p>Authorization: Token AUTH_TOKEN</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "foo",
+            "isArray": false,
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "bar",
+            "isArray": false,
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"foo\": \"hello\",\n  \"bar\": \"world\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "example.js",
+    "groupTitle": "Hello_World",
+    "name": "PatchHelloWorld"
+  },
+  {
+    "type": "post",
+    "url": "/hello/world/",
+    "title": "Post",
+    "group": "Hello_World",
+    "mock": {
+      "settings": [
+        {
+          "randomResponse": ""
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Authorization",
+            "isArray": false,
+            "description": "<p>Authorization: Token AUTH_TOKEN</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "foo",
+            "isArray": false,
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "bar",
+            "isArray": false,
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 OK\n{\n  \"foo\": \"hello\",\n  \"bar\": \"world\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "string",
+            "optional": false,
+            "field": "detail",
+            "isArray": false,
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 401 Unauthorized\n{\n  \"detail\": \"Authentication credentials were not provided.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "example.js",
+    "groupTitle": "Hello_World",
+    "name": "PostHelloWorld"
+  },
+  {
+    "type": "put",
+    "url": "/hello/world/",
+    "title": "Put",
+    "group": "Hello_World",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Authorization",
+            "isArray": false,
+            "description": "<p>Authorization: Token AUTH_TOKEN</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "foo",
+            "isArray": false,
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "bar",
+            "isArray": false,
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"foo\": \"hello\",\n  \"bar\": \"world\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "example.js",
+    "groupTitle": "Hello_World",
+    "name": "PutHelloWorld"
+  }
+]
