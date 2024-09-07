@@ -11,19 +11,12 @@ const { apiDocMock, OPTIONS } = require('../src');
 /**
  * Setup yargs
  */
-const { docs, port, silent, watch } = yargs
+const { port, silent, watch } = yargs
   .usage('Create a mock server from apiDoc comments.\n\nUsage: mock [options]')
   .help('help')
   .alias('h', 'help')
   .version('version', packageJson.version)
   .alias('v', 'version')
-  .option('d', {
-    alias: 'docs',
-    default: './.docs',
-    describe: 'Output directory used to compile apidocs',
-    requiresArg: true,
-    type: 'string'
-  })
   .option('p', {
     alias: 'port',
     default: 8000,
@@ -48,7 +41,7 @@ const { docs, port, silent, watch } = yargs
 /**
  * Set global OPTIONS
  *
- * @type {{silent, docsPath: string, port: number, watchPath: string[]}}
+ * @type {{silent, port: number, watchPath: string[]}}
  * @private
  */
 OPTIONS._set = {
@@ -56,9 +49,6 @@ OPTIONS._set = {
   silent,
   watchPath: function () {
     return watch?.map(val => join(this.contextPath || '', val))?.filter(val => (existsSync(val) && val) || false) || [];
-  },
-  docsPath: function () {
-    return join(this.contextPath || '', docs);
   }
 };
 
@@ -66,7 +56,7 @@ OPTIONS._set = {
  * If testing stop here, otherwise continue.
  */
 if (process.env.NODE_ENV === 'test') {
-  process.stdout.write(JSON.stringify({ docs, port, silent, watch }));
+  process.stdout.write(JSON.stringify({ port, silent, watch }));
 } else {
   apiDocMock();
 
