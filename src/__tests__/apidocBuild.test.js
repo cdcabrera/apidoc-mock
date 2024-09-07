@@ -28,7 +28,7 @@ describe('apidocBuild', () => {
       { dir: './.fixtures/predictable', filename: 'test.js' }
     );
 
-    const [helloWorld] = setupDocs({ ...OPTIONS, watchPath: [apiFixture.dir], docsPath: 'lorem-ipsum' });
+    const [helloWorld] = setupDocs({ ...OPTIONS, watchPath: [apiFixture.dir] });
 
     expect({
       ...helloWorld,
@@ -68,7 +68,7 @@ describe('apidocBuild', () => {
       { dir: './.fixtures/content-types', filename: 'svg.js', resetDir: false }
     );
 
-    const [html, svg] = setupDocs({ ...OPTIONS, watchPath: [htmlFixture.dir], docsPath: 'lorem-ipsum' });
+    const [html, svg] = setupDocs({ ...OPTIONS, watchPath: [htmlFixture.dir] });
 
     expect({
       ...html,

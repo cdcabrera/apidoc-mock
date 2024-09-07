@@ -1,4 +1,4 @@
-const apidoc = require('apidoc');
+const apidoc = require('apidoc-light');
 const { logger } = require('./logger');
 const { OPTIONS } = require('./global');
 
@@ -8,27 +8,25 @@ const { OPTIONS } = require('./global');
  * @param {object} options
  * @param {OPTIONS.apiDocBaseConfig} options.apiDocBaseConfig
  * @param {string[]} options.watchPath
- * @param {string} options.docsPath
  * @param {string} options.silent
  * @returns {*|{}|null}
  */
-const setupDocs = ({ apiDocBaseConfig, watchPath: src, docsPath: dest, silent } = OPTIONS) => {
-  if ((!Array.isArray(src) && !src?.length) || !dest) {
+const setupDocs = ({ apiDocBaseConfig, watchPath: src, silent } = OPTIONS) => {
+  if (!Array.isArray(src) && !src?.length) {
     return [];
   }
 
   const apiDocsConfig = {
     ...apiDocBaseConfig,
     src,
-    dest,
-    silent: apiDocBaseConfig.silent || silent
+    silent: apiDocBaseConfig.silent || silent,
+    dryRun: true
   };
 
   try {
-    const { data } = apidoc.createDoc(apiDocsConfig);
-    const updatedResult = JSON.parse(data);
+    const { data } = apidoc.createDoc({ ...apiDocsConfig });
     logger.info('apidocBuild.read.apiJsonFile');
-    return updatedResult;
+    return data;
   } catch (e) {
     logger.error(`apidocBuild.apiDoc.createDoc[${e.message}]`);
   }
