@@ -5,6 +5,9 @@ updates:
     schedule:
       interval: monthly
       day: monday
+    commit-message:
+      prefix: "build"
+      include: "scope"
     open-pull-requests-limit: 5
     target-branch: "main"
     versioning-strategy: increase
