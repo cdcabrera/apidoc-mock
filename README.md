@@ -39,7 +39,6 @@ NPM install...
   Usage: mock [options]
   
   Options:
-    -d, --docs     Output directory used to compile apidocs   [default: "./.docs"]
     -p, --port     Set mock port                                   [default: 8000]
     -s, --silent   Silence apiDoc's output warnings, errors
                                                          [boolean] [default: true]
@@ -56,8 +55,6 @@ NPM install...
   ```
   
   Then follow the guide for [apidoc](http://apidocjs.com/). From there run the NPM script, and open [localhost:5000/[PATH TO API ENDPOINT]](http://localhost:5000/).
-  
-  It's recommended you make sure to `.gitignore` the `.docs` directory that gets generated for `apidocs`. 
 
 ### Or roll with a container setup, maybe?
 Since `apidoc-mock` now runs locally we consider our `Dockerfile` to be less of a focus and now in maintenance mode.
@@ -130,8 +127,6 @@ The `apidoc-mock` image comes preloaded with a "hello/world" example...
 
 1. Next
    #### Using a NPM script setup
-   Then, make sure to `.gitignore` the `.docs` directory that gets generated for `apidocs`.
-   
    Then, setup your NPM scripts
    ```js
      "scripts": {
