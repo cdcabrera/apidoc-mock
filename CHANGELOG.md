@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.0.7](https://github.com/cdcabrera/apidoc-mock/compare/23322327ca47f456f60117ecc02eaddd701c6ba1...41969dd60f98d7bff2d2bb28f061d9ddb0023022) (2025-02-18)
+
+
+### Builds
+* **deps-dev** bump group with 5 updates ([#401](https://github.com/cdcabrera/apidoc-mock/pull/401)) ([41969dd](https://github.com/cdcabrera/apidoc-mock/commit/41969dd60f98d7bff2d2bb28f061d9ddb0023022))
+* **deps** bump group with 6 updates ([#399](https://github.com/cdcabrera/apidoc-mock/pull/399)) ([f184254](https://github.com/cdcabrera/apidoc-mock/commit/f18425407349beac195d3277f8071633e55012b8))
+
 ## [5.0.6](https://github.com/cdcabrera/apidoc-mock/compare/d4bb02e10373e1fdee03e16024da28c43e9a2c02...8d5ad7d676eaa415a491ae8b6cc69357ce597adf) (2024-11-23)
 
 
