@@ -1,5 +1,5 @@
 # Apidoc Mock
-[![Build Status](https://github.com/cdcabrera/apidoc-mock/workflows/Build/badge.svg?branch=main)](https://github.com/cdcabrera/apidoc-mock/actions?query=workflow%3ABuild)
+[![Build Status](https://github.com/cdcabrera/apidoc-mock/actions/workflows/integration.yml/badge.svg)](https://github.com/cdcabrera/apidoc-mock/actions/workflows/integration.yml)
 [![coverage](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcdcabrera.github.io%2Fapidoc-mock%2Fsummary.json&query=%24.coverage.pct&suffix=%25&label=coverage&color=9F3FC0)](https://cdcabrera.github.io/apidoc-mock/)
 [![License](https://img.shields.io/github/license/cdcabrera/apidoc-mock.svg)](https://github.com/cdcabrera/apidoc-mock/blob/master/LICENSE)
 
