@@ -4,6 +4,29 @@ const { extname, join, resolve } = require('path');
 
 global.__basedir = __dirname;
 
+jest.mock('express', () => {
+  const mockExpress = function () {
+    return {
+      delete: jest.fn(),
+      get: jest.fn(),
+      patch: jest.fn(),
+      post: jest.fn(),
+      put: jest.fn(),
+      use: jest.fn(),
+      listen: jest.fn()
+    };
+  };
+
+  mockExpress.static = jest.fn();
+  return mockExpress;
+});
+
+jest.mock('http-terminator', () => ({
+  createHttpTerminator: () => ({
+    terminate: () => 'success'
+  })
+}));
+
 /**
  * Generate a fixture from string literals.
  *
@@ -39,3 +62,29 @@ const generateFixture = (
 };
 
 global.generateFixture = generateFixture;
+
+/**
+ * Shallow mock specific properties, restore with callback, mockClear.
+ * A simple object property mock for scenarios where the property is not a function/Jest fails.
+ *
+ * @param {object} object
+ * @param {object} propertiesValues
+ * @returns {{mockClear: Function}}
+ */
+const mockObjectProperty = (object = {}, propertiesValues) => {
+  const updatedObject = object;
+  const originalPropertiesValues = {};
+
+  Object.entries(propertiesValues).forEach(([key, value]) => {
+    originalPropertiesValues[key] = updatedObject[key];
+    updatedObject[key] = value;
+  });
+
+  return {
+    mockClear: () => {
+      Object.assign(updatedObject, originalPropertiesValues);
+    }
+  };
+};
+
+global.mockObjectProperty = mockObjectProperty;
