@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.0.8](https://github.com/cdcabrera/apidoc-mock/compare/fe9e3bc7a8a8edcbeaa215ab00cc8ed439e9dd36...933c5bddd1716029f70b4acc5a1d8f1bcd78e424) (2025-05-03)
+
+
+### Documentation
+* **readme** status badge path update ([#404](https://github.com/cdcabrera/apidoc-mock/pull/404)) ([2ff4bd3](https://github.com/cdcabrera/apidoc-mock/commit/2ff4bd37a6c6c71893538ebc26fba300ff0d0e66))
+
+### Builds
+* **deps** lock reset ([#417](https://github.com/cdcabrera/apidoc-mock/pull/417)) ([933c5bd](https://github.com/cdcabrera/apidoc-mock/commit/933c5bddd1716029f70b4acc5a1d8f1bcd78e424))
+* **deps-dev** npm-check-updates from 17.1.16 to 18.0.1 ([#415](https://github.com/cdcabrera/apidoc-mock/pull/415)) ([9c340fc](https://github.com/cdcabrera/apidoc-mock/commit/9c340fccaf779364ab38a5602d1d1968606688e5))
+* **deps-dev** bump the dev group with 5 updates ([#414](https://github.com/cdcabrera/apidoc-mock/pull/414)) ([8a7608a](https://github.com/cdcabrera/apidoc-mock/commit/8a7608a14135f1c6b0c130cab60dde2b8da8f570))
+* **deps-dev** bump the dev group with 6 updates ([#411](https://github.com/cdcabrera/apidoc-mock/pull/411)) ([360d468](https://github.com/cdcabrera/apidoc-mock/commit/360d468a604b7fdcad69b86cd99c0279eda833ba))
+* **deps-dev** bump group with 4 updates ([#410](https://github.com/cdcabrera/apidoc-mock/pull/410)) ([4c4da7b](https://github.com/cdcabrera/apidoc-mock/commit/4c4da7b03ea496135fb9d8efdfb5d622c4c94d0b))
+* **deps-dev** bump eslint-config-prettier from 9.1.0 to 10.0.1 ([#407](https://github.com/cdcabrera/apidoc-mock/pull/407)) ([66fc0d5](https://github.com/cdcabrera/apidoc-mock/commit/66fc0d581ead6a7eef1554affe3814c3b423c842))
+*  focus dependabot groups ([#406](https://github.com/cdcabrera/apidoc-mock/pull/406)) ([bc02374](https://github.com/cdcabrera/apidoc-mock/commit/bc0237486edb5cea95e0f5d6ac156b919c76a313))
+* **deps-dev** bump group with 3 updates ([#405](https://github.com/cdcabrera/apidoc-mock/pull/405)) ([e8c3c97](https://github.com/cdcabrera/apidoc-mock/commit/e8c3c97e922c9b3c7183ada9a4fe901d022747a5))
+
 ## [5.0.7](https://github.com/cdcabrera/apidoc-mock/compare/23322327ca47f456f60117ecc02eaddd701c6ba1...41969dd60f98d7bff2d2bb28f061d9ddb0023022) (2025-02-18)
 
 
