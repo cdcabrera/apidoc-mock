@@ -49,7 +49,7 @@
     "test:dev": "rm -rf ./.docs; eslint ./src; run-s test:spell test:local",
     "test:integration": "jest --roots=./tests",
     "test:integration-dev": "jest --roots=./tests --watchAll",
-    "test:lint": "eslint ./src ./bin ./data",
+    "test:lint": "eslint ./src ./bin ./data eslint.config.mjs",
     "test:local": "jest --watch",
     "test:spell-docs": "cspell ./README.md ./CONTRIBUTING.md --config ./cspell.config.json",
     "test:spell": "cspell './src/**/*.js' './tests/**/*.js' --config ./cspell.config.json"
@@ -89,15 +89,15 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@eslint/compat": "^1.2.9",
+    "@eslint/js": "^9.26.0",
     "changelog-light": "^2.0.5",
     "cspell": "^8.19.3",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^10.1.2",
-    "eslint-plugin-babel": "^5.3.1",
+    "eslint": "^9.26.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jest": "^28.11.0",
     "eslint-plugin-jsdoc": "^50.6.11",
-    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-n": "^17.17.0",
     "eslint-plugin-prettier": "^5.2.6",
     "jest": "^29.7.0",
     "nodemon": "^3.1.10",

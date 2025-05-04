@@ -45,7 +45,6 @@ const memo = (func, { cacheLimit = 1, expire } = {}) => {
   const isFuncPromise = isPromise(func);
   const updatedExpire = Number.parseInt(expire, 10) || undefined;
 
-  // eslint-disable-next-line func-names
   const ized = function () {
     const cache = [];
     let timeout;
