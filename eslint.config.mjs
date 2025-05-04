@@ -19,9 +19,7 @@ export default [
     ignores: [],
     languageOptions: {
       globals: {
-        generateFixture: 'readonly',
-        mockObjectProperty: 'readonly',
-        setMockResourceFunctions: 'readonly'
+        generateFixture: 'readonly'
       },
       ecmaVersion: 2022
     },
