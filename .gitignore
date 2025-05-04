@@ -21,3 +21,4 @@ api-debug*
 .env
 .docs
 .fixtures
+.archive
