@@ -1,4 +1,4 @@
-const apidoc = require('apidoc');
+const apidoc = require('@cdcabrera/apidoc');
 const { logger } = require('./logger');
 const { OPTIONS } = require('./global');
 
