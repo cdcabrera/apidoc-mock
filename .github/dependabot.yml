@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: monthly
+      interval: weekly
       day: monday
     commit-message:
       prefix: "build"
@@ -13,8 +13,6 @@ updates:
     versioning-strategy: increase
     allow:
       - dependency-type: direct
-    ignore:
-      - dependency-name: "apidoc"
     labels:
       - "build"
     groups:
