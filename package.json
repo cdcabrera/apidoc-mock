@@ -33,7 +33,7 @@
     "mock": "bin/cli.js"
   },
   "scripts": {
-    "build:deps": "bash ./scripts/dependencies.sh --doctor -u --doctorTest \"npm run test:deps\" --reject \"apidoc\"",
+    "build:deps": "bash ./scripts/dependencies.sh --doctor -u --doctorTest \"npm run test:deps\"",
     "docker:build": "docker build -t apidoc-mock-test .",
     "docker:run": "docker stop mock-api-test; docker run -i --rm -p 5000:8000 -v \"$(pwd)/data:/app/data\" --name mock-api-test apidoc-mock-test",
     "docker:stop": "docker stop mock-api-test",
