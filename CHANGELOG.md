@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.0.0](https://github.com/cdcabrera/apidoc-mock/compare/3664a5f2e70dca2ff2c6d77161cd12068e3b9392...7cfaf96bd00fd9e6992b5cd3acf1a8a28c0edcd1) (2025-05-27)
+⚠ BREAKING CHANGES
+
+### Continuous Integrations
+*  npm publish workflow ([#423](https://github.com/cdcabrera/apidoc-mock/pull/423)) ([0a29515](https://github.com/cdcabrera/apidoc-mock/commit/0a29515d9fca137bdce073f68d8333ad92889d11))
+
+### Builds
+*  dependabot frequency, clean ignore ([#424](https://github.com/cdcabrera/apidoc-mock/pull/424)) ([7cfaf96](https://github.com/cdcabrera/apidoc-mock/commit/7cfaf96bd00fd9e6992b5cd3acf1a8a28c0edcd1))
+* **deps-dev** bump dev group with 6 updates ([#422](https://github.com/cdcabrera/apidoc-mock/pull/422)) ([b1f6165](https://github.com/cdcabrera/apidoc-mock/commit/b1f6165ba1688b4127de82289034861789786c88))
+* **deps** move apidoc to @cdcabrera/apidoc ([#421](https://github.com/cdcabrera/apidoc-mock/pull/421)) ([7e6e1ec](https://github.com/cdcabrera/apidoc-mock/commit/7e6e1ec3b949c10ae767f4066d28435c30d1cdb0))
+* **deps-dev** bump group with 2 updates ([#420](https://github.com/cdcabrera/apidoc-mock/pull/420)) ([f5a4592](https://github.com/cdcabrera/apidoc-mock/commit/f5a459290447f9759c1a5b435ad2beb1b1121ff7))
+* **deps** bump express from 4.21.2 to 5.1.0 ([#412](https://github.com/cdcabrera/apidoc-mock/pull/412)) ([490a74c](https://github.com/cdcabrera/apidoc-mock/commit/490a74c03f2856177af974bd53ea8543f4ea6968))
+* **deps-dev** move to eslint 9 ([#419](https://github.com/cdcabrera/apidoc-mock/pull/419)) ([5fabd0c](https://github.com/cdcabrera/apidoc-mock/commit/5fabd0c3ccc4f3ebdd44c4f0d971d68293b84f65))
+* ⚠ **nodejs** remove 18 support ([#418](https://github.com/cdcabrera/apidoc-mock/pull/418)) ([cae65d3](https://github.com/cdcabrera/apidoc-mock/commit/cae65d33bd301b14601113395b705bee5dbb88b7))
+
 ## [5.0.8](https://github.com/cdcabrera/apidoc-mock/compare/fe9e3bc7a8a8edcbeaa215ab00cc8ed439e9dd36...933c5bddd1716029f70b4acc5a1d8f1bcd78e424) (2025-05-03)
 
 
