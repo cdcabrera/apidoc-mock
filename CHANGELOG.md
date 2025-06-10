@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.0.1](https://github.com/cdcabrera/apidoc-mock/compare/5c695a5317ee17133c06a4896fc2a040224b5ae0...88b71e533e232fd41f47f07663e14da3ae59b08d) (2025-06-10)
+
+
+### Builds
+* **deps-dev** eslint-plugin-jest from 28.12.0 to 28.13.0 ([#431](https://github.com/cdcabrera/apidoc-mock/pull/431)) ([88b71e5](https://github.com/cdcabrera/apidoc-mock/commit/88b71e533e232fd41f47f07663e14da3ae59b08d))
+* **deps** @cdcabrera/apidoc from 2.0.1 to 2.0.2 ([#430](https://github.com/cdcabrera/apidoc-mock/pull/430)) ([50c1a4c](https://github.com/cdcabrera/apidoc-mock/commit/50c1a4c601005bfe9f291e2ce7faa8d7a8aea7fe))
+* **deps-dev** bump dev group 6 updates ([#429](https://github.com/cdcabrera/apidoc-mock/pull/429)) ([d6c2461](https://github.com/cdcabrera/apidoc-mock/commit/d6c2461907ebe50f2d7e123b4347cec5179db1d8))
+* **deps-dev** bump changelog-light from 2.0.6 to 3.0.0 ([#427](https://github.com/cdcabrera/apidoc-mock/pull/427)) ([9011d09](https://github.com/cdcabrera/apidoc-mock/commit/9011d094e62d3a886a4b44feef6c71e86f683f1a))
+
 ## [6.0.0](https://github.com/cdcabrera/apidoc-mock/compare/3664a5f2e70dca2ff2c6d77161cd12068e3b9392...7cfaf96bd00fd9e6992b5cd3acf1a8a28c0edcd1) (2025-05-27)
 ⚠ BREAKING CHANGES
 
