@@ -12,6 +12,7 @@ describe('ApiDocMock', () => {
 
   it('should throw an error during testing', async () => {
     const func = async () => apiDocMock();
+
     await expect(func).rejects.toThrow('Server failed to load');
   });
 });

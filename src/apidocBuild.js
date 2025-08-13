@@ -27,7 +27,9 @@ const setupDocs = ({ apiDocBaseConfig, watchPath: src, docsPath: dest, silent } 
   try {
     const { data } = apidoc.createDoc(apiDocsConfig);
     const updatedResult = JSON.parse(data);
+
     logger.info('apidocBuild.read.apiJsonFile');
+
     return updatedResult;
   } catch (e) {
     logger.error(`apidocBuild.apiDoc.createDoc[${e.message}]`);

@@ -11,7 +11,7 @@ describe('buildApiResponse', () => {
       headers: {}
     };
     const mockResponse = {
-      set: (key, value) => (mockRequest.headers[key] = value),
+      set: (key, value) => mockRequest.headers[key] = value,
       end: jest.fn().mockName('end')
     };
     const mockNext = jest.fn().mockName('next');
@@ -54,6 +54,7 @@ describe('buildApiResponse', () => {
     ];
 
     const results = buildResponse(mockApiResponse);
+
     expect(results).toMatchSnapshot('buildResponse');
 
     const { appResponses } = results;
@@ -82,7 +83,8 @@ describe('buildApiResponse', () => {
       'parseContentAndType.passthrough'
     );
 
-    const xmlContent = `<lorem><ipsum dolor="sit" /></lorem>`;
+    const xmlContent = '<lorem><ipsum dolor="sit" /></lorem>';
+
     expect(getContentAndType({ content: xmlContent, type: 'xml' })).toMatchSnapshot('parseContentAndType.xml');
     expect(getContentAndType({ content: xmlContent, type: 'svg' })).toMatchSnapshot('parseContentAndType.svg');
   });

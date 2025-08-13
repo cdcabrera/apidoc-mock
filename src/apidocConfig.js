@@ -20,9 +20,10 @@ const parse = (content, source, defaultGroup) => {
   const updatedKey = tempKey
     ?.replace(/{/, '')
     ?.trim()
-    ?.replace(/(?:^\w|[A-Z]|\b\w)/g, (letter, index) => {
-      return index === 0 ? letter.toLowerCase() : letter.toUpperCase();
-    });
+    ?.replace(
+      /(?:^\w|[A-Z]|\b\w)/g, (letter, index) =>
+        (index === 0 ? letter.toLowerCase() : letter.toUpperCase())
+    );
 
   return { [updatedKey]: tempValue?.trim() };
 };
