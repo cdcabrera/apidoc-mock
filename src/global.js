@@ -75,6 +75,7 @@ const memo = (func, { cacheLimit = 1, expire } = {}) => {
           (isFuncPromise &&
             Promise.all([func.call(null, ...args)]).then(result => {
               cache[cache.indexOf(key) + 1] = result?.[0];
+
               return result?.[0];
             })) ||
             func.call(null, ...args)
@@ -125,6 +126,7 @@ const OPTIONS = {
     Object.entries(obj).forEach(([key, value]) => {
       if (typeof value === 'function') {
         this[key] = value.call(this);
+
         return;
       }
 

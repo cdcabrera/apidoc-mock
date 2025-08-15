@@ -41,8 +41,7 @@ const parseStatus = memo(({ examples, response = null, type = null, path = null 
       status,
       ...example
     };
-  })
-);
+  }));
 
 /**
  * Return forced response, or a general example.

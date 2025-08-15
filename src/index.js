@@ -24,6 +24,7 @@ const setupResponse = (apiJson = [], { port } = OPTIONS) => {
 
   if (routesLoaded) {
     const server = CACHE.app.listen(port, () => logger.info(`listening\t:${port}`));
+
     httpTerminator = createHttpTerminator({
       server
     });
@@ -53,7 +54,7 @@ const apiDocMock = async ({ port, watchPath, docsPath } = OPTIONS) => {
     }
 
     CACHE.app = express();
-    CACHE.app.use(`/docs`, express.static(docsPath));
+    CACHE.app.use('/docs', express.static(docsPath));
     CACHE.app.use(buildRequestHeaders);
     CACHE.httpTerminator = httpTerminator = setupResponse(apiJson);
   }

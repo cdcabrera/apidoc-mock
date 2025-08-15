@@ -38,8 +38,10 @@ describe('Global', () => {
         const arr = ['lorem', 'ipsum', 'dolor', 'sit'];
         const randomStr = Math.floor(Math.random() * arr.length);
         const genStr = `${arr[randomStr]}-${str}`;
+
         testStr = genStr;
         testArr.push(genStr);
+
         return genStr;
       },
       { cacheLimit: 4 }
@@ -66,11 +68,13 @@ describe('Global', () => {
   it('should memoize async function return values', async () => {
     const asyncMemoValue = global.memo(value => new Promise(resolve => setTimeout(() => resolve(value), 10)));
     const asyncResponse = await asyncMemoValue('lorem ipsum');
+
     expect(asyncResponse).toBe('lorem ipsum');
 
     const asyncMemoError = global.memo(
       value => new Promise((_, reject) => setTimeout(() => reject(new Error(value)), 10))
     );
+
     await expect(async () => asyncMemoError('lorem ipsum')).rejects.toThrowErrorMatchingSnapshot('memoize async error');
   });
 
