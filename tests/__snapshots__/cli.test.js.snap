@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`CLI should use custom options: custom 1`] = `"{"docs":"dolorDocs","port":9000,"silent":true,"watch":["lorem","ipsum"]}"`;
 
