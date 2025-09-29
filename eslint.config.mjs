@@ -27,7 +27,8 @@ export default [
           ]
         }
       ],
-      'jsdoc/no-undefined-types': 0
+      'jsdoc/no-undefined-types': 0,
+      'no-sparse-arrays': 0
     }
   }
 ];

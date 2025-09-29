@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`Global should memoize async function return values: memoize async error 1`] = `"lorem ipsum"`;
-
 exports[`Global should minimally generate a consistent hash: hash, object and primitive values 1`] = `
 {
   "valueArray": "0e8e2b3096e6aee20e3cd10b7788ce3d72502061",
@@ -51,4 +49,421 @@ exports[`Global should set a one-time mutable OPTIONS object: immutable 1`] = `
   },
   "isFrozen": true,
 }
+`;
+
+exports[`memo should clear cache on inactivity, async: cache list length 1`] = `
+[
+  2,
+  2,
+  4,
+  4,
+  6,
+  6,
+  2,
+  2,
+  4,
+  4,
+  6,
+  6,
+]
+`;
+
+exports[`memo should memoize a function, async 1`] = `
+[
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "[EMPTY]",
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "[EMPTY]",
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "1",
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "1",
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "2",
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "2",
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "3",
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "3",
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "1",
+    "type": "memo promise",
+  },
+]
+`;
+
+exports[`memo should memoize a function, async bypass memoization when cacheLimit is zero 1`] = `
+[
+  {
+    "cacheLength": 0,
+    "errorValue": undefined,
+    "successValue": "[EMPTY]",
+    "type": "memo bypass",
+  },
+  {
+    "cacheLength": 0,
+    "errorValue": undefined,
+    "successValue": "[EMPTY]",
+    "type": "memo bypass",
+  },
+  {
+    "cacheLength": 0,
+    "errorValue": undefined,
+    "successValue": "1",
+    "type": "memo bypass",
+  },
+  {
+    "cacheLength": 0,
+    "errorValue": undefined,
+    "successValue": "1",
+    "type": "memo bypass",
+  },
+  {
+    "cacheLength": 0,
+    "errorValue": "2",
+    "successValue": undefined,
+    "type": "memo bypass",
+  },
+  {
+    "cacheLength": 0,
+    "errorValue": "2",
+    "successValue": undefined,
+    "type": "memo bypass",
+  },
+]
+`;
+
+exports[`memo should memoize a function, async errors 1`] = `
+[
+  {
+    "cacheLength": 4,
+    "errorValue": "[EMPTY]",
+    "successValue": undefined,
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "[EMPTY]",
+    "successValue": undefined,
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "4",
+    "successValue": undefined,
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "4",
+    "successValue": undefined,
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "5",
+    "successValue": undefined,
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "5",
+    "successValue": undefined,
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "6",
+    "successValue": undefined,
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "6",
+    "successValue": undefined,
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "4",
+    "successValue": undefined,
+    "type": "memo promise",
+  },
+]
+`;
+
+exports[`memo should memoize a function, async errors NOT cached 1`] = `
+[
+  {
+    "cacheLength": 4,
+    "errorValue": "7",
+    "successValue": undefined,
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "7",
+    "successValue": undefined,
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "8",
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "8",
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "9",
+    "successValue": undefined,
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "9",
+    "successValue": undefined,
+    "type": "memo promise",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "7",
+    "successValue": undefined,
+    "type": "memo promise",
+  },
+]
+`;
+
+exports[`memo should memoize a function, bypass memoization when cacheLimit is zero 1`] = `
+[
+  {
+    "cacheLength": 0,
+    "errorValue": undefined,
+    "successValue": "[EMPTY]",
+    "type": "memo bypass",
+  },
+  {
+    "cacheLength": 0,
+    "errorValue": undefined,
+    "successValue": "[EMPTY]",
+    "type": "memo bypass",
+  },
+  {
+    "cacheLength": 0,
+    "errorValue": undefined,
+    "successValue": "1",
+    "type": "memo bypass",
+  },
+  {
+    "cacheLength": 0,
+    "errorValue": undefined,
+    "successValue": "1",
+    "type": "memo bypass",
+  },
+]
+`;
+
+exports[`memo should memoize a function, sync 1`] = `
+[
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "[EMPTY]",
+    "type": "memo",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "[EMPTY]",
+    "type": "memo",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "1",
+    "type": "memo",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "1",
+    "type": "memo",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "2",
+    "type": "memo",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "2",
+    "type": "memo",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "3",
+    "type": "memo",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "3",
+    "type": "memo",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "1",
+    "type": "memo",
+  },
+]
+`;
+
+exports[`memo should memoize a function, sync errors 1`] = `
+[
+  {
+    "cacheLength": 4,
+    "errorValue": "[EMPTY]",
+    "successValue": undefined,
+    "type": "memo error",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "[EMPTY]",
+    "successValue": undefined,
+    "type": "memo error",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "4",
+    "successValue": undefined,
+    "type": "memo error",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "4",
+    "successValue": undefined,
+    "type": "memo error",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "5",
+    "successValue": undefined,
+    "type": "memo error",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "5",
+    "successValue": undefined,
+    "type": "memo error",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "6",
+    "successValue": undefined,
+    "type": "memo error",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "6",
+    "successValue": undefined,
+    "type": "memo error",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": "4",
+    "successValue": undefined,
+    "type": "memo error",
+  },
+]
+`;
+
+exports[`memo should memoize a function, sync errors NOT cached 1`] = `
+[
+  {
+    "cacheLength": 2,
+    "errorValue": "7",
+    "successValue": undefined,
+    "type": "memo error",
+  },
+  {
+    "cacheLength": 2,
+    "errorValue": "7",
+    "successValue": undefined,
+    "type": "memo error",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "8",
+    "type": "memo",
+  },
+  {
+    "cacheLength": 4,
+    "errorValue": undefined,
+    "successValue": "8",
+    "type": "memo",
+  },
+  {
+    "cacheLength": 2,
+    "errorValue": "9",
+    "successValue": undefined,
+    "type": "memo error",
+  },
+  {
+    "cacheLength": 2,
+    "errorValue": "9",
+    "successValue": undefined,
+    "type": "memo error",
+  },
+  {
+    "cacheLength": 2,
+    "errorValue": "7",
+    "successValue": undefined,
+    "type": "memo error",
+  },
+]
 `;

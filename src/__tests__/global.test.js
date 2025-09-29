@@ -30,54 +30,6 @@ describe('Global', () => {
     }).toMatchSnapshot('hash, object and primitive values');
   });
 
-  it('should memoize function return values', () => {
-    const testArr = [];
-    let testStr;
-    const testMemoReturnValue = global.memo(
-      str => {
-        const arr = ['lorem', 'ipsum', 'dolor', 'sit'];
-        const randomStr = Math.floor(Math.random() * arr.length);
-        const genStr = `${arr[randomStr]}-${str}`;
-
-        testStr = genStr;
-        testArr.push(genStr);
-
-        return genStr;
-      },
-      { cacheLimit: 4 }
-    );
-
-    testMemoReturnValue('one');
-    testMemoReturnValue('one');
-    testMemoReturnValue('one');
-    testMemoReturnValue('one');
-    expect(testStr === testMemoReturnValue('one')).toBe(true);
-
-    testMemoReturnValue('two');
-    testMemoReturnValue('three');
-    expect(testArr[0] === testMemoReturnValue('one')).toBe(true);
-    expect(testArr[1] === testMemoReturnValue('two')).toBe(true);
-    expect(testArr[2] === testMemoReturnValue('three')).toBe(true);
-    expect(testArr[2] === testMemoReturnValue('three')).toBe(true);
-
-    testMemoReturnValue('four');
-    expect(testArr[3] === testMemoReturnValue('four')).toBe(true);
-    expect(testArr.length).toBe(4);
-  });
-
-  it('should memoize async function return values', async () => {
-    const asyncMemoValue = global.memo(value => new Promise(resolve => setTimeout(() => resolve(value), 10)));
-    const asyncResponse = await asyncMemoValue('lorem ipsum');
-
-    expect(asyncResponse).toBe('lorem ipsum');
-
-    const asyncMemoError = global.memo(
-      value => new Promise((_, reject) => setTimeout(() => reject(new Error(value)), 10))
-    );
-
-    await expect(async () => asyncMemoError('lorem ipsum')).rejects.toThrowErrorMatchingSnapshot('memoize async error');
-  });
-
   it('should set a one-time mutable OPTIONS object', () => {
     const { OPTIONS } = global;
 
@@ -97,5 +49,189 @@ describe('Global', () => {
     OPTIONS.dolor = 'sit';
 
     expect({ isFrozen: Object.isFrozen(OPTIONS), OPTIONS }).toMatchSnapshot('immutable');
+  });
+});
+
+describe('memo', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it.each([
+    {
+      description: 'sync',
+      options: { cacheLimit: 2 },
+      params: [[], [], [1], [1], [2], [2], [3], [3], [1]]
+    },
+    {
+      description: 'sync errors',
+      options: { cacheLimit: 2, cacheErrors: true },
+      params: [[, true], [, true], [4, true], [4, true], [5, true], [5, true], [6, true], [6, true], [4, true]]
+    },
+    {
+      description: 'sync errors NOT cached',
+      options: { cacheLimit: 2, cacheErrors: false },
+      params: [[7, true], [7, true], [8], [8], [9, true], [9, true], [7, true]]
+    },
+    {
+      description: 'bypass memoization when cacheLimit is zero',
+      options: { cacheLimit: 0 },
+      params: [[], [], [1], [1], [2, true], [2, true]]
+    }
+  ])('should memoize a function, $description', ({ options, params }) => {
+    const log = [];
+    const debug = response => log.push(response);
+    const memoized = global.memo(
+      (str, isError = false) => {
+        const arr = ['lorem', 'ipsum', 'dolor', 'sit'];
+        const randomStr = Math.floor(Math.random() * arr.length);
+        const genStr = `${arr[randomStr]}-${str || '[EMPTY]'}`;
+
+        if (isError) {
+          throw new Error(genStr);
+        }
+
+        return genStr;
+      },
+      { debug, ...options }
+    );
+
+    for (const param of params) {
+      try {
+        memoized(...param);
+      } catch {}
+    }
+
+    const updatedLog = [];
+
+    for (const { type, value, cache } of log) {
+      let successValue;
+      let errorValue;
+
+      try {
+        successValue = value();
+      } catch (e) {
+        errorValue = e.message;
+      }
+
+      successValue = successValue?.split?.('-')[1];
+      errorValue = errorValue?.split?.('-')[1];
+
+      updatedLog.push({ type, successValue, errorValue, cacheLength: cache.length });
+    }
+
+    expect(updatedLog).toMatchSnapshot();
+  });
+
+  it.each([
+    {
+      description: 'async',
+      options: { cacheLimit: 2 },
+      params: [[], [], [1], [1], [2], [2], [3], [3], [1]]
+    },
+    {
+      description: 'async errors',
+      options: { cacheLimit: 2, cacheErrors: true },
+      params: [[, true], [, true], [4, true], [4, true], [5, true], [5, true], [6, true], [6, true], [4, true]]
+    },
+    {
+      description: 'async errors NOT cached',
+      options: { cacheLimit: 2, cacheErrors: false },
+      params: [[7, true], [7, true], [8], [8], [9, true], [9, true], [7, true]]
+    },
+    {
+      description: 'async bypass memoization when cacheLimit is zero',
+      options: { cacheLimit: 0 },
+      params: [[], [], [1], [1], [2, true], [2, true]]
+    }
+  ])('should memoize a function, $description', async ({ options, params }) => {
+    const log = [];
+    const debug = response => log.push(response);
+    const memoized = global.memo(
+      async (str, isError = false) => {
+        const arr = ['lorem', 'ipsum', 'dolor', 'sit'];
+        const randomStr = Math.floor(Math.random() * arr.length);
+        const genStr = `${arr[randomStr]}-${str || '[EMPTY]'}`;
+
+        if (isError) {
+          throw new Error(genStr);
+        }
+
+        return genStr;
+      },
+      { debug, ...options }
+    );
+
+    try {
+      await Promise.all(params.map(param => memoized(...param)));
+    } catch {}
+
+    const updatedLog = [];
+
+    for (const { type, value, cache } of log) {
+      let successValue;
+      let errorValue;
+
+      try {
+        successValue = await value();
+      } catch (e) {
+        errorValue = e.message;
+      }
+
+      successValue = successValue?.split?.('-')[1];
+      errorValue = errorValue?.split?.('-')[1];
+
+      updatedLog.push({ type, successValue, errorValue, cacheLength: cache.length });
+    }
+
+    expect(updatedLog).toMatchSnapshot();
+  });
+
+  it.each([
+    {
+      description: 'async',
+      options: { cacheLimit: 3, expire: 10 },
+      paramsOne: [[], [], [1], [1], [2], [2]],
+      paramsTwo: [[3, true], [3, true], [4, true], [4, true], [5, true], [5, true]],
+      pause: 70
+    }
+  ])('should clear cache on inactivity, $description', async ({ options, paramsOne, paramsTwo, pause }) => {
+    const log = [];
+    const debug = response => log.push(response);
+    const memoized = global.memo(async (str, isError = false) => {
+      const arr = ['lorem', 'ipsum', 'dolor', 'sit'];
+      const randomStr = Math.floor(Math.random() * arr.length);
+      const genStr = `${arr[randomStr]}-${str || '[EMPTY]'}`;
+
+      if (isError) {
+        throw new Error(genStr);
+      }
+
+      return genStr;
+    }, { debug, ...options });
+
+    try {
+      await Promise.all(paramsOne.map(param => memoized(...param)));
+    } catch {}
+
+    jest.advanceTimersByTime(pause);
+
+    try {
+      await Promise.all(paramsTwo.map(param => memoized(...param)));
+    } catch {}
+
+    jest.advanceTimersByTime(pause);
+
+    const updatedLog = [];
+
+    for (const { cache } of log) {
+      updatedLog.push(cache.filter(Boolean).length);
+    }
+
+    expect(updatedLog).toMatchSnapshot('cache list length');
   });
 });

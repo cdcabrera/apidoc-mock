@@ -30,18 +30,25 @@ const generateHash = content =>
 const isPromise = obj => /^\[object (Promise|Async|AsyncFunction)]/.test(Object.prototype.toString.call(obj));
 
 /**
- * Simple argument based memoize with adjustable limit, and extendable cache expire.
- * Expiration expands until a pause in use happens. Also allows for promises
- * and promise-like functions. For promises and promise-like functions it's the
- * consumers responsibility to await or process the resolve/reject.
+ * Simple argument-based memoize with adjustable cache limit, and extendable cache expire.
+ *
+ * - `Zero-arg caching`: Zero-argument calls are memoized. To disable caching and perform a manual reset on every call, set cacheLimit <= 0.
+ * - `Expiration`: Expiration expands until a pause in use happens. All results, regardless of type, will be expired.
+ * - `Promises`: Allows for promises and promise-like functions
+ * - `Errors`: It's on the consumer to catch function errors and await or process a Promise resolve/reject/catch.
  *
  * @param {Function} func A function or promise/promise-like function to memoize
- * @param {object} options
- * @param {number} options.cacheLimit Number of entries to cache before overwriting previous entries
- * @param {number} options.expire Expandable milliseconds until cache expires. The more you use it the longer it takes to expire.
+ * @param {object} [options]
+ * @param {boolean} [options.cacheErrors=true] - Memoize errors, or don't.
+ * @param {number} [options.cacheLimit=1] - Number of entries to cache before overwriting previous entries
+ * @param {Function} [options.debug=Function.prototype] - Unsure what you cached, just want to test, add a callback that's called
+ *     with `{ type: string, value: unknown, cache: Array<unknown> }`
+ * @param {number} [options.expire] Expandable milliseconds until cache expires. The more you use the memoized function, or
+ *     promise/promise-like function, the longer it takes to expire.
  * @returns {Function}
  */
-const memo = (func, { cacheLimit = 1, expire } = {}) => {
+const memo = (func, { cacheErrors = true, cacheLimit = 1, debug = Function.prototype, expire } = {}) => {
+  const isCacheErrors = Boolean(cacheErrors);
   const isFuncPromise = isPromise(func);
   const updatedExpire = Number.parseInt(expire, 10) || undefined;
 
@@ -50,9 +57,7 @@ const memo = (func, { cacheLimit = 1, expire } = {}) => {
     let timeout;
 
     return (...args) => {
-      const isMemo = cacheLimit > 0 && args.length;
-      let key;
-      let keyIndex = -1;
+      const isMemo = cacheLimit > 0;
 
       if (typeof updatedExpire === 'number') {
         clearTimeout(timeout);
@@ -62,37 +67,82 @@ const memo = (func, { cacheLimit = 1, expire } = {}) => {
         }, updatedExpire);
       }
 
-      if (isMemo) {
-        key = generateHash(args);
-        keyIndex = cache.indexOf(key);
-      } else {
+      // Zero cacheLimit, reset and bypass memoization
+      if (isMemo === false) {
         cache.length = 0;
+        const bypassValue = func.call(null, ...args);
+
+        debug({
+          type: 'memo bypass',
+          value: () => bypassValue,
+          cache: []
+        });
+
+        return bypassValue;
       }
 
-      if (keyIndex < 0) {
-        cache.unshift(
-          key,
-          (isFuncPromise &&
-            Promise.all([func.call(null, ...args)]).then(result => {
-              cache[cache.indexOf(key) + 1] = result?.[0];
+      const key = generateHash(args);
 
-              return result?.[0];
-            })) ||
-            func.call(null, ...args)
-        );
+      // Parse, memoize and return the original value
+      if (cache.indexOf(key) < 0) {
+        if (isFuncPromise) {
+          const promiseResolve = Promise
+            .resolve(func.call(null, ...args))
+            .catch(error => {
+              const promiseKeyIndex = cache.indexOf(key);
 
+              if (isCacheErrors === false && promiseKeyIndex >= 0) {
+                cache.splice(promiseKeyIndex, 2);
+              }
+
+              return Promise.reject(error);
+            });
+
+          cache.unshift(key, promiseResolve);
+        } else {
+          try {
+            cache.unshift(key, func.call(null, ...args));
+          } catch (error) {
+            const errorFunc = () => {
+              throw error;
+            };
+
+            errorFunc.isError = true;
+            cache.unshift(key, errorFunc);
+          }
+        }
+
+        // Run after cache update to trim
         if (isMemo) {
           cache.length = cacheLimit * 2;
         }
-
-        return cache[1];
       }
 
-      if (isFuncPromise) {
-        return Promise.resolve(cache[keyIndex + 1]);
+      // Return memoized value
+      const updatedKeyIndex = cache.indexOf(key);
+      const cachedValue = cache[updatedKeyIndex + 1];
+
+      if (cachedValue?.isError === true) {
+        if (isCacheErrors === false) {
+          cache.splice(updatedKeyIndex, 2);
+        }
+
+        debug({
+          type: 'memo error',
+          value: cachedValue,
+          cache: [...cache]
+        });
+
+        return cachedValue();
       }
 
-      return cache[keyIndex + 1];
+      debug({
+        type: `memo${(isFuncPromise && ' promise') || ''}`,
+        value: () => cachedValue,
+        cache: [...cache]
+      });
+
+      return cachedValue;
     };
   };
 
