@@ -25,7 +25,7 @@ jobs:
     strategy:
       matrix:
         # Coverage node version
-        node-version: [ 20.x ]
+        node-version: [22.x]
     steps:
       - uses: actions/checkout@v5
       - uses: actions/configure-pages@v5
@@ -44,7 +44,7 @@ jobs:
             ${{ runner.os }}-${{ matrix.node-version }}-modules
       - name: Install Node.js packages
         if: ${{ steps.modules-cache.outputs.cache-hit != 'true' }}
-        run: npm install
+        run: npm ci
       - name: Setup coverage report
         run: npm run test:coverage
       - name: Upload artifact
