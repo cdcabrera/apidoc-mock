@@ -4,7 +4,9 @@ updates:
     directory: /
     schedule:
       interval: weekly
-      day: monday
+      day: wednesday
+    cooldown:
+      default-days: 14
     commit-message:
       prefix: "build"
       include: "scope"
