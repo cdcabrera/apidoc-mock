@@ -44,7 +44,7 @@ jobs:
             ${{ runner.os }}-${{ matrix.node-version }}-modules
       - name: Install Node.js packages
         if: ${{ steps.modules-cache.outputs.cache-hit != 'true' }}
-        run: npm install
+        run: npm ci
       - name: Setup coverage report
         run: npm run test:coverage
       - name: Upload artifact
