@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.1.0](https://github.com/cdcabrera/apidoc-mock/compare/d62d9d56f397a7b6f5ddc6c5a533d83cad78b201...3c58aba2efef9e9f5b3e1219686fbd6eabf59a57) (2025-11-10)
+
+
+### Code Refactoring
+* **memo** allow error caching, debug callback ([#462](https://github.com/cdcabrera/apidoc-mock/pull/462)) ([4af2db1](https://github.com/cdcabrera/apidoc-mock/commit/4af2db12d047d8f035251c3f5b7c03490575d54e))
+
+### Builds
+* **deps-dev** bump the dev group with 3 updates ([#474](https://github.com/cdcabrera/apidoc-mock/pull/474)) ([3c58aba](https://github.com/cdcabrera/apidoc-mock/commit/3c58aba2efef9e9f5b3e1219686fbd6eabf59a57))
+* **deps-dev** npm-check-updates from 18.1.1 to 19.0.0 ([#460](https://github.com/cdcabrera/apidoc-mock/pull/460)) ([901973a](https://github.com/cdcabrera/apidoc-mock/commit/901973a2c524ebf5fc1a3e182a56614592c123f8))
+* **deps** bump actions/upload-pages-artifact from 3 to 4 ([#471](https://github.com/cdcabrera/apidoc-mock/pull/471)) ([37e9292](https://github.com/cdcabrera/apidoc-mock/commit/37e92928710a965652859e317299b840ecb2873c))
+*  dependabot, cooldown for actions ([#470](https://github.com/cdcabrera/apidoc-mock/pull/470)) ([a1c5031](https://github.com/cdcabrera/apidoc-mock/commit/a1c503169d08f6be4d291ec1c42851902830504a))
+*  add nodejs 24 check ([#469](https://github.com/cdcabrera/apidoc-mock/pull/469)) ([ff19131](https://github.com/cdcabrera/apidoc-mock/commit/ff19131ba36170d9cf246b3ba82fc2225b976298))
+* **deps** bump actions/setup-node from 5 to 6 ([#468](https://github.com/cdcabrera/apidoc-mock/pull/468)) ([991c5ef](https://github.com/cdcabrera/apidoc-mock/commit/991c5ef771293e129d39de18b1181588d5548137))
+* **deps** bump actions/github-script from 7 to 8 ([#467](https://github.com/cdcabrera/apidoc-mock/pull/467)) ([838abf3](https://github.com/cdcabrera/apidoc-mock/commit/838abf3807763fe0ce5815d1d2370f256ecd6d77))
+*  dependabot, package cooldown ([#466](https://github.com/cdcabrera/apidoc-mock/pull/466)) ([abaa2b9](https://github.com/cdcabrera/apidoc-mock/commit/abaa2b943c8c1f368a7fa4c7997f57e8a48475c6))
+* **deps-dev** bump the dev group with 2 updates ([#461](https://github.com/cdcabrera/apidoc-mock/pull/461)) ([4b8a58a](https://github.com/cdcabrera/apidoc-mock/commit/4b8a58af047699ddf7e1ed56b5bac538ade007be))
+* **deps** bump actions/setup-node from 4 to 5 ([#463](https://github.com/cdcabrera/apidoc-mock/pull/463)) ([0b0fc24](https://github.com/cdcabrera/apidoc-mock/commit/0b0fc244b7394eab51ebf0c68f56f8d2f3b70af7))
+* **deps** bump actions/checkout from 4 to 5 ([#464](https://github.com/cdcabrera/apidoc-mock/pull/464)) ([30f9b0f](https://github.com/cdcabrera/apidoc-mock/commit/30f9b0fa633aef3edb283ee62a3b29cb3c7457c5))
+* **deps-dev** npm-check-updates from 18.1.0 to 18.1.1 ([#458](https://github.com/cdcabrera/apidoc-mock/pull/458)) ([6408ff1](https://github.com/cdcabrera/apidoc-mock/commit/6408ff1fe40d98d970fee8a6489d98b2471a8166))
+* **deps-dev** bump the dev group with 5 updates ([#457](https://github.com/cdcabrera/apidoc-mock/pull/457)) ([38bde72](https://github.com/cdcabrera/apidoc-mock/commit/38bde72b6ff37acad36260628777e2d602e126f2))
+
 ## [6.0.4](https://github.com/cdcabrera/apidoc-mock/compare/fa01b60d1007da134733bb88f737d9cb41936739...37259ea90d50cd3af33c31d27d705f3495ae079f) (2025-09-02)
 
 
