@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.1.1](https://github.com/cdcabrera/apidoc-mock/compare/e984f3cf382dcbbb2e302000900a199a7cc5da4d...0397af466a727ada5e3a14a090943fff74da3a1e) (2026-01-04)
+
+
+### Continuous Integrations
+*  npm publishing, remove matrix ([#492](https://github.com/cdcabrera/apidoc-mock/pull/492)) ([0397af4](https://github.com/cdcabrera/apidoc-mock/commit/0397af466a727ada5e3a14a090943fff74da3a1e))
+
+### Builds
+* **deps-dev** bump dev group with 3 updates ([#489](https://github.com/cdcabrera/apidoc-mock/pull/489)) ([0649115](https://github.com/cdcabrera/apidoc-mock/commit/0649115a7646d0ac5d93fa3ca40bc92ab80847fd))
+* **deps** bump actions/cache from 4 to 5 ([#490](https://github.com/cdcabrera/apidoc-mock/pull/490)) ([2d7eb6a](https://github.com/cdcabrera/apidoc-mock/commit/2d7eb6ac38dd5f74cfe3e158c6dfb34992e4ab50))
+* **deps** bump actions/checkout from 5 to 6 ([#491](https://github.com/cdcabrera/apidoc-mock/pull/491)) ([125e964](https://github.com/cdcabrera/apidoc-mock/commit/125e964fbe803ee09d0c46535ab4a496d146e880))
+* **deps** bump express from 5.1.0 to 5.2.1 ([#487](https://github.com/cdcabrera/apidoc-mock/pull/487)) ([5c4bd4f](https://github.com/cdcabrera/apidoc-mock/commit/5c4bd4f456030f427c11fcb56c9da8d2d6fd37ba))
+*  pin deps, ignore post install ([#485](https://github.com/cdcabrera/apidoc-mock/pull/485)) ([4df23c1](https://github.com/cdcabrera/apidoc-mock/commit/4df23c1d74015a2817bff08fd04337a696f4c7db))
+* **deps-dev** bump dev group with 5 updates ([#484](https://github.com/cdcabrera/apidoc-mock/pull/484)) ([3ecf1f6](https://github.com/cdcabrera/apidoc-mock/commit/3ecf1f6ba3c667c12d88dc68f62a3a15797eda86))
+* **deps-dev** remove unused prettier ([#483](https://github.com/cdcabrera/apidoc-mock/pull/483)) ([177a767](https://github.com/cdcabrera/apidoc-mock/commit/177a767f41cd6256442737e51bd200a46b931ff5))
+* **deps** @cdcabrera/apidoc from 3.0.3 to 3.0.4 ([#481](https://github.com/cdcabrera/apidoc-mock/pull/481)) ([014b878](https://github.com/cdcabrera/apidoc-mock/commit/014b878acfc53efb62cfc71a6854a45997ca0642))
+*  relax audit check ([#480](https://github.com/cdcabrera/apidoc-mock/pull/480)) ([bf71fa5](https://github.com/cdcabrera/apidoc-mock/commit/bf71fa52f146e7339e34c6e969f2051211da2c90))
+* **deps-dev** npm-check-updates from 19.1.1 to 19.1.2 ([#476](https://github.com/cdcabrera/apidoc-mock/pull/476)) ([5649e3b](https://github.com/cdcabrera/apidoc-mock/commit/5649e3b0548fc5e90bcddd8207dd08f04eb8d936))
+
 ## [6.1.0](https://github.com/cdcabrera/apidoc-mock/compare/d62d9d56f397a7b6f5ddc6c5a533d83cad78b201...3c58aba2efef9e9f5b3e1219686fbd6eabf59a57) (2025-11-10)
 
 
