@@ -90,8 +90,8 @@
   },
   "devDependencies": {
     "@cdcabrera/eslint-config-toolkit": "^0.4.0",
-    "changelog-light": "^3.0.5",
-    "cspell": "^9.6.2",
+    "changelog-light": "^3.0.6",
+    "cspell": "^9.6.3",
     "eslint": "^9.39.2",
     "jest": "^30.2.0",
     "nodemon": "^3.1.11",
