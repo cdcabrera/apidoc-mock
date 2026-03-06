@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.1.2](https://github.com/cdcabrera/apidoc-mock/compare/143ef5fe2072c35b4149b12837e86e3b72aa7a78...1440532c725d212c15916f8ee9a04da815098b51) (2026-03-06)
+
+
+### Chores
+*  license badge ([#504](https://github.com/cdcabrera/apidoc-mock/pull/504)) ([1440532](https://github.com/cdcabrera/apidoc-mock/commit/1440532c725d212c15916f8ee9a04da815098b51))
+
+### Builds
+* **deps** lock update ([#503](https://github.com/cdcabrera/apidoc-mock/pull/503)) ([cf80792](https://github.com/cdcabrera/apidoc-mock/commit/cf807920fe937bcfd096071a6e77cbe0390a3e4b))
+* **deps** bump prod group with 2 updates ([#500](https://github.com/cdcabrera/apidoc-mock/pull/500)) ([e7e8529](https://github.com/cdcabrera/apidoc-mock/commit/e7e85299dc842a27c06eca2e6e1a6168eee4e6c5))
+* **deps-dev** bump cspell from 9.6.3 to 9.6.4 ([#501](https://github.com/cdcabrera/apidoc-mock/pull/501)) ([4693b58](https://github.com/cdcabrera/apidoc-mock/commit/4693b583690f780eca6eabb37c0b403093c1c4ba))
+* **deps-dev** bump dev group with 2 updates ([#499](https://github.com/cdcabrera/apidoc-mock/pull/499)) ([8e9d34e](https://github.com/cdcabrera/apidoc-mock/commit/8e9d34e2bc1137768d14d8d3b7256863ab5e003f))
+* **deps-dev** bump dev group with 2 updates ([#498](https://github.com/cdcabrera/apidoc-mock/pull/498)) ([6dcebca](https://github.com/cdcabrera/apidoc-mock/commit/6dcebca98dcb45541c3f8969cc707e25d672d64c))
+* **deps** lock update ([#497](https://github.com/cdcabrera/apidoc-mock/pull/497)) ([cc51fcc](https://github.com/cdcabrera/apidoc-mock/commit/cc51fcc1db7fcf721bcec262c00f6d2766c640fa))
+* **deps-dev** bump cspell from 9.4.0 to 9.6.0 ([#496](https://github.com/cdcabrera/apidoc-mock/pull/496)) ([fa8eca6](https://github.com/cdcabrera/apidoc-mock/commit/fa8eca686785db003bf75770733059f2e8602fe5))
+* **deps-dev** bump dev group with 3 updates ([#495](https://github.com/cdcabrera/apidoc-mock/pull/495)) ([963a137](https://github.com/cdcabrera/apidoc-mock/commit/963a1371275910253db53dbe54a5f80155557376))
+
 ## [6.1.1](https://github.com/cdcabrera/apidoc-mock/compare/e984f3cf382dcbbb2e302000900a199a7cc5da4d...0397af466a727ada5e3a14a090943fff74da3a1e) (2026-01-04)
 
 
