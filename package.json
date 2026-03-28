@@ -33,20 +33,18 @@
     "mock": "bin/cli.js"
   },
   "scripts": {
-    "build:deps": "bash ./scripts/dependencies.sh --doctor -u --doctorTest \"npm run test:deps\"",
     "docker:build": "docker build -t apidoc-mock-test .",
     "docker:run": "docker stop mock-api-test; docker run -i --rm -p 5000:8000 -v \"$(pwd)/data:/app/data\" --name mock-api-test apidoc-mock-test",
     "docker:stop": "docker stop mock-api-test",
     "release": "changelog",
     "start": "./bin/cli.js -w ./data",
     "start:dev": "nodemon --watch data --watch src './bin/cli.js -w ./data'",
-    "test": "run-s -l test:lint test:spell* test:ci",
+    "test": "npm run test:lint && npm run test:spell && npm run test:spell-docs && npm run test:ci",
     "test:ci": "export CI=true; jest --collectCoverage --coverageReporters=\"lcov\" --coverageReporters=\"json-summary\"",
     "test:clearCache": "jest --clearCache",
-    "test:coverage": "run-s test:ci test:coverageSummary",
+    "test:coverage": "npm run test:ci && npm run test:coverageSummary",
     "test:coverageSummary": "node ./scripts/actions.coverage.js",
-    "test:deps": "rm -rf ./.docs; run-s test",
-    "test:dev": "rm -rf ./.docs; eslint ./src; run-s test:spell test:local",
+    "test:dev": "rm -rf ./.docs; eslint ./src; npm run test:spell && npm run test:local",
     "test:integration": "jest --roots=./tests",
     "test:integration-dev": "jest --roots=./tests --watchAll",
     "test:lint": "eslint ./src ./bin ./data eslint.config.mjs",
@@ -94,8 +92,6 @@
     "cspell": "^9.7.0",
     "eslint": "^9.39.4",
     "jest": "^30.3.0",
-    "nodemon": "^3.1.14",
-    "npm-check-updates": "^19.6.3",
-    "npm-run-all": "^4.1.5"
+    "nodemon": "^3.1.14"
   }
 }
