@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.1.3](https://github.com/cdcabrera/apidoc-mock/compare/593fd6a82506e3a782a36a978eb4288d1dbd95fb...96f66c4290d8481e4d306bf60d17b242a30e389d) (2026-03-28)
+
+
+### Builds
+* **deps-dev** clean npm-check-updates, npm-run-all ([#513](https://github.com/cdcabrera/apidoc-mock/pull/513)) ([96f66c4](https://github.com/cdcabrera/apidoc-mock/commit/96f66c4290d8481e4d306bf60d17b242a30e389d))
+* **deps** lock update ([#512](https://github.com/cdcabrera/apidoc-mock/pull/512)) ([40ee9ea](https://github.com/cdcabrera/apidoc-mock/commit/40ee9ea1e235bad5077bcc8e3fbb0bf772dba454))
+* **deps-dev** bump eslint from 9.39.2 to 9.39.4 ([#511](https://github.com/cdcabrera/apidoc-mock/pull/511)) ([5d214df](https://github.com/cdcabrera/apidoc-mock/commit/5d214dfc33d6487b396c0f0a294908c329da2d21))
+* **deps-dev** bump dev group with 4 updates ([#510](https://github.com/cdcabrera/apidoc-mock/pull/510)) ([e6d1a12](https://github.com/cdcabrera/apidoc-mock/commit/e6d1a12147db63b1c7b696237570756d6b849013))
+* **deps** @cdcabrera/apidoc from 3.0.5 to 3.0.6 ([#509](https://github.com/cdcabrera/apidoc-mock/pull/509)) ([3323435](https://github.com/cdcabrera/apidoc-mock/commit/332343564ea51add79aec0475e98e12a86eb49b3))
+* **deps-dev** bump dev group with 4 updates ([#506](https://github.com/cdcabrera/apidoc-mock/pull/506)) ([e6808f3](https://github.com/cdcabrera/apidoc-mock/commit/e6808f3abbc305394d4af1801598d1d3764d7418))
+
 ## [6.1.2](https://github.com/cdcabrera/apidoc-mock/compare/143ef5fe2072c35b4149b12837e86e3b72aa7a78...1440532c725d212c15916f8ee9a04da815098b51) (2026-03-06)
 
 
