@@ -90,7 +90,7 @@
     "@cdcabrera/eslint-config-toolkit": "^0.5.1",
     "changelog-light": "^3.0.7",
     "cspell": "^9.7.0",
-    "eslint": "^9.39.4",
+    "eslint": "^10.1.0",
     "jest": "^30.3.0",
     "nodemon": "^3.1.14"
   }
