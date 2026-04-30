@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:24-alpine
 
 WORKDIR /app
 
@@ -11,4 +11,5 @@ VOLUME /docs
 RUN yarn --production --non-interactive \
     && yarn cache clean
 
+# For 26-alpine review yarn cmd
 CMD ["yarn", "start"]
