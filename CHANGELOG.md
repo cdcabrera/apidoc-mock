@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.1.4](https://github.com/cdcabrera/apidoc-mock/compare/7d0b0e841115fdc2a3d9fad56f7a55d4db80691c...f2a4af407869f400b03d29418b27cb0742ecb8f6) (2026-04-30)
+
+
+### Continuous Integrations
+*  workflow perms ([#521](https://github.com/cdcabrera/apidoc-mock/pull/521)) ([8c3fa03](https://github.com/cdcabrera/apidoc-mock/commit/8c3fa038dd499f6f61d2c81297e4eb0b634a6642))
+
+### Builds
+* **deps** lock update ([#522](https://github.com/cdcabrera/apidoc-mock/pull/522)) ([f2a4af4](https://github.com/cdcabrera/apidoc-mock/commit/f2a4af407869f400b03d29418b27cb0742ecb8f6))
+* **deps-dev** bump dev group with 2 updates ([#517](https://github.com/cdcabrera/apidoc-mock/pull/517)) ([73d2c44](https://github.com/cdcabrera/apidoc-mock/commit/73d2c44a1362f5c43fb2f7ce43021660c441240d))
+* **deps** bump @cdcabrera/apidoc from 3.0.6 to 3.0.7 ([#518](https://github.com/cdcabrera/apidoc-mock/pull/518)) ([1b59e85](https://github.com/cdcabrera/apidoc-mock/commit/1b59e85a2f9f2dd2f40bb35d32134c917ca46ad3))
+
 ## [6.1.3](https://github.com/cdcabrera/apidoc-mock/compare/593fd6a82506e3a782a36a978eb4288d1dbd95fb...96f66c4290d8481e4d306bf60d17b242a30e389d) (2026-03-28)
 
 
