@@ -57,4 +57,4 @@ jobs:
           path: './coverage/lcov-report'
       - name: Deploy to pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
