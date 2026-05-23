@@ -87,11 +87,11 @@
     "yargs": "17.7.2"
   },
   "devDependencies": {
-    "@cdcabrera/eslint-config-toolkit": "^0.5.2",
+    "@cdcabrera/eslint-config-toolkit": "^0.5.3",
     "changelog-light": "^3.0.8",
     "cspell": "^10.0.0",
     "eslint": "^9.39.4",
-    "jest": "^30.3.0",
+    "jest": "^30.4.2",
     "nodemon": "^3.1.14"
   }
 }
