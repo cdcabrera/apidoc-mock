@@ -52,7 +52,7 @@ jobs:
       - name: Setup coverage report
         run: npm run test:coverage
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: './coverage/lcov-report'
       - name: Deploy to pages
