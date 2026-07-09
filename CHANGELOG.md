@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.0.0](https://github.com/cdcabrera/apidoc-mock/compare/9828d5e3a8589e1faa8b429446e676b71f419fdd...5370cb7bbb7dc48c1634cd5707733895db3e6d9b) (2026-07-09)
+⚠ **BREAKING CHANGES**
+* Node.js 20 support has been removed. See [#524](https://github.com/cdcabrera/apidoc-mock/pull/524)
+
+### Builds
+* **deps** lock update ([#540](https://github.com/cdcabrera/apidoc-mock/pull/540)) ([5370cb7](https://github.com/cdcabrera/apidoc-mock/commit/5370cb7bbb7dc48c1634cd5707733895db3e6d9b))
+* **deps** bump actions/checkout from 6 to 7 ([#537](https://github.com/cdcabrera/apidoc-mock/pull/537)) ([415c3e3](https://github.com/cdcabrera/apidoc-mock/commit/415c3e3766e6e5b81aa6e35ecb3f3718c5c07bfb))
+* **deps-dev** bump eslint from 10.4.1 to 10.5.0 ([#539](https://github.com/cdcabrera/apidoc-mock/pull/539)) ([eb052a9](https://github.com/cdcabrera/apidoc-mock/commit/eb052a9d05b702530fc68681e4bd607206e829af))
+* **deps-dev** bump cspell from 10.0.0 to 10.0.1 ([#535](https://github.com/cdcabrera/apidoc-mock/pull/535)) ([748d048](https://github.com/cdcabrera/apidoc-mock/commit/748d048fe2f2ce5be5aca9c770ba546dfc22185d))
+* **deps-dev** bump eslint from 9.39.4 to 10.4.1 ([#536](https://github.com/cdcabrera/apidoc-mock/pull/536)) ([976107c](https://github.com/cdcabrera/apidoc-mock/commit/976107c613985b7d789c7e69e95d9935aae8e446))
+* **deps** actions/upload-pages-artifact from 4 to 5 ([#533](https://github.com/cdcabrera/apidoc-mock/pull/533)) ([a810038](https://github.com/cdcabrera/apidoc-mock/commit/a810038950e53211dde56d978a7cff458886cfd4))
+* **deps** bump actions/configure-pages from 5 to 6 ([#532](https://github.com/cdcabrera/apidoc-mock/pull/532)) ([e65c15b](https://github.com/cdcabrera/apidoc-mock/commit/e65c15b49dfeca60cfe00a14b3e7ae667c012a5d))
+* **deps-dev** bump the dev group with 2 updates ([#531](https://github.com/cdcabrera/apidoc-mock/pull/531)) ([00c5aee](https://github.com/cdcabrera/apidoc-mock/commit/00c5aee5c76fa82dd23eb5604ff6d63641365b0e))
+* **deps** bump @cdcabrera/apidoc from 3.0.7 to 3.0.8 ([#528](https://github.com/cdcabrera/apidoc-mock/pull/528)) ([bee8685](https://github.com/cdcabrera/apidoc-mock/commit/bee8685dbdceff525de4404c730b56e71ae26657))
+* **deps** bump actions/deploy-pages from 4 to 5 ([#526](https://github.com/cdcabrera/apidoc-mock/pull/526)) ([2bf14b5](https://github.com/cdcabrera/apidoc-mock/commit/2bf14b56df66f0b5d59feb4b772f6355344d83f4))
+* **deps** bump actions/github-script from 8 to 9 ([#525](https://github.com/cdcabrera/apidoc-mock/pull/525)) ([e8626be](https://github.com/cdcabrera/apidoc-mock/commit/e8626be495e6ccb1ced3b1f0ea53e1fbdb1bf5c5))
+* **deps-dev** bump cspell from 9.7.0 to 10.0.0 ([#520](https://github.com/cdcabrera/apidoc-mock/pull/520)) ([48c8496](https://github.com/cdcabrera/apidoc-mock/commit/48c8496dc9254838c394ede734bd2113cffc7cf0))
+* ⚠ **nodejs** remove 20 support ([#524](https://github.com/cdcabrera/apidoc-mock/pull/524)) ([a9f539b](https://github.com/cdcabrera/apidoc-mock/commit/a9f539b4aae8b32049c196943047b52e66a68498))
+
 ## [6.1.4](https://github.com/cdcabrera/apidoc-mock/compare/7d0b0e841115fdc2a3d9fad56f7a55d4db80691c...f2a4af407869f400b03d29418b27cb0742ecb8f6) (2026-04-30)
 
 
