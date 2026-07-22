@@ -87,7 +87,7 @@
     "yargs": "17.7.2"
   },
   "devDependencies": {
-    "@cdcabrera/eslint-config-toolkit": "^0.5.3",
+    "@cdcabrera/eslint-config-toolkit": "^1.0.0",
     "changelog-light": "^3.0.8",
     "cspell": "^10.0.1",
     "eslint": "^10.6.0",
