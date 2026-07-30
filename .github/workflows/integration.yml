@@ -19,16 +19,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
-      - name: Node.js modules cache
-        uses: actions/cache@v5
-        id: modules-cache
-        with:
-          path: ${{ github.workspace }}/node_modules
-          key: ${{ runner.os }}-${{ matrix.node-version }}-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ matrix.node-version }}-modules
       - name: Install Node.js packages
-        if: ${{ steps.modules-cache.outputs.cache-hit != 'true' }}
         run: npm ci
       - name: Audit packages
         run: npm audit --audit-level=high
