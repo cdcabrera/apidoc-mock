@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.0.1](https://github.com/cdcabrera/apidoc-mock/compare/88429d57ca767abf87e75ad59bda5b69c4caedea...6b7c7b2ae0bcbd944b19f3a922523f50b63a2cd3) (2026-08-07)
+
+
+### Continuous Integrations
+*  remove dup workflow caching ([#546](https://github.com/cdcabrera/apidoc-mock/pull/546)) ([ab244a7](https://github.com/cdcabrera/apidoc-mock/commit/ab244a7748057c8dcd5a549983541d5abd548bea))
+
+### Builds
+* **deps** lock update ([#549](https://github.com/cdcabrera/apidoc-mock/pull/549)) ([6b7c7b2](https://github.com/cdcabrera/apidoc-mock/commit/6b7c7b2ae0bcbd944b19f3a922523f50b63a2cd3))
+* **deps-dev** bump dev group with 2 updates ([#548](https://github.com/cdcabrera/apidoc-mock/pull/548)) ([5b9e270](https://github.com/cdcabrera/apidoc-mock/commit/5b9e270389480195fd56aace1484d0df87034aea))
+* **deps** bump actions/setup-node from 6 to 7 ([#547](https://github.com/cdcabrera/apidoc-mock/pull/547)) ([29e4674](https://github.com/cdcabrera/apidoc-mock/commit/29e467485362352d30eb2f805d1db5a99e49d2a4))
+* **deps-dev** bump eslint from 10.6.0 to 10.7.0 ([#545](https://github.com/cdcabrera/apidoc-mock/pull/545)) ([35cbef4](https://github.com/cdcabrera/apidoc-mock/commit/35cbef46a109b19c5517d1cf6cc635ad5dc8a323))
+* **deps** bump @cdcabrera/apidoc from 3.0.8 to 4.0.0 ([#544](https://github.com/cdcabrera/apidoc-mock/pull/544)) ([504d675](https://github.com/cdcabrera/apidoc-mock/commit/504d675fed3fa82ae6b6012cccd292831cdbc7b2))
+* **deps-dev** bump @cdcabrera/eslint-config-toolkit ([#543](https://github.com/cdcabrera/apidoc-mock/pull/543)) ([cc0b36d](https://github.com/cdcabrera/apidoc-mock/commit/cc0b36daafa79d0681026eaf010f5434b3613f13))
+* **deps-dev** bump eslint from 10.5.0 to 10.6.0 ([#542](https://github.com/cdcabrera/apidoc-mock/pull/542)) ([1ec6280](https://github.com/cdcabrera/apidoc-mock/commit/1ec6280799fe8332dfa4d2cde5034f992401a485))
+
 ## [7.0.0](https://github.com/cdcabrera/apidoc-mock/compare/9828d5e3a8589e1faa8b429446e676b71f419fdd...5370cb7bbb7dc48c1634cd5707733895db3e6d9b) (2026-07-09)
 ⚠ **BREAKING CHANGES**
 * Node.js 20 support has been removed. See [#524](https://github.com/cdcabrera/apidoc-mock/pull/524)
