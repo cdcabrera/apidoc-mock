@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.0.2](https://github.com/cdcabrera/apidoc-mock/compare/fc3a65f81d152c4c66d29ae5ecdb0d1657c4b23b...89c9d2ce325e9c96c8217908a138b77206a29d0b) (2026-09-21)
+
+
+### Builds
+* **deps** lock update ([#558](https://github.com/cdcabrera/apidoc-mock/pull/558)) ([89c9d2c](https://github.com/cdcabrera/apidoc-mock/commit/89c9d2ce325e9c96c8217908a138b77206a29d0b))
+* **deps-dev** bump the dev group with 2 updates ([#556](https://github.com/cdcabrera/apidoc-mock/pull/556)) ([fcc6c06](https://github.com/cdcabrera/apidoc-mock/commit/fcc6c062c2c8c35b291ccd14d6df4fc67ca979cb))
+* **deps** @cdcabrera/apidoc from 4.0.1 to 4.0.2 ([#557](https://github.com/cdcabrera/apidoc-mock/pull/557)) ([412ecd2](https://github.com/cdcabrera/apidoc-mock/commit/412ecd22506611c743f526400e23bb4e0dd8c043))
+* **deps-dev** bump the dev group with 2 updates ([#555](https://github.com/cdcabrera/apidoc-mock/pull/555)) ([d966ba7](https://github.com/cdcabrera/apidoc-mock/commit/d966ba7517305e3e44d2f579c944a142494b2eb9))
+* **deps-dev** bump changelog-light from 3.1.0 to 4.0.0 ([#554](https://github.com/cdcabrera/apidoc-mock/pull/554)) ([03cf5e0](https://github.com/cdcabrera/apidoc-mock/commit/03cf5e034c8f5a1b650f2a3da4b8131b76f92925))
+* **deps-dev** bump eslint from 10.7.0 to 10.8.1 ([#551](https://github.com/cdcabrera/apidoc-mock/pull/551)) ([bd3a1cc](https://github.com/cdcabrera/apidoc-mock/commit/bd3a1cc0fbf752fde3a6c9d2f15223385026adc4))
+* **deps** bump @cdcabrera/apidoc from 4.0.0 to 4.0.1 ([#553](https://github.com/cdcabrera/apidoc-mock/pull/553)) ([163a44b](https://github.com/cdcabrera/apidoc-mock/commit/163a44b15b60d1ca437d20a5dd751df04cfdba1e))
+
 ## [7.0.1](https://github.com/cdcabrera/apidoc-mock/compare/88429d57ca767abf87e75ad59bda5b69c4caedea...6b7c7b2ae0bcbd944b19f3a922523f50b63a2cd3) (2026-08-07)
 
 
