@@ -88,10 +88,10 @@
   },
   "devDependencies": {
     "@cdcabrera/eslint-config-toolkit": "^1.1.0",
-    "changelog-light": "^4.0.0",
-    "cspell": "^10.3.2",
-    "eslint": "^10.10.0",
-    "jest": "^30.5.1",
+    "changelog-light": "^4.0.1",
+    "cspell": "^10.3.3",
+    "eslint": "^10.11.0",
+    "jest": "^30.5.2",
     "nodemon": "^3.1.14"
   }
 }
